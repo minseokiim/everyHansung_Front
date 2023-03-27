@@ -30,7 +30,7 @@ const LoginPage = () => {
   };
 
   return (
-    <form className="lec-back">
+    <div className="lec-back">
       <div className="mb-3">
         <label className="form-label m-2 mb-0"> 로그인</label>
         <hr />
@@ -72,7 +72,7 @@ const LoginPage = () => {
           회원가입
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 
