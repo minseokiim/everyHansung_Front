@@ -1,0 +1,113 @@
+{
+  "secretposts": [
+    {
+      "title": "as",
+      "content": "a",
+      "createdAt": 1679833805564,
+      "isAnonymous": false,
+      "id": 2
+    }
+  ],
+  "freeposts": [
+    {
+      "title": "ㄴ",
+      "content": "ㄴ",
+      "createdAt": 1679835693704,
+      "isAnonymous": false,
+      "id": 1
+    }
+  ],
+  "lectures": [
+    {
+      "lectureName": "강의평",
+      "professor": "교수님성함",
+      "content": "ㅇㅇㅇ",
+      "selectedStar": 5,
+      "semester": "2023-1학기",
+      "homework": "보통",
+      "score": "보통",
+      "test": "2회",
+      "team": "없음",
+      "id": 1
+    },
+    {
+      "lectureName": "s",
+      "professor": "s",
+      "content": "e",
+      "selectedStar": 1,
+      "semester": "2023-1학기",
+      "homework": "보통",
+      "score": "너그러움 ",
+      "test": "3회 이상",
+      "team": " 많음",
+      "id": 2
+    },
+    {
+      "lectureName": "강ㅇㅇ",
+      "professor": "ㅇㅇㅇ",
+      "content": "ㅇ",
+      "selectedStar": 4,
+      "semester": "2022-1학기",
+      "homework": "보통",
+      "score": "보통",
+      "test": "2회",
+      "team": "보통",
+      "id": 3
+    }
+  ],
+  "freecomments": [
+    {
+      "commentContent": "ㄴ",
+      "commentCreatedAt": 1679835696106,
+      "commentIsAnonymous": false,
+      "freepostId": "1",
+      "id": 1
+    },
+    {
+      "commentContent": "ㄴ",
+      "commentCreatedAt": 1679845839759,
+      "commentIsAnonymous": false,
+      "freepostId": "1",
+      "id": 2
+    }
+  ],
+  "secretcomments": [
+    {
+      "commentContent": "aa",
+      "commentCreatedAt": 1679833809629,
+      "commentIsAnonymous": false,
+      "secretpostId": "2",
+      "id": 1
+    },
+    {
+      "commentContent": "dd",
+      "commentCreatedAt": 1679833811589,
+      "commentIsAnonymous": false,
+      "secretpostId": "2",
+      "id": 2
+    }
+  ],
+  "login": [
+    {
+      "studentId": "dd",
+      "passwd": "dd",
+      "id": 1
+    },
+    {
+      "studentId": "qq",
+      "passwd": "q",
+      "id": 2
+    },
+    {
+      "studentId": "fwe",
+      "passwd": "ww",
+      "id": 3
+    },
+    {
+      "studentId": "dd",
+      "passwd": "aa",
+      "id": 4
+    }
+  ],
+  "register": []
+}

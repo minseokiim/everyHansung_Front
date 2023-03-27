@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "NotoSans";
+  src: url("../public/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+  font-family: "NotoSans";
+  flex-direction: column;
+}
