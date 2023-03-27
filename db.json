@@ -109,5 +109,14 @@
       "id": 4
     }
   ],
-  "register": []
+  "register": [
+    {
+      "userName": "a",
+      "email": "s",
+      "studentId": "a",
+      "passwd": "sa",
+      "nickName": "a",
+      "id": 1
+    }
+  ]
 }

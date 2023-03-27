@@ -20,6 +20,15 @@ const SignUpPage = () => {
     } else if (passwd.trim().length === 0) {
       alert("비밀번호를 입력하세요");
       return;
+    } else if (email.trim().length === 0) {
+      alert("이메일을 입력하세요");
+      return;
+    } else if (nickName.trim().length === 0) {
+      alert("사용할 닉네임을 입력하세요");
+      return;
+    } else if (studentId.trim().length === 0) {
+      alert("학번을 입력하세요");
+      return;
     } else {
       axios
         .post("http://localhost:8080/register", {
@@ -36,15 +45,16 @@ const SignUpPage = () => {
     }
   };
 
-  const check = (passwd) => {
+  const checkPw = (passwd) => {
     if (passwd != checkPasswd) {
       alert("비밀번호를 다시 확인해주세요");
     }
   };
 
   return (
-    <div className="lec-back">
-      회원가입
+    <div className="lec-back p-4">
+      <h5>회원가입</h5>
+      <br />
       <div>
         <input
           className="form-control"
@@ -54,6 +64,7 @@ const SignUpPage = () => {
           }}
           placeholder="이름을 입력해주세요."
         ></input>
+        <br />
         <input
           className="form-control"
           type="email"
@@ -63,6 +74,8 @@ const SignUpPage = () => {
           }}
           placeholder="이메일을 입력해주세요."
         ></input>
+        <br />
+
         <input
           className="form-control"
           value={studentId}
@@ -71,6 +84,8 @@ const SignUpPage = () => {
           }}
           placeholder="학번을 입력해주세요."
         ></input>
+        <br />
+
         <input
           className="form-control"
           type="password"
@@ -80,6 +95,8 @@ const SignUpPage = () => {
           }}
           placeholder="비밀번호를 입력해주세요."
         ></input>
+        <br />
+
         <input
           className="form-control"
           type="password"
@@ -89,6 +106,8 @@ const SignUpPage = () => {
           }}
           placeholder="비밀번호를 한번 더 입력해주세요."
         ></input>
+        <br />
+
         <input
           className="form-control"
           value={nickName}
@@ -98,13 +117,7 @@ const SignUpPage = () => {
           placeholder="닉네임을 입력해주세요."
         ></input>
         <br />
-        <button
-          className="lec-button mb-3"
-          type="submit"
-          onClick={() => {
-            move("/login");
-          }}
-        >
+        <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
           회원가입 완료
         </button>
       </div>
