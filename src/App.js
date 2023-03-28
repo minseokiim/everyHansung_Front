@@ -1,5 +1,7 @@
 import NavBar from "./NavBar";
 import "./App.css";
+import Card from "./Card";
+
 import FreeWritePage from "./page/freeBoardPage/FreeWritePage";
 import FreeListPage from "./page/freeBoardPage/FreeListPage";
 import FreeEditPage from "./page/freeBoardPage/FreeEditPage";
@@ -29,29 +31,151 @@ const App = () => {
       <Routes>
         {/* //nav 보여주고 싶은 페이지 */}
         <Route element={<NavBar />}>
-          <Route path="/chatbot" element={<ChatBotPage />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/message" element={<MessagePage />} />
-          <Route path="/freeboard/post" element={<FreeWritePage />} />
-          <Route path="/freeboard/list" element={<FreeListPage />} />
-          <Route path="/freeboard/edit/:id" element={<FreeEditPage />} />
-          <Route path="/freeboard/:id" element={<FreeShowPage />} />
+          <Route
+            path="/chatbot"
+            element={
+              <div>
+                <Card />
+                <ChatBotPage />
+              </div>
+            }
+          />
+          <Route
+            path="/mypage"
+            element={
+              <Card>
+                <MyPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/message"
+            element={
+              <Card>
+                <MessagePage />
+              </Card>
+            }
+          />
+          <Route
+            path="/freeboard/post"
+            element={
+              <Card>
+                <FreeWritePage />
+              </Card>
+            }
+          />
+          <Route
+            path="/freeboard/list"
+            element={
+              <div>
+                <Card>
+                  <FreeListPage />
+                </Card>
+              </div>
+            }
+          />
+          <Route
+            path="/freeboard/edit/:id"
+            element={
+              <Card>
+                <FreeEditPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/freeboard/:id"
+            element={
+              <Card>
+                <FreeShowPage />
+              </Card>
+            }
+          />
 
-          <Route path="/secretboard/post" element={<SecretWritePage />} />
-          <Route path="/secretboard/list" element={<SecretListPage />} />
-          <Route path="/secretboard/edit/:id" element={<SecretEditPage />} />
-          <Route path="/secretboard/:id" element={<SecretShowPage />} />
+          <Route
+            path="/secretboard/post"
+            element={
+              <Card>
+                <SecretWritePage />
+              </Card>
+            }
+          />
+          <Route
+            path="/secretboard/list"
+            element={
+              <Card>
+                <SecretListPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/secretboard/edit/:id"
+            element={
+              <Card>
+                <SecretEditPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/secretboard/:id"
+            element={
+              <Card>
+                <SecretShowPage />
+              </Card>
+            }
+          />
 
-          <Route path="/lectureboard/post" element={<LectureWritePage />} />
-          <Route path="/lectureboard/list" element={<LectureListPage />} />
-          <Route path="/lectureboard/:id" element={<LectureShowPage />} />
+          <Route
+            path="/lectureboard/post"
+            element={
+              <Card>
+                <LectureWritePage />
+              </Card>
+            }
+          />
+          <Route
+            path="/lectureboard/list"
+            element={
+              <Card>
+                <LectureListPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/lectureboard/:id"
+            element={
+              <Card>
+                <LectureShowPage />
+              </Card>
+            }
+          />
         </Route>
 
         {/* //숨기고 싶은 페이지 */}
 
-        <Route path="/" element={<MainPage />} />
-        <Route path="/register" element={<SignUpPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route
+          path="/"
+          element={
+            <Card>
+              <MainPage />
+            </Card>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <Card>
+              <SignUpPage />
+            </Card>
+          }
+        ></Route>
+        <Route
+          path="/login"
+          element={
+            <Card>
+              <LoginPage />
+            </Card>
+          }
+        ></Route>
       </Routes>
     </Router>
   );

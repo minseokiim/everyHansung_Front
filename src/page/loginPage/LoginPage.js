@@ -31,9 +31,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div id="register-container"> 
-      <div className="mb-3">
-      <h2>로그인</h2>
+    <div id="register-container">
+      <div className="mb-3 p">
+        <h2>로그인</h2>
         <hr />
 
         <div className="input">
@@ -59,7 +59,10 @@ const LoginPage = () => {
         </div>
 
         <div className="input">
-          <label className="autologin"><input type="checkbox" name="autologin" value="1" />로그인 유지</label>
+          <label className="autologin">
+            <input type="checkbox" name="autologin" value="1" />
+            로그인 유지
+          </label>
           <p className="find">
             <a href="/forgot">아이디/비밀번호 찾기</a>
           </p>
@@ -67,11 +70,10 @@ const LoginPage = () => {
             로그인
           </button>
           <p className="register">
-                        <span>에브리한성에 처음이신가요?</span>
-                        <a href="/register">회원가입</a>
+            <span>에브리한성에 처음이신가요?</span>
+            <a href="/register">회원가입</a>
           </p>
         </div>
-
       </div>
     </div>
   );
