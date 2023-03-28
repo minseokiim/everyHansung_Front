@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./LoginPage.css";
 
 const LoginPage = () => {
   const move = useNavigate();
@@ -11,7 +12,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (studentId.trim().length === 0) {
-      alert("아이디를 입력하세요");
+      alert("학번을 입력하세요");
       return;
     } else if (passwd.trim().length === 0) {
       alert("비밀번호를 입력하세요");
@@ -30,14 +31,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="lec-back">
+    <div id="register-container"> 
       <div className="mb-3">
-        <label className="form-label m-2 mb-0"> 로그인</label>
+      <h2>로그인</h2>
         <hr />
 
-        <div className="mb-3">
+        <div className="input">
           <input
-            className="form-control"
+            type="text"
             value={studentId}
             onChange={(e) => {
               setStudentId(e.target.value);
@@ -46,9 +47,8 @@ const LoginPage = () => {
           ></input>
         </div>
 
-        <div className="mb-3">
+        <div className="input">
           <input
-            className="form-control"
             type="password"
             value={passwd}
             onChange={(e) => {
@@ -58,19 +58,16 @@ const LoginPage = () => {
           ></input>
         </div>
 
-        <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
-          로그인
-        </button>
+        <div className="input">
+          <label className="autologin"><input type="checkbox" name="autologin" value="1" />로그인 유지</label>
+          <p className="find">
+            <a href="/forgot">아이디/비밀번호 찾기</a>
+          </p>
+          <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
+            로그인
+          </button>
+        </div>
 
-        <button
-          className="lec-button mb-3"
-          type="submit"
-          onClick={() => {
-            move("/register");
-          }}
-        >
-          회원가입
-        </button>
       </div>
     </div>
   );

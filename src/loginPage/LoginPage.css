@@ -1,4 +1,26 @@
-.login-back {
+.find {
+    float: right;
+    padding-right: 10px;
+    height: 15px;
+    line-height: 15px;
+}
+
+.find a {
+    color: #444444;
+    font-size: 13px;
+}
+
+label.autologin {
+  display: block;
+  float: left;
   display: inline-block;
-  text-align: center;
+  padding-left: 10px;
+  height: 15px;
+  line-height: 15px;
+  color: #a6a6a6;
+  font-size: 13px;
+}
+
+label.autologin input {
+  margin-right: 5px;
 }
