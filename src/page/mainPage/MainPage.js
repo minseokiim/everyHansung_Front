@@ -120,7 +120,7 @@ const MainPage = () => {
             <a href="/page/faq">문의하기</a>
           </li>
           <li className="copyright">
-            <a href="/">© 에브리타임</a>
+            <a href="/">© 에브리 한성</a>
           </li>
         </ul>
       </section>
