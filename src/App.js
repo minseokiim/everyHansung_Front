@@ -160,22 +160,8 @@ const App = () => {
             </Card>
           }
         />
-        <Route
-          path="/register"
-          element={
-            <Card>
-              <SignUpPage />
-            </Card>
-          }
-        ></Route>
-        <Route
-          path="/login"
-          element={
-            <Card>
-              <LoginPage />
-            </Card>
-          }
-        ></Route>
+        <Route path="/register" element={<SignUpPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
       </Routes>
     </Router>
   );

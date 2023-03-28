@@ -8,18 +8,21 @@ const MainPage = () => {
     <div className="notlogin">
       <aside>
         <div className="login">
-          <Link to="/islogin" className="logo">
-            <img
-              alt="everyhansung"
-              src="img/everyhansung.png"
-              className="image"
-            />
-          </Link>
+          <div className="padd">
+            <Link to="/islogin">
+              <img
+                alt="everyhansung"
+                src="img/everyhansung.png"
+                className="logo-image"
+              />
+            </Link>
+          </div>
           <Link to="/login" className="button login">
             로그인
           </Link>
-          <Link to="/register" className="button register">
-            에브리한성 회원가입
+
+          <Link to="/register" className="button regis">
+            회원가입
           </Link>
           <p className="find">
             <a href="/forgot">아이디/비밀번호 찾기</a>
@@ -27,34 +30,25 @@ const MainPage = () => {
           <hr />
         </div>
       </aside>
-      <section className="init">
-        <div className="wrap">
-          <h1>
-            대학 생활을 더 편하고 즐겁게,
-            <br />
-            <strong>에브리한성</strong>
-          </h1>
-          <div className="stores">
-            <a href="/page/mlink?lid=web_about&stores-playstore">
-              {/* <img src={playstoreImg} alt="에브리타임 - Play Store -Google" /> */}
-            </a>
-            <a href="/page/mlink?lid=web_about&stores-appstore">
-              {/* <img src={appstoreImg} alt="에브리타임 - AppStore -Apple" /> */}
-            </a>
-          </div>
-          <hr />
-          <div className="device active">
-            <div className="screen">
-              <div className="image home"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section className="service white">
         <h2>
-          350만 대학생을 위한
+          한성대 학생을 위한
           <br />
-          <strong>국내 1위 대학생 서비스 에브리한성!</strong>
+          <strong>
+            서비스 에브리한성!
+            <br />
+          </strong>
+          <p>
+            <br />
+            <div>
+              <img
+                alt="sangsangs"
+                src="img/sangsangs.png"
+                className="sangsangs"
+              />
+            </div>
+          </p>
         </h2>
         <div className="paragraph">
           <p>

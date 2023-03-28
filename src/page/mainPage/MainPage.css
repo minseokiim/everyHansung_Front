@@ -1,3 +1,19 @@
+.padd {
+  padding-left: 80px;
+}
+
+.logo-image {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
+.sangsangs {
+  padding-left: 100px;
+  width: 100%;
+  height: 500px;
+}
+
 @media only screen and (min-width: 991px) {
   aside {
     width: 300px;
@@ -171,14 +187,19 @@ aside > div.login {
   background-color: #fff;
 }
 
-aside > div.login > a.logo {
+/* aside > div.login > a.logo {
   display: block;
   text-align: center;
-}
+} */
 
 aside > div.login > a.button.login {
   border: 1px solid #e3e3e3;
-  color: #737373;
+  color: white;
+}
+aside > div.login > a.button.regis {
+  border: 1px solid #e3e3e3;
+  background-color: #c62917;
+  color: white;
 }
 
 aside > div.login > a.button {
@@ -190,11 +211,6 @@ aside > div.login > a.button {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-}
-
-aside > div.login > a.button.register {
-  color: #fff;
-  background-color: #c62917;
 }
 
 aside > div.login > p.find {
