@@ -24,3 +24,23 @@ label.autologin {
 label.autologin input {
   margin-right: 5px;
 }
+
+.register {
+  clear: both;
+  padding-top: 30px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.register span {
+  margin-right: 5px;
+  color: #a6a6a6;
+  font-size: 16px;
+}
+
+.register a {
+  color: #c62917;
+  font-size: 16px;
+  font-weight: bold;
+}

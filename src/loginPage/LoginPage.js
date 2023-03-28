@@ -66,6 +66,10 @@ const LoginPage = () => {
           <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
             로그인
           </button>
+          <p className="register">
+                        <span>에브리한성에 처음이신가요?</span>
+                        <a href="/register">회원가입</a>
+          </p>
         </div>
 
       </div>
