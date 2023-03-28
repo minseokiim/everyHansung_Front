@@ -19,25 +19,41 @@ import LoginPage from "./page/loginPage/LoginPage";
 import SignUpPage from "./page/signupPage/SignUpPage";
 import MyPage from "./page/myPage/MyPage";
 import MessagePage from "./page/messagePage/MessagePage";
-import RegisterPage from "./page/signupPage/SignUpPage";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
 
 const App = () => {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     {/* //보여주고 싶은 페이지 */}
-    //     <Route element={<NavBar />}>
-    //       <Route path="/" element={MainPage} />
-    //     </Route>
+    <Router>
+      <Routes>
+        {/* //nav 보여주고 싶은 페이지 */}
+        <Route element={<NavBar />}>
+          <Route path="/chatbot" element={<ChatBotPage />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/message" element={<MessagePage />} />
+          <Route path="/freeboard/post" element={<FreeWritePage />} />
+          <Route path="/freeboard/list" element={<FreeListPage />} />
+          <Route path="/freeboard/edit/:id" element={<FreeEditPage />} />
+          <Route path="/freeboard/:id" element={<FreeShowPage />} />
 
-    //     {/* //숨기고 싶은 페이지 */}
-    //     {/* <Route path="/" element={MainPage} /> */}
-    //   </Routes>
-    // </BrowserRouter>
-    <NavBar />
+          <Route path="/secretboard/post" element={<SecretWritePage />} />
+          <Route path="/secretboard/list" element={<SecretListPage />} />
+          <Route path="/secretboard/edit/:id" element={<SecretEditPage />} />
+          <Route path="/secretboard/:id" element={<SecretShowPage />} />
+
+          <Route path="/lectureboard/post" element={<LectureWritePage />} />
+          <Route path="/lectureboard/list" element={<LectureListPage />} />
+          <Route path="/lectureboard/:id" element={<LectureShowPage />} />
+        </Route>
+
+        {/* //숨기고 싶은 페이지 */}
+
+        <Route path="/" element={<MainPage />} />
+        <Route path="/register" element={<SignUpPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+      </Routes>
+    </Router>
   );
 };
 

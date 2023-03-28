@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
 import Card from "./Card";
 import "./NavBar.css";
+import { Outlet } from "react-router-dom";
 
 import FreeWritePage from "./page/freeBoardPage/FreeWritePage";
 import FreeListPage from "./page/freeBoardPage/FreeListPage";
@@ -30,7 +31,7 @@ import MessagePage from "./page/messagePage/MessagePage";
 
 const NavBar = () => {
   return (
-    <Router>
+    <div>
       <Navbar className="color-nav" variant="dark">
         <Container>
           <Navbar.Brand href="/">
@@ -55,7 +56,8 @@ const NavBar = () => {
         </Container>
       </Navbar>
 
-      <Card className="back">
+      <Outlet />
+      {/* <Card className="back">
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
 
@@ -89,9 +91,10 @@ const NavBar = () => {
           <Route path="/mypage" element={<MyPage />}></Route>
 
           <Route path="/message" element={<MessagePage />}></Route>
+          <Outlet />
         </Routes>
-      </Card>
-    </Router>
+      </Card> */}
+    </div>
   );
 };
 
