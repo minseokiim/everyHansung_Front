@@ -1,32 +1,32 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./mainPage/MainPage";
+import MainPage from "./page/mainPage/MainPage";
 import Card from "./Card";
 import "./NavBar.css";
 
-import FreeWritePage from "./freeBoardPage/FreeWritePage";
-import FreeListPage from "./freeBoardPage/FreeListPage";
-import FreeEditPage from "./freeBoardPage/FreeEditPage";
-import FreeShowPage from "./freeBoardPage/FreeShowPage";
+import FreeWritePage from "./page/freeBoardPage/FreeWritePage";
+import FreeListPage from "./page/freeBoardPage/FreeListPage";
+import FreeEditPage from "./page/freeBoardPage/FreeEditPage";
+import FreeShowPage from "./page/freeBoardPage/FreeShowPage";
 
-import LectureWritePage from "./lectureBoardPage/LectureWritePage";
-import LectureListPage from "./lectureBoardPage/LectureListPage";
-import LectureShowPage from "./lectureBoardPage/LectureShowPage";
+import LectureWritePage from "./page/lectureBoardPage/LectureWritePage";
+import LectureListPage from "./page/lectureBoardPage/LectureListPage";
+import LectureShowPage from "./page/lectureBoardPage/LectureShowPage";
 
-import SecretWritePage from "./secretBoardPage/SecretWritePage";
-import SecretListPage from "./secretBoardPage/SecretListPage";
-import SecretEditPage from "./secretBoardPage/SecretEditPage";
-import SecretShowPage from "./secretBoardPage/SecretShowPage";
+import SecretWritePage from "./page/secretBoardPage/SecretWritePage";
+import SecretListPage from "./page/secretBoardPage/SecretListPage";
+import SecretEditPage from "./page/secretBoardPage/SecretEditPage";
+import SecretShowPage from "./page/secretBoardPage/SecretShowPage";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import ChatBotPage from "./chatbotPage/ChatBotPage";
+import ChatBotPage from "./page/chatbotPage/ChatBotPage";
 
-import LoginPage from "./loginPage/LoginPage";
-import SignUpPage from "./signupPage/SignUpPage";
-import MyPage from "./myPage/MyPage";
-import MessagePage from "./messagePage/MessagePage";
+import LoginPage from "./page/loginPage/LoginPage";
+import SignUpPage from "./page/signupPage/SignUpPage";
+import MyPage from "./page/myPage/MyPage";
+import MessagePage from "./page/messagePage/MessagePage";
 
 const NavBar = () => {
   return (
