@@ -9,13 +9,17 @@ const MainPage = () => {
       <aside>
         <div className="login">
           <Link to="/islogin" className="logo">
-            {/* <img src={logo} alt="짭브리타임" /> */}
+            <img
+              alt="everyhansung"
+              src="img/everyhansung.png"
+              className="image"
+            />
           </Link>
           <Link to="/login" className="button login">
             로그인
           </Link>
           <Link to="/register" className="button register">
-            짭브리타임 회원가입
+            에브리한성 회원가입
           </Link>
           <p className="find">
             <a href="/forgot">아이디/비밀번호 찾기</a>
@@ -28,7 +32,7 @@ const MainPage = () => {
           <h1>
             대학 생활을 더 편하고 즐겁게,
             <br />
-            <strong>에브리타임</strong>
+            <strong>에브리한성</strong>
           </h1>
           <div className="stores">
             <a href="/page/mlink?lid=web_about&stores-playstore">
@@ -50,7 +54,7 @@ const MainPage = () => {
         <h2>
           350만 대학생을 위한
           <br />
-          <strong>국내 1위 대학생 서비스 에브리타임!</strong>
+          <strong>국내 1위 대학생 서비스 에브리한성!</strong>
         </h2>
         <div className="paragraph">
           <p>
@@ -77,7 +81,7 @@ const MainPage = () => {
           <hr />
           <div>
             <p className="number">
-              <strong data-number="2767">2,767</strong>
+              <strong data-number="2767">3,964</strong>
               <span>만</span>
             </p>
             <p className="description">만들어진 시간표</p>
@@ -85,7 +89,7 @@ const MainPage = () => {
           <hr />
           <div>
             <p className="number">
-              <strong data-number="369">369</strong>
+              <strong data-number="369">602</strong>
               <span>만</span>
             </p>
             <p className="description">강의평/시험정보</p>
@@ -93,7 +97,7 @@ const MainPage = () => {
           <hr />
           <div>
             <p className="number">
-              <strong data-number="170">170</strong>
+              <strong data-number="170">251</strong>
               <span>만</span>
             </p>
             <p className="description">중고 거래된 책</p>
@@ -101,9 +105,9 @@ const MainPage = () => {
           <hr />
           <div>
             <p className="number">
-              <strong data-number="11">11</strong>
+              <strong data-number="11">16</strong>
               <span>억</span>
-              <strong data-number="5149">5,149</strong>
+              <strong data-number="5149">5,445</strong>
               <span>만</span>
             </p>
             <p className="description">작성된 게시물</p>
@@ -129,6 +133,6 @@ const MainPage = () => {
     </div>
     //jshint ignore:end
   );
-}
+};
 
 export default MainPage;
