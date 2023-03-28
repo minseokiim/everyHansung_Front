@@ -114,22 +114,22 @@ const SingUpPage = () => {
     };
 
     const onSubmit = (e) => {
-      e.preventDefault();
-      
-        if(checkIdDisplay === "block" && checkPasswdDisplay === "block" && checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checkNameDisplay === "block" && checknickNameDisplay === "block" ) {
-          axios.post("http://localhost:8080/register", {
-            studentId,
-            email, 
-            passwd,
-            userName,
-            nickName
-          })
-          alert(userName + "님, 회원가입을 축하합니다.");
-          move("/login")
-        } else {
+
+        try {
+            if(checkIdDisplay === "block" && checkPasswdDisplay === "block" && checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checkNameDisplay === "block" && checknickNameDisplay === "block" ) {
+                axios.post("http://localhost:8080/register", {
+                  studentId,
+                  email, 
+                  passwd,
+                  userName,
+                  nickName
+                })
+                alert(userName + "님, 회원가입을 축하합니다.");
+                move("/login")
+              }
+        } catch(e) {
             alert("입력사항을 다시 확인해주세요.");
-        }
-        
+        } 
     };
 
     return (

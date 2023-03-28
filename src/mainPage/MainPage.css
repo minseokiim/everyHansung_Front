@@ -1,0 +1,349 @@
+@media only screen and (min-width: 991px) {
+    aside {
+        width: 300px;
+    }
+
+    aside > div.login {
+        padding: 40px 15px;
+        width: 300px;
+        height: 270px;
+    }
+
+    aside > div.login > a.logo {
+        margin-bottom: 40px;
+    }
+
+    aside > div.login > a.logo > img {
+        height: 30px;
+    }
+
+    section {
+        padding-right: 301px;
+    }
+
+    section.init > div.wrap > h1 {
+        position: absolute;
+        text-align: left;
+    }
+
+    section.init > div.wrap > div.stores {
+        position: absolute;
+    }
+
+    section.init > div.wrap > div.stores > a {
+        padding: 0 15px;
+        height: 58px;
+        line-height: 58px;
+    }
+
+    section.init > div.wrap > div.stores > a > img {
+        height: 30px;
+    }
+
+    section.init > div.wrap > div.device {
+        position: absolute;
+    }
+
+    section.init > div.wrap > div.device > div.screen {
+        width: 270px;
+        height: 540px;
+    }
+
+    section.init > div.wrap > div.device > div.screen > div.home {
+        top: 0;
+        width: 270px;
+        height: 540px;
+        background-position: 0px 0px;
+    }
+
+    section.init > div.wrap > div.device > div.screen > div.image {
+        background-size: 840px auto;
+    }
+
+    section div.figures > hr {
+        display: inline-block;
+        border-right: 2px solid #d6d6d6;
+    }
+
+    section.footer > ul.links > li > a {
+        margin: 0 8px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 1281px) {
+    section.init > div.wrap {
+        width: 774px;
+        height: 662px;
+    }
+
+    section.init > div.wrap > h1 {
+        top: 306px;
+        left: 394px;
+        width: 380px;
+    }
+
+    section h1, section h2 {
+        line-height: 35px;
+        font-size: 28px;
+    }
+
+    section.init > div.wrap > div.stores {
+        top: 416px;
+        left: 394px;
+    }
+
+    section.init > div.wrap > div.device {
+        top: 120px;
+        left: 0;
+    }
+
+    section h2 {
+        padding: 120px 0 40px 0;
+    }
+
+    section div.paragraph {
+        padding-bottom: 80px;
+    }
+
+    section div.paragraph > p {
+        line-height: 28px;
+        font-size: 18px;
+    }
+
+    section div.figures {
+        padding-bottom: 120px;
+    }
+
+    section div.figures > div {
+        margin: 0 48px;
+    }
+
+    section div.figures > div > p.number > strong {
+        font-size: 38px;
+    }
+
+    section div.figures > div > p.number > span {
+        font-size: 18px;
+    }
+
+    section div.figures > div > p.description {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    section div.figures > hr {
+        margin: 0 -24px 25px -24px;
+        height: 20px;
+    }
+}
+
+* {
+    font-weight: normal;
+}
+
+.notlogin {
+    letter-spacing: -0.5px;
+    background-color: #f5f5f5;
+    font-weight: normal;
+}
+
+aside {
+    position: fixed;
+    z-index: 9;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    border-left: 1px solid #d6d6d6;
+    font-family: "맑은 고딕", "돋움", "Apple SD Gothic Neo", sans-serif;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+aside > div.login {
+    z-index: 11;
+    top: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+aside > div.login > a.logo {
+    display: block;
+    text-align: center;
+}
+
+aside > div.login > a.button.login {
+    border: 1px solid #e3e3e3;
+    color: #737373;
+}
+
+aside > div.login > a.button {
+    display: block;
+    margin-bottom: 5px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+aside > div.login > a.button.register {
+    color: #fff;
+    background-color: #c62917;
+}
+
+aside > div.login > p.find {
+    float: right;
+    text-align: right;
+}
+
+aside > div.login > p {
+    padding: 5px 5px 0 5px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+aside > div.login > p.find > a {
+    height: 15px;
+    line-height: 15px;
+    color: #444444;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+section {
+    width: 100%;
+    box-sizing: border-box;
+    word-break: break-all;
+    font-family: NanumSquare;
+    text-align: center;
+}
+
+section.init > div.wrap {
+    position: relative;
+    margin: 0 auto;
+}
+
+section h1, section h2 {
+    color: #292929;
+}
+
+section h1 > strong, section h2 > strong {
+    color: #c62917;
+    font-family: NanumSquareEB;
+}
+
+section.init > div.wrap > div.stores {
+    font-size: 0;
+}
+
+section.init > div.wrap > div.stores > a:first-child {
+    margin-right: 5px;
+}
+
+section.init > div.wrap > div.stores > a {
+    display: inline-block;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+}
+
+hr {
+    clear: both;
+    height: 0;
+    border: 0;
+    width: auto;
+}
+
+section.init > div.wrap > div.device {
+    box-sizing: border-box;
+}
+
+section.init > div.wrap > div.device > div.screen {
+    position: relative;
+    z-index: 1;
+    border: 2px solid #d6d6d6;
+    border-bottom: 0;
+    border-radius: 18px 18px 0 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+section.init > div.wrap > div.device > div.screen > div.home {
+    opacity: 1;
+}
+
+section.init > div.wrap > div.device > div.screen > div.image {
+    position: absolute;
+    /* background: transparent url(../images/screen.png) no-repeat 0px 0px / 840px auto; */
+}
+
+section div.paragraph > p {
+    color: #444444;
+}
+
+section div.paragraph > p > strong {
+    font-weight: bold;
+}
+
+section div.figures {
+    font-size: 0;
+}
+
+section.white {
+    background-color: #fff;
+}
+
+section div.figures > div {
+    display: inline-block;
+}
+
+section div.figures > div > p.number {
+    color: #292929;
+    font-family: NanumSquareEB;
+}
+
+section div.figures > div > p.number > strong:first-child {
+    margin-left: 0;
+}
+
+section div.figures > div > p.number > strong {
+    font-size: 38px;
+}
+
+section div.figures > div > p.number > span {
+    display: inline-block;
+    margin-left: 4px;
+}
+
+section div.figures > div > p.description {
+    color: #444444;
+}
+
+section div.figures > div > p.number > strong {
+    display: inline-block;
+    margin-left: 8px;
+    letter-spacing: -2px;
+}
+
+section.footer > ul.links {
+    padding: 16px 0;
+    font-size: 0;
+}
+
+section.footer > ul.links > li {
+    display: inline-block;
+}
+
+section.footer > ul.links > li > a {
+    display: inline-block;
+    line-height: 20px;
+    color: #737373;
+}
+
+section.footer > ul.links > li.copyright > a, section.footer > ul.links > li.privacy > a {
+    font-weight: bold;
+}
