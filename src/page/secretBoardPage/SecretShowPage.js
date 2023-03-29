@@ -43,9 +43,12 @@ const SecretShowPage = () => {
       <div className="text-muted post-time">
         작성일: {printDate(post.createdAt)}
       </div>
+      <br />
       <hr />
       <p>{post.content}</p>
-      <hr /> <h5>댓글</h5>
+      <hr /> <strong>댓글</strong>
+      <br />
+      <br />
       <SecretCommentListPage />
       <SecretCommentWritePage />
     </div>

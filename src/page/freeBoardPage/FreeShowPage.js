@@ -45,7 +45,9 @@ const FreeShowPage = () => {
       </div>
       <hr />
       <p>{post.content}</p>
-      <hr /> <h5>댓글</h5>
+      <hr /> <strong>댓글</strong>
+      <br />
+      <br />
       <FreeCommentListPage />
       <FreeCommentWritePage />
     </div>

@@ -39,7 +39,7 @@ const FreeListPage = () => {
     <div>
       <div>
         <div className="d-flex justify-content-between">
-          <h5 className="p-3">자유게시판</h5>
+          <strong className="p-3">자유게시판</strong>
           <button
             className="m-2  write-button"
             onClick={() => {
