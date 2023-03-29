@@ -41,13 +41,12 @@ const MainPage = () => {
           </strong>
           <p>
             <br />
-            <div>
-              <img
-                alt="sangsangs"
-                src="img/sangsangs.png"
-                className="sangsangs"
-              />
-            </div>
+
+            <img
+              alt="sangsangs"
+              src="img/sangsangs.png"
+              className="sangsangs"
+            />
           </p>
         </h2>
         <div className="paragraph">

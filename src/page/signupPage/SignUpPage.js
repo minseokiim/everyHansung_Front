@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -7,6 +7,7 @@ import axios from "axios";
 
 const SingUpPage = () => {
   const move = useNavigate();
+  const { nick } = useParams();
 
   const [studentId, setStudentId] = useState("none");
   const [passwd, setPasswd] = useState("none");
@@ -20,8 +21,10 @@ const SingUpPage = () => {
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
-  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] = useState("none");
-  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] = useState("none");
+  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] =
+    useState("none");
+  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] =
+    useState("none");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
   const [clearEmailDisplay, setClearEmailDisplay] = useState("none");
@@ -95,25 +98,58 @@ const SingUpPage = () => {
     }
   };
 
-  const getNickname = (nickname) => {
-    axios
-      .get("http://localhost:8080/members/{nickname}")
-      .then((res) => console.log(res.data));
+  //수정한 코드
+  const getNickname = async (nickname) => {
+    try {
+      const res = await axios.get(`http://localhost:8080/members/${nickname}`);
+      return res.data;
+    } catch (error) {
+      if (error.res && error.res.status === 404) {
+        return null;
+      } else {
+        console.error(error);
+      }
+    }
   };
 
-  const nicknameCheck = (e) => {
-    try{
-      if (getNickname(e.target.value) != null) {
+  const nicknameCheck = async (e) => {
+    try {
+      const isDuplicate = await getNickname(e.target.value);
+      if (!isDuplicate) {
         setNickname(e.target.value);
         setCheckNicknameDisplay("block");
         setClearNicknameDisplay("none");
+      } else {
+        setClearNicknameDisplay("block");
+        setCheckNicknameDisplay("none");
+        alert("이미 사용중인 닉네임입니다.");
       }
-    }catch(e){
-      setClearNicknameDisplay("block");
-      setCheckNicknameDisplay("none");
-      alert("이미 사용중인 닉네임입니다.")
+    } catch (error) {
+      console.error(error);
     }
   };
+
+  //  원래 검사하는 코드
+
+  // const getNickname = (nickname) => {
+  //   axios
+  //     .get("http://localhost:8080/members/{nickname}")
+  //     .then((res) => console.log(res.data));
+  // };
+
+  // const nicknameCheck = (e) => {
+  //   try{
+  //     if (getNickname(e.target.value) != null) {
+  //       setNickname(e.target.value);
+  //       setCheckNicknameDisplay("block");
+  //       setClearNicknameDisplay("none");
+  //     }
+  //   }catch(e){
+  //     setClearNicknameDisplay("block");
+  //     setCheckNicknameDisplay("none");
+  //     alert("이미 사용중인 닉네임입니다.")
+  //   }
+  // };
 
   const onSubmit = (e) => {
     try {
@@ -125,7 +161,7 @@ const SingUpPage = () => {
         checknameDisplay === "block" &&
         checkNicknameDisplay === "block"
       ) {
-        axios.post("http://localhost:8080/register", {
+        axios.post("http://localhost:8080/members", {
           studentId,
           email,
           passwd,
@@ -144,8 +180,7 @@ const SingUpPage = () => {
     <div id="register-container">
       <h2>에브리한성 회원가입</h2>
       <p className="description">
-        에브리한성 계정으로 <strong>캠퍼스픽, 에브리타임</strong> 등<br />
-        다양한 대학생 서비스를 모두 이용하실 수 있습니다.
+        에브리한성 계정으로 다양한 대학생 서비스를 이용하실 수 있습니다.
       </p>
       <div className="input">
         <div className="label">
