@@ -3,7 +3,7 @@ import "./MessagePage.css";
 const MessagePage = () => {
   return (
     <div>
-      <form className="form">
+      <form className="p-3">
         <input
           className="message-input"
           type="text"

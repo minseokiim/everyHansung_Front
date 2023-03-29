@@ -34,8 +34,8 @@ const NavBar = () => {
     <div>
       <Navbar className="color-nav" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
-            <img alt="sangsang" src="img/sangsang.png" className="image" />
+          <Navbar.Brand href="/freeboard/list">
+            {/* <img alt="sangsang" src="img/sangsang.png" className="image" /> */}
             에브리한성
           </Navbar.Brand>
           <Nav className="mr-3">
@@ -52,48 +52,12 @@ const NavBar = () => {
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/message">쪽지</Nav.Link>
             <Nav.Link href="/mypage">마이페이지</Nav.Link>
+            <Nav.Link href="/">로그아웃</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
 
       <Outlet />
-      {/* <Card className="back">
-        <Routes>
-          <Route path="/" element={<MainPage />}></Route>
-
-          <Route path="/freeboard/post" element={<FreeWritePage />}></Route>
-          <Route path="/freeboard/list" element={<FreeListPage />}></Route>
-          <Route path="/freeboard/edit/:id" element={<FreeEditPage />}></Route>
-          <Route path="/freeboard/:id" element={<FreeShowPage />}></Route>
-
-          <Route path="/secretboard/post" element={<SecretWritePage />}></Route>
-          <Route path="/secretboard/list" element={<SecretListPage />}></Route>
-          <Route
-            path="/secretboard/edit/:id"
-            element={<SecretEditPage />}
-          ></Route>
-          <Route path="/secretboard/:id" element={<SecretShowPage />}></Route>
-
-          <Route
-            path="/lectureboard/post"
-            element={<LectureWritePage />}
-          ></Route>
-          <Route
-            path="/lectureboard/list"
-            element={<LectureListPage />}
-          ></Route>
-
-          <Route path="/lectureboard/:id" element={<LectureShowPage />}></Route>
-
-          <Route path="/chatbot" element={<ChatBotPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/register" element={<SignUpPage />}></Route>
-          <Route path="/mypage" element={<MyPage />}></Route>
-
-          <Route path="/message" element={<MessagePage />}></Route>
-          <Outlet />
-        </Routes>
-      </Card> */}
     </div>
   );
 };

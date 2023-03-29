@@ -29,30 +29,6 @@
       "test": "2회",
       "team": "없음",
       "id": 1
-    },
-    {
-      "lectureName": "s",
-      "professor": "s",
-      "content": "e",
-      "selectedStar": 1,
-      "semester": "2023-1학기",
-      "homework": "보통",
-      "score": "너그러움 ",
-      "test": "3회 이상",
-      "team": " 많음",
-      "id": 2
-    },
-    {
-      "lectureName": "강ㅇㅇ",
-      "professor": "ㅇㅇㅇ",
-      "content": "ㅇ",
-      "selectedStar": 4,
-      "semester": "2022-1학기",
-      "homework": "보통",
-      "score": "보통",
-      "test": "2회",
-      "team": "보통",
-      "id": 3
     }
   ],
   "freecomments": [
@@ -89,34 +65,32 @@
   ],
   "login": [
     {
-      "studentId": "dd",
-      "passwd": "dd",
+      "email": "ㄴㅇㅇ",
+      "passwd": "aaa",
       "id": 1
     },
     {
-      "studentId": "qq",
-      "passwd": "q",
+      "email": "sds",
+      "passwd": "sd",
       "id": 2
-    },
-    {
-      "studentId": "fwe",
-      "passwd": "ww",
-      "id": 3
-    },
-    {
-      "studentId": "dd",
-      "passwd": "aa",
-      "id": 4
     }
   ],
-  "register": [
+  "members": [
     {
-      "userName": "a",
-      "email": "s",
-      "studentId": "a",
-      "passwd": "sa",
-      "nickName": "a",
+      "studentId": "2071255",
+      "passwd": "password12!",
+      "email": "test@example.com",
+      "username": "test",
+      "nickname": "testuser",
       "id": 1
+    },
+    {
+      "studentId": "1515555",
+      "email": "ds@df.d",
+      "passwd": "Test12@2",
+      "username": "sdsd",
+      "nickname": "sd",
+      "id": 2
     }
   ]
 }
