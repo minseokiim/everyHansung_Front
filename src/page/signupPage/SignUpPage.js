@@ -11,8 +11,8 @@ const SingUpPage = () => {
   const [studentId, setStudentId] = useState("none");
   const [passwd, setPasswd] = useState("none");
   const [email, setEmail] = useState("none");
-  const [userName, setUserName] = useState("none");
-  const [nickName, setnickName] = useState("none");
+  const [username, setUsername] = useState("none");
+  const [nickname, setNickname] = useState("none");
 
   const [checkIdDisplay, setCheckIdDisplay] = useState("none");
   const [clearIdDisplay, setClearIdDisplay] = useState("none");
@@ -20,19 +20,17 @@ const SingUpPage = () => {
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
-  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] =
-    useState("none");
-  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] =
-    useState("none");
+  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] = useState("none");
+  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] = useState("none");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
   const [clearEmailDisplay, setClearEmailDisplay] = useState("none");
 
-  const [checkNameDisplay, setCheckNameDisplay] = useState("none");
-  const [clearNameDisplay, setClearNameDisplay] = useState("none");
+  const [checknameDisplay, setChecknameDisplay] = useState("none");
+  const [clearnameDisplay, setClearnameDisplay] = useState("none");
 
-  const [checknickNameDisplay, setChecknickNameDisplay] = useState("none");
-  const [clearnickNameDisplay, setClearnickNameDisplay] = useState("none");
+  const [checkNicknameDisplay, setCheckNicknameDisplay] = useState("none");
+  const [clearNicknameDisplay, setClearNicknameDisplay] = useState("none");
 
   const studentIdCheck = (e) => {
     try {
@@ -87,27 +85,34 @@ const SingUpPage = () => {
   };
 
   const nameCheck = (e) => {
-    if (e.target.value.length >= 3) {
-      setUserName(e.target.value);
-      setCheckNameDisplay("block");
-      setClearNameDisplay("none");
+    if (e.target.value.length >= 2) {
+      setUsername(e.target.value);
+      setChecknameDisplay("block");
+      setClearnameDisplay("none");
     } else {
-      setClearNameDisplay("block");
-      setCheckNameDisplay("none");
+      setClearnameDisplay("block");
+      setChecknameDisplay("none");
     }
   };
 
-  const nickNameCheck = (e) => {
-    try {
-      if (e.target.value.length >= 3) {
-        setnickName(e.target.value);
-        setChecknickNameDisplay("block");
-        setClearnickNameDisplay("none");
-      } else {
-        setClearnickNameDisplay("block");
-        setChecknickNameDisplay("none");
+  const getNickname = (nickname) => {
+    axios
+      .get("http://localhost:8080/members/{nickname}")
+      .then((res) => console.log(res.data));
+  };
+
+  const nicknameCheck = (e) => {
+    try{
+      if (getNickname(e.target.value) != null) {
+        setNickname(e.target.value);
+        setCheckNicknameDisplay("block");
+        setClearNicknameDisplay("none");
       }
-    } catch (e) {}
+    }catch(e){
+      setClearNicknameDisplay("block");
+      setCheckNicknameDisplay("none");
+      alert("이미 사용중인 닉네임입니다.")
+    }
   };
 
   const onSubmit = (e) => {
@@ -117,17 +122,17 @@ const SingUpPage = () => {
         checkPasswdDisplay === "block" &&
         checkConfirmpasswdDisplay === "block" &&
         checkEmailDisplay === "block" &&
-        checkNameDisplay === "block" &&
-        checknickNameDisplay === "block"
+        checknameDisplay === "block" &&
+        checkNicknameDisplay === "block"
       ) {
         axios.post("http://localhost:8080/register", {
           studentId,
           email,
           passwd,
-          userName,
-          nickName,
+          username,
+          nickname,
         });
-        alert(userName + "님, 회원가입을 축하합니다.");
+        alert(username + "님, 회원가입을 축하합니다.");
         move("/login");
       }
     } catch (e) {
@@ -249,11 +254,11 @@ const SingUpPage = () => {
           />
           <CheckIcon
             className="checkIcon"
-            style={{ display: checkNameDisplay }}
+            style={{ display: checknameDisplay }}
           />
           <ClearIcon
             className="clearIcon"
-            style={{ display: clearNameDisplay }}
+            style={{ display: clearnameDisplay }}
           />
         </div>
       </div>
@@ -263,7 +268,7 @@ const SingUpPage = () => {
         </div>
         <div className="inputbox">
           <input
-            onChange={nickNameCheck}
+            onChange={nicknameCheck}
             type="text"
             name="user_nickName"
             maxlength="20"
@@ -272,11 +277,11 @@ const SingUpPage = () => {
           />
           <CheckIcon
             className="checkIcon"
-            style={{ display: checknickNameDisplay }}
+            style={{ display: checkNicknameDisplay }}
           />
           <ClearIcon
             className="clearIcon"
-            style={{ display: clearnickNameDisplay }}
+            style={{ display: clearNicknameDisplay }}
           />
         </div>
       </div>
