@@ -21,7 +21,7 @@ const LectureShowPage = () => {
   }, []);
 
   return (
-    <div className="p-3">
+    <div className="p-4">
       <div className="d-flex">
         <h4 className="flex-grow-1">
           {post.lectureName} &nbsp;, &nbsp;{post.professor} 교수님
@@ -42,40 +42,36 @@ const LectureShowPage = () => {
 
       <hr />
       <p>
-        *별점 <br />
+        <strong> 별점</strong>
+        <br />
         {createArray(5).map((n, i) => (
           <Star key={i} selected={post.selectedStar > i} />
         ))}
         &nbsp;&nbsp;{post.selectedStar}/5
       </p>
       <p>
-        *학기
-        <br />
-        {post.semester}
+        <strong>학기</strong>
+        <br />: {post.semester}
       </p>
       <p>
-        *과제 양<br />
-        {post.homework}
+        <strong>과제 양</strong>
+        <br />: {post.homework}
       </p>
       <p>
-        *성적 기준
-        <br />
-        {post.score}
+        <strong>성적 기준</strong>
+        <br />: {post.score}
       </p>
       <p>
-        *시험 횟수
-        <br />
-        {post.test}
+        <strong>시험 횟수</strong>
+        <br />: {post.test}
       </p>
       <p>
-        *조 모임
-        <br />
-        {post.team}
+        <strong>조 모임</strong>
+        <br />: {post.team}
       </p>
       <p>
-        *총평
-        <br />
-        {post.content}
+        <strong>총평</strong>
+        <br />: {post.content}
       </p>
       <hr />
       <div className="important">** 강의평은 수정 및 삭제 불가능합니다.</div>

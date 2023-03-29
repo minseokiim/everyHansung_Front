@@ -26,6 +26,9 @@ import FindInfoPage from "./page/loginPage/FindInfoPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
+import ChangePwPage from "./page/myPage/AccountPage/ChangePwPage";
+import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
+import ChangeNickPage from "./page/myPage/CommunityPage/ChangeNickPage";
 
 const App = () => {
   return (
@@ -148,6 +151,32 @@ const App = () => {
             element={
               <Card>
                 <LectureShowPage />
+              </Card>
+            }
+          />
+          <Route
+            path="/mypage/changepw"
+            element={
+              <Card>
+                <ChangePwPage />
+              </Card>
+            }
+          />
+
+          <Route
+            path="/mypage/changenick"
+            element={
+              <Card>
+                <ChangeNickPage />
+              </Card>
+            }
+          />
+
+          <Route
+            path="/mypage/changeemail"
+            element={
+              <Card>
+                <ChangeEmailPage />
               </Card>
             }
           />
