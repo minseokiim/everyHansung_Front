@@ -29,30 +29,6 @@
       "test": "2회",
       "team": "없음",
       "id": 1
-    },
-    {
-      "lectureName": "ds",
-      "professor": "sds",
-      "content": "dsds",
-      "selectedStar": 3,
-      "semester": "2022-2학기",
-      "homework": "보통",
-      "score": "보통",
-      "test": "2회",
-      "team": "보통",
-      "id": 2
-    },
-    {
-      "lectureName": "sdsfd",
-      "professor": "sdsss",
-      "content": "s",
-      "selectedStar": 4,
-      "semester": "2022-2학기",
-      "homework": "보통",
-      "score": "보통",
-      "test": "2회",
-      "team": "보통",
-      "id": 3
     }
   ],
   "freecomments": [
@@ -87,89 +63,14 @@
       "id": 2
     }
   ],
-  "login": [
-    {
-      "studentId": "ssss",
-      "passwd": "aa",
-      "id": 1
-    },
-    {
-      "studentId": "ssss",
-      "passwd": "aa",
-      "id": 2
-    },
-    {
-      "studentId": "ssss",
-      "passwd": "aa",
-      "id": 3
-    },
-    {
-      "studentId": "ssss",
-      "passwd": "aa",
-      "id": 4
-    },
-    {
-      "studentId": "ssss",
-      "passwd": "aa",
-      "id": 5
-    },
-    {
-      "studentId": "1515155",
-      "passwd": "aass",
-      "id": 6
-    },
-    {
-      "studentId": "1515155",
-      "passwd": "aass",
-      "id": 7
-    },
-    {
-      "studentId": "1515155",
-      "passwd": "aass",
-      "id": 8
-    },
-    {
-      "studentId": "1515155",
-      "passwd": "aass",
-      "id": 9
-    },
-    {
-      "studentId": "15",
-      "passwd": "ss",
-      "id": 10
-    }
-  ],
+  "login": [],
   "members": [
-    {
-      "studentId": "2071255",
-      "passwd": "password12!",
-      "email": "test@example.com",
-      "username": "test",
-      "nickname": "testuser",
-      "id": 1
-    },
-    {
-      "studentId": "1515555",
-      "email": "ds@df.d",
-      "passwd": "Test12@2",
-      "username": "sdsd",
-      "nickname": "sd",
-      "id": 2
-    },
-    {
-      "studentId": "1515555",
-      "email": "Test12@2.d",
-      "passwd": "Test12@2",
-      "username": "Test12@2",
-      "nickname": "Test12@2",
-      "id": 3
-    },
     {
       "studentId": "1515155",
       "email": "ssmak@s.s",
       "passwd": "Test12@2",
       "username": "Test12@2",
-      "id": 4
+      "id": 1
     }
   ]
 }
