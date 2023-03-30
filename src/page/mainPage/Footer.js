@@ -10,7 +10,7 @@ const Footer = () => {
             <a href="/page/rules">커뮤니티 이용규칙</a>
           </li>
           <li>
-            <a href="/">문의: 010-1234-5678</a>
+            <a href="/">문의: capstone23m@gmail.com</a>
           </li>
           <li className="copyright">
             <a href="/">© 에브리 한성</a>
