@@ -5,14 +5,14 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
   const move = useNavigate();
-  const [email, setEmail] = useState("");
+  const [studentId, setStudentId] = useState("");
   const [passwd, setPasswd] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (email.trim().length === 0) {
-      alert("이메일을 입력하세요");
+    if (studentId.trim().length === 0) {
+      alert("를 입력하세요");
       return;
     } else if (passwd.trim().length === 0) {
       alert("비밀번호를 입력하세요");
@@ -20,7 +20,7 @@ const LoginPage = () => {
     } else {
       axios
         .post("http://localhost:8080/login", {
-          email,
+          studentId,
           passwd,
         })
         .then(() => {
@@ -40,11 +40,11 @@ const LoginPage = () => {
           <div className="input">
             <input
               type="text"
-              value={email}
+              value={studentId}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setStudentId(e.target.value);
               }}
-              placeholder="이메일"
+              placeholder="학번"
             ></input>
           </div>
 

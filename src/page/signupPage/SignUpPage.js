@@ -7,13 +7,13 @@ import axios from "axios";
 
 const SingUpPage = () => {
   const move = useNavigate();
-  const { nick } = useParams();
+  // const { nick } = useParams();
 
   const [studentId, setStudentId] = useState("none");
   const [passwd, setPasswd] = useState("none");
   const [email, setEmail] = useState("none");
   const [username, setUsername] = useState("none");
-  const [nickname, setNickname] = useState("none");
+  // const [nickname, setNickname] = useState("none");
 
   const [checkIdDisplay, setCheckIdDisplay] = useState("none");
   const [clearIdDisplay, setClearIdDisplay] = useState("none");
@@ -32,8 +32,8 @@ const SingUpPage = () => {
   const [checknameDisplay, setChecknameDisplay] = useState("none");
   const [clearnameDisplay, setClearnameDisplay] = useState("none");
 
-  const [checkNicknameDisplay, setCheckNicknameDisplay] = useState("none");
-  const [clearNicknameDisplay, setClearNicknameDisplay] = useState("none");
+  // const [checkNicknameDisplay, setCheckNicknameDisplay] = useState("none");
+  // const [clearNicknameDisplay, setClearNicknameDisplay] = useState("none");
 
   const studentIdCheck = (e) => {
     try {
@@ -99,55 +99,55 @@ const SingUpPage = () => {
   };
 
   //수정한 코드
-  const getNickname = async (nickname) => {
-    try {
-      const res = await axios.get(`http://localhost:8080/members/${nickname}`);
-      return res.data;
-    } catch (error) {
-      if (error.res && error.res.status === 404) {
-        return null;
-      } else {
-        console.error(error);
-      }
-    }
-  };
+  // const getNickname = async (nick) => {
+  //   try {
+  //     const res = await axios.get(`http://localhost:8080/members/${nick}`);
+  //     return res.data;
+  //   } catch (error) {
+  //     if (error.res && error.res.status === 404) {
+  //       return null;
+  //     } else {
+  //       console.error(error);
+  //     }
+  //   }
+  // };
 
-  const nicknameCheck = async (e) => {
-    try {
-      const isDuplicate = await getNickname(e.target.value);
-      if (!isDuplicate) {
-        setNickname(e.target.value);
-        setCheckNicknameDisplay("block");
-        setClearNicknameDisplay("none");
-      } else {
-        setClearNicknameDisplay("block");
-        setCheckNicknameDisplay("none");
-        alert("이미 사용중인 닉네임입니다.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const nicknameCheck = async (e) => {
+  //   try {
+  //     const isDuplicate = await getNickname(e.target.value);
+  //     if (!isDuplicate) {
+  //       setNickname(e.target.value);
+  //       setCheckNicknameDisplay("block");
+  //       setClearNicknameDisplay("none");
+  //     } else {
+  //       setClearNicknameDisplay("block");
+  //       setCheckNicknameDisplay("none");
+  //       alert("이미 사용중인 닉네임입니다.");
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   //  원래 검사하는 코드
 
-  // const getNickname = (nickname) => {
+  // const getNickname = (id) => {
   //   axios
-  //     .get("http://localhost:8080/members/{nickname}")
+  //     .get(`http://localhost:8080/members/${id}`)
   //     .then((res) => console.log(res.data));
   // };
 
   // const nicknameCheck = (e) => {
-  //   try{
+  //   try {
   //     if (getNickname(e.target.value) != null) {
   //       setNickname(e.target.value);
   //       setCheckNicknameDisplay("block");
   //       setClearNicknameDisplay("none");
   //     }
-  //   }catch(e){
+  //   } catch (e) {
   //     setClearNicknameDisplay("block");
   //     setCheckNicknameDisplay("none");
-  //     alert("이미 사용중인 닉네임입니다.")
+  //     alert("이미 사용중인 닉네임입니다.");
   //   }
   // };
 
@@ -158,15 +158,16 @@ const SingUpPage = () => {
         checkPasswdDisplay === "block" &&
         checkConfirmpasswdDisplay === "block" &&
         checkEmailDisplay === "block" &&
-        checknameDisplay === "block" &&
-        checkNicknameDisplay === "block"
+        checknameDisplay === "block"
+        // &&
+        // checkNicknameDisplay === "block"
       ) {
         axios.post("http://localhost:8080/members", {
           studentId,
           email,
           passwd,
           username,
-          nickname,
+          // nickname,
         });
         alert(username + "님, 회원가입을 축하합니다.");
         move("/login");
@@ -297,7 +298,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
-      <div className="input">
+      {/* <div className="input">
         <div className="label">
           <label>닉네임</label>
         </div>
@@ -319,7 +320,7 @@ const SingUpPage = () => {
             style={{ display: clearNicknameDisplay }}
           />
         </div>
-      </div>
+      </div> */}
       <button onClick={onSubmit} type="submit">
         가입하기
       </button>
