@@ -13,7 +13,7 @@ const AccountPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/");
+            move("/my/certification");
           }}
         >
           학교 인증
@@ -37,6 +37,16 @@ const AccountPage = () => {
           }}
         >
           이메일 변경
+        </div>
+        <br />
+        <div
+          className="cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            move("/my/deleteaccount");
+          }}
+        >
+          회원탈퇴
         </div>
       </div>
     </div>

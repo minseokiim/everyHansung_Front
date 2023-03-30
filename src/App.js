@@ -30,9 +30,11 @@ import MainPage from "./page/mainPage/MainPage";
 import ChangePwPage from "./page/myPage/AccountPage/ChangePwPage";
 import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
 import ChangeNickPage from "./page/myPage/CommunityPage/ChangeNickPage";
+import DeleteAccountPage from "./page/myPage/AccountPage/DeleteAccountPage";
 
 import Footer from "./page/mainPage/Footer";
 import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
+import Certification from "./page/myPage/AccountPage/Certification";
 
 const App = () => {
   return (
@@ -210,6 +212,30 @@ const App = () => {
               <div>
                 <Card>
                   <ServiceAgreementPage />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/my/deleteaccount"
+            element={
+              <div>
+                <Card>
+                  <DeleteAccountPage />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/my/certification"
+            element={
+              <div>
+                <Card>
+                  <Certification />
                 </Card>
                 <Footer />
               </div>

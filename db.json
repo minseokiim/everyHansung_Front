@@ -1,17 +1,17 @@
 {
   "secretposts": [
     {
-      "title": "as",
-      "content": "a",
+      "title": "비밀게시글",
+      "content": "ㅎㅎ",
       "createdAt": 1679833805564,
       "isAnonymous": false,
-      "id": 2
+      "id": 1
     }
   ],
   "freeposts": [
     {
-      "title": "ㄴ",
-      "content": "ㄴ",
+      "title": "자유게시글",
+      "content": "ㄴㄴ",
       "createdAt": 1679835693704,
       "isAnonymous": false,
       "id": 1
@@ -19,28 +19,28 @@
   ],
   "lectures": [
     {
-      "lectureName": "강의평",
-      "professor": "교수님성함",
-      "content": "ㅇㅇㅇ",
+      "lectureName": "웹프레임워크 1",
+      "professor": "박승현",
+      "content": "작년에 들었어용",
       "selectedStar": 5,
-      "semester": "2023-1학기",
+      "semester": "2022-2학기",
       "homework": "보통",
       "score": "보통",
-      "test": "2회",
-      "team": "없음",
+      "test": "1회",
+      "team": "많음",
       "id": 1
     }
   ],
   "freecomments": [
     {
-      "commentContent": "ㄴ",
+      "commentContent": "댓글1",
       "commentCreatedAt": 1679835696106,
       "commentIsAnonymous": false,
       "freepostId": "1",
       "id": 1
     },
     {
-      "commentContent": "ㄴ",
+      "commentContent": "댓글2",
       "commentCreatedAt": 1679845839759,
       "commentIsAnonymous": false,
       "freepostId": "1",
@@ -49,31 +49,25 @@
   ],
   "secretcomments": [
     {
-      "commentContent": "aa",
+      "commentContent": "댓글1",
       "commentCreatedAt": 1679833809629,
       "commentIsAnonymous": false,
       "secretpostId": "2",
       "id": 1
     },
     {
-      "commentContent": "dd",
+      "commentContent": "댓글2",
       "commentCreatedAt": 1679833811589,
       "commentIsAnonymous": false,
       "secretpostId": "2",
       "id": 2
     }
   ],
-  "login": [
-    {
-      "studentId": "hj",
-      "passwd": "ds",
-      "id": 1
-    }
-  ],
+  "login": [],
   "members": [
     {
-      "studentId": "1515155",
-      "email": "ssmak@s.s",
+      "studentId": "1890000",
+      "email": "mimimi@naver.com",
       "passwd": "Test12@2",
       "username": "Test12@2",
       "id": 1
