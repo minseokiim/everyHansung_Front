@@ -63,7 +63,13 @@
       "id": 2
     }
   ],
-  "login": [],
+  "login": [
+    {
+      "studentId": "hj",
+      "passwd": "ds",
+      "id": 1
+    }
+  ],
   "members": [
     {
       "studentId": "1515155",
