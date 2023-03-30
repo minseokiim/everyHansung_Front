@@ -220,7 +220,7 @@ const SingUpPage = () => {
             onChange={studentIdCheck}
             type="text"
             name="user_id"
-            maxlength="20"
+            maxLength="20"
             placeholder="아이디를 입력하세요."
             className="search id_search"
           />
@@ -243,7 +243,7 @@ const SingUpPage = () => {
             onChange={passwdCheck}
             type="password"
             name="passwd"
-            maxlength="20"
+            maxLength="20"
             placeholder="소문자, 숫자, 특수문자를 포함하여 8자 이상 입력하세요."
             className="search"
           />
@@ -266,7 +266,7 @@ const SingUpPage = () => {
             onChange={confirmPasswdCheck}
             type="password"
             name="user_repw"
-            maxlength="20"
+            maxLength="20"
             placeholder="비밀번호를 다시 입력하세요."
             className="search"
           />
@@ -289,7 +289,7 @@ const SingUpPage = () => {
             onChange={emailCheck}
             type="email"
             name="user_email"
-            maxlength="50"
+            maxLength="50"
             placeholder="이메일을 입력하세요."
             className="search"
           />
@@ -312,7 +312,7 @@ const SingUpPage = () => {
             onChange={nameCheck}
             type="text"
             name="userName"
-            maxlength="20"
+            maxLength="20"
             placeholder="이름을 입력하세요."
             className="search"
           />
@@ -335,7 +335,7 @@ const SingUpPage = () => {
             onChange={nicknameCheck}
             type="text"
             name="user_nickName"
-            maxlength="20"
+            maxLength="20"
             placeholder="닉네임(별명)을 입력하세요."
             className="search"
           />
@@ -352,6 +352,10 @@ const SingUpPage = () => {
       <button onClick={onSubmit} type="submit">
         가입하기
       </button>
+      <br />
+      <p className="find">
+        <a href="/login">로그인하기</a>
+      </p>
     </div>
   );
 };

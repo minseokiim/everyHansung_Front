@@ -7,7 +7,11 @@ const MyPage = () => {
   return (
     <div className="p-3">
       <div className="mini-card p-3">
-        <strong>내 정보</strong>
+        <strong>
+          내 정보
+          <br />
+          <img alt="hansung" src="img/chatlogo.png" className="logo" />
+        </strong>
         <br />
       </div>
       <br />

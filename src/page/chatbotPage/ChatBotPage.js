@@ -6,10 +6,12 @@ import ChatBotInput from "./ChatBotInput";
 function ChatBotPage() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  // const logo = <img alt="hansung" src="img/chatlogo.png" className="logo" />;
 
   useEffect(() => {
     // 초기 메시지를 생성합니다.
     const initialMessage = {
+      // logo,
       content: "안녕하세요! 무엇을 도와드릴까요?",
       isBot: true,
     };
