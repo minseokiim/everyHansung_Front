@@ -12,7 +12,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (studentId.trim().length === 0) {
-      alert("를 입력하세요");
+      alert("학번을 입력하세요");
       return;
     } else if (passwd.trim().length === 0) {
       alert("비밀번호를 입력하세요");
@@ -23,9 +23,16 @@ const LoginPage = () => {
           studentId,
           passwd,
         })
-        .then(() => {
-          alert("로그인 되었습니다!");
-          move("/freeboard/list");
+        .then((res) => {
+          if (res.data.code === 200) {
+            alert("로그인 되었습니다!");
+            move("/freeboard/list");
+          } else if (res.data.code === 401) {
+            alert("학번이 존재하지 않습니다");
+          } else if (res.data.code === 402) {
+            alert("비밀번호를 다시 확인해주세요");
+          } else {
+          }
         });
     }
   };
