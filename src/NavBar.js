@@ -28,7 +28,7 @@ const NavBar = () => {
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/message">쪽지</Nav.Link>
-            <Nav.Link href="/mypage">마이페이지</Nav.Link>
+            <Nav.Link href="/my">마이페이지</Nav.Link>
             <Nav.Link href="/">로그아웃</Nav.Link>
           </Nav>
         </Container>

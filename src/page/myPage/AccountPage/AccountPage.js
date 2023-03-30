@@ -23,7 +23,7 @@ const AccountPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/mypage/changepw");
+            move("/my/password");
           }}
         >
           비밀번호 변경
@@ -33,7 +33,7 @@ const AccountPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/mypage/changeemail");
+            move("/my/email");
           }}
         >
           이메일 변경
