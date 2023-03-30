@@ -63,7 +63,7 @@
 
 .chat-button {
   margin: 2px;
-  background-color: hwb(227 41% 7%);
+  background-color: hsl(227, 49%, 31%);
   border-width: 0px;
   border-radius: 3px;
 }

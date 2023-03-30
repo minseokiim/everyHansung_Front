@@ -324,6 +324,10 @@ const SingUpPage = () => {
       <button onClick={onSubmit} type="submit">
         가입하기
       </button>
+      <br />
+      <p className="find">
+        <a href="/login">로그인하기</a>
+      </p>
     </div>
   );
 };
