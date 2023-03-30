@@ -23,12 +23,15 @@ import MyPage from "./page/myPage/MyPage";
 import MessagePage from "./page/messagePage/MessagePage";
 
 import FindInfoPage from "./page/loginPage/FindInfoPage";
+import HowToUsePage from "./page/myPage/CommunityPage/HowToUsePage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
 import ChangePwPage from "./page/myPage/AccountPage/ChangePwPage";
 import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
 import ChangeNickPage from "./page/myPage/CommunityPage/ChangeNickPage";
+
+import Footer from "./page/mainPage/Footer";
 
 const App = () => {
   return (
@@ -43,15 +46,19 @@ const App = () => {
                 <Card>
                   <ChatBotPage />
                 </Card>
+                <Footer />
               </div>
             }
           />
           <Route
-            path="/mypage"
+            path="/my"
             element={
-              <Card>
-                <MyPage />
-              </Card>
+              <div>
+                <Card>
+                  <MyPage />
+                </Card>
+                <Footer />
+              </div>
             }
           />
           <Route
@@ -77,6 +84,7 @@ const App = () => {
                 <Card>
                   <FreeListPage />
                 </Card>
+                <Footer />
               </div>
             }
           />
@@ -108,9 +116,12 @@ const App = () => {
           <Route
             path="/secretboard/list"
             element={
-              <Card>
-                <SecretListPage />
-              </Card>
+              <div>
+                <Card>
+                  <SecretListPage />
+                </Card>
+                <Footer />
+              </div>
             }
           />
           <Route
@@ -141,9 +152,12 @@ const App = () => {
           <Route
             path="/lectureboard/list"
             element={
-              <Card>
-                <LectureListPage />
-              </Card>
+              <div>
+                <Card>
+                  <LectureListPage />
+                </Card>
+                <Footer />
+              </div>
             }
           />
           <Route
@@ -155,7 +169,7 @@ const App = () => {
             }
           />
           <Route
-            path="/mypage/changepw"
+            path="/my/password"
             element={
               <Card>
                 <ChangePwPage />
@@ -164,7 +178,7 @@ const App = () => {
           />
 
           <Route
-            path="/mypage/changenick"
+            path="/my/nickname"
             element={
               <Card>
                 <ChangeNickPage />
@@ -173,10 +187,19 @@ const App = () => {
           />
 
           <Route
-            path="/mypage/changeemail"
+            path="/my/email"
             element={
               <Card>
                 <ChangeEmailPage />
+              </Card>
+            }
+          />
+
+          <Route
+            path="/page/rules"
+            element={
+              <Card>
+                <HowToUsePage />
               </Card>
             }
           />

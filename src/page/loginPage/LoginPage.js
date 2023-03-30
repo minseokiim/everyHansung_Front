@@ -24,14 +24,15 @@ const LoginPage = () => {
           passwd,
         })
         .then((res) => {
-          if (res.data.code === 200) {
+          if (res.status === 200) {
             alert("로그인 되었습니다!");
             move("/freeboard/list");
-          } else if (res.data.code === 401) {
+          } else if (res.status === 401) {
             alert("학번이 존재하지 않습니다");
-          } else if (res.data.code === 402) {
+          } else if (res.status === 402) {
             alert("비밀번호를 다시 확인해주세요");
           } else {
+            console.log(res.status);
           }
         });
     }

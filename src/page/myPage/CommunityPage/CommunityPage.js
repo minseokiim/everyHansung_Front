@@ -15,27 +15,18 @@ const CommunityPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/mypage/changenick");
+            move("/my/nickname");
           }}
         >
           닉네임 설정
         </div>
         <br />
+
         <div
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/");
-          }}
-        >
-          이용 제한 내역
-        </div>
-        <br />
-        <div
-          className="cursor-pointer"
-          onClick={(e) => {
-            e.preventDefault();
-            move("/");
+            move("/page/rules");
           }}
         >
           커뮤니티 이용 규칙
