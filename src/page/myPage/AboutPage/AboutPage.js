@@ -13,7 +13,7 @@ const AboutPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/");
+            move("/page/serviceagreement");
           }}
         >
           서비스 이용 약관
