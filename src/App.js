@@ -32,6 +32,7 @@ import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
 import ChangeNickPage from "./page/myPage/CommunityPage/ChangeNickPage";
 
 import Footer from "./page/mainPage/Footer";
+import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
 
 const App = () => {
   return (
@@ -201,6 +202,17 @@ const App = () => {
               <Card>
                 <HowToUsePage />
               </Card>
+            }
+          />
+          <Route
+            path="/page/serviceagreement"
+            element={
+              <div>
+                <Card>
+                  <ServiceAgreementPage />
+                </Card>
+                <Footer />
+              </div>
             }
           />
         </Route>
