@@ -1,20 +1,35 @@
 import { useState } from "react";
 import axios from "axios";
 import "./SignUpPage.css";
+import emailjs from "emailjs-com";
 
 const FindInfoPage = () => {
   const [email, setEmail] = useState("");
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const sendEmail = async (userId, email, time, studentId) => {
+    const templateParams = {
+      to_email: email,
+      student_id: studentId,
+      time: time
+    };
 
+    await emailjs.send("service_ogh6vg4", "template_x2e3w1b", templateParams, userId);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    // 3월 31일 12시 19분
     try {
-      const response = axios.get("http://localhost:8080/forget",{ params: { email } });
-      console.log(response);
-      alert('아이디 정보가 이메일로 전송되었습니다.');
+      const response = await axios.get("http://localhost:8080/forget", { params: { email } });
+      const studentId = response.data; // API 응답에 따라 경로를 변경해야 할 수 있습니다.
+      const now = new Date();
+      const time = (now.getMonth() + 1) + "월 " + now.getDate() + "일 " + now.getHours() + "시 " + now.getMinutes() + "분";
+
+      await sendEmail("KUYn7pjZiQPRaff54", email, time, studentId);
+      alert("아이디 정보가 이메일로 전송되었습니다.");
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        alert('가입되지 않은 이메일입니다.');
+        alert("가입되지 않은 이메일입니다.");
       }
     }
   };
