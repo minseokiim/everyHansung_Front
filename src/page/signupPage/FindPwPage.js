@@ -1,12 +1,27 @@
 import { useState } from "react";
 import axios from "axios";
 import "./SignUpPage.css";
-import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 
 const FindPwPage = () => {
   const [studentId, setStudentId] = useState("");
   const move = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:8080/members/${studentId}`);
+      console.log(response);
+
+      if (response && response.data !== null) {
+        move("/forgot/password/userid");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert("가입되지 않은 학번입니다.");
+      }
+    }
+  };
 
   return (
     <div id="register-container">
@@ -30,17 +45,14 @@ const FindPwPage = () => {
               onChange={(e) => {
                 setStudentId(e.target.value);
               }}
-              placeholder="가입된 아이디"
+              placeholder="가입된 학번"
             ></input>
           </div>
           <div className="input">
             <button
               className="lec-button mb-3"
               type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                move("/forgot/password/userid");
-              }}
+              onClick={onSubmit}
             >
               비밀번호 찾기
             </button>
@@ -50,4 +62,5 @@ const FindPwPage = () => {
     </div>
   );
 };
+
 export default FindPwPage;
