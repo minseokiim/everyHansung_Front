@@ -56,10 +56,10 @@ const FindIdPage = () => {
     <div id="register-container">
       <div className="">
         <div className="mb-3 ">
-          <strong className="important">학번 찾기</strong>
+          <strong className="important cursor-pointer">학번 찾기</strong>
           &nbsp;&nbsp;
           <strong
-            className="notimportant"
+            className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               move("/forgot/password");

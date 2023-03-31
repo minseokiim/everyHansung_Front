@@ -13,7 +13,7 @@ const FindPwPage = () => {
       <div className="">
         <div className="mb-3 ">
           <strong
-            className="notimportant"
+            className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               move("/forgot");
@@ -22,7 +22,7 @@ const FindPwPage = () => {
             학번 찾기
           </strong>
           &nbsp;&nbsp;
-          <strong className="important">비밀번호 찾기</strong>
+          <strong className="important cursor-pointer">비밀번호 찾기</strong>
           <div className="input">
             <input
               type="text"
