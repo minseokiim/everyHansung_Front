@@ -31,6 +31,7 @@ const FindPwPage = () => {
             className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
+              navigate("/forgot");
             }}
           >
             아이디 찾기
