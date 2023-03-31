@@ -57,7 +57,7 @@ const EmailAuthPage = () => {
             className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
-              move("/forgot");
+              navigate("/forgot");
             }}
           >
             아이디 찾기
