@@ -252,7 +252,6 @@ const App = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/forgot" element={<FindIdPage />}></Route>
         <Route path="/forgot/password" element={<FindPwPage />}></Route>
-
         <Route path="/forgot/password/userid" element={<FindPwPage2 />}></Route>
       </Routes>
     </Router>
