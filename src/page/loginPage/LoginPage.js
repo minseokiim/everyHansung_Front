@@ -31,7 +31,6 @@ const LoginPage = () => {
           localStorage.removeItem("studentId");
           localStorage.removeItem("passwd");
         }
-        alert(response.data);
         move("/freeboard/list");
       })
       .catch((error) => {
