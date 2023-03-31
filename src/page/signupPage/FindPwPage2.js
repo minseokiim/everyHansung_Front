@@ -5,27 +5,41 @@ import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 
 const FindPwPage2 = () => {
-  const [email, setEmail] = useState("");
-  const move = useNavigate();
+  const [email, setEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [message, setMessage] = useState('');
 
-  const sendEmail = async (userId, email, time, studentId) => {
-    const templateParams = {
-      to_email: email,
-      student_id: studentId,
-      time: time,
-    };
+  const sendEmail = async () => {
+    try {
+      const templateParams = {
+        email,
+        verificationCode: Math.floor(100000 + Math.random() * 900000) // 6자리 인증 코드 생성
+      };
+      await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_USER_ID');
+      setMessage('Verification code sent!');
+    } catch (error) {
+      console.error(error);
+      setMessage('Failed to send verification code.');
+    }
+  };
 
-    await emailjs.send(
-      "service_ogh6vg4",
-      "template_x2e3w1b",
-      templateParams,
-      userId
-    );
+  const changePassword = async (e) => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/forgot/password",{
+          params: { email },
+        }
+      );
+      setMessage('Password changed!');
+    } catch (error) {
+      console.error(error);
+      setMessage('Failed to change password.');
+    }
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // 3월 31일 12시 19분
     try {
       const response = await axios.get(
         "http://localhost:8080/forgot/password",
@@ -62,7 +76,6 @@ const FindPwPage2 = () => {
             className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
-              move("/forgot");
             }}
           >
             학번 찾기
