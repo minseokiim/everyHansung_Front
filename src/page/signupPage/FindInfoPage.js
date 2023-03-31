@@ -1,44 +1,29 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUpPage.css";
 
 const FindInfoPage = () => {
-  const move = useNavigate();
   const [email, setEmail] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // axios
-    //   .get("http://localhost:8080/members, {
-    //     studentId,
-    //     passwd,
-    //   })
-    //   .then((response) => {
-    //     alert(response.data);
-    //     move("/freeboard/list");
-    //   })
-    //   .catch((error) => {
-    //     if (error.response) {
-    //       if (error.response.status === 401) {
-    //         alert("아이디가 존재하지 않습니다.");
-    //       } else if (error.response.status === 402) {
-    //         alert("비밀번호가 틀렸습니다.");
-    //       } else {
-    //         alert("로그인에 실패했습니다.");
-    //       }
-    //     } else {
-    //       alert("서버에 연결할 수 없습니다.");
-    //     }
-    //   });
+    try {
+      const response = axios.get("http://localhost:8080/forget",{ params: { email } });
+      console.log(response);
+      alert('아이디 정보가 이메일로 전송되었습니다.');
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        alert('가입되지 않은 이메일입니다.');
+      }
+    }
   };
 
   return (
     <div id="register-container">
       <div className="">
         <div className="mb-3 ">
-          <h2>아이디/비밀번호 찾기</h2>
+          <h2>아이디</h2>
           <hr />
 
           <div className="input">
