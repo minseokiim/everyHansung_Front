@@ -22,7 +22,9 @@ import SignUpPage from "./page/signupPage/SignUpPage";
 import MyPage from "./page/myPage/MyPage";
 import MessagePage from "./page/messagePage/MessagePage";
 
-import FindInfoPage from "./page/signupPage/FindInfoPage";
+import FindIdPage from "./page/signupPage/FindIdPage";
+import FindPwPage from "./page/signupPage/FindPwPage";
+import FindPwPage2 from "./page/signupPage/FindPwPage2";
 import HowToUsePage from "./page/myPage/CommunityPage/HowToUsePage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -243,12 +245,15 @@ const App = () => {
           />
         </Route>
 
-        {/* //숨기고 싶은 페이지 */}
+        {/* //nav를 숨기고 싶은 페이지 */}
 
         <Route path="/" element={<MainPage />} />
         <Route path="/register" element={<SignUpPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/forgot" element={<FindInfoPage />}></Route>
+        <Route path="/forgot" element={<FindIdPage />}></Route>
+        <Route path="/forgot/password" element={<FindPwPage />}></Route>
+
+        <Route path="/forgot/password/userid" element={<FindPwPage2 />}></Route>
       </Routes>
     </Router>
   );

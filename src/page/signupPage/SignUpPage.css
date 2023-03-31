@@ -1,111 +1,137 @@
 @media (min-width: 480px) {
-    #register-container {
-        box-sizing: border-box;
-        border: 1px solid #ededed;
-        border-radius: 12px;
-        margin: 24px auto;
-        padding: 24px;
-        width: 480px;
-        user-select: none;
-    }
+  #register-container {
+    box-sizing: border-box;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    margin: 24px auto;
+    padding: 24px;
+    width: 480px;
+    user-select: none;
+  }
 }
 
 #register-container h2 {
-    line-height: 30px;
-    color: #292929;
-    font-size: 22px;
-    font-weight: bold;
+  line-height: 30px;
+  color: #292929;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 #register-container p.description {
-    margin-top: 8px;
-    line-height: 20px;
-    color: #737373;
-    font-size: 14px;
+  margin-top: 8px;
+  line-height: 20px;
+  color: #737373;
+  font-size: 14px;
 }
 
 #register-container p.description strong {
-    color: #292929;
+  color: #292929;
 }
 
 #register-container h2:not(:first-of-type) {
-    margin-top: 48px;
+  margin-top: 48px;
 }
 
 #register-container div.input {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 #register-container div.input div.label {
-    display: flex;
-    padding: 0 8px;
+  display: flex;
+  padding: 0 8px;
 }
 
-#register-container div.input input[type=email], #register-container div.input input[type=password], #register-container div.input input[type=text] {
-    padding-right: 40px;
+#register-container div.input input[type="email"],
+#register-container div.input input[type="password"],
+#register-container div.input input[type="text"] {
+  padding-right: 40px;
 }
 
-#register-container div.input input[type=email], #register-container div.input input[type=password], #register-container div.input input[type=text], #register-container div.input select {
-    display: block;
-    box-sizing: border-box;
-    margin-top: 4px;
-    padding: 8px;
-    width: 100%;
-    height: 40px;
-    line-height: 24px;
-    border: 1px solid #ededed;
-    border-radius: 12px;
-    color: #292929;
-    font-size: 16px;
-    background-color: #f9f9f9;
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 24px 24px;
+#register-container div.input input[type="email"],
+#register-container div.input input[type="password"],
+#register-container div.input input[type="text"],
+#register-container div.input select {
+  display: block;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 8px;
+  width: 100%;
+  height: 40px;
+  line-height: 24px;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  color: #292929;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 24px 24px;
 }
 
-button, input[type=email], input[type=number], input[type=password], input[type=search], input[type=text], input[type=submit], select, textarea {
-    -webkit-appearance: none;
-    letter-spacing: -0.5px;
+button,
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
+input[type="submit"],
+select,
+textarea {
+  -webkit-appearance: none;
+  letter-spacing: -0.5px;
 }
 
 #register-container button {
-    display: block;
-    margin-top: 24px;
-    width: 100%;
-    height: 40px;
-    border: 0;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #c62917;
+  display: block;
+  margin-top: 24px;
+  width: 100%;
+  height: 40px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #c62917;
 }
 
 #register-container strong {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-#register-container .checkIcon{
-    color: rgb(0, 128, 0);
-    padding-left: 10px;
+#register-container .checkIcon {
+  color: rgb(0, 128, 0);
+  padding-left: 10px;
 }
 
-#register-container .clearIcon{
-    color: #c62917;
-    padding-left: 10px;
+#register-container .clearIcon {
+  color: #c62917;
+  padding-left: 10px;
 }
 
 .input .inputbox {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #register-container .available {
-    padding: 0 8px;
-    font-weight: normal;
-    font-size: 10px;
+  padding: 0 8px;
+  font-weight: normal;
+  font-size: 10px;
 }
 
-.text{
-    padding-top: 10px;
-  }
+.text {
+  padding-top: 10px;
+}
+
+.important {
+  color: rgb(223, 32, 32);
+}
+
+.notimportant {
+  color: grey;
+}
+
+.grey {
+  color: grey;
+  font-size: 13px;
+}
