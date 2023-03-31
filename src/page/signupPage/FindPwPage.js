@@ -30,7 +30,7 @@ const FindPwPage = () => {
               onChange={(e) => {
                 setStudentId(e.target.value);
               }}
-              placeholder="가입된 이메일"
+              placeholder="가입된 아이디"
             ></input>
           </div>
           <div className="input">

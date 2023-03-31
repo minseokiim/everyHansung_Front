@@ -56,7 +56,7 @@ const FindIdPage = () => {
     <div id="register-container">
       <div className="">
         <div className="mb-3 ">
-          <strong className="important">학번 찾기</strong>
+          <strong className="important">아이디 찾기</strong>
           &nbsp;&nbsp;
           <strong
             className="notimportant cursor-pointer"

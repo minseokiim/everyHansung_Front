@@ -5,36 +5,43 @@ import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 
 const FindPwPage2 = () => {
-  const [email, setEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [message, setMessage] = useState("");
+  const move = useNavigate();
 
   const sendEmail = async () => {
     try {
       const templateParams = {
         email,
-        verificationCode: Math.floor(100000 + Math.random() * 900000) // 6자리 인증 코드 생성
+        verificationCode: Math.floor(100000 + Math.random() * 900000), // 6자리 인증 코드 생성
       };
-      await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_USER_ID');
-      setMessage('Verification code sent!');
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        templateParams,
+        "YOUR_USER_ID"
+      );
+      setMessage("Verification code sent!");
     } catch (error) {
       console.error(error);
-      setMessage('Failed to send verification code.');
+      setMessage("Failed to send verification code.");
     }
   };
 
   const changePassword = async (e) => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/forgot/password",{
+        "http://localhost:8080/forgot/password",
+        {
           params: { email },
         }
       );
-      setMessage('Password changed!');
+      setMessage("Password changed!");
     } catch (error) {
       console.error(error);
-      setMessage('Failed to change password.');
+      setMessage("Failed to change password.");
     }
   };
 
@@ -61,7 +68,7 @@ const FindPwPage2 = () => {
         "분";
 
       await sendEmail("KUYn7pjZiQPRaff54", email, time, studentId);
-      alert("비밀번호 정보가 이메일로 전송되었습니다.");
+      alert("비밀번호 변경을 위한 인증번호가 이메일로 전송되었습니다.");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         alert("가입되지 않은 이메일입니다.");
@@ -76,9 +83,10 @@ const FindPwPage2 = () => {
             className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
+              move("/forgot");
             }}
           >
-            학번 찾기
+            아이디 찾기
           </strong>
           &nbsp;&nbsp;
           <strong className="important cursor-pointer">비밀번호 찾기</strong>
@@ -89,7 +97,7 @@ const FindPwPage2 = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              placeholder="이메일"
+              placeholder="가입된 이메일"
             ></input>
           </div>
           <div className="input">
@@ -98,24 +106,47 @@ const FindPwPage2 = () => {
               type="submit"
               onClick={onSubmit}
             >
-              비밀번호 찾기
+              인증번호 받기
             </button>
-          </div>
-          <div className="grey">
-            <div className="text">
-              ※ 가입된 이메일이 있을 경우, 입력하신 이메일로 비밀번호를 안내해
-              드립니다.
+            <div className="grey">
+              <div className="text">
+                ※ 가입된 이메일이 있을 경우, 입력하신 이메일로 비밀번호
+                인증코드를 안내해 드립니다.
+              </div>
             </div>
-
-            <div className="text">
-              ※ 만약 이메일이 오지 않는다면, 스팸 편지함으로 이동하지 않았는지
-              학인해주세요.
+            <hr />
+            <div className="input">
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="인증번호 입력"
+              ></input>
             </div>
+            <div className="input">
+              <button
+                className="lec-button mb-3"
+                type="submit"
+                onClick={(e) => {
+                  move("/my/password");
+                }}
+              >
+                비밀번호 변경하기
+              </button>
+              <div className="grey">
+                <div className="text">
+                  ※ 만약 이메일이 오지 않는다면, 스팸 편지함으로 이동하지
+                  않았는지 학인해주세요.
+                </div>
 
-            <div className="text">
-              ※ 이메일 서비스 제공자 사정에 의해 즉시 도착하지 않을 수 있으니,
-              최대 30분 정도 기다리신 후 다시 시도해주세요.
-              <br />
+                <div className="text">
+                  ※ 이메일 서비스 제공자 사정에 의해 즉시 도착하지 않을 수
+                  있으니, 최대 30분 정도 기다리신 후 다시 시도해주세요.
+                  <br />
+                </div>
+              </div>
             </div>
           </div>
         </div>
