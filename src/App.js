@@ -19,25 +19,28 @@ import ChatBotPage from "./page/chatbotPage/ChatBotPage";
 
 import LoginPage from "./page/loginPage/LoginPage";
 import SignUpPage from "./page/signupPage/SignUpPage";
-import MyPage from "./page/myPage/MyPage";
-import MessagePage from "./page/messagePage/MessagePage";
-
 import FindIdPage from "./page/signupPage/FindIdPage";
 import FindPwPage from "./page/signupPage/FindPwPage";
 import EmailAuthPage from "./page/signupPage/EmailAuthPage";
-import SetPasswdPage from "./page/signupPage/setPasswdPage";
+import SetPasswdPage from "./page/signupPage/SetPasswdPage";
+
+import MessagePage from "./page/messagePage/MessagePage";
+
+import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/CommunityPage/HowToUsePage";
+import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
-import ChangePwPage from "./page/myPage/AccountPage/ChangePwPage";
 import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
 import ChangeNickPage from "./page/myPage/CommunityPage/ChangeNickPage";
 import DeleteAccountPage from "./page/myPage/AccountPage/DeleteAccountPage";
 
 import Footer from "./page/mainPage/Footer";
-import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
-import Certification from "./page/myPage/AccountPage/Certification";
+
+import Authentication from "./page/myPage/AccountPage/Authentication/Authentication";
+import ChooseAuth from "./page/myPage/AccountPage/Authentication/ChooseAuth";
+import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
 
 const App = () => {
   return (
@@ -199,8 +202,29 @@ const App = () => {
             path="/my/deleteaccount"
             element={
               <div>
+                <DeleteAccountPage />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/my/auth"
+            element={
+              <div>
                 <Card>
-                  <DeleteAccountPage />
+                  <Authentication />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/auth/student"
+            element={
+              <div>
+                <Card>
+                  <ChooseAuth />
                 </Card>
                 <Footer />
               </div>
@@ -208,12 +232,31 @@ const App = () => {
           />
 
           <Route
-            path="/my/certification"
+            path="/auth/idcard"
             element={
               <div>
                 <Card>
-                  <Certification />
+                  <CardAuthentication />
                 </Card>
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/my/email"
+            element={
+              <div>
+                <ChangeEmailPage />
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/my/nickname"
+            element={
+              <div>
+                <ChangeNickPage />
                 <Footer />
               </div>
             }
@@ -223,17 +266,20 @@ const App = () => {
         {/* //nav를 숨기고 싶은 페이지 */}
 
         <Route path="/" element={<MainPage />} />
+
         <Route path="/register" element={<SignUpPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
 
         <Route path="/forgot" element={<FindIdPage />}></Route>
         <Route path="/forgot/password" element={<FindPwPage />}></Route>
-        <Route path="/forgot/password/userid" element={<EmailAuthPage />}></Route>
-        <Route path="/forgot/password/identity/result" element={<SetPasswdPage />}></Route>
-
-        <Route path="/my/password" element={<ChangePwPage />} />
-        <Route path="/my/nickname" element={<ChangeNickPage />} />
-        <Route path="/my/email" element={<ChangeEmailPage />} />
+        <Route
+          path="/forgot/password/userid"
+          element={<EmailAuthPage />}
+        ></Route>
+        <Route
+          path="/forgot/password/identity/result"
+          element={<SetPasswdPage />}
+        ></Route>
       </Routes>
     </Router>
   );
