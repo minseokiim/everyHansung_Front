@@ -13,20 +13,10 @@ const AccountPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/my/certification");
+            move("/my/auth");
           }}
         >
           학교 인증
-        </div>
-        <br />
-        <div
-          className="cursor-pointer"
-          onClick={(e) => {
-            e.preventDefault();
-            move("/my/password");
-          }}
-        >
-          비밀번호 변경
         </div>
         <br />
         <div
