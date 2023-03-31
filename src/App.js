@@ -25,6 +25,7 @@ import MessagePage from "./page/messagePage/MessagePage";
 import FindIdPage from "./page/signupPage/FindIdPage";
 import FindPwPage from "./page/signupPage/FindPwPage";
 import EmailAuthPage from "./page/signupPage/EmailAuthPage";
+import SetPasswdPage from "./page/signupPage/setPasswdPage";
 import HowToUsePage from "./page/myPage/CommunityPage/HowToUsePage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -228,6 +229,7 @@ const App = () => {
         <Route path="/forgot" element={<FindIdPage />}></Route>
         <Route path="/forgot/password" element={<FindPwPage />}></Route>
         <Route path="/forgot/password/userid" element={<EmailAuthPage />}></Route>
+        <Route path="/forgot/password/identity/result" element={<SetPasswdPage />}></Route>
 
         <Route path="/my/password" element={<ChangePwPage />} />
         <Route path="/my/nickname" element={<ChangeNickPage />} />
