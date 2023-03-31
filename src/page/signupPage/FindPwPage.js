@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const FindPwPage = () => {
   const [studentId, setStudentId] = useState("");
-  const move = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ const FindPwPage = () => {
       console.log(response);
 
       if (response && response.data !== null) {
-        move("/forgot/password/userid");
+        navigate("/forgot/password/userid", { state: { studentId: studentId } });
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -31,7 +31,6 @@ const FindPwPage = () => {
             className="notimportant cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
-              move("/forgot");
             }}
           >
             아이디 찾기
