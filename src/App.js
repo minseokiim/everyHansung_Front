@@ -22,7 +22,7 @@ import SignUpPage from "./page/signupPage/SignUpPage";
 import MyPage from "./page/myPage/MyPage";
 import MessagePage from "./page/messagePage/MessagePage";
 
-import FindInfoPage from "./page/loginPage/FindInfoPage";
+import FindInfoPage from "./page/signupPage/FindInfoPage";
 import HowToUsePage from "./page/myPage/CommunityPage/HowToUsePage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
