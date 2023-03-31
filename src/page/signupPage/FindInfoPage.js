@@ -1,15 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./LoginPage.css";
+import "./SignUpPage.css";
 
 const FindInfoPage = () => {
   const move = useNavigate();
-  const [studentId, setStudentId] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-
-  const [passwd, setPasswd] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,32 +36,10 @@ const FindInfoPage = () => {
 
   return (
     <div id="register-container">
-      <div className="login-box">
+      <div className="">
         <div className="mb-3 ">
           <h2>아이디/비밀번호 찾기</h2>
           <hr />
-
-          <div className="input">
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-              placeholder="이름"
-            ></input>
-          </div>
-
-          <div className="input">
-            <input
-              type="text"
-              value={studentId}
-              onChange={(e) => {
-                setStudentId(e.target.value);
-              }}
-              placeholder="학번"
-            ></input>
-          </div>
 
           <div className="input">
             <input
@@ -79,20 +53,25 @@ const FindInfoPage = () => {
           </div>
 
           <div className="input">
-            <p className="find">
-              <a href="/login">로그인하기</a>
-            </p>
             <button
               className="lec-button mb-3"
               type="submit"
               onClick={onSubmit}
             >
-              아이디/비밀번호 찾기
+              아이디 찾기
             </button>
-            <p className="register">
-              <span>에브리한성에 처음이신가요?</span>
-              <a href="/register">회원가입</a>
-            </p>
+          </div>
+
+          <div className="text">
+            ※ 가입된 아이디가 있을 경우, 입력하신 이메일로 아이디를 안내해 드립니다.
+          </div>
+
+          <div className="text">
+            ※ 만약 이메일이 오지 않는다면, 스팸 편지함으로 이동하지 않았는지 학인해주세요.
+          </div>
+          
+          <div className="text">
+            ※ 이메일 서비스 제공자 사정에 의해 즉시 도착하지 않을 수 있으니, 최대 30분 정도 기다리신 후 다시 시도해주세요.<br/>
           </div>
         </div>
       </div>
