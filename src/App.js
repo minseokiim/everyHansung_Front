@@ -173,32 +173,6 @@ const App = () => {
               </Card>
             }
           />
-          <Route
-            path="/my/password"
-            element={
-              <Card>
-                <ChangePwPage />
-              </Card>
-            }
-          />
-
-          <Route
-            path="/my/nickname"
-            element={
-              <Card>
-                <ChangeNickPage />
-              </Card>
-            }
-          />
-
-          <Route
-            path="/my/email"
-            element={
-              <Card>
-                <ChangeEmailPage />
-              </Card>
-            }
-          />
 
           <Route
             path="/page/rules"
@@ -250,9 +224,14 @@ const App = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/register" element={<SignUpPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+
         <Route path="/forgot" element={<FindIdPage />}></Route>
         <Route path="/forgot/password" element={<FindPwPage />}></Route>
         <Route path="/forgot/password/userid" element={<FindPwPage2 />}></Route>
+
+        <Route path="/my/password" element={<ChangePwPage />} />
+        <Route path="/my/nickname" element={<ChangeNickPage />} />
+        <Route path="/my/email" element={<ChangeEmailPage />} />
       </Routes>
     </Router>
   );
