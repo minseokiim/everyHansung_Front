@@ -44,7 +44,7 @@ const FindIdPage = () => {
         "분";
 
       await sendEmail("KUYn7pjZiQPRaff54", email, time, studentId);
-      alert("학번 정보가 이메일로 전송되었습니다.");
+      alert("아이디 정보가 이메일로 전송되었습니다.");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         alert("가입되지 않은 이메일입니다.");
@@ -56,7 +56,7 @@ const FindIdPage = () => {
     <div id="register-container">
       <div className="">
         <div className="mb-3 ">
-          <strong className="important">학번 찾기</strong>
+          <strong className="important">아이디 찾기</strong>
           &nbsp;&nbsp;
           <strong
             className="notimportant"
@@ -74,7 +74,7 @@ const FindIdPage = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              placeholder="이메일"
+              placeholder="가입된 이메일"
             ></input>
           </div>
           <div className="input">
@@ -83,7 +83,7 @@ const FindIdPage = () => {
               type="submit"
               onClick={onSubmit}
             >
-              학번 찾기
+              아이디 찾기
             </button>
           </div>
           <div className="grey">

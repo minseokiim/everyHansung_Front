@@ -19,7 +19,7 @@ const FindPwPage = () => {
               move("/forgot");
             }}
           >
-            학번 찾기
+            아이디 찾기
           </strong>
           &nbsp;&nbsp;
           <strong className="important">비밀번호 찾기</strong>
@@ -30,7 +30,7 @@ const FindPwPage = () => {
               onChange={(e) => {
                 setStudentId(e.target.value);
               }}
-              placeholder="학번"
+              placeholder="가입된 이메일"
             ></input>
           </div>
           <div className="input">

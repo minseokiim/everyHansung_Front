@@ -23,7 +23,7 @@ const MainPage = () => {
             회원가입
           </Link>
           <p className="find">
-            <a href="/forgot">학번/비밀번호 찾기</a>
+            <a href="/forgot">아이디/비밀번호 찾기</a>
           </p>
           <hr />
         </div>
