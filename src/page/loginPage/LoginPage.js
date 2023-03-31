@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
@@ -11,7 +11,25 @@ const LoginPage = () => {
   const [passwd, setPasswd] = useState(
     localStorage.getItem("rememberMe") ? localStorage.getItem("passwd") : ""
   );
-  const [rememberMe, setRememberMe] = useState(localStorage.getItem("rememberMe") === "true");
+  const [rememberMe, setRememberMe] = useState(
+    localStorage.getItem("rememberMe") === "true"
+  );
+
+  useEffect(() => {
+    if (rememberMe && studentId && passwd) {
+      axios
+        .post("http://localhost:8080/login", {
+          studentId,
+          passwd,
+        })
+        .then(() => {
+          move("/freeboard/list");
+        })
+        .catch(() => {
+          // 로그인 실패 시 아무것도 하지 않음
+        });
+    }
+  }, [rememberMe, studentId, passwd, move]);
 
   const onSubmit = (e) => {
     e.preventDefault();
