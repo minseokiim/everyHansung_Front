@@ -107,76 +107,6 @@ const SingUpPage = () => {
     }
   };
 
-  //수정한 코드
-  // const getNickname = async (nick) => {
-  //   try {
-  //     const res = await axios.get(`http://localhost:8080/members/${nick}`);
-  //     return res.data;
-  //   } catch (error) {
-  //     if (error.res && error.res.status === 404) {
-  //       return null;
-  //     } else {
-  //       console.error(error);
-  //     }
-  //   }
-  // };
-
-  // const nicknameCheck = async (e) => {
-  //   try {
-  //     const isDuplicate = await getNickname(e.target.value);
-  //     if (!isDuplicate) {
-  //       setNickname(e.target.value);
-  //       setCheckNicknameDisplay("block");
-  //       setClearNicknameDisplay("none");
-  //     } else {
-  //       setClearNicknameDisplay("block");
-  //       setCheckNicknameDisplay("none");
-  //       alert("이미 사용중인 닉네임입니다.");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  //  원래 검사하는 코드
-
-  // const checkNickname = (nick) => {
-  //   axios
-  //     .get(`http://localhost:8080/members/${nick}`)
-  //     .then((res) => console.log(res.data))
-  //     .catch((err) => {
-  //       if (err.response) {
-  //         if (err.response.status === 401) {
-  //           setClearIdDisplay("block");
-  //           setCheckIdDisplay("none");
-  //           alert('이미 가입된 학번입니다.');
-  //         } else if (err.response.status === 402) {
-  //           setClearnameDisplay("block");
-  //           setChecknameDisplay("none");
-  //           alert('이미 사용중인 닉네임입니다.');
-  //         } else {
-  //           alert('로그인에 실패했습니다.');
-  //         }
-  //       } else {
-  //         alert('서버에 연결할 수 없습니다.');
-  //       }
-  //     });
-  // };
-
-  // const nicknameCheck = (e) => {
-  //   try {
-  //     if (getNickname(e.target.value) != null) {
-  //       setNickname(e.target.value);
-  //       setCheckNicknameDisplay("block");
-  //       setClearNicknameDisplay("none");
-  //     }
-  //   } catch (e) {
-  //     setClearNicknameDisplay("block");
-  //     setCheckNicknameDisplay("none");
-  //     alert("이미 사용중인 닉네임입니다.");
-  //   }
-  // };
-
   const onSubmit = (e) => {
     if (checkIdDisplay === "block" && 
       checkPasswdDisplay === "block" && 
@@ -197,8 +127,12 @@ const SingUpPage = () => {
         })
         .catch((error) => {
           if (error.response.status === 401) {
+            setClearIdDisplay("block");
+            setCheckIdDisplay("none");
               alert('이미 가입된 학번입니다.');
           } else if (error.response.status === 402) {
+            setClearNicknameDisplay("block");
+            setCheckNicknameDisplay("none");
             alert('이미 사용중인 닉네임입니다.');
           }
         })
