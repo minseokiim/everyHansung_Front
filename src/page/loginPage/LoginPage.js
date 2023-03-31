@@ -5,8 +5,13 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
   const move = useNavigate();
-  const [studentId, setStudentId] = useState("");
-  const [passwd, setPasswd] = useState("");
+  const [studentId, setStudentId] = useState(
+    localStorage.getItem("rememberMe") ? localStorage.getItem("studentId") : ""
+  );
+  const [passwd, setPasswd] = useState(
+    localStorage.getItem("rememberMe") ? localStorage.getItem("passwd") : ""
+  );
+  const [rememberMe, setRememberMe] = useState(localStorage.getItem("rememberMe") === "true");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +22,15 @@ const LoginPage = () => {
         passwd,
       })
       .then((response) => {
+        if (rememberMe) {
+          localStorage.setItem("rememberMe", true);
+          localStorage.setItem("studentId", studentId);
+          localStorage.setItem("passwd", passwd);
+        } else {
+          localStorage.removeItem("rememberMe");
+          localStorage.removeItem("studentId");
+          localStorage.removeItem("passwd");
+        }
         alert(response.data);
         move("/freeboard/list");
       })
@@ -66,7 +80,14 @@ const LoginPage = () => {
 
           <div className="input">
             <label className="autologin">
-              <input type="checkbox" name="autologin" value="1" />
+              <input
+                type="checkbox"
+                name="autologin"
+                checked={rememberMe}
+                onChange={(e) => {
+                  setRememberMe(e.target.checked);
+                }}
+              />
               로그인 유지
             </label>
             <p className="find">
