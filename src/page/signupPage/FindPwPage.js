@@ -11,8 +11,6 @@ const FindPwPage = () => {
     e.preventDefault();
     try {
       const response = await axios.get(`http://localhost:8080/members/${studentId}`);
-      console.log(response);
-
       if (response && response.data !== null) {
         navigate("/forgot/password/userid", { state: { studentId: studentId } });
       }
@@ -38,6 +36,7 @@ const FindPwPage = () => {
           </strong>
           &nbsp;&nbsp;
           <strong className="important cursor-pointer">비밀번호 찾기</strong>
+          
           <div className="input">
             <input
               type="text"
@@ -48,6 +47,7 @@ const FindPwPage = () => {
               placeholder="가입된 학번"
             ></input>
           </div>
+
           <div className="input">
             <button
               className="lec-button mb-3"
@@ -57,6 +57,7 @@ const FindPwPage = () => {
               비밀번호 찾기
             </button>
           </div>
+          
         </div>
       </div>
     </div>

@@ -9,18 +9,9 @@ const FindIdPage = () => {
   const move = useNavigate();
 
   const sendEmail = async (userId, email, time, studentId) => {
-    const templateParams = {
-      to_email: email,
-      student_id: studentId,
-      time: time,
-    };
+    const templateParams = {to_email: email, student_id: studentId, time: time,};
 
-    await emailjs.send(
-      "service_ogh6vg4",
-      "template_x2e3w1b",
-      templateParams,
-      userId
-    );
+    await emailjs.send("service_ogh6vg4", "template_x2e3w1b", templateParams, userId);
   };
 
   const onSubmit = async (e) => {
@@ -58,6 +49,7 @@ const FindIdPage = () => {
           >
             비밀번호 찾기
           </strong>
+
           <div className="input">
             <input
               type="text"
@@ -68,6 +60,7 @@ const FindIdPage = () => {
               placeholder="가입된 이메일"
             ></input>
           </div>
+
           <div className="input">
             <button
               className="lec-button mb-3"
@@ -77,6 +70,7 @@ const FindIdPage = () => {
               아이디 찾기
             </button>
           </div>
+
           <div className="grey">
             <div className="text">
               ※ 가입된 학번이 있을 경우, 입력하신 이메일로 학번을 안내해
@@ -93,6 +87,7 @@ const FindIdPage = () => {
               최대 30분 정도 기다리신 후 다시 시도해주세요.
               <br />
             </div>
+            
           </div>
         </div>
       </div>

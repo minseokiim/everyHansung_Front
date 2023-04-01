@@ -7,7 +7,6 @@ import axios from "axios";
 
 const SingUpPage = () => {
   const move = useNavigate();
-  // const { nick } = useParams();
 
   const [studentId, setStudentId] = useState("none");
   const [passwd, setPasswd] = useState("none");
@@ -47,8 +46,7 @@ const SingUpPage = () => {
   };
 
   const passwdCheck = (e) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
       setPasswd(e.target.value);
@@ -108,12 +106,7 @@ const SingUpPage = () => {
   };
 
   const onSubmit = (e) => {
-    if (checkIdDisplay === "block" && 
-      checkPasswdDisplay === "block" && 
-      checkConfirmpasswdDisplay === "block" && 
-      checkEmailDisplay === "block" &&
-      checknameDisplay === "block" &&
-      checkNicknameDisplay === "block") {
+    if (checkIdDisplay === "block" &&  checkPasswdDisplay === "block" &&  checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checknameDisplay === "block" && checkNicknameDisplay === "block") {
         axios.post("http://localhost:8080/register", {
           studentId,
           email,
@@ -145,6 +138,7 @@ const SingUpPage = () => {
       <p className="description">
         에브리한성 계정으로 다양한 대학생 서비스를 이용하실 수 있습니다.
       </p>
+
       <div className="input">
         <div className="label">
           <label>학번</label>
@@ -168,6 +162,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <div className="input">
         <div className="label">
           <label>비밀번호</label>
@@ -191,6 +186,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <div className="input">
         <div className="label">
           <label>비밀번호 확인</label>
@@ -214,6 +210,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <div className="input">
         <div className="label">
           <label>이메일</label>
@@ -237,6 +234,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <div className="input">
         <div className="label">
           <label>이름</label>
@@ -260,6 +258,7 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <div className="input">
         <div className="label">
           <label>닉네임</label>
@@ -283,13 +282,16 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+
       <button onClick={onSubmit} type="submit">
         가입하기
       </button>
       <br />
+
       <p className="find">
         <a href="/login">로그인하기</a>
       </p>
+      
     </div>
   );
 };
