@@ -33,29 +33,29 @@ const DeleteAccountPage = () => {
             <strong>회원탈퇴</strong>
             
           <div className="input">
-          <div className="label">
-            <label>계정 비밀번호</label>
-          </div>
+            <div className="label">
+              <label>계정 비밀번호</label>
+            </div>
 
-          <div className="inputbox">
-            <input
-              type="password"
-              name="passwd"
-              maxLength="20"
-              placeholder="계정 비밀번호"
-              className="search"
-            />
-            <CheckIcon
-              className="checkIcon"
-              style={{ display: checkPasswdDisplay }}
-            />
-            <ClearIcon
-              className="clearIcon"
-              style={{ display: clearPasswdDisplay }}
-            />
-        </div>
+            <div className="inputbox">
+              <input
+                type="password"
+                name="passwd"
+                maxLength="20"
+                placeholder="계정 비밀번호"
+                className="search"
+              />
+              <CheckIcon
+                className="checkIcon"
+                style={{ display: checkPasswdDisplay }}
+              />
+              <ClearIcon
+                className="clearIcon"
+                style={{ display: clearPasswdDisplay }}
+              />
+            </div>
         
-      </div>
+          </div>
 
         <div className="grey">
           <div className="text">
