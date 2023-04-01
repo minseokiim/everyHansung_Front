@@ -18,16 +18,8 @@ const EmailAuthPage = () => {
     setVerificationCode(generatedCode);
 
     try {
-      const templateParams = {
-        email,
-        verificationCode: generatedCode,
-      };
-      await emailjs.send(
-        "service_ogh6vg4",
-        "template_r6z03sd",
-        templateParams,
-        "KUYn7pjZiQPRaff54"
-      );
+      const templateParams = {email, verificationCode: generatedCode};
+      await emailjs.send("service_ogh6vg4", "template_r6z03sd", templateParams, "KUYn7pjZiQPRaff54");
       alert("인증코드 이메일로 전송되었습니다.");
       setIsVerificationCodeSent(true);
     } catch (error) {
