@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
