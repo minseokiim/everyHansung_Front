@@ -77,7 +77,7 @@ const ChangeNickPage = () => {
               type="submit"
               onClick={onSubmit}
             >
-              이메일 변경
+              닉네임 변경
             </button>
           </div>
         </div>
