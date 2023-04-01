@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import "./SignUpPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate, useLocation } from "react-router-dom";
