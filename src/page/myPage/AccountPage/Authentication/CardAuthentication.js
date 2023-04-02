@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css";
 
 const CardAuthentication = () => {
   const move = useNavigate();
@@ -54,8 +55,11 @@ const CardAuthentication = () => {
           type="file"
           accept="image/*"
           onChange={handleImageChange}
-          className="mt-3"
+          className="t-3"
+          id="file-input"
         />
+        <label for="file-input">파일 선택</label>
+
         {preview && (
           <div className="mt-3">
             <img src={preview} alt="preview" width="400" />
