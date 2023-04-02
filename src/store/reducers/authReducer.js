@@ -2,7 +2,7 @@ const initialState = {
   studentId: null,
 };
 
-export default function authReducer(state = initialState, action) {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGIN_SUCCESS":
       return {
@@ -12,9 +12,11 @@ export default function authReducer(state = initialState, action) {
     case "LOGOUT":
       return {
         ...state,
-        studentId: null,
+        studentId: state.studentId, // 이전의 studentId 값을 유지함
       };
     default:
       return state;
   }
-}
+};
+
+export default authReducer;
