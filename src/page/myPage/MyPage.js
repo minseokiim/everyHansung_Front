@@ -27,6 +27,17 @@ const MyPage = () => {
         .catch((error) => {
           console.error("Error fetching name:", error);
         });
+    } else {
+      axios
+        .get(`http://localhost:8080/members`)
+        .then((res) => {
+          const member = res.data[0];
+          setName(member.username);
+          setNickname(member.nickname || "닉네임 없음");
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
     }
   }, [studentId]);
 
