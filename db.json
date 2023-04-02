@@ -56,6 +56,12 @@
       "id": 1
     }
   ],
-  "login": [],
+  "login": [
+    {
+      "studentId": "ㄴㄴ",
+      "passwd": "s",
+      "id": 1
+    }
+  ],
   "members": []
 }

@@ -43,11 +43,13 @@ import ChooseStudentAuth from "./page/myPage/AccountPage/Authentication/ChooseSt
 import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
 import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseGraduateAuth";
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
-
+import { useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import store from "./store";
 
 const App = () => {
+  const studentId = useSelector((state) => state.auth.studentId);
+
   return (
     <Provider store={store}>
       <Router>
@@ -70,7 +72,7 @@ const App = () => {
               element={
                 <div>
                   <Card>
-                    <MyPage />
+                    <MyPage key={studentId} />
                   </Card>
                   <Footer />
                 </div>
