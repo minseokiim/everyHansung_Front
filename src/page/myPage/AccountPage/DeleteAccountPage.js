@@ -24,14 +24,11 @@ const DeleteAccountPage = () => {
   };
 
   return (
-    <div className="p-3">
-      <br />
+    <div id="register-container">
+      <div className="">
+        <div className="mb-3 ">
+          <strong>회원탈퇴</strong>
 
-      <div id="register-container">
-        <div className="">
-          <div className="mb-3 ">
-            <strong>회원탈퇴</strong>
-            
           <div className="input">
             <div className="label">
               <label>계정 비밀번호</label>
@@ -54,23 +51,22 @@ const DeleteAccountPage = () => {
                 style={{ display: clearPasswdDisplay }}
               />
             </div>
-        
           </div>
 
-        <div className="grey">
-          <div className="text">
-            ※ 탈퇴 및 가입을 반복할 경우, 서비스 악용 방지를 위해 재가입이
-            제한됩니다. 최초 탈퇴 시에는 가입 시점을 기준으로 1일간
-            제한되며, 2회 이상 탈퇴를 반복할 경우 30일간 제한됩니다.
-            <br />
-          </div>
+          <div className="grey">
+            <div className="text">
+              ※ 탈퇴 및 가입을 반복할 경우, 서비스 악용 방지를 위해 재가입이
+              제한됩니다. 최초 탈퇴 시에는 가입 시점을 기준으로 1일간 제한되며,
+              2회 이상 탈퇴를 반복할 경우 30일간 제한됩니다.
+              <br />
+            </div>
 
-          <div className="text">
-            ※ 탈퇴 후 개인 정보 데이터가 삭제되며, 복구할 수 없습니다.
-            <br />
-            ※ 작성한 게시물은 삭제되지 않으며, (알수없음)으로 닉네임이 표시됩니다.
-            <br />
-            ※ 자세한 내용은 개인정보처리방침을 확인해주세요.
+            <div className="text">
+              ※ 탈퇴 후 개인 정보 데이터가 삭제되며, 복구할 수 없습니다.
+              <br />
+              ※ 작성한 게시물은 삭제되지 않으며, (알수없음)으로 닉네임이
+              표시됩니다.
+              <br />※ 자세한 내용은 개인정보처리방침을 확인해주세요.
             </div>
           </div>
 
@@ -82,7 +78,7 @@ const DeleteAccountPage = () => {
         </div>
       </div>
     </div>
-  </div>
-)};
+  );
+};
 
 export default DeleteAccountPage;
