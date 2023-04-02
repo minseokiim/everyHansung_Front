@@ -4,8 +4,11 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ChangeEmailPage = () => {
+  const studentId = useSelector((state) => state.auth.studentId);
+
   const [email, setEmail] = useState("");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
