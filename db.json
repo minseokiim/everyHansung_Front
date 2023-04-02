@@ -54,44 +54,8 @@
       "commentIsAnonymous": false,
       "secretpostId": "2",
       "id": 1
-    },
-    {
-      "commentContent": "댓글2",
-      "commentCreatedAt": 1679833811589,
-      "commentIsAnonymous": false,
-      "secretpostId": "2",
-      "id": 2
     }
   ],
-  "login": [
-    {
-      "studentId": "1891014",
-      "passwd": "qertsf88",
-      "id": 1
-    },
-    {
-      "studentId": "51551",
-      "passwd": "55",
-      "id": 2
-    },
-    {
-      "studentId": "1891014",
-      "passwd": "ss",
-      "id": 3
-    },
-    {
-      "studentId": "1891014",
-      "passwd": "sds",
-      "id": 4
-    }
-  ],
-  "members": [
-    {
-      "studentId": "1890000",
-      "email": "mimimi@naver.com",
-      "passwd": "Test12@2",
-      "username": "Test12@2",
-      "id": 1
-    }
-  ]
+  "login": [],
+  "members": []
 }
