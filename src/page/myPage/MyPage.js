@@ -12,7 +12,7 @@ const MyPage = () => {
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  // const [, setStudentId] = useState("");
+  const [, setStudentId] = useState("");
   const move = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const MyPage = () => {
         .then((res) => {
           const member = res.data;
           setName(member.username);
-          // setStudentId(member.studentId);
+          setStudentId(member.studentId);
           setNickname(member.nickname || "닉네임 없음");
         })
         .catch((error) => {
@@ -35,6 +35,7 @@ const MyPage = () => {
           const member = res.data[0];
           setName(member.username);
           setNickname(member.nickname || "닉네임 없음");
+          setStudentId(member.studentId);
         })
         .catch((error) => {
           console.error("Error fetching name:", error);
@@ -62,7 +63,7 @@ const MyPage = () => {
 
         <div className="grey">
           <img alt="hansung" src="img/chatlogo.png" className="logo" />
-          {studentId && { name } / { studentId } / { nickname }}
+          {name} / {studentId} / {nickname}
         </div>
         <br />
       </div>
