@@ -2,8 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/actions/authActions";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const studentIdFromStore = useSelector((state) => state.auth.studentId);
+
   const move = useNavigate();
   const [studentId, setStudentId] = useState(
     localStorage.getItem("rememberMe") ? localStorage.getItem("studentId") : ""
@@ -17,11 +22,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (rememberMe && studentId && passwd) {
-      axios
-        .post("http://localhost:8080/login", {
-          studentId,
-          passwd,
-        })
+      dispatch(login(studentId, passwd))
         .then(() => {
           move("/freeboard/list");
         })
@@ -34,12 +35,9 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:8080/login", {
-        studentId,
-        passwd,
-      })
-      .then((response) => {
+    dispatch(login(studentId, passwd))
+      .then(() => {
+        // 로그인 성공 시 처리
         if (rememberMe) {
           localStorage.setItem("rememberMe", true);
           localStorage.setItem("studentId", studentId);

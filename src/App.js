@@ -42,246 +42,251 @@ import Authentication from "./page/myPage/AccountPage/Authentication/Authenticat
 import ChooseAuth from "./page/myPage/AccountPage/Authentication/ChooseAuth";
 import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* //nav 보여주고 싶은 페이지 */}
-        <Route element={<NavBar />}>
-          <Route
-            path="/chatbot"
-            element={
-              <div>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          {/* //nav 보여주고 싶은 페이지 */}
+          <Route element={<NavBar />}>
+            <Route
+              path="/chatbot"
+              element={
+                <div>
+                  <Card>
+                    <ChatBotPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/my"
+              element={
+                <div>
+                  <Card>
+                    <MyPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/message"
+              element={
                 <Card>
-                  <ChatBotPage />
+                  <MessagePage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/my"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/freeboard/post"
+              element={
                 <Card>
-                  <MyPage />
+                  <FreeWritePage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/message"
-            element={
-              <Card>
-                <MessagePage />
-              </Card>
-            }
-          />
-          <Route
-            path="/freeboard/post"
-            element={
-              <Card>
-                <FreeWritePage />
-              </Card>
-            }
-          />
-          <Route
-            path="/freeboard/list"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/freeboard/list"
+              element={
+                <div>
+                  <Card>
+                    <FreeListPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/freeboard/edit/:id"
+              element={
                 <Card>
-                  <FreeListPage />
+                  <FreeEditPage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/freeboard/edit/:id"
-            element={
-              <Card>
-                <FreeEditPage />
-              </Card>
-            }
-          />
-          <Route
-            path="/freeboard/:id"
-            element={
-              <Card>
-                <FreeShowPage />
-              </Card>
-            }
-          />
-
-          <Route
-            path="/secretboard/post"
-            element={
-              <Card>
-                <SecretWritePage />
-              </Card>
-            }
-          />
-          <Route
-            path="/secretboard/list"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/freeboard/:id"
+              element={
                 <Card>
-                  <SecretListPage />
+                  <FreeShowPage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/secretboard/edit/:id"
-            element={
-              <Card>
-                <SecretEditPage />
-              </Card>
-            }
-          />
-          <Route
-            path="/secretboard/:id"
-            element={
-              <Card>
-                <SecretShowPage />
-              </Card>
-            }
-          />
+              }
+            />
 
-          <Route
-            path="/lectureboard/post"
-            element={
-              <Card>
-                <LectureWritePage />
-              </Card>
-            }
-          />
-          <Route
-            path="/lectureboard/list"
-            element={
-              <div>
+            <Route
+              path="/secretboard/post"
+              element={
                 <Card>
-                  <LectureListPage />
+                  <SecretWritePage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/lectureboard/:id"
-            element={
-              <Card>
-                <LectureShowPage />
-              </Card>
-            }
-          />
-
-          <Route
-            path="/page/rules"
-            element={
-              <Card>
-                <HowToUsePage />
-              </Card>
-            }
-          />
-          <Route
-            path="/page/serviceagreement"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/secretboard/list"
+              element={
+                <div>
+                  <Card>
+                    <SecretListPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/secretboard/edit/:id"
+              element={
                 <Card>
-                  <ServiceAgreementPage />
+                  <SecretEditPage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-
-          <Route
-            path="/my/deleteaccount"
-            element={
-              <div>
-                <DeleteAccountPage />
-                <Footer />
-              </div>
-            }
-          />
-
-          <Route
-            path="/my/auth"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/secretboard/:id"
+              element={
                 <Card>
-                  <Authentication />
+                  <SecretShowPage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/auth/student"
-            element={
-              <div>
+              }
+            />
+
+            <Route
+              path="/lectureboard/post"
+              element={
                 <Card>
-                  <ChooseAuth />
+                  <LectureWritePage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
-
-          <Route
-            path="/auth/idcard"
-            element={
-              <div>
+              }
+            />
+            <Route
+              path="/lectureboard/list"
+              element={
+                <div>
+                  <Card>
+                    <LectureListPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/lectureboard/:id"
+              element={
                 <Card>
-                  <CardAuthentication />
+                  <LectureShowPage />
                 </Card>
-                <Footer />
-              </div>
-            }
-          />
+              }
+            />
 
+            <Route
+              path="/page/rules"
+              element={
+                <Card>
+                  <HowToUsePage />
+                </Card>
+              }
+            />
+            <Route
+              path="/page/serviceagreement"
+              element={
+                <div>
+                  <Card>
+                    <ServiceAgreementPage />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/my/deleteaccount"
+              element={
+                <div>
+                  <DeleteAccountPage />
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/my/auth"
+              element={
+                <div>
+                  <Card>
+                    <Authentication />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/auth/student"
+              element={
+                <div>
+                  <Card>
+                    <ChooseAuth />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/auth/idcard"
+              element={
+                <div>
+                  <Card>
+                    <CardAuthentication />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/my/email"
+              element={
+                <div>
+                  <ChangeEmailPage />
+                  <Footer />
+                </div>
+              }
+            />
+            <Route
+              path="/my/nickname"
+              element={
+                <div>
+                  <ChangeNickPage />
+                  <Footer />
+                </div>
+              }
+            />
+          </Route>
+
+          {/* //nav를 숨기고 싶은 페이지 */}
+
+          <Route path="/" element={<MainPage />} />
+
+          <Route path="/register" element={<SignUpPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+
+          <Route path="/forgot" element={<FindIdPage />}></Route>
+          <Route path="/forgot/password" element={<FindPwPage />}></Route>
           <Route
-            path="/my/email"
-            element={
-              <div>
-                <ChangeEmailPage />
-                <Footer />
-              </div>
-            }
-          />
+            path="/forgot/password/userid"
+            element={<EmailAuthPage />}
+          ></Route>
           <Route
-            path="/my/nickname"
-            element={
-              <div>
-                <ChangeNickPage />
-                <Footer />
-              </div>
-            }
-          />
-        </Route>
-
-        {/* //nav를 숨기고 싶은 페이지 */}
-
-        <Route path="/" element={<MainPage />} />
-
-        <Route path="/register" element={<SignUpPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-
-        <Route path="/forgot" element={<FindIdPage />}></Route>
-        <Route path="/forgot/password" element={<FindPwPage />}></Route>
-        <Route
-          path="/forgot/password/userid"
-          element={<EmailAuthPage />}
-        ></Route>
-        <Route
-          path="/forgot/password/identity/result"
-          element={<SetPasswdPage />}
-        ></Route>
-      </Routes>
-    </Router>
+            path="/forgot/password/identity/result"
+            element={<SetPasswdPage />}
+          ></Route>
+        </Routes>
+      </Router>
+    </Provider>
   );
 };
 

@@ -2,8 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../secretBoardPage/SecretListPage.css";
+// import { useSelector } from "react-redux";
 
 const FreeListPage = () => {
+  // const studentId = useSelector((state) => state.auth.studentId);
+
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
