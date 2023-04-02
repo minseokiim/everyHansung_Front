@@ -15,27 +15,6 @@
       "createdAt": 1679835693704,
       "isAnonymous": false,
       "id": 1
-    },
-    {
-      "title": "d",
-      "content": "d",
-      "createdAt": 1680420848216,
-      "isAnonymous": false,
-      "id": 2
-    },
-    {
-      "title": "fd",
-      "content": "dddd",
-      "createdAt": 1680421012933,
-      "isAnonymous": false,
-      "id": 3
-    },
-    {
-      "title": "tttttttt",
-      "content": "w",
-      "createdAt": 1680421043271,
-      "isAnonymous": false,
-      "id": 4
     }
   ],
   "lectures": [
@@ -86,19 +65,24 @@
   ],
   "login": [
     {
-      "studentId": "asas",
-      "passwd": "asasa",
+      "studentId": "1891014",
+      "passwd": "qertsf88",
       "id": 1
     },
     {
-      "studentId": "12333",
-      "passwd": "www",
+      "studentId": "51551",
+      "passwd": "55",
       "id": 2
     },
     {
-      "studentId": "s",
-      "passwd": "s",
+      "studentId": "1891014",
+      "passwd": "ss",
       "id": 3
+    },
+    {
+      "studentId": "1891014",
+      "passwd": "sds",
+      "id": 4
     }
   ],
   "members": [

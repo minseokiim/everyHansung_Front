@@ -10,16 +10,16 @@
   width: 100%;
   height: 35px;
 }
-
 .comment-button {
+  margin: 2px;
   background-color: hsl(227, 49%, 31%);
+  color: #ffffff;
   border-width: 0px;
   border-radius: 3px;
-  margin-left: 90%;
 }
 
 .comment-button:hover {
-  color: #ffffff;
+  background-color: hwb(227 65% 17%);
 }
 
 .comment-box {
