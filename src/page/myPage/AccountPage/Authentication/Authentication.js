@@ -19,14 +19,14 @@ const Authentication = () => {
       >
         <strong>재학생 인증</strong>
         <br />
-        <div className="grey">재학 증명 자료를 통해 이용 가능</div>
+        <div className="grey">학생증이나, 재학 증명 자료를 통해 이용 가능</div>
       </div>
       <br />
       <div
         className="mini-card p-3 cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
-          move("/auth/student");
+          move("/auth/graduate");
         }}
       >
         <strong>졸업생 인증</strong>

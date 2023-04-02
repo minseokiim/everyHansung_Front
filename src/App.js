@@ -39,8 +39,10 @@ import DeleteAccountPage from "./page/myPage/AccountPage/DeleteAccountPage";
 import Footer from "./page/mainPage/Footer";
 
 import Authentication from "./page/myPage/AccountPage/Authentication/Authentication";
-import ChooseAuth from "./page/myPage/AccountPage/Authentication/ChooseAuth";
+import ChooseStudentAuth from "./page/myPage/AccountPage/Authentication/ChooseStudentAuth";
 import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
+import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseGraduateAuth";
+import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -228,7 +230,19 @@ const App = () => {
               element={
                 <div>
                   <Card>
-                    <ChooseAuth />
+                    <ChooseStudentAuth />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/auth/graduate"
+              element={
+                <div>
+                  <Card>
+                    <ChooseGraduateAuth />
                   </Card>
                   <Footer />
                 </div>
@@ -241,6 +255,18 @@ const App = () => {
                 <div>
                   <Card>
                     <CardAuthentication />
+                  </Card>
+                  <Footer />
+                </div>
+              }
+            />
+
+            <Route
+              path="/auth/certificate"
+              element={
+                <div>
+                  <Card>
+                    <CertificateAuthentication />
                   </Card>
                   <Footer />
                 </div>

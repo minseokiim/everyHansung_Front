@@ -3,7 +3,7 @@ import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 
-const ChooseAuth = () => {
+const ChooseStudentAuth = () => {
   const move = useNavigate();
   return (
     <div className="p-3">
@@ -16,9 +16,9 @@ const ChooseAuth = () => {
           move("/auth/idcard");
         }}
       >
-        <strong>학생증 인증</strong>
+        <strong>학생증</strong>
         <br />
-        <div className="grey">학생증을 스캔 / 촬영 / 캡처 후 첨부하여 인증</div>
+        <div className="grey">학생증을 스캔·촬영·캡처 후 첨부하여 인증</div>
       </div>
       <br />
       <div
@@ -28,12 +28,14 @@ const ChooseAuth = () => {
           move("/auth/certificate");
         }}
       >
-        <strong>증명서</strong>
+        <strong>재학 증명서</strong>
         <br />
-        <div className="grey">재학 / 졸업 증명서를 첨부하여 인증</div>
+        <div className="grey">
+          학교에서 공식적으로 발급한 재학 증명서를 제출하여 인증
+        </div>
       </div>
     </div>
   );
 };
 
-export default ChooseAuth;
+export default ChooseStudentAuth;
