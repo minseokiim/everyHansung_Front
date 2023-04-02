@@ -24,7 +24,6 @@ const ChangeNickPage = () => {
     }
   };
 
-
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -32,7 +31,7 @@ const ChangeNickPage = () => {
       axios
         .patch(`http://localhost:8080/nickname/${nickname}`, {
           // studentId, ${studentId}
-          nickname
+          nickname,
         })
         .then(() => {
           alert("닉네임 변경하였습니다.");

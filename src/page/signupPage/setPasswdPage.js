@@ -21,7 +21,8 @@ const SetPasswdPage = () => {
   const studentId = location.state.studentId;
 
   const passwdCheck = (e) => {
-    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+    const regex =
+      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
       setPasswd(e.target.value);
@@ -44,7 +45,12 @@ const SetPasswdPage = () => {
   };
 
   const onSubmit = (e) => {
-    if (checkPasswdDisplay === "block" && checkConfirmpasswdDisplay === "block") {
+    e.preventDefault();
+
+    if (
+      checkPasswdDisplay === "block" &&
+      checkConfirmpasswdDisplay === "block"
+    ) {
       axios
         .patch("http://localhost:8080/forgot/password/identity/result", {
           studentId,
@@ -121,7 +127,6 @@ const SetPasswdPage = () => {
               비밀번호 변경
             </button>
           </div>
-          
         </div>
       </div>
     </div>
