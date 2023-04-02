@@ -61,6 +61,11 @@
       "studentId": "ㄴㄴ",
       "passwd": "s",
       "id": 1
+    },
+    {
+      "studentId": "sd",
+      "passwd": "s",
+      "id": 2
     }
   ],
   "members": []

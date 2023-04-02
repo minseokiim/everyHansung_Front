@@ -62,7 +62,7 @@ const MyPage = () => {
 
         <div className="grey">
           <img alt="hansung" src="img/chatlogo.png" className="logo" />
-          {name} / {studentId} / {nickname}
+          {studentId && { name } / { studentId } / { nickname }}
         </div>
         <br />
       </div>
