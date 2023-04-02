@@ -36,6 +36,11 @@ const LoginPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (studentId.trim() === "" || passwd.trim() === "") {
+      alert("학번과 비밀번호를 입력해주세요.");
+      return;
+    }
+
     dispatch(login(studentId, passwd))
       .then(() => {
         // 로그인 성공 시 처리
