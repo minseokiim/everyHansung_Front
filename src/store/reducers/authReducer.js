@@ -12,7 +12,7 @@ const authReducer = (state = initialState, action) => {
     case "LOGOUT":
       return {
         ...state,
-        studentId: state.studentId, // 이전의 studentId 값을 유지함
+        studentId: null,
       };
     default:
       return state;
