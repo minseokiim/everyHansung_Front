@@ -12,7 +12,7 @@ const MyPage = () => {
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  const [, setStudentId] = useState("");
+  //const [, setStudentId] = useState("");
   const move = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const MyPage = () => {
         .then((res) => {
           const member = res.data;
           setName(member.username);
-          setStudentId(member.studentId);
+          //setStudentId(member.studentId);
           setNickname(member.nickname || "닉네임 없음");
         })
         .catch((error) => {
