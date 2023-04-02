@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
-  //axios.get으로 이름이랑 닉네임 , 학번 받아오기
   const studentId = useSelector((state) => state.auth.studentId);
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
+  const [, setStudentId] = useState("");
   const move = useNavigate();
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const MyPage = () => {
         .then((res) => {
           const member = res.data;
           setName(member.username);
+          setStudentId(member.studentId);
           setNickname(member.nickname || "닉네임 없음");
         })
         .catch((error) => {

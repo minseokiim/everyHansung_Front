@@ -9,13 +9,27 @@ const FindIdPage = () => {
   const move = useNavigate();
 
   const sendEmail = async (userId, email, time, studentId) => {
-    const templateParams = {to_email: email, student_id: studentId, time: time,};
+    const templateParams = {
+      to_email: email,
+      student_id: studentId,
+      time: time,
+    };
 
-    await emailjs.send("service_ogh6vg4", "template_x2e3w1b", templateParams, userId);
+    await emailjs.send(
+      "service_ogh6vg4",
+      "template_x2e3w1b",
+      templateParams,
+      userId
+    );
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (email.trim() === "") {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
 
     try {
       const response = await axios.get("http://localhost:8080/forgot", {
@@ -23,7 +37,16 @@ const FindIdPage = () => {
       });
       const studentId = response.data; // API 응답에 따라 경로를 변경해야 할 수 있습니다.
       const now = new Date();
-      const time = (now.getMonth() + 1) + "월 " + now.getDate() + "일 " + now.getHours() + "시 " + now.getMinutes() + "분";
+      const time =
+        now.getMonth() +
+        1 +
+        "월 " +
+        now.getDate() +
+        "일 " +
+        now.getHours() +
+        "시 " +
+        now.getMinutes() +
+        "분";
 
       await sendEmail("KUYn7pjZiQPRaff54", email, time, studentId);
       alert("아이디 정보가 이메일로 전송되었습니다.");
@@ -49,7 +72,6 @@ const FindIdPage = () => {
           >
             비밀번호 찾기
           </strong>
-
           <div className="input">
             <input
               type="text"
@@ -60,7 +82,6 @@ const FindIdPage = () => {
               placeholder="가입된 이메일"
             ></input>
           </div>
-
           <div className="input">
             <button
               className="lec-button mb-3"
@@ -70,7 +91,6 @@ const FindIdPage = () => {
               아이디 찾기
             </button>
           </div>
-
           <div className="grey">
             <div className="text">
               ※ 가입된 학번이 있을 경우, 입력하신 이메일로 학번을 안내해
@@ -87,7 +107,6 @@ const FindIdPage = () => {
               최대 30분 정도 기다리신 후 다시 시도해주세요.
               <br />
             </div>
-            
           </div>
         </div>
       </div>
