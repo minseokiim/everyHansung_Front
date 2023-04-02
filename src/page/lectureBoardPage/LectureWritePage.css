@@ -1,12 +1,13 @@
 .lec-button {
+  margin: 2px;
   background-color: hsl(227, 49%, 31%);
+  color: #ffffff;
   border-width: 0px;
-  border-radius: 5px;
-  margin-right: 3px;
+  border-radius: 3px;
 }
 
 .lec-button:hover {
-  color: #ffffff;
+  background-color: hwb(227 65% 17%);
 }
 
 .lec-back {

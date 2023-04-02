@@ -1,12 +1,32 @@
 import "./NavBar.css";
 import { Outlet } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const NavBar = () => {
+  const studentId = useSelector((state) => state.auth.studentId);
+  const [name, setName] = useState("");
+  // const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      axios
+        .get(`http://localhost:8080/members/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
+
   return (
     <div>
       <Navbar className="color-nav" variant="dark">
@@ -29,8 +49,16 @@ const NavBar = () => {
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/message">쪽지</Nav.Link>
             <Nav.Link href="/my">마이페이지</Nav.Link>
-            <Nav.Link href="/">로그아웃</Nav.Link>
           </Nav>
+
+          {studentId && (
+            <div className="white">
+              <Nav.Link href="/">
+                {studentId}님, 안녕하세요!
+                {/* axios 되면  {name} 으로 바꾸기  */}
+              </Nav.Link>
+            </div>
+          )}
         </Container>
       </Navbar>
 

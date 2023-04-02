@@ -24,7 +24,7 @@ const LoginPage = () => {
     if (rememberMe && studentId && passwd) {
       dispatch(login(studentId, passwd))
         .then(() => {
-          move("/freeboard/list");
+          move("/my");
         })
         .catch(() => {
           // 로그인 실패 시 아무것도 하지 않음
@@ -47,7 +47,7 @@ const LoginPage = () => {
           localStorage.removeItem("studentId");
           localStorage.removeItem("passwd");
         }
-        move("/freeboard/list");
+        move("/my");
       })
       .catch((error) => {
         if (error.response) {
