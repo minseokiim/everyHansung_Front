@@ -10,6 +10,7 @@ const LoginPage = () => {
   const studentIdFromStore = useSelector((state) => state.auth.studentId);
 
   const move = useNavigate();
+
   const [studentId, setStudentId] = useState(
     localStorage.getItem("rememberMe") ? localStorage.getItem("studentId") : ""
   );
@@ -24,7 +25,7 @@ const LoginPage = () => {
     if (rememberMe && studentId && passwd) {
       dispatch(login(studentId, passwd))
         .then(() => {
-          move("/my");
+          move("/freeboard/list");
         })
         .catch(() => {
           // 로그인 실패 시 아무것도 하지 않음
@@ -47,7 +48,7 @@ const LoginPage = () => {
           localStorage.removeItem("studentId");
           localStorage.removeItem("passwd");
         }
-        move("/my");
+        move("/freeboard/list");
       })
       .catch((error) => {
         if (error.response) {
