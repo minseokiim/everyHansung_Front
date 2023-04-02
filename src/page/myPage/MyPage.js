@@ -11,7 +11,7 @@ const MyPage = () => {
   //axios.get으로 이름이랑 닉네임 , 학번 받아오기
   const studentId = useSelector((state) => state.auth.studentId);
   const [name, setName] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState("닉네임 없음");
   const move = useNavigate();
 
   useEffect(() => {
@@ -30,23 +30,27 @@ const MyPage = () => {
 
   return (
     <div className="p-3">
-      <div className="mini-card p-3">
-        <strong>내 정보 </strong>
-        <br />
-        <br />
+      <div className="mini-card">
+        <div className="d-flex justify-content-between">
+          <strong className="p-3">내 정보</strong>
+          <div className="p-3">
+            <button
+              className="logout-button m-1 "
+              onClick={(e) => {
+                e.preventDefault();
+                move("/");
+              }}
+            >
+              로그아웃
+            </button>
+          </div>
+        </div>
+
         <div className="grey">
           <img alt="hansung" src="img/chatlogo.png" className="logo" />
           {name} / {studentId} / {nickname}
-          <button
-            className="logout-button "
-            onClick={(e) => {
-              e.preventDefault();
-              move("/");
-            }}
-          >
-            로그아웃
-          </button>
         </div>
+        <br />
       </div>
       <br />
       <AccountPage />
