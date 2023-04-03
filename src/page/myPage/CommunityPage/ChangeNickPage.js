@@ -4,7 +4,6 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";  
 
 const ChangeNickPage = () => {
   const [nickname, setNickname] = useState("none");
@@ -12,7 +11,7 @@ const ChangeNickPage = () => {
   const [checkNicknameDisplay, setCheckNicknameDisplay] = useState("none");
   const [clearNicknameDisplay, setClearNicknameDisplay] = useState("none");
 
-  const studentId = useSelector((state) => state.auth.studentId); 
+  const studentId = localStorage.getItem("studentId");
 
   const nicknameCheck = (e) => {
     if (e.target.value.length >= 2) {
@@ -32,7 +31,7 @@ const ChangeNickPage = () => {
       axios
         .patch(`http://localhost:8080/my/nickname`, {
           studentId,
-          nickname,
+          nickname
         })
         .then(() => {
           alert("닉네임 변경하였습니다.");
