@@ -7,16 +7,45 @@ import ClearIcon from "@material-ui/icons/Clear";
 
 const DeleteAccountPage = () => {
   const move = useNavigate();
+  const studentId = localStorage.getItem("studnetId");
+  const [passwd,  setPasswd] = useState("");
+
+  const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
+  const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
+
+  const passwdCheck = (e) => {
+    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+
+    if (regex.test(e.target.value)) {
+      setPasswd(e.target.value);
+      setCheckPasswdDisplay("block");
+      setClearPasswdDisplay("none");
+    } else {
+      setClearPasswdDisplay("block");
+      setCheckPasswdDisplay("none");
+    }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    alert("탈퇴완료. 그동안 이용해주셔서 감사합니다.");
-    move("/");
 
-    // axios.delete(`http://localhost:3001/members/${id}`).then(() => {
-    //   alert("탈퇴되었습니다. 그동안 이용해주셔서 감사합니다.");
-    // move("/");
-    // });
+    if (checkPasswdDisplay === "block") {
+      axios
+      .delete(`http://localhost:8080/members/${studentId}`, {
+        passwd
+      })
+      .then(() => {
+        alert("탈퇴되었습니다. 그동안 이용해주셔서 감사합니다.");
+        move("/");
+      })
+      .catch((error) => {
+        if (error.response.status === 402) {
+          setClearPasswdDisplay("block");
+          setCheckPasswdDisplay("none");
+          alert('비밀번호를 다시 확인해주세요.');
+        }
+      });
+    }
   };
 
   return (
@@ -32,6 +61,7 @@ const DeleteAccountPage = () => {
 
             <div className="inputbox">
               <input
+                onChange={passwdCheck}
                 type="password"
                 name="passwd"
                 maxLength="20"
@@ -40,11 +70,11 @@ const DeleteAccountPage = () => {
               />
               <CheckIcon
                 className="checkIcon"
-                // style={{ display: checkPasswdDisplay }}
+                style={{ display: checkPasswdDisplay }}
               />
               <ClearIcon
                 className="clearIcon"
-                // style={{ display: clearPasswdDisplay }}
+                style={{ display: clearPasswdDisplay }}
               />
             </div>
           </div>
@@ -65,6 +95,17 @@ const DeleteAccountPage = () => {
               <br />※ 자세한 내용은 개인정보처리방침을 확인해주세요.
             </div>
           </div>
+
+          <div className="input">
+            <button
+              className="lec-button mb-3"
+              type="submit"
+              onClick={onSubmit}
+            >
+              회원 탈퇴
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
