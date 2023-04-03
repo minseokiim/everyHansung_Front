@@ -43,6 +43,7 @@ import ChooseStudentAuth from "./page/myPage/AccountPage/Authentication/ChooseSt
 import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
 import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseGraduateAuth";
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
+import MemberMainPage from "./page/mainPage/MemberMainPage";
 
 const App = () => {
   return (
@@ -287,6 +288,20 @@ const App = () => {
                 </div>
               }
             />
+
+            {/* /membermain */}
+            <Route
+              path="/membermain"
+              element={
+                <div>
+                <Card>
+                  <MemberMainPage />
+                 
+                </Card>
+                 <Footer /></div>
+              }
+            />
+
           </Route>
 
           {/* //nav를 숨기고 싶은 페이지 */}
