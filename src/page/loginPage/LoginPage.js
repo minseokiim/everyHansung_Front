@@ -2,13 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../store/actions/authActions";
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
-  const studentIdFromStore = useSelector((state) => state.auth.studentId);
-
   const move = useNavigate();
 
   const [studentId, setStudentId] = useState(
@@ -23,7 +18,11 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (rememberMe && studentId && passwd) {
-      dispatch(login(studentId, passwd))
+      axios
+      .post("https://localhost:8080/login", {
+          studentId,
+          passwd
+        })
         .then(() => {
           move("/freeboard/list");
         })
@@ -41,31 +40,34 @@ const LoginPage = () => {
       return;
     }
 
-    dispatch(login(studentId, passwd))
-      .then(() => {
-        // 로그인 성공 시 처리
+    axios
+      .post('http://localhost:8080/login', {
+        studentId,
+        passwd,
+      })
+      .then((response) => {
         if (rememberMe) {
           localStorage.setItem("rememberMe", true);
           localStorage.setItem("studentId", studentId);
           localStorage.setItem("passwd", passwd);
         } else {
           localStorage.removeItem("rememberMe");
-          localStorage.removeItem("studentId");
-          localStorage.removeItem("passwd");
+          localStorage.setItem("studentId", studentId);
+          localStorage.removeItem("passwd", passwd);
         }
         move("/freeboard/list");
       })
       .catch((error) => {
         if (error.response) {
           if (error.response.status === 401) {
-            alert("아이디가 존재하지 않습니다.");
+            alert('아이디가 존재하지 않습니다.');
           } else if (error.response.status === 402) {
-            alert("비밀번호가 틀렸습니다.");
+            alert('비밀번호가 틀렸습니다.');
           } else {
-            alert("로그인에 실패했습니다.");
+            alert('로그인에 실패했습니다.');
           }
         } else {
-          alert("서버에 연결할 수 없습니다.");
+          alert('서버에 연결할 수 없습니다.');
         }
       });
   };
@@ -107,6 +109,13 @@ const LoginPage = () => {
                 checked={rememberMe}
                 onChange={(e) => {
                   setRememberMe(e.target.checked);
+                  if (e.target.checked) {
+                    localStorage.setItem("studentId", studentId);
+                    localStorage.setItem("passwd", passwd);
+                    localStorage.setItem("rememberMe", true);
+                  } else {
+                    localStorage.setItem("rememberMe", false );
+                  }
                 }}
               />
               로그인 유지

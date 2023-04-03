@@ -4,11 +4,8 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const ChangeEmailPage = () => {
-  const studentId = useSelector((state) => state.auth.studentId);
-
   const [email, setEmail] = useState("");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
@@ -33,6 +30,16 @@ const ChangeEmailPage = () => {
       }
     } catch (e) {}
   };
+
+  // const confirmEmailCheck = (e) => {
+  //   if (e.target.value !== email) {
+  //     setClearPasswdDisplay("block");
+  //     setCheckPasswdDisplay("none");
+  //   } else {
+  //     setCheckPasswdDisplay("block");
+  //     setClearPasswdDisplay("none");
+  //   }
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();

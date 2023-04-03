@@ -4,15 +4,14 @@ import AccountPage from "./AccountPage/AccountPage";
 import CommunityPage from "./CommunityPage/CommunityPage";
 import AboutPage from "./AboutPage/AboutPage";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
-  const studentId = useSelector((state) => state.auth.studentId);
+  const studentId = localStorage.getItem('studentId');
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  //const [, setStudentId] = useState("");
+  
   const move = useNavigate();
 
   useEffect(() => {
@@ -20,9 +19,9 @@ const MyPage = () => {
       axios
         .get(`http://localhost:8080/members/${studentId}`)
         .then((res) => {
+          console.log("studentId" + studentId);
           const member = res.data;
           setName(member.username);
-          //setStudentId(member.studentId);
           setNickname(member.nickname || "닉네임 없음");
         })
         .catch((error) => {
