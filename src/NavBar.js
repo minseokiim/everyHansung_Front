@@ -36,8 +36,7 @@ const NavBar = () => {
     <div>
       <Navbar className="color-nav" variant="dark">
         <Container>
-          <Navbar.Brand href="/freeboard/list">
-            {/* <img alt="sangsang" src="img/sangsang.png" className="image" /> */}
+          <Navbar.Brand href="/membermain">
             에브리한성
           </Navbar.Brand>
           <Nav className="mr-3">
