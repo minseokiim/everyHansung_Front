@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const ChangeEmailPage = () => {
   const [email, setEmail] = useState("");
+  const [passwd,  setPasswd] = useState("");
+  const studentId = localStorage.getItem("studentId");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
   const [clearEmailDisplay, setClearEmailDisplay] = useState("none");
@@ -31,6 +33,19 @@ const ChangeEmailPage = () => {
     } catch (e) {}
   };
 
+  const passwdCheck = (e) => {
+    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+
+    if (regex.test(e.target.value)) {
+      setPasswd(e.target.value);
+      setCheckPasswdDisplay("block");
+      setClearPasswdDisplay("none");
+    } else {
+      setClearPasswdDisplay("block");
+      setCheckPasswdDisplay("none");
+    }
+  };
+
   // const confirmEmailCheck = (e) => {
   //   if (e.target.value !== email) {
   //     setClearPasswdDisplay("block");
@@ -47,7 +62,9 @@ const ChangeEmailPage = () => {
     if (checkEmailDisplay === "block") {
       axios
         .patch("http://localhost:8080/my/email", {
-          email,
+          studentId,
+          passwd,
+          email
         })
         .then(() => {
           alert("이메일 변경하였습니다.");
@@ -97,6 +114,7 @@ const ChangeEmailPage = () => {
 
             <div className="inputbox">
               <input
+                onChange={passwdCheck}
                 type="password"
                 name="passwd"
                 maxLength="20"
