@@ -49,7 +49,7 @@ const LectureListPage = () => {
     <div>
       <div>
         <div className="d-flex justify-content-between">
-          <strong className="p-3">강의평</strong>
+          <h5 className="p-3">강의평</h5>
           <button
             className="m-2  write-button"
             onClick={() => {
