@@ -46,16 +46,6 @@ const ChangeEmailPage = () => {
     }
   };
 
-  // const confirmEmailCheck = (e) => {
-  //   if (e.target.value !== email) {
-  //     setClearPasswdDisplay("block");
-  //     setCheckPasswdDisplay("none");
-  //   } else {
-  //     setCheckPasswdDisplay("block");
-  //     setClearPasswdDisplay("none");
-  //   }
-  // };
-
   const onSubmit = (e) => {
     e.preventDefault();
 
