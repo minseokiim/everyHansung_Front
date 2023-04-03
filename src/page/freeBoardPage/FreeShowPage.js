@@ -10,7 +10,6 @@ const FreeShowPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const move = useNavigate();
-  const studentId = useSelector((state) => state.auth.studentId);
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeposts/${id}`).then((res) => {
@@ -26,7 +25,6 @@ const FreeShowPage = () => {
     return new Date(timestamp).toLocaleString();
   };
 
-  console.log("Student ID: ", studentId); //현재 로그인한 아이디 확인
 
   return (
     <div className="p-3">
