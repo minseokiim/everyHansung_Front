@@ -49,7 +49,7 @@ const ChangeEmailPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (checkEmailDisplay === "block") {
+    if (checkEmailDisplay === "block" && checkEmailDisplay == "block") {
       axios
         .patch("http://localhost:8080/my/email", {
           studentId,
@@ -61,7 +61,11 @@ const ChangeEmailPage = () => {
           move("/my");
         })
         .catch((error) => {
-          alert("이메일 변경에 실패하셨습니다.");
+          if (error.response.status === 402) {
+            setClearPasswdDisplay("block");
+            setCheckPasswdDisplay("none");
+            alert('비밀번호를 다시 확인해주세요.');
+          }
         });
     }
   };
