@@ -72,6 +72,12 @@ const LoginPage = () => {
       });
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      onSubmit(event);
+    }
+  };
+
   return (
     <div id="register-container">
       <div className="login-box">
@@ -97,6 +103,7 @@ const LoginPage = () => {
               onChange={(e) => {
                 setPasswd(e.target.value);
               }}
+              onKeyPress={handleKeyPress}
               placeholder="비밀번호"
             ></input>
           </div>
