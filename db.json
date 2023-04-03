@@ -29,6 +29,18 @@
       "test": "1회",
       "team": "많음",
       "id": 1
+    },
+    {
+      "lectureName": "ㄱㄱ",
+      "professor": "ㄷㄷ",
+      "content": "ㄱㄱ",
+      "selectedStar": 2,
+      "semester": "2023-1학기",
+      "homework": "보통",
+      "score": "보통",
+      "test": "2회",
+      "team": "보통",
+      "id": 2
     }
   ],
   "freecomments": [
