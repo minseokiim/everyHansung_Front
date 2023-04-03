@@ -5,19 +5,20 @@ import { FaStar } from "react-icons/fa";
 import Star from "./Star";
 
 const LectureShowPage = () => {
-  const { id } = useParams();
+  const { lectureId } = useParams();
   const [post, setPost] = useState([]);
   const move = useNavigate();
   const createArray = (length) => [...Array(length)];
 
-  const getPost = (id) => {
-    axios.get(`http://localhost:8080/lectures/${id}`).then((res) => {
+  const getPost = (lectureId) => {
+    axios.get(`http://localhost:8080/lectures/${lectureId}`)
+    .then((res) => {
       setPost(res.data);
     });
   };
 
   useEffect(() => {
-    getPost(id);
+    getPost(lectureId);
   }, []);
 
   return (
