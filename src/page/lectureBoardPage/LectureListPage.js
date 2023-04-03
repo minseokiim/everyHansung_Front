@@ -17,11 +17,29 @@ const LectureListPage = () => {
   const getPosts = () => {
     axios
       .get("http://localhost:8080/lectures")
-      .then((res) => {
-        console.log(res.data);
-        setPosts(res.data);
-      })
+      .then((res) => setPosts(res.data));
   };
+  // const deletePost = (e, id) => {
+  //   e.stopPropagation();
+  //   alert("삭제하시겠습니까?");
+  //   axios.delete(`http://localhost:3001/posts/${id}`).then(() =>
+  //     setPosts((prevPosts) => {
+  //       return prevPosts.filter((post) => {
+  //         return post.id !== id;
+  //       });
+  //     })
+  //   );
+  // };
+
+  //   let params={
+  //     lectureName_like:searchText
+  //   }
+  //   axios
+  //   .get(`http://localhost:3001/posts`, {
+  //     params,
+  //   })
+  //   .then((res) => {  setPosts(res.data)});
+  // };
 
   useEffect(() => {
     getPosts();
@@ -31,7 +49,7 @@ const LectureListPage = () => {
     <div>
       <div>
         <div className="d-flex justify-content-between">
-          <h5 className="p-3">강의평</h5>
+          <strong className="p-3">강의평</strong>
           <button
             className="m-2  write-button"
             onClick={() => {
@@ -60,7 +78,7 @@ const LectureListPage = () => {
           ? posts.map((post) => {
               return (
                 <div
-                  key={post.lectureId}
+                  key={post.id}
                   className="d-flex justify-content-between card-body cursor-pointer"
                   onClick={() => move(`/lectureboard/${post.id}`)}
                 >
