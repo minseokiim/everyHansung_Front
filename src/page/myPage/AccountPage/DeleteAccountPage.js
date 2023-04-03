@@ -6,11 +6,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 
 const DeleteAccountPage = () => {
-  const [passwd, setPasswd] = useState("none");
   const move = useNavigate();
-
-  const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
-  const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -44,11 +40,11 @@ const DeleteAccountPage = () => {
               />
               <CheckIcon
                 className="checkIcon"
-                style={{ display: checkPasswdDisplay }}
+                // style={{ display: checkPasswdDisplay }}
               />
               <ClearIcon
                 className="clearIcon"
-                style={{ display: clearPasswdDisplay }}
+                // style={{ display: clearPasswdDisplay }}
               />
             </div>
           </div>
@@ -68,12 +64,6 @@ const DeleteAccountPage = () => {
               표시됩니다.
               <br />※ 자세한 내용은 개인정보처리방침을 확인해주세요.
             </div>
-          </div>
-
-          <div className="input">
-            <button className="lec-button mb-3" onClick={onSubmit}>
-              탈퇴하기
-            </button>
           </div>
         </div>
       </div>
