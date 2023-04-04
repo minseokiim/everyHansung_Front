@@ -34,12 +34,11 @@ const MainPage = () => {
           한성대 학생을 위한
           <br />
           <strong>
-            서비스 에브리한성!
+            서비스 "에브리한성"
             <br />
           </strong>
           <p>
             <br />
-
             <img
               alt="sangsangs"
               src="img/sangsangs.png"
@@ -60,49 +59,6 @@ const MainPage = () => {
             같은 캠퍼스의 학생들과 소통하는
             <strong> 익명 커뮤니티</strong>를 이용할 수 있습니다.
           </p>
-        </div>
-        <div className="figures">
-          <div>
-            <p className="number">
-              <strong data-number="519">519</strong>
-              <span>만</span>
-            </p>
-            <p className="description">가입한 대학생</p>
-          </div>
-          <hr />
-          <div>
-            <p className="number">
-              <strong data-number="2767">3,964</strong>
-              <span>만</span>
-            </p>
-            <p className="description">만들어진 시간표</p>
-          </div>
-          <hr />
-          <div>
-            <p className="number">
-              <strong data-number="369">602</strong>
-              <span>만</span>
-            </p>
-            <p className="description">강의평/시험정보</p>
-          </div>
-          <hr />
-          <div>
-            <p className="number">
-              <strong data-number="170">251</strong>
-              <span>만</span>
-            </p>
-            <p className="description">중고 거래된 책</p>
-          </div>
-          <hr />
-          <div>
-            <p className="number">
-              <strong data-number="11">16</strong>
-              <span>억</span>
-              <strong data-number="5149">5,445</strong>
-              <span>만</span>
-            </p>
-            <p className="description">작성된 게시물</p>
-          </div>
         </div>
       </section>
       <section className="footer white">
