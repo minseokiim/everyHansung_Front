@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Star from "./Star";
 
 const LectureListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const createArray = (length) => [...Array(length)];
 
   const onSearch = (e) => {
     if (e.key === "Enter") {
@@ -79,18 +81,18 @@ const LectureListPage = () => {
               return (
                 <div
                   key={post.id}
-                  className="d-flex justify-content-between card-body cursor-pointer"
+                  className=" card-body cursor-pointer"
                   onClick={() => move(`/lectureboard/${post.id}`)}
                 >
-                  {post.lectureName}, {post.professor} 교수님
-                  {/* <div>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={(e) => deletePost(e, post.id)}
-                    >
-                      Delete
-                    </button>
-                  </div> */}
+                  <div>
+                    {createArray(5).map((n, i) => (
+                      <Star key={i} selected={post.selectedStar > i} />
+                    ))}
+                    <hr />
+                  </div>
+                  <div>
+                    {post.lectureName}, {post.professor} 교수님
+                  </div>
                 </div>
               );
             })

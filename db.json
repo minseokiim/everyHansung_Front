@@ -70,14 +70,9 @@
   ],
   "login": [
     {
-      "studentId": "ㄴㄴ",
+      "studentId": "1891014",
       "passwd": "s",
-      "id": 1
-    },
-    {
-      "studentId": "sd",
-      "passwd": "s",
-      "id": 2
+      "id": 5
     }
   ],
   "members": []
