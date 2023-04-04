@@ -9,7 +9,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import axios from "axios";
 
 const NavBar = () => {
-  const studentId = localStorage.getItem("studentId")
+  const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
   // const [nickname, setNickname] = useState("");
 
@@ -36,9 +36,7 @@ const NavBar = () => {
     <div>
       <Navbar className="color-nav" variant="dark">
         <Container>
-          <Navbar.Brand href="/membermain">
-            에브리한성
-          </Navbar.Brand>
+          <Navbar.Brand href="/membermain">에브리한성</Navbar.Brand>
           <Nav className="mr-3">
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">

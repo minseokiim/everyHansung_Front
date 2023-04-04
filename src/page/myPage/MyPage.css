@@ -20,3 +20,18 @@
 .logout-button:hover {
   background-color: hwb(227 65% 17%);
 }
+
+.wrapper {
+  position: relative;
+  width: 1180px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.left {
+  position: absolute;
+  left: 25px;
+  top: 0;
+  width: 200px;
+  height: 300px;
+}

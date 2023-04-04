@@ -13,6 +13,16 @@ const AboutPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
+            move("/page/rules");
+          }}
+        >
+          커뮤니티 이용 규칙
+        </div>
+        <br />
+        <div
+          className="cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
             move("/page/serviceagreement");
           }}
         >
@@ -23,10 +33,10 @@ const AboutPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/");
+            move("/page/privacy");
           }}
         >
-          공지사항
+          개인정보 처리방침
         </div>
       </div>
     </div>

@@ -33,10 +33,10 @@ const AccountPage = () => {
           className="cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/my/deleteaccount");
+            move("/my/nickname");
           }}
         >
-          회원탈퇴
+          닉네임 설정
         </div>
       </div>
     </div>

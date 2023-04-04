@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import "./MyPage.css";
 import AccountPage from "./AccountPage/AccountPage";
-import CommunityPage from "./CommunityPage/CommunityPage";
 import AboutPage from "./AboutPage/AboutPage";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import OtherPage from "./OtherPage/OtherPage";
 
 const MyPage = () => {
-  const studentId = localStorage.getItem('studentId');
+  const studentId = localStorage.getItem("studentId");
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  
+
   const move = useNavigate();
 
   useEffect(() => {
@@ -59,9 +59,9 @@ const MyPage = () => {
       <br />
       <AccountPage />
       <br />
-      <CommunityPage />
-      <br />
       <AboutPage />
+      <br />
+      <OtherPage />
     </div>
   );
 };

@@ -8,13 +8,14 @@ import ClearIcon from "@material-ui/icons/Clear";
 const DeleteAccountPage = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studnetId");
-  const [passwd,  setPasswd] = useState("");
+  const [passwd, setPasswd] = useState("");
 
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
   const passwdCheck = (e) => {
-    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+    const regex =
+      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
       setPasswd(e.target.value);
@@ -31,20 +32,20 @@ const DeleteAccountPage = () => {
 
     if (checkPasswdDisplay === "block") {
       axios
-      .delete(`http://localhost:8080/members/${studentId}`, {
-        passwd
-      })
-      .then(() => {
-        alert("탈퇴되었습니다. 그동안 이용해주셔서 감사합니다.");
-        move("/");
-      })
-      .catch((error) => {
-        if (error.response.status === 402) {
-          setClearPasswdDisplay("block");
-          setCheckPasswdDisplay("none");
-          alert('비밀번호를 다시 확인해주세요.');
-        }
-      });
+        .delete(`http://localhost:8080/members/${studentId}`, {
+          passwd,
+        })
+        .then(() => {
+          alert("탈퇴되었습니다. 그동안 이용해주셔서 감사합니다.");
+          move("/");
+        })
+        .catch((error) => {
+          if (error.response.status === 402) {
+            setClearPasswdDisplay("block");
+            setCheckPasswdDisplay("none");
+            alert("비밀번호를 다시 확인해주세요.");
+          }
+        });
     }
   };
 
@@ -105,7 +106,6 @@ const DeleteAccountPage = () => {
               회원 탈퇴
             </button>
           </div>
-
         </div>
       </div>
     </div>
