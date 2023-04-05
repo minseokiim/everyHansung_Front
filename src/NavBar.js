@@ -39,6 +39,8 @@ const NavBar = () => {
         <Container>
           <Navbar.Brand href="/membermain">에브리한성</Navbar.Brand>
           <Nav className="mx-auto">
+            <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
+            <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">
                 자유 게시판
@@ -47,16 +49,12 @@ const NavBar = () => {
                 비밀 게시판
               </NavDropdown.Item>
             </NavDropdown>
-
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/bookstore">책방</Nav.Link>
           </Nav>
+
           <Nav className="ms-auto">
-            <Nav.Link href="">
-              {" "}
-              <div className="white">{studentId}님, 안녕하세요!</div>
-            </Nav.Link>
             <div className="white">
               <Nav.Link href="/message">
                 <BiMessage />
@@ -67,6 +65,9 @@ const NavBar = () => {
                 <AiOutlineUser />
               </Nav.Link>
             </div>
+            {/* <Nav.Link href="">
+              <div className="grey">{studentId}님, 안녕하세요!</div>
+            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
