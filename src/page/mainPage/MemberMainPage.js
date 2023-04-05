@@ -1,37 +1,3 @@
-// const MemberMainPage = () => {
-//   const handleOpenNewTab = (url) => {
-//     window.open(url, "_blank", "noopener, noreferrer");
-//   };
-
-//   return (
-//     <div className="p-3">
-//       <img
-//         alt="everyhansung"
-//         src="img/MainSangSang.png"
-//         className="MainSangSang cursor-pointer"
-//         onClick={() => {
-//           window.open(
-//             "https://www.hansung.ac.kr/sites/hansung/index.do",
-//             "_blank"
-//           );
-//         }}
-//       />
-
-//       <img
-//         alt="hansung"
-//         src="img/MainSangSang.png"
-//         className="MainSangSang cursor-pointer"
-//         onClick={() => handleOpenNewTab("https://www.naver.com/")}
-//       />
-//       <br />
-//       <br />
-//       <div className="grey">부기 누르면 한성대학교 홈페이지로 이동</div>
-
-//       <div className="grey">부기 누르면 네이버로 이동</div>
-//     </div>
-//   );
-// };
-
 import React from "react";
 import "./MainPage.css";
 import { Link } from "react-router-dom";
@@ -40,9 +6,27 @@ import { useNavigate } from "react-router-dom";
 import LectureListPage from "../lectureBoardPage/LectureListPage";
 import FreeListPage from "../freeBoardPage/FreeListPage";
 import SecretListPage from "../secretBoardPage/SecretListPage";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const MemberMainPage = () => {
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      axios
+        .get(`http://localhost:8080/members/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
 
   return (
     <div className=" p-3">
@@ -70,18 +54,29 @@ const MemberMainPage = () => {
         </div> */}
       {/* </div>
       <hr /> */}
+
       <div className="service ">
+        <div className=" my-info ">
+          <img alt="hansung" src="img/chatlogo.png" className="logo" />
+          {studentId}님, 안녕하세요!
+        </div>
+        <hr />
         <br />
         <h2>
           한성대 학생을 위한
           <br />
           <div className="navy">
-            <strong>"에브리한성"</strong>
-            <br />
-            <br />
+            <strong>"에브리한성"</strong> <br /> <br />
+            <img
+              alt="sangsangs"
+              src="img/springsang.png"
+              className="sangsangs"
+            />
           </div>
         </h2>
       </div>
+
+      <br />
       <div className="mini-card">
         <div className="info">상상부기를 누르면 해당 페이지로 이동합니다.</div>
         <div
@@ -188,7 +183,7 @@ const MemberMainPage = () => {
                 );
               }}
             />
-            <div className=" grey cursor-pointer" style={{ marginTop: -11 }}>
+            <div className=" grey cursor-pointer" style={{ marginTop: -5 }}>
               학식
             </div>
           </div>

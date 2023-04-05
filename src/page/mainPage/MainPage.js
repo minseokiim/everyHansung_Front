@@ -34,7 +34,7 @@ const MainPage = () => {
           한성대 학생을 위한
           <br />
           <strong>
-            서비스 "에브리한성"
+            "에브리한성"
             <br />
           </strong>
           <p>
@@ -48,15 +48,15 @@ const MainPage = () => {
         </h2>
         <div className="paragraph">
           <p>
-            시간표 작성, 수업 일정 및 할일 등 편리한
-            <strong> 학업관리</strong>
-            가 가능하고,
+            e-class, 종정시, 공지사항을 한번에
+            <strong> 접근</strong>
+            이 가능하고,
             <br />
             학식 등 유용한
             <strong> 학교 생활 정보</strong>
             를 접할 수 있으며,
             <br />
-            같은 캠퍼스의 학생들과 소통하는
+            교내 학생들과 소통하는
             <strong> 익명 커뮤니티</strong>를 이용할 수 있습니다.
           </p>
         </div>

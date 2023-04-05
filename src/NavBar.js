@@ -5,7 +5,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-
+import { AiOutlineUser } from "react-icons/ai";
+import { BiMessage } from "react-icons/bi";
 import axios from "axios";
 
 const NavBar = () => {
@@ -37,7 +38,7 @@ const NavBar = () => {
       <Navbar className="color-nav" variant="dark">
         <Container>
           <Navbar.Brand href="/membermain">에브리한성</Navbar.Brand>
-          <Nav className="mr-3">
+          <Nav className="mx-auto">
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">
                 자유 게시판
@@ -49,19 +50,24 @@ const NavBar = () => {
 
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
-            <Nav.Link href="/message">쪽지</Nav.Link>
-            <Nav.Link href="/my">마이페이지</Nav.Link>
+            <Nav.Link href="/bookstore">책방</Nav.Link>
           </Nav>
-
-          {studentId && (
+          <Nav className="ms-auto">
+            <Nav.Link href="">
+              {" "}
+              <div className="white">{studentId}님, 안녕하세요!</div>
+            </Nav.Link>
             <div className="white">
-              <Nav.Link href="/">
-                {studentId}님, 안녕하세요!
-                {/* axios 되면  {name} 으로 바꾸기  */}
+              <Nav.Link href="/message">
+                <BiMessage />
               </Nav.Link>
-              {/* <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link> */}
             </div>
-          )}
+            <div className="white">
+              <Nav.Link href="/my">
+                <AiOutlineUser />
+              </Nav.Link>
+            </div>
+          </Nav>
         </Container>
       </Navbar>
 
