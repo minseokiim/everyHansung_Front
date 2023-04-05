@@ -19,12 +19,12 @@ const LoginPage = () => {
   useEffect(() => {
     if (rememberMe && studentId && passwd) {
       axios
-      .post("https://localhost:8080/login", {
+        .post("https://localhost:8080/login", {
           studentId,
-          passwd
+          passwd,
         })
         .then(() => {
-          move("/freeboard/list");
+          move("/membermain");
         })
         .catch(() => {
           // 로그인 실패 시 아무것도 하지 않음
@@ -41,7 +41,7 @@ const LoginPage = () => {
     }
 
     axios
-      .post('http://localhost:8080/login', {
+      .post("http://localhost:8080/login", {
         studentId,
         passwd,
       })
@@ -55,19 +55,19 @@ const LoginPage = () => {
           localStorage.setItem("studentId", studentId);
           localStorage.removeItem("passwd", passwd);
         }
-        move("/freeboard/list");
+        move("/membermain");
       })
       .catch((error) => {
         if (error.response) {
           if (error.response.status === 401) {
-            alert('아이디가 존재하지 않습니다.');
+            alert("아이디가 존재하지 않습니다.");
           } else if (error.response.status === 402) {
-            alert('비밀번호가 틀렸습니다.');
+            alert("비밀번호가 틀렸습니다.");
           } else {
-            alert('로그인에 실패했습니다.');
+            alert("로그인에 실패했습니다.");
           }
         } else {
-          alert('서버에 연결할 수 없습니다.');
+          alert("서버에 연결할 수 없습니다.");
         }
       });
   };
@@ -121,7 +121,7 @@ const LoginPage = () => {
                     localStorage.setItem("passwd", passwd);
                     localStorage.setItem("rememberMe", true);
                   } else {
-                    localStorage.setItem("rememberMe", false );
+                    localStorage.setItem("rememberMe", false);
                   }
                 }}
               />
