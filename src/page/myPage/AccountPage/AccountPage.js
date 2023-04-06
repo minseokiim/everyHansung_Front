@@ -1,5 +1,6 @@
 import "../MyPage.css";
 import { useNavigate } from "react-router-dom";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const AccountPage = () => {
   const move = useNavigate();
@@ -7,7 +8,10 @@ const AccountPage = () => {
   return (
     <div>
       <div className="mini-card p-3">
-        <strong>계정</strong>
+        <strong>
+          <AiFillSafetyCertificate />
+          &nbsp; 계정
+        </strong>
         <br /> <br />
         <div
           className="cursor-pointer"

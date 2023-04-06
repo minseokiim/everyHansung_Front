@@ -3,6 +3,8 @@ import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
+import { AiOutlinePicture } from "react-icons/ai";
+import { AiFillIdcard } from "react-icons/ai";
 
 const CardAuthentication = () => {
   const move = useNavigate();
@@ -46,7 +48,10 @@ const CardAuthentication = () => {
 
   return (
     <div className="p-3">
-      <strong> 학생증 </strong>
+      <strong>
+        <AiFillIdcard />
+        학생증
+      </strong>
       <br />
       <div className=" cursor-pointer">
         <div className="grey">학생증을 스캔·촬영·캡처 후 첨부하여 인증</div>

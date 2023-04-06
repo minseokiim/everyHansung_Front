@@ -19,6 +19,7 @@ const SecretCommentWritePage = () => {
       setCommentContent("");
       axios
         .post(`http://localhost:8080/secretposts/${id}/secretcomments`, {
+          // studentId,
           commentContent,
           commentCreatedAt: Date.now(),
           commentIsAnonymous,

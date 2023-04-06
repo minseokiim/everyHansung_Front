@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import SecretCommentListPage from "./SecretCommentListPage";
 import SecretCommentWritePage from "./SecretCommentWritePage";
 import "../freeBoardPage/FreeWritePage.css";
+import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
 
 const SecretShowPage = () => {
   const { id } = useParams();
@@ -46,11 +47,16 @@ const SecretShowPage = () => {
       <br />
       <hr />
       <p>{post.content}</p>
-      <hr /> <strong>댓글</strong>
       <br />
+      <AiOutlineHeart /> <strong>공감</strong>
+      <hr />
+      <AiOutlineComment />
+      <strong>댓글</strong>
       <br />
-      <SecretCommentListPage />
-      <SecretCommentWritePage />
+      <div className="comment">
+        <SecretCommentListPage />
+        <SecretCommentWritePage />
+      </div>
     </div>
   );
 };
