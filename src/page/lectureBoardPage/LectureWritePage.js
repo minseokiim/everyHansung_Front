@@ -8,7 +8,7 @@ const LectureWritePage = () => {
   const [content, setContent] = useState("");
   const move = useNavigate();
   const [professor, setProfessor] = useState("");
-  const [lectureName, setSubject] = useState("");
+  const [lectureName, setLectureName] = useState("");
   const [selectedStar, setSelectedStar] = useState(0);
   const [semester, setSemester] = useState("평가 안함");
   const [homework, setHomework] = useState("평가 안함");
@@ -55,7 +55,7 @@ const LectureWritePage = () => {
   return (
     <form className="lec-back">
       <div className="mb-3">
-        <label className="form-label m-2 mb-0"> 강의평 쓰기</label>
+        <label className="form-label m-2 mb-0"><strong>강의평 쓰기</strong> </label>
         <hr />
 
         <div className="mb-3">
@@ -63,7 +63,7 @@ const LectureWritePage = () => {
             className="form-control"
             value={lectureName}
             onChange={(e) => {
-              setSubject(e.target.value);
+              setLectureName(e.target.value);
             }}
             placeholder="강의명을 입력해주세요."
           ></input>

@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
 import Star from "./Star";
+import { BsCardChecklist } from "react-icons/bs";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const LectureShowPage = () => {
   const { id } = useParams();
@@ -24,7 +25,8 @@ const LectureShowPage = () => {
     <div className="p-4">
       <div className="d-flex">
         <h4 className="flex-grow-1">
-          {post.lectureName} &nbsp;, &nbsp;{post.professor} 교수님
+          <FaChalkboardTeacher />
+          &nbsp;{post.lectureName} &nbsp;, &nbsp;{post.professor} 교수님
         </h4>
 
         <div>
@@ -42,7 +44,10 @@ const LectureShowPage = () => {
 
       <hr />
       <p>
-        <strong> 별점</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 별점
+        </strong>
         <br />
         {createArray(5).map((n, i) => (
           <Star key={i} selected={post.selectedStar > i} />
@@ -50,27 +55,45 @@ const LectureShowPage = () => {
         &nbsp;&nbsp;{post.selectedStar}/5
       </p>
       <p>
-        <strong>학기</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 학기
+        </strong>
         <br />: {post.semester}
       </p>
       <p>
-        <strong>과제 양</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 과제 양
+        </strong>
         <br />: {post.homework}
       </p>
       <p>
-        <strong>성적 기준</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 성적 기준
+        </strong>
         <br />: {post.score}
       </p>
       <p>
-        <strong>시험 횟수</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 시험 횟수
+        </strong>
         <br />: {post.test}
       </p>
       <p>
-        <strong>조 모임</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 조 모임
+        </strong>
         <br />: {post.team}
       </p>
       <p>
-        <strong>총평</strong>
+        <strong>
+          <BsCardChecklist />
+          &nbsp; 총평
+        </strong>
         <br />: {post.content}
       </p>
       <hr />

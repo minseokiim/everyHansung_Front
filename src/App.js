@@ -46,6 +46,10 @@ import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseG
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
 import MemberMainPage from "./page/mainPage/MemberMainPage";
 
+import BookListPage from "./page/bookPage/BookListPage";
+import BookWritePage from "./page/bookPage/BookWritePage";
+import BookShowPage from "./page/bookPage/BookShowPage";
+
 const App = () => {
   return (
     <Router>
@@ -182,6 +186,33 @@ const App = () => {
             }
           />
 
+          <Route
+            path="/bookstore/post"
+            element={
+              <Card>
+                <BookWritePage />
+              </Card>
+            }
+          />
+          <Route
+            path="/bookstore/list"
+            element={
+              <div>
+                <Card>
+                  <BookListPage />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/bookstore/:id"
+            element={
+              <Card>
+                <BookShowPage />
+              </Card>
+            }
+          />
           <Route
             path="/page/rules"
             element={

@@ -25,11 +25,10 @@ const FreeShowPage = () => {
     return new Date(timestamp).toLocaleString();
   };
 
-
   return (
     <div className="p-3">
       <div className="d-flex">
-        <h2 className="flex-grow-1">{post.title}</h2>
+        <h3 className="flex-grow-1">{post.title}</h3>
         <div>
           <button
             className="button"

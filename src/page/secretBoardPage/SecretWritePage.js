@@ -64,7 +64,7 @@ const SecretWritePage = ({ editing }) => {
     <form className="back">
       <div className="mb-3">
         <label className="form-label m-2 mb-0">
-          {editing ? "비밀 글 수정하기" : "비밀 글 쓰기"}
+          <strong>{editing ? "비밀 글 수정하기" : "비밀 글 쓰기"}</strong>
         </label>
         <hr />
 
