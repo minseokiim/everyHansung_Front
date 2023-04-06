@@ -6,7 +6,8 @@ import "./BookWritePage.css";
 const BookWritePage = () => {
   const [lectureName, setLectureName] = useState("");
   const [bookName, setBookName] = useState("");
-
+  const [author, setAuthor] = useState("");
+  const [publisher, setPublisher] = useState("");
   const [semester, setSemester] = useState("평가 안함");
   const [state, setState] = useState("평가 안함");
   const [broken, setBroken] = useState("평가 안함");
@@ -23,10 +24,18 @@ const BookWritePage = () => {
     } else if (bookName.trim().length === 0) {
       alert("책 이름을 입력하세요");
       return;
+    } else if (author.trim().length === 0) {
+      alert("저자를 입력하세요");
+      return;
+    } else if (publisher.trim().length === 0) {
+      alert("출판사를 입력하세요");
+      return;
     } else {
       axios
         .post("http://localhost:8080/bookstore", {
           lectureName,
+          author,
+          publisher,
           content,
           semester,
           bookName,
@@ -55,6 +64,26 @@ const BookWritePage = () => {
               setBookName(e.target.value);
             }}
             placeholder="책 제목을 입력해주세요."
+          ></input>
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            value={author}
+            onChange={(e) => {
+              setAuthor(e.target.value);
+            }}
+            placeholder="책 저자를 입력해주세요."
+          ></input>
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            value={publisher}
+            onChange={(e) => {
+              setPublisher(e.target.value);
+            }}
+            placeholder="책 출판사를 입력해주세요."
           ></input>
         </div>
 
@@ -163,7 +192,7 @@ const BookWritePage = () => {
               setBroken(e.target.value);
             }}
           />
-          낡음 &nbsp;&nbsp;
+          있음 &nbsp;&nbsp;
           <input
             type="radio"
             name="broken"
@@ -172,7 +201,7 @@ const BookWritePage = () => {
               setBroken(e.target.value);
             }}
           />
-          보통
+          없음
         </div>
 
         <textarea

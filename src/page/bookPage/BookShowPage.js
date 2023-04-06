@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 import { BsCardChecklist, BsBook } from "react-icons/bs";
 
@@ -23,10 +24,15 @@ const BookShowPage = () => {
     <div className="p-4">
       <div className="d-flex">
         <h4 className="flex-grow-1">
-          <BsBook />
-          &nbsp; {post.lectureName}&nbsp;/ &nbsp;{post.bookName}
+          <h5>
+            <FaChalkboardTeacher /> &nbsp;
+            {post.lectureName}
+          </h5>
+          &nbsp; &nbsp;
+          <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
+          &nbsp;/&nbsp;
+          {post.publisher}
         </h4>
-
         <div>
           <button
             className="button"

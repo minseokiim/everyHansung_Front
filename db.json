@@ -66,17 +66,24 @@
       "studentId": "1891014",
       "passwd": "8",
       "id": 9
+    },
+    {
+      "studentId": "5",
+      "passwd": "5",
+      "id": 10
     }
   ],
   "members": [],
   "bookstore": [
     {
-      "lectureName": "강의",
-      "content": "ㅁ",
-      "semester": "2022-2학기",
-      "bookName": "책",
-      "state": "새 책",
-      "writing": "필기 조금",
+      "lectureName": "선형대수",
+      "author": "이광연,설한국",
+      "publisher": "한빛아카데미",
+      "content": "개정판입니다",
+      "semester": "2021-2학기",
+      "bookName": "기초 선형대수학",
+      "state": "보통",
+      "writing": "필기 많음",
       "id": 1
     }
   ]
