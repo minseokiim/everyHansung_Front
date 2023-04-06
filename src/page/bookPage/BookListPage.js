@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BsBook } from "react-icons/bs";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const BookListPage = () => {
   const move = useNavigate();
@@ -63,9 +64,11 @@ const BookListPage = () => {
                   onClick={() => move(`/bookstore/${post.id}`)}
                 >
                   <div>
-                    <BsBook />
-                    &nbsp;
-                    {post.lectureName} &nbsp;/ &nbsp;{post.bookName}
+                    <FaChalkboardTeacher /> &nbsp;
+                    {post.lectureName}
+                    <hr />
+                    <BsBook /> &nbsp;
+                    {post.bookName}&nbsp;/ {post.author}&nbsp;/ {post.publisher}
                   </div>
                 </div>
               );
