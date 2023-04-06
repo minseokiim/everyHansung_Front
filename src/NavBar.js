@@ -50,8 +50,8 @@ const NavBar = () => {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
+            <Nav.Link href="/bookstore/list">책방</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
-            <Nav.Link href="/bookstore">책방</Nav.Link>
           </Nav>
 
           <Nav className="ms-auto">

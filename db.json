@@ -31,16 +31,16 @@
       "id": 1
     },
     {
-      "lectureName": "ㄱㄱ",
-      "professor": "ㄷㄷ",
-      "content": "ㄱㄱ",
-      "selectedStar": 2,
+      "lectureName": "웹프로그래밍",
+      "professor": "ㅇ",
+      "content": "ㄴ",
+      "selectedStar": 3,
       "semester": "2023-1학기",
       "homework": "보통",
       "score": "보통",
       "test": "2회",
       "team": "보통",
-      "id": 2
+      "id": 3
     }
   ],
   "freecomments": [
@@ -50,13 +50,6 @@
       "commentIsAnonymous": false,
       "freepostId": "1",
       "id": 1
-    },
-    {
-      "commentContent": "댓글2",
-      "commentCreatedAt": 1679845839759,
-      "commentIsAnonymous": false,
-      "freepostId": "1",
-      "id": 2
     }
   ],
   "secretcomments": [
@@ -71,24 +64,20 @@
   "login": [
     {
       "studentId": "1891014",
-      "passwd": "s",
-      "id": 5
-    },
-    {
-      "studentId": "d",
-      "passwd": "d",
-      "id": 6
-    },
-    {
-      "studentId": "15",
-      "passwd": "5",
-      "id": 7
-    },
-    {
-      "studentId": "55",
-      "passwd": "5",
-      "id": 8
+      "passwd": "8",
+      "id": 9
     }
   ],
-  "members": []
+  "members": [],
+  "bookstore": [
+    {
+      "lectureName": "강의",
+      "content": "ㅁ",
+      "semester": "2022-2학기",
+      "bookName": "책",
+      "state": "새 책",
+      "writing": "필기 조금",
+      "id": 1
+    }
+  ]
 }

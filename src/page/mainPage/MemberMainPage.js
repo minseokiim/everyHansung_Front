@@ -54,7 +54,6 @@ const MemberMainPage = () => {
         </div> */}
       {/* </div>
       <hr /> */}
-
       <div className="service ">
         <div className=" my-info ">
           <img alt="hansung" src="img/chatlogo.png" className="logo" />
@@ -75,7 +74,7 @@ const MemberMainPage = () => {
           </div>
         </h2>
       </div>
-
+      <hr />
       <br />
       <div>
         <div
@@ -190,20 +189,15 @@ const MemberMainPage = () => {
       </div>
       <br />
       <div className="info">(상상부기를 누르면 해당 페이지로 이동합니다.)</div>
-
-      <br />
-
+      <br /> <hr />
       <div className="mini-card">
         <FreeListPage />
       </div>
       <br />
-
       <div className="mini-card">
         <SecretListPage />
       </div>
-
       <br />
-
       <div className="mini-card">
         <LectureListPage />
       </div>

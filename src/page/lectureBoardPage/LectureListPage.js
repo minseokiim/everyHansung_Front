@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Star from "./Star";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const LectureListPage = () => {
   const move = useNavigate();
@@ -91,7 +92,8 @@ const LectureListPage = () => {
                     <hr />
                   </div>
                   <div>
-                    {post.lectureName}, {post.professor} 교수님
+                    <FaChalkboardTeacher />
+                    &nbsp; {post.lectureName}, {post.professor} 교수님
                   </div>
                 </div>
               );

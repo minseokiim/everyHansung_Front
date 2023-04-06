@@ -70,7 +70,7 @@ const FreeWritePage = ({ editing }) => {
     <form className="back">
       <div className="mb-3">
         <label className="form-label m-2 mb-0">
-          {editing ? "자유 글 수정하기" : "자유 글 쓰기"}
+          <strong>{editing ? "자유 글 수정하기" : "자유 글 쓰기"}</strong>
         </label>
         <hr />
 
