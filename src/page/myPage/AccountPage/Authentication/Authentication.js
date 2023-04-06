@@ -2,13 +2,19 @@ import { useState } from "react";
 import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
+import { FaUserGraduate, FaSchool } from "react-icons/fa";
+import { AiFillSafetyCertificate } from "react-icons/ai";
 
 const Authentication = () => {
   const move = useNavigate();
 
   return (
     <div className="p-3">
-      <strong>인증하기</strong> <br />
+      <strong>
+        <AiFillSafetyCertificate />
+        인증하기
+      </strong>{" "}
+      <br />
       <br />
       <div
         className="mini-card p-3 cursor-pointer"
@@ -17,7 +23,10 @@ const Authentication = () => {
           move("/auth/student");
         }}
       >
-        <strong>재학생 인증</strong>
+        <strong>
+          <FaSchool />
+          재학생 인증
+        </strong>
         <br />
         <div className="grey">학생증이나, 재학 증명 자료를 통해 이용 가능</div>
       </div>
@@ -29,7 +38,10 @@ const Authentication = () => {
           move("/auth/graduate");
         }}
       >
-        <strong>졸업생 인증</strong>
+        <strong>
+          <FaUserGraduate />
+          졸업생 인증
+        </strong>
         <br />
         <div className="grey">졸업 증명 자료를 통해 이용 가능</div>
       </div>

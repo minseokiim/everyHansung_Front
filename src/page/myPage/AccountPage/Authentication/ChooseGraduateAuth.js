@@ -3,6 +3,9 @@ import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
+import { AiOutlinePicture } from "react-icons/ai";
+import { FaUserGraduate } from "react-icons/fa";
+import { TbCertificate } from "react-icons/tb";
 
 const ChooseGraduateAuth = () => {
   const move = useNavigate();
@@ -46,7 +49,10 @@ const ChooseGraduateAuth = () => {
 
   return (
     <div className="p-3">
-      <strong>졸업 증명서</strong>
+      <strong>
+        <TbCertificate />
+        졸업 증명서
+      </strong>
       <div className="cursor-pointer">
         <div className="grey">
           학교에서 공식적으로 발급한 졸업 증명서를 제출 하여 인증

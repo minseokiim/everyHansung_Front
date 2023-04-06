@@ -5,6 +5,7 @@ import FreeCommentWritePage from "./FreeCommentWritePage";
 import FreeCommentListPage from "./FreeCommentListPage";
 import "./FreeWritePage.css";
 import { useSelector } from "react-redux";
+import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -46,11 +47,16 @@ const FreeShowPage = () => {
       </div>
       <hr />
       <p>{post.content}</p>
-      <hr /> <strong>댓글</strong>
       <br />
+      <AiOutlineHeart /> <strong>공감</strong>
+      <hr />
+      <AiOutlineComment />
+      <strong>댓글</strong>
       <br />
-      <FreeCommentListPage />
-      <FreeCommentWritePage />
+      <div className="comment">
+        <FreeCommentListPage />
+        <FreeCommentWritePage />
+      </div>
     </div>
   );
 };

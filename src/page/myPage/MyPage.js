@@ -5,6 +5,7 @@ import AboutPage from "./AboutPage/AboutPage";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import OtherPage from "./OtherPage/OtherPage";
+import { FaUserCircle } from "react-icons/fa";
 
 const MyPage = () => {
   const studentId = localStorage.getItem("studentId");
