@@ -26,9 +26,9 @@ const SecretShowPage = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-4">
       <div className="d-flex">
-        <h2 className="flex-grow-1">{post.title}</h2>
+        <h4 className="flex-grow-1">{post.title}</h4>
         <div>
           <button
             className="button"
@@ -44,7 +44,6 @@ const SecretShowPage = () => {
       <div className="text-muted post-time">
         작성일: {printDate(post.createdAt)}
       </div>
-      <br />
       <hr />
       <p>{post.content}</p>
       <br />
