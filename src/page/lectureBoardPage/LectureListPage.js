@@ -8,20 +8,22 @@ const LectureListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const createArray = (length) => [...Array(length)];
 
   const onSearch = (e) => {
     if (e.key === "Enter") {
-      //검색
-      getPosts();
+      filterPosts();
     }
   };
 
   const getPosts = () => {
-    axios
-      .get("http://localhost:8080/lectures")
-      .then((res) => setPosts(res.data));
+    axios.get("http://localhost:8080/lectures").then((res) => {
+      setPosts(res.data);
+      setFilteredPosts(res.data);
+    });
   };
+
   // const deletePost = (e, id) => {
   //   e.stopPropagation();
   //   alert("삭제하시겠습니까?");
@@ -34,15 +36,14 @@ const LectureListPage = () => {
   //   );
   // };
 
-  //   let params={
-  //     lectureName_like:searchText
-  //   }
-  //   axios
-  //   .get(`http://localhost:3001/posts`, {
-  //     params,
-  //   })
-  //   .then((res) => {  setPosts(res.data)});
-  // };
+  const filterPosts = () => {
+    const filtered = posts.filter(
+      (post) =>
+        post.lectureName.toLowerCase().includes(searchText.toLowerCase()) ||
+        post.professor.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredPosts(filtered);
+  };
 
   useEffect(() => {
     getPosts();
@@ -73,12 +74,14 @@ const LectureListPage = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+            filterPosts();
           }}
           onKeyUp={onSearch}
         />
         <br />
-        {posts.length > 0
-          ? posts.map((post) => {
+
+        {filteredPosts.length > 0
+          ? filteredPosts.map((post) => {
               return (
                 <div
                   key={post.id}

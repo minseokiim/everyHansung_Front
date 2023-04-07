@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../secretBoardPage/SecretListPage.css";
-// import { useSelector } from "react-redux";
 
 const FreeListPage = () => {
   // const studentId = useSelector((state) => state.auth.studentId);
@@ -10,13 +9,16 @@ const FreeListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const { id } = useParams();
 
   const getPosts = () => {
-    axios
-      .get("http://localhost:8080/freeposts")
-      .then((res) => setPosts(res.data));
+    axios.get("http://localhost:8080/freeposts").then((res) => {
+      setPosts(res.data);
+      setFilteredPosts(res.data);
+    });
   };
+
   const deletePost = (e, id) => {
     alert("삭제하시겠습니까?");
     e.stopPropagation();
@@ -33,13 +35,20 @@ const FreeListPage = () => {
     getPosts();
   }, []);
 
-  const handleSearch = () => {
-    // props.onSearch(searchText);
-    getPosts();
+  const handleSearch = (e) => {
+    e.preventDefault();
+    filterPosts();
+  };
+
+  const filterPosts = () => {
+    const filtered = posts.filter((post) =>
+      post.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredPosts(filtered);
   };
 
   return (
-    <div>
+    <div className="p-3">
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">자유게시판</strong>
@@ -54,7 +63,7 @@ const FreeListPage = () => {
         </div>
       </div>
       <hr />
-      <div className="m-4">
+      <form onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="검색어 입력"
@@ -64,37 +73,32 @@ const FreeListPage = () => {
             setSearchText(e.target.value);
           }}
         />
-        {/* <button className="button" onClick={handleSearch}>
-          검색
-        </button> */}
-        <br />
+      </form>
+      <br />
+      {filteredPosts.length > 0
+        ? filteredPosts
+            .filter((post) => post.title !== 0)
+            .map((post) => {
+              return (
+                <div
+                  key={post.id}
+                  className="d-flex justify-content-between card-body cursor-pointer"
+                  onClick={() => move(`/freeboard/${post.id}`)}
+                >
+                  {post.title}
 
-        {posts.length > 0
-          ? posts
-              .filter((post) => post.title !== 0)
-              .map((post) => {
-                return (
-                  <div
-                    key={post.id}
-                    className="d-flex justify-content-between card-body cursor-pointer"
-                    // onClick={() => move("/freeboardedit")}
-                    onClick={() => move(`/freeboard/${post.id}`)}
-                  >
-                    {post.title}
-
-                    <div>
-                      <button
-                        className="btn btn-danger btn-sm"
-                        onClick={(e) => deletePost(e, post.id)}
-                      >
-                        삭제
-                      </button>
-                    </div>
+                  <div>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={(e) => deletePost(e, post.id)}
+                    >
+                      삭제
+                    </button>
                   </div>
-                );
-              })
-          : "게시물이 없습니다"}
-      </div>
+                </div>
+              );
+            })
+        : "게시물이 없습니다"}
     </div>
   );
 };
