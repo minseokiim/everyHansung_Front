@@ -66,7 +66,7 @@ const FreeListPage = () => {
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="검색어 입력"
+          placeholder="검색어 입력하고 ENTER!"
           className="form-control"
           value={searchText}
           onChange={(e) => {

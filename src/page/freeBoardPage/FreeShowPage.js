@@ -27,9 +27,9 @@ const FreeShowPage = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-4">
       <div className="d-flex">
-        <h3 className="flex-grow-1">{post.title}</h3>
+        <h4 className="flex-grow-1">{post.title}</h4>
         <div>
           <button
             className="button"

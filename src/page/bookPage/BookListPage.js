@@ -61,7 +61,7 @@ const BookListPage = () => {
         <form onSubmit={onSearch}>
           <input
             type="text"
-            placeholder="검색어 입력하고 엔터"
+            placeholder="검색하고 싶은 수업명/교수님 성함/ 책 이름 입력하고 ENTER!"
             className="form-control"
             value={search}
             onChange={onChangeSearch}
