@@ -7,19 +7,33 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 const BookListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [search, setSearch] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const onChangeSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   const onSearch = (e) => {
-    if (e.key === "Enter") {
-      //검색
-      getPosts();
-    }
+    e.preventDefault();
+    filterPosts();
+  };
+
+  const filterPosts = () => {
+    const filtered = posts.filter(
+      (post) =>
+        post.bookName.toLowerCase().includes(search.toLowerCase()) ||
+        post.author.toLowerCase().includes(search.toLowerCase()) ||
+        post.publisher.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredPosts(filtered);
   };
 
   const getPosts = () => {
-    axios
-      .get("http://localhost:8080/bookstore")
-      .then((res) => setPosts(res.data));
+    axios.get("http://localhost:8080/bookstore").then((res) => {
+      setPosts(res.data);
+      setFilteredPosts(res.data);
+    });
   };
 
   useEffect(() => {
@@ -44,19 +58,18 @@ const BookListPage = () => {
 
       <hr />
       <div className="m-4">
-        <input
-          type="text"
-          placeholder="검색어 입력"
-          className="form-control"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-          onKeyUp={onSearch}
-        />
+        <form onSubmit={onSearch}>
+          <input
+            type="text"
+            placeholder="검색어 입력하고 엔터"
+            className="form-control"
+            value={search}
+            onChange={onChangeSearch}
+          />
+        </form>
         <br />
-        {posts.length > 0
-          ? posts.map((post) => {
+        {filteredPosts.length > 0
+          ? filteredPosts.map((post) => {
               return (
                 <div
                   key={post.id}

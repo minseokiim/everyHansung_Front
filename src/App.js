@@ -16,6 +16,7 @@ import SecretListPage from "./page/secretBoardPage/SecretListPage";
 import SecretEditPage from "./page/secretBoardPage/SecretEditPage";
 import SecretShowPage from "./page/secretBoardPage/SecretShowPage";
 import ChatBotPage from "./page/chatbotPage/ChatBotPage";
+import NewChatBot from "./page/chatbotPage/NewChatBot";
 
 import LoginPage from "./page/loginPage/LoginPage";
 import SignUpPage from "./page/signupPage/SignUpPage";
@@ -59,10 +60,10 @@ const App = () => {
           <Route
             path="/chatbot"
             element={
-              <div>
-                <Card>
-                  <ChatBotPage />
-                </Card>
+              <div className="p-5 m-5 ">
+                <NewChatBot className="m-5 " />
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -74,6 +75,8 @@ const App = () => {
                 <Card>
                   <MyPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -101,6 +104,8 @@ const App = () => {
                 <Card>
                   <FreeListPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -137,6 +142,8 @@ const App = () => {
                 <Card>
                   <SecretListPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -173,6 +180,9 @@ const App = () => {
                 <Card>
                   <LectureListPage />
                 </Card>
+
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -201,6 +211,8 @@ const App = () => {
                 <Card>
                   <BookListPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -228,6 +240,8 @@ const App = () => {
                 <Card>
                   <ServiceAgreementPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -240,6 +254,8 @@ const App = () => {
                 <Card>
                   <PrivacyPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -250,6 +266,8 @@ const App = () => {
             element={
               <div>
                 <DeleteAccountPage />
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -262,6 +280,8 @@ const App = () => {
                 <Card>
                   <Authentication />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -273,6 +293,8 @@ const App = () => {
                 <Card>
                   <ChooseStudentAuth />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -285,6 +307,8 @@ const App = () => {
                 <Card>
                   <ChooseGraduateAuth />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -297,6 +321,8 @@ const App = () => {
                 <Card>
                   <CardAuthentication />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -309,6 +335,8 @@ const App = () => {
                 <Card>
                   <CertificateAuthentication />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -319,6 +347,8 @@ const App = () => {
             element={
               <div>
                 <ChangeEmailPage />
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -328,6 +358,8 @@ const App = () => {
             element={
               <div>
                 <ChangeNickPage />
+                <br />
+                <br />
                 <Footer />
               </div>
             }
@@ -340,6 +372,8 @@ const App = () => {
                 <Card>
                   <MemberMainPage />
                 </Card>
+                <br />
+                <br />
                 <Footer />
               </div>
             }
