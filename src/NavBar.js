@@ -40,7 +40,7 @@ const NavBar = () => {
           <Navbar.Brand href="/membermain">에브리한성</Navbar.Brand>
           <Nav className="mx-auto">
             <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
-            <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
+            <Nav.Link /> <Nav.Link /> <Nav.Link />
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">
                 자유 게시판
@@ -52,6 +52,7 @@ const NavBar = () => {
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
             <Nav.Link href="/bookstore/list">책방</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
+            <Nav.Link href="/timetable">시간표</Nav.Link>
           </Nav>
 
           <Nav className="ms-auto">
