@@ -51,12 +51,26 @@ import BookListPage from "./page/bookPage/BookListPage";
 import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
+import TimeTable from "./timeTable/TimeTable";
+
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* //nav 보여주고 싶은 페이지 */}
         <Route element={<NavBar />}>
+          <Route
+            path="/timetable"
+            element={
+              <div className="p-5 m-5 ">
+                <TimeTable />
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
           <Route
             path="/chatbot"
             element={

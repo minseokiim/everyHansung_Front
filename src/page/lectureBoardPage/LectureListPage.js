@@ -50,7 +50,7 @@ const LectureListPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="p-3">
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">강의평</strong>
@@ -69,7 +69,7 @@ const LectureListPage = () => {
       <div className="m-4">
         <input
           type="text"
-          placeholder="검색하고 싶은 수업명/교수님 성함 입력하고 ENTER!"
+          placeholder="검색하고 싶은 수업명/교수님 성함 입력하고 ENTER"
           className="form-control"
           value={searchText}
           onChange={(e) => {
