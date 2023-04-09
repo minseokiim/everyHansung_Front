@@ -4,6 +4,8 @@ import "./SignUpPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 
+emailjs.init("mkhz5jwAhnOJiYgoW");
+
 const FindIdPage = () => {
   const [email, setEmail] = useState("");
   const move = useNavigate();
@@ -14,14 +16,20 @@ const FindIdPage = () => {
       student_id: studentId,
       time: time,
     };
-
-    await emailjs.send(
-      "service_ogh6vg4",
-      "template_x2e3w1b",
-      templateParams,
-      userId
-    );
+  
+    try {
+      await emailjs.send(
+        "service_i8n5vol",
+        "template_g89w2kt",
+        templateParams,
+        userId
+      );
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      alert("이메일 전송에 실패했습니다. 다시 시도해주세요.");
+    }
   };
+  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,10 +40,10 @@ const FindIdPage = () => {
     }
 
     try {
-      const response = await axios.get("http://localhost:8080/forgot", {
+      const response = await axios.get("http://localhost:8080/auth/email", {
         params: { email },
       });
-      const studentId = response.data; // API 응답에 따라 경로를 변경해야 할 수 있습니다.
+      const studentId = response.data;
       const now = new Date();
       const time =
         now.getMonth() +
@@ -48,10 +56,9 @@ const FindIdPage = () => {
         now.getMinutes() +
         "분";
 
-      await sendEmail("KUYn7pjZiQPRaff54", email, time, studentId);
-      alert("아이디 정보가 이메일로 전송되었습니다.");
+      await sendEmail("mkhz5jwAhnOJiYgoW", email, time, studentId);
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 404) {
         alert("가입되지 않은 이메일입니다.");
       }
     }
