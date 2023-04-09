@@ -59,7 +59,8 @@
 ## 🛠 프로젝트 아키텍처
 
 <br/>
-<br/>
+<img src="https://user-images.githubusercontent.com/108450681/230784498-1649cf6d-a254-4f41-b7fc-6db6d0cb715a.png" alt=""/>
+<br />
 <br/>
 
 ## 🎞 프로젝트 데모 영상
