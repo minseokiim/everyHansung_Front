@@ -9,7 +9,7 @@ const SingUpPage = () => {
   const move = useNavigate();
 
   const [studentId, setStudentId] = useState("none");
-  const [passwd, setPasswd] = useState("none");
+  const [password, setPassword] = useState("none");
   const [email, setEmail] = useState("none");
   const [username, setUsername] = useState("none");
   const [nickname, setNickname] = useState("none");
@@ -17,8 +17,8 @@ const SingUpPage = () => {
   const [checkIdDisplay, setCheckIdDisplay] = useState("none");
   const [clearIdDisplay, setClearIdDisplay] = useState("none");
 
-  const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
-  const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
+  const [checkPasswordDisplay, setCheckPasswordDisplay] = useState("none");
+  const [clearPasswordDisplay, setClearPasswordDisplay] = useState("none");
 
   const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] = useState("none");
   const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] = useState("none");
@@ -45,21 +45,21 @@ const SingUpPage = () => {
     } catch (e) {}
   };
 
-  const passwdCheck = (e) => {
+  const passwordCheck = (e) => {
     const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
-      setPasswd(e.target.value);
-      setCheckPasswdDisplay("block");
-      setClearPasswdDisplay("none");
+      setPassword(e.target.value);
+      setCheckPasswordDisplay("block");
+      setClearPasswordDisplay("none");
     } else {
-      setClearPasswdDisplay("block");
-      setCheckPasswdDisplay("none");
+      setClearPasswordDisplay("block");
+      setCheckPasswordDisplay("none");
     }
   };
 
-  const confirmPasswdCheck = (e) => {
-    if (e.target.value !== passwd) {
+  const confirmPasswordCheck = (e) => {
+    if (e.target.value !== password) {
       setClearConfirmpasswdDisplay("block");
       setCheckConfirmpasswdDisplay("none");
     } else {
@@ -106,11 +106,11 @@ const SingUpPage = () => {
   };
 
   const onSubmit = (e) => {
-    if (checkIdDisplay === "block" &&  checkPasswdDisplay === "block" &&  checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checknameDisplay === "block" && checkNicknameDisplay === "block") {
-        axios.post("http://localhost:8080/register", {
+    if (checkIdDisplay === "block" &&  checkPasswordDisplay === "block" &&  checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checknameDisplay === "block" && checkNicknameDisplay === "block") {
+        axios.post("http://localhost:8080/auth/register", {
           studentId,
           email,
-          passwd,
+          password,
           username,
           nickname
         })
@@ -169,20 +169,20 @@ const SingUpPage = () => {
         </div>
         <div className="inputbox">
           <input
-            onChange={passwdCheck}
+            onChange={passwordCheck}
             type="password"
-            name="passwd"
+            name="password"
             maxLength="20"
             placeholder="소문자, 숫자, 특수문자를 포함하여 8자 이상 입력하세요."
             className="search"
           />
           <CheckIcon
             className="checkIcon"
-            style={{ display: checkPasswdDisplay }}
+            style={{ display: checkPasswordDisplay }}
           />
           <ClearIcon
             className="clearIcon"
-            style={{ display: clearPasswdDisplay }}
+            style={{ display: clearPasswordDisplay }}
           />
         </div>
       </div>
@@ -193,7 +193,7 @@ const SingUpPage = () => {
         </div>
         <div className="inputbox">
           <input
-            onChange={confirmPasswdCheck}
+            onChange={confirmPasswordCheck}
             type="password"
             name="user_repw"
             maxLength="20"

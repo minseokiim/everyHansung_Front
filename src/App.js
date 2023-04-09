@@ -63,7 +63,7 @@ const App = () => {
             path="/timetable"
             element={
               <div className="p-5 m-5 ">
-                <TimeTable />
+                {/* <TimeTable /> */}
                 <br />
                 <br />
                 <Footer />

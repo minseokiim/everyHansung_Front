@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import OtherPage from "./OtherPage/OtherPage";
 import { FaUserCircle } from "react-icons/fa";
+import apiClient from '../../apiClient';
 
 const MyPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -17,13 +18,12 @@ const MyPage = () => {
 
   useEffect(() => {
     if (studentId) {
-      axios
-        .get(`http://localhost:8080/members/${studentId}`)
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
         .then((res) => {
-          console.log("studentId" + studentId);
           const member = res.data;
           setName(member.username);
-          setNickname(member.nickname || "닉네임 없음");
+          setNickname(member.nickname);
         })
         .catch((error) => {
           console.error("Error fetching name:", error);

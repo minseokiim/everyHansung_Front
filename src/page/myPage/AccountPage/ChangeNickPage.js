@@ -4,6 +4,7 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../../../apiClient";
 
 const ChangeNickPage = () => {
   const [nickname, setNickname] = useState("none");
@@ -28,9 +29,8 @@ const ChangeNickPage = () => {
     e.preventDefault();
 
     if (checkNicknameDisplay === "block") {
-      axios
-        .patch(`http://localhost:8080/my/nickname`, {
-          studentId,
+      apiClient
+        .patch(`http://localhost:8080/member/${studentId}/nickname`, {
           nickname
         })
         .then(() => {
@@ -75,7 +75,7 @@ const ChangeNickPage = () => {
               type="submit"
               onClick={onSubmit}
             >
-              이메일 변경
+              닉네임 변경
             </button>
           </div>
         </div>
