@@ -9,19 +9,19 @@ const LoginPage = () => {
   const [studentId, setStudentId] = useState(
     localStorage.getItem("rememberMe") ? localStorage.getItem("studentId") : ""
   );
-  const [passwd, setPasswd] = useState(
-    localStorage.getItem("rememberMe") ? localStorage.getItem("passwd") : ""
+  const [password, setPassword] = useState(
+    localStorage.getItem("rememberMe") ? localStorage.getItem("password") : ""
   );
   const [rememberMe, setRememberMe] = useState(
     localStorage.getItem("rememberMe") === "true"
   );
 
   useEffect(() => {
-    if (rememberMe && studentId && passwd) {
+    if (rememberMe && studentId && password) {
       axios
-        .post("https://localhost:8080/login", {
+        .post("https://localhost:8080/auth/login", {
           studentId,
-          passwd,
+          password,
         })
         .then(() => {
           move("/membermain");
@@ -30,30 +30,30 @@ const LoginPage = () => {
           // 로그인 실패 시 아무것도 하지 않음
         });
     }
-  }, [rememberMe, studentId, passwd, move]);
+  }, [rememberMe, studentId, password, move]);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (studentId.trim() === "" || passwd.trim() === "") {
+    if (studentId.trim() === "" || password.trim() === "") {
       alert("학번과 비밀번호를 입력해주세요.");
       return;
     }
 
     axios
-      .post("http://localhost:8080/login", {
+      .post("http://localhost:8080/auth/login", {
         studentId,
-        passwd,
+        password,
       })
       .then((response) => {
+        localStorage.setItem("rememberMe", true);
+        localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.refreshToken);
+        localStorage.setItem("studentId", studentId);
         if (rememberMe) {
-          localStorage.setItem("rememberMe", true);
-          localStorage.setItem("studentId", studentId);
-          localStorage.setItem("passwd", passwd);
+          
         } else {
           localStorage.removeItem("rememberMe");
-          localStorage.setItem("studentId", studentId);
-          localStorage.removeItem("passwd", passwd);
         }
         move("/membermain");
       })
@@ -99,9 +99,9 @@ const LoginPage = () => {
           <div className="input">
             <input
               type="password"
-              value={passwd}
+              value={password}
               onChange={(e) => {
-                setPasswd(e.target.value);
+                setPassword(e.target.value);
               }}
               onKeyPress={handleKeyPress}
               placeholder="비밀번호"
@@ -118,7 +118,7 @@ const LoginPage = () => {
                   setRememberMe(e.target.checked);
                   if (e.target.checked) {
                     localStorage.setItem("studentId", studentId);
-                    localStorage.setItem("passwd", passwd);
+                    localStorage.setItem("password", password);
                     localStorage.setItem("rememberMe", true);
                   } else {
                     localStorage.setItem("rememberMe", false);

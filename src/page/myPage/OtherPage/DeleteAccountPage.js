@@ -4,21 +4,22 @@ import "../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
+import apiClient from "../../../apiClient";
 
 const DeleteAccountPage = () => {
   const move = useNavigate();
-  const studentId = localStorage.getItem("studnetId");
-  const [passwd, setPasswd] = useState("");
+  const studentId = localStorage.getItem("studentId");
+  const [password, setPassword] = useState("");
 
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
-  const passwdCheck = (e) => {
+  const passwordCheck = (e) => {
     const regex =
       /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
-      setPasswd(e.target.value);
+      setPassword(e.target.value);
       setCheckPasswdDisplay("block");
       setClearPasswdDisplay("none");
     } else {
@@ -29,17 +30,19 @@ const DeleteAccountPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+  
     if (checkPasswdDisplay === "block") {
-      axios
-        .delete(`http://localhost:8080/members/${studentId}`, {
-          passwd,
+      apiClient
+        .delete(`http://localhost:8080/member/${studentId}`, {
+          params: { password },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
         })
         .then(() => {
           alert("탈퇴되었습니다. 그동안 이용해주셔서 감사합니다.");
           move("/");
         })
         .catch((error) => {
+          console.log(error);
           if (error.response.status === 402) {
             setClearPasswdDisplay("block");
             setCheckPasswdDisplay("none");
@@ -62,9 +65,9 @@ const DeleteAccountPage = () => {
 
             <div className="inputbox">
               <input
-                onChange={passwdCheck}
+                onChange={passwordCheck}
                 type="password"
-                name="passwd"
+                name="password"
                 maxLength="20"
                 placeholder="계정 비밀번호"
                 className="search"

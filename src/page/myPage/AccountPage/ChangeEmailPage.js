@@ -4,10 +4,11 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
+import apiClient from '../../../apiClient';
 
 const ChangeEmailPage = () => {
   const [email, setEmail] = useState("");
-  const [passwd,  setPasswd] = useState("");
+  const [password,  setPassword] = useState("");
   const studentId = localStorage.getItem("studentId");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
@@ -33,11 +34,11 @@ const ChangeEmailPage = () => {
     } catch (e) {}
   };
 
-  const passwdCheck = (e) => {
+  const passwordCheck = (e) => {
     const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
-      setPasswd(e.target.value);
+      setPassword(e.target.value);
       setCheckPasswdDisplay("block");
       setClearPasswdDisplay("none");
     } else {
@@ -50,10 +51,9 @@ const ChangeEmailPage = () => {
     e.preventDefault();
 
     if (checkEmailDisplay === "block" && checkEmailDisplay == "block") {
-      axios
-        .patch("http://localhost:8080/my/email", {
-          studentId,
-          passwd,
+      apiClient
+        .patch(`http://localhost:8080/member/${studentId}/email`, {
+          password,
           email
         })
         .then(() => {
@@ -108,9 +108,9 @@ const ChangeEmailPage = () => {
 
             <div className="inputbox">
               <input
-                onChange={passwdCheck}
+                onChange={passwordCheck}
                 type="password"
-                name="passwd"
+                name="password"
                 maxLength="20"
                 placeholder="계정 비밀번호"
                 className="search"
