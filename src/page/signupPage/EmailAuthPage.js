@@ -18,7 +18,7 @@ const EmailAuthPage = () => {
 
     try {
       const templateParams = {email, verificationCode: generatedCode};
-      await emailjs.send("service_ogh6vg4", "template_r6z03sd", templateParams, "KUYn7pjZiQPRaff54");
+      await emailjs.send("service_i8n5vol", "template_zifflse", templateParams, "mkhz5jwAhnOJiYgoW");
       alert("인증코드 이메일로 전송되었습니다.");
       setIsVerificationCodeSent(true);
     } catch (error) {
