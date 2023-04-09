@@ -6,21 +6,21 @@ import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const SetPasswdPage = () => {
-  const [passwd, setPasswd] = useState("");
+  const [password, setPasswd] = useState("");
 
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
-  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] =
+  const [checkConfirmPasswordDisplay, setCheckConfirmPasswordDisplay] =
     useState("none");
-  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] =
+  const [clearConfirmPasswordDisplay, setClearConfirmPasswordDisplay] =
     useState("none");
 
   const move = useNavigate();
   const location = useLocation();
   const studentId = location.state.studentId;
 
-  const passwdCheck = (e) => {
+  const passwordCheck = (e) => {
     const regex =
       /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
@@ -35,12 +35,12 @@ const SetPasswdPage = () => {
   };
 
   const confirmPasswdCheck = (e) => {
-    if (e.target.value !== passwd) {
-      setClearConfirmpasswdDisplay("block");
-      setCheckConfirmpasswdDisplay("none");
+    if (e.target.value !== password) {
+      setClearConfirmPasswordDisplay("block");
+      setCheckConfirmPasswordDisplay("none");
     } else {
-      setCheckConfirmpasswdDisplay("block");
-      setClearConfirmpasswdDisplay("none");
+      setCheckConfirmPasswordDisplay("block");
+      setClearConfirmPasswordDisplay("none");
     }
   };
 
@@ -49,12 +49,11 @@ const SetPasswdPage = () => {
 
     if (
       checkPasswdDisplay === "block" &&
-      checkConfirmpasswdDisplay === "block"
+      checkConfirmPasswordDisplay === "block"
     ) {
       axios
-        .patch("http://localhost:8080/forgot/password/identity/result", {
-          studentId,
-          passwd,
+        .patch(`http://localhost:8080/auth/${studentId}/password`, {
+          password,
         })
         .then((response) => {
           alert("비밀번호 변경하였습니다.");
@@ -79,9 +78,9 @@ const SetPasswdPage = () => {
           <div className="input">
             <div className="inputbox">
               <input
-                onChange={passwdCheck}
+                onChange={passwordCheck}
                 type="password"
-                name="passwd"
+                name="password"
                 maxLength="20"
                 placeholder="새 비밀번호"
                 className="search"
@@ -109,11 +108,11 @@ const SetPasswdPage = () => {
               />
               <CheckIcon
                 className="checkIcon"
-                style={{ display: checkConfirmpasswdDisplay }}
+                style={{ display: checkConfirmPasswordDisplay }}
               />
               <ClearIcon
                 className="clearIcon"
-                style={{ display: clearConfirmpasswdDisplay }}
+                style={{ display: clearConfirmPasswordDisplay }}
               />
             </div>
           </div>

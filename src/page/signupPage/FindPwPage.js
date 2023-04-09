@@ -17,7 +17,7 @@ const FindPwPage = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/members/${studentId}`
+        `http://localhost:8080/auth/${studentId}`
       );
       if (response && response.data !== null) {
         navigate("/forgot/password/userid", {
