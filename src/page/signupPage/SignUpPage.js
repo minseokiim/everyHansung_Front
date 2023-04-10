@@ -5,7 +5,32 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import axios from "axios";
 
+import emailjs from "emailjs-com";
+
 const SingUpPage = () => {
+  const [verificationCode, setVerificationCode] = useState("");
+  const [inputVerificationCode, setInputVerificationCode] = useState("");
+  const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
+
+  const sendEmail = async () => {
+    const generatedCode = Math.floor(100000 + Math.random() * 900000); // 6자리 인증 코드 생성
+    setVerificationCode(generatedCode);
+
+    try {
+      const templateParams = { email, verificationCode: generatedCode };
+      await emailjs.send(
+        "service_fe94oyw",
+        "template_23upm73",
+        templateParams,
+        "PgtbJif1CAURhFHws"
+      );
+      alert("인증코드 이메일로 전송되었습니다.");
+      setIsVerificationCodeSent(true);
+    } catch (error) {
+      alert("인증코드 이메일로 전송을 실패했습니다.");
+    }
+  };
+
   const move = useNavigate();
 
   const [studentId, setStudentId] = useState("none");
@@ -20,8 +45,12 @@ const SingUpPage = () => {
   const [checkPasswordDisplay, setCheckPasswordDisplay] = useState("none");
   const [clearPasswordDisplay, setClearPasswordDisplay] = useState("none");
 
-  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] = useState("none");
-  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] = useState("none");
+  const [checkConfirmpasswdDisplay, setCheckConfirmpasswdDisplay] = useState(
+    "none"
+  );
+  const [clearConfirmpasswdDisplay, setClearConfirmpasswdDisplay] = useState(
+    "none"
+  );
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
   const [clearEmailDisplay, setClearEmailDisplay] = useState("none");
@@ -106,29 +135,48 @@ const SingUpPage = () => {
   };
 
   const onSubmit = (e) => {
-    if (checkIdDisplay === "block" &&  checkPasswordDisplay === "block" &&  checkConfirmpasswdDisplay === "block" && checkEmailDisplay === "block" && checknameDisplay === "block" && checkNicknameDisplay === "block") {
-        axios.post("http://localhost:8080/auth/register", {
-          studentId,
-          email,
-          password,
-          username,
-          nickname
-        })
-        .then((response) => {
-          alert(username + "님, 회원가입을 축하합니다.");
-          move("/login");
-        })
-        .catch((error) => {
-          if (error.response.status === 401) {
-            setClearIdDisplay("block");
-            setCheckIdDisplay("none");
-              alert('이미 가입된 학번입니다.');
-          } else if (error.response.status === 402) {
-            setClearNicknameDisplay("block");
-            setCheckNicknameDisplay("none");
-            alert('이미 사용중인 닉네임입니다.');
-          }
-        })
+    e.preventDefault();
+    if (isVerificationCodeSent) {
+      if (inputVerificationCode === verificationCode.toString()) {
+        alert("인증 번호가 확인되었습니다.");
+
+        if (
+          checkIdDisplay === "block" &&
+          checkPasswordDisplay === "block" &&
+          checkConfirmpasswdDisplay === "block" &&
+          checkEmailDisplay === "block" &&
+          checknameDisplay === "block" &&
+          checkNicknameDisplay === "block"
+        ) {
+          axios
+            .post("http://localhost:8080/auth/register", {
+              studentId,
+              email,
+              password,
+              username,
+              nickname,
+            })
+            .then((response) => {
+              alert(username + "님, 회원가입을 축하합니다.");
+              move("/login");
+            })
+            .catch((error) => {
+              if (error.response.status === 401) {
+                setClearIdDisplay("block");
+                setCheckIdDisplay("none");
+                alert("이미 가입된 학번입니다.");
+              } else if (error.response.status === 402) {
+                setClearNicknameDisplay("block");
+                setCheckNicknameDisplay("none");
+                alert("이미 사용중인 닉네임입니다.");
+              }
+            });
+        }
+      } else {
+        alert("인증 번호가 일치하지 않습니다.");
+      }
+    } else {
+      sendEmail();
     }
   };
 
@@ -213,30 +261,6 @@ const SingUpPage = () => {
 
       <div className="input">
         <div className="label">
-          <label>이메일</label>
-        </div>
-        <div className="inputbox">
-          <input
-            onChange={emailCheck}
-            type="email"
-            name="user_email"
-            maxLength="50"
-            placeholder="이메일을 입력하세요."
-            className="search"
-          />
-          <CheckIcon
-            className="checkIcon"
-            style={{ display: checkEmailDisplay }}
-          />
-          <ClearIcon
-            className="clearIcon"
-            style={{ display: clearEmailDisplay }}
-          />
-        </div>
-      </div>
-
-      <div className="input">
-        <div className="label">
           <label>이름</label>
         </div>
         <div className="inputbox">
@@ -282,16 +306,52 @@ const SingUpPage = () => {
           />
         </div>
       </div>
+      <div className="input">
+        <div className="label">
+          <label>이메일</label>
+        </div>
+        <div className="inputbox">
+          <input
+            onChange={emailCheck}
+            type="email"
+            name="user_email"
+            maxLength="50"
+            placeholder="이메일을 입력하세요."
+            className="search"
+          />
+          <CheckIcon
+            className="checkIcon"
+            style={{ display: checkEmailDisplay }}
+          />
+          <ClearIcon
+            className="clearIcon"
+            style={{ display: clearEmailDisplay }}
+          />
+        </div>
+      </div>
+      {isVerificationCodeSent && (
+        <div className="input">
+          <input
+            type="text"
+            value={inputVerificationCode}
+            onChange={(e) => {
+              setInputVerificationCode(e.target.value);
+            }}
+            placeholder="인증 번호"
+          ></input>
+        </div>
+      )}
+      <div className="input">
+        <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
+          {isVerificationCodeSent ? "인증 번호 확인" : "이메일 인증"}
+        </button>
+      </div>
 
-      <button onClick={onSubmit} type="submit">
-        가입하기
-      </button>
       <br />
 
       <p className="find">
         <a href="/login">로그인하기</a>
       </p>
-      
     </div>
   );
 };
