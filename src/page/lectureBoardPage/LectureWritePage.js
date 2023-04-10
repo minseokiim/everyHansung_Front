@@ -9,7 +9,7 @@ const LectureWritePage = () => {
   const move = useNavigate();
   const [professor, setProfessor] = useState("");
   const [lectureName, setLectureName] = useState("");
-  const [selectedStar, setSelectedStar] = useState(0);
+  const [selectedStars, setSelectedStars] = useState(0);
   const [semester, setSemester] = useState("평가 안함");
   const [homework, setHomework] = useState("평가 안함");
   const [score, setScore] = useState("평가 안함");
@@ -34,16 +34,16 @@ const LectureWritePage = () => {
       //https://localhost:8080/lectureboardlist
 
       axios
-        .post("http://localhost:8080/lectures", {
+        .post("http://localhost:8080/lecture/register", {
           lectureName,
-          professor,
-          content,
-          selectedStar,
+          professor,     
+          selectedStars,
           semester,
           homework,
           score,
           test,
           team,
+          content
         })
         .then(() => {
           alert("작성되었습니다!");
@@ -86,12 +86,12 @@ const LectureWritePage = () => {
           {createArray(5).map((n, i) => (
             <Star
               key={i}
-              selected={selectedStar > i}
-              onSelect={() => setSelectedStar(i + 1)}
+              selected={selectedStars > i}
+              onSelect={() => setSelectedStars(i + 1)}
             />
           ))}
           &nbsp;&nbsp;
-          {selectedStar} / 5
+          {selectedStars} / 5
           <br />
         </div>
 

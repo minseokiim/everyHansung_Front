@@ -12,7 +12,7 @@ const LectureShowPage = () => {
   const createArray = (length) => [...Array(length)];
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/lectures/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/lecture/${id}`).then((res) => {
       setPost(res.data);
     });
   };
