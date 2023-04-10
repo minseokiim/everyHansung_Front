@@ -8,6 +8,7 @@ import FreeListPage from "../freeBoardPage/FreeListPage";
 import SecretListPage from "../secretBoardPage/SecretListPage";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import apiClient from "../../apiClient";
 
 const MemberMainPage = () => {
   const move = useNavigate();
@@ -16,8 +17,8 @@ const MemberMainPage = () => {
 
   useEffect(() => {
     if (studentId) {
-      axios
-        .get(`http://localhost:8080/members/${studentId}`)
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
