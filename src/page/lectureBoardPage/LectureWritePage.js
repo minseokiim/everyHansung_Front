@@ -36,14 +36,14 @@ const LectureWritePage = () => {
       axios
         .post("http://localhost:8080/lecture/register", {
           lectureName,
-          professor,     
+          professor,
           selectedStars,
           semester,
           homework,
           score,
           test,
           team,
-          content
+          content,
         })
         .then(() => {
           alert("작성되었습니다!");
@@ -55,7 +55,9 @@ const LectureWritePage = () => {
   return (
     <form className="lec-back">
       <div className="mb-3">
-        <label className="form-label m-2 mb-0"><strong>강의평 쓰기</strong> </label>
+        <label className="form-label m-2 mb-0">
+          <strong>강의평 쓰기</strong>{" "}
+        </label>
         <hr />
 
         <div className="mb-3">
