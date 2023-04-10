@@ -51,7 +51,6 @@ const LoginPage = () => {
         localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("studentId", studentId);
         if (rememberMe) {
-          
         } else {
           localStorage.removeItem("rememberMe");
         }
@@ -103,7 +102,7 @@ const LoginPage = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              onKeyPress={handleKeyPress}
+              onKeyUp={handleKeyPress}
               placeholder="비밀번호"
             ></input>
           </div>

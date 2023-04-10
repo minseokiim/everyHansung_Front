@@ -4,32 +4,29 @@ import "./SignUpPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 
-emailjs.init("mkhz5jwAhnOJiYgoW");
-
 const FindIdPage = () => {
   const [email, setEmail] = useState("");
   const move = useNavigate();
 
-  const sendEmail = async (userId, email, time, studentId) => {
+  const sendEmail = async (email, time, studentId) => {
     const templateParams = {
-      to_email: email,
+      email,
       student_id: studentId,
-      time: time,
+      time,
     };
-  
+
     try {
       await emailjs.send(
         "service_i8n5vol",
         "template_g89w2kt",
         templateParams,
-        userId
+        "mkhz5jwAhnOJiYgoW"
       );
+      alert("이메일로 전송되었습니다.");
     } catch (error) {
-      console.error("Email sending failed:", error);
-      alert("이메일 전송에 실패했습니다. 다시 시도해주세요.");
+      alert(" 이메일로 전송을 실패했습니다.");
     }
   };
-  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -44,6 +41,7 @@ const FindIdPage = () => {
         params: { email },
       });
       const studentId = response.data;
+
       const now = new Date();
       const time =
         now.getMonth() +
@@ -56,7 +54,7 @@ const FindIdPage = () => {
         now.getMinutes() +
         "분";
 
-      await sendEmail("mkhz5jwAhnOJiYgoW", email, time, studentId);
+      await sendEmail(email, time, studentId);
     } catch (error) {
       if (error.response && error.response.status === 404) {
         alert("가입되지 않은 이메일입니다.");
