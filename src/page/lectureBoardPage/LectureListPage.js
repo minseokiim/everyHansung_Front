@@ -78,7 +78,7 @@ const LectureListPage = () => {
                 >
                   <div>
                     {createArray(5).map((n, i) => (
-                      <Star key={i} selected={post.selectedStar > i} />
+                      <Star key={i} selected={post.selectedStars > i} />
                     ))}
                     <hr />
                   </div>

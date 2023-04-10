@@ -50,9 +50,9 @@ const LectureShowPage = () => {
         </strong>
         <br />
         {createArray(5).map((n, i) => (
-          <Star key={i} selected={post.selectedStar > i} />
+          <Star key={i} selected={post.selectedStars > i} />
         ))}
-        &nbsp;&nbsp;{post.selectedStar}/5
+        &nbsp;&nbsp;{post.selectedStars}/5
       </p>
       <p>
         <strong>
