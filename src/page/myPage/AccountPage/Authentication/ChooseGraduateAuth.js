@@ -1,36 +1,35 @@
 import { useState } from "react";
-import axios from "axios";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-import { AiOutlinePicture } from "react-icons/ai";
-import { FaUserGraduate } from "react-icons/fa";
+import apiClient from "../../../../apiClient";
 import { TbCertificate } from "react-icons/tb";
 
 const ChooseGraduateAuth = () => {
+  const studentId = localStorage.getItem("studentId");
   const move = useNavigate();
-  const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
+      setFile(e.target.files[0]);
       setPreview(URL.createObjectURL(e.target.files[0]));
     }
   };
 
   const removeImage = () => {
-    setImage(null);
+    setFile(null);
     setPreview(null);
   };
 
   const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("file", file);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/auth/graduate",
+      const response = await apiClient.post(
+        `http://localhost:8080/member/${studentId}/uploadStudentCard`,
         formData,
         {
           headers: {
@@ -43,7 +42,7 @@ const ChooseGraduateAuth = () => {
       console.log(response.data);
     } catch (error) {
       // Handle errors here
-      console.error("Error uploading the image:", error);
+      console.error("Error uploading the file:", error);
     }
   };
 
@@ -60,7 +59,7 @@ const ChooseGraduateAuth = () => {
         <hr />
         <input
           type="file"
-          accept="image/*"
+          accept="file/*"
           onChange={handleImageChange}
           className="t-3"
           id="file-input"
