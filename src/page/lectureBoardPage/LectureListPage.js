@@ -18,23 +18,11 @@ const LectureListPage = () => {
   };
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/lectures").then((res) => {
+    axios.get("http://localhost:8080/lecture/all").then((res) => {
       setPosts(res.data);
       setFilteredPosts(res.data);
     });
   };
-
-  // const deletePost = (e, id) => {
-  //   e.stopPropagation();
-  //   alert("삭제하시겠습니까?");
-  //   axios.delete(`http://localhost:3001/posts/${id}`).then(() =>
-  //     setPosts((prevPosts) => {
-  //       return prevPosts.filter((post) => {
-  //         return post.id !== id;
-  //       });
-  //     })
-  //   );
-  // };
 
   const filterPosts = () => {
     const filtered = posts.filter(
