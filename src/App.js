@@ -74,8 +74,8 @@ const App = () => {
           <Route
             path="/chatbot"
             element={
-              <div className="p-5 m-5 ">
-                <NewChatBot className="m-5 " />
+              <div className="p-5 m-5">
+                <NewChatBot />
                 <br />
                 <br />
                 <Footer />

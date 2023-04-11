@@ -54,7 +54,7 @@ const LectureListPage = () => {
       </div>
 
       <hr />
-      <div className="m-4">
+      <div>
         <input
           type="text"
           placeholder="검색하고 싶은 수업명/교수님 성함 입력하고 ENTER"

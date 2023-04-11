@@ -28,8 +28,13 @@
 .sangsangs {
   padding-left: 90px;
   padding-right: 60px;
-  width: 95%;
+  width: 90%;
   height: 500px;
+}
+
+.springsang {
+  width: 95%;
+  height: 80%;
 }
 
 .MainSangSang {

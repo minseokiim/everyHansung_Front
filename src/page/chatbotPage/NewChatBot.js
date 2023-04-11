@@ -100,7 +100,7 @@ const NewChatBot = () => {
       hideHeader={false}
       headerTitle="자주 묻는 질문"
       placeholder={"채팅이 불가한 채널입니다."}
-      width="100%" // 챗봇 너비 설정
+      width="70%" // 챗봇 너비 설정
       height="100%" // 챗봇 높이 설정
       bubbleStyle={{ backgroundColor: "white", color: "navy" }}
       userBubbleStyle={{ backgroundColor: "white", color: "navy" }}

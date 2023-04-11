@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LectureListPage from "../lectureBoardPage/LectureListPage";
 import FreeListPage from "../freeBoardPage/FreeListPage";
 import SecretListPage from "../secretBoardPage/SecretListPage";
+import BookListPage from "../bookPage/BookListPage";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import apiClient from "../../apiClient";
@@ -31,30 +32,6 @@ const MemberMainPage = () => {
 
   return (
     <div className=" p-3">
-      {/* <div>
-        {/* <div className="grey"> */}
-      {/* <img alt="hansung" src="img/chatlogo.png" className="logo" /> */}
-      {/* </div> */}
-      {/* <div
-          className="cursor-pointer grey"
-          onClick={(e) => {
-            e.preventDefault();
-            move("/my");
-          }}
-        >
-          정보 설정
-        </div> */}
-      {/* <div
-          className="cursor-pointer grey"
-          onClick={(e) => {
-            e.preventDefault();
-            move("/");
-          }}
-        >
-          로그아웃
-        </div> */}
-      {/* </div>
-      <hr /> */}
       <div className="service ">
         <div className=" my-info ">
           <img alt="hansung" src="img/chatlogo.png" className="logo" />
@@ -70,7 +47,7 @@ const MemberMainPage = () => {
             <img
               alt="sangsangs"
               src="img/springsang.png"
-              className="sangsangs"
+              className="springsang"
             />
           </div>
         </h2>
@@ -201,6 +178,10 @@ const MemberMainPage = () => {
       <br />
       <div className="mini-card">
         <LectureListPage />
+      </div>
+      <br />
+      <div className="mini-card">
+        <BookListPage />
       </div>
     </div>
   );
