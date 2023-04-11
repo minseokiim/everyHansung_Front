@@ -1,4 +1,4 @@
-.chat-container {
+/* .chat-container {
   display: flex;
   height: 600px;
   flex-direction: column;
@@ -14,10 +14,10 @@
   flex-direction: column;
   padding: 10px;
   /* border-radius: 3px;
-  border: 1px solid black; */
-}
+  border: 1px solid black; 
+} */
 
-.message {
+/* .message {
   display: inline-block;
   padding: 10px;
   margin-bottom: 10px;
@@ -36,7 +36,7 @@
 }
 
 .user-message {
-  /* border: #4a83ff solid 1px; */
+  border: #4a83ff solid 1px;
   background-color: hsl(196, 100%, 93%);
   align-self: flex-end;
 
@@ -71,4 +71,4 @@
 
 .chat-button:hover {
   background-color: hwb(227 65% 17%);
-}
+} */

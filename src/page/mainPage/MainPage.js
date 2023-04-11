@@ -48,11 +48,11 @@ const MainPage = () => {
         </h2>
         <div className="paragraph">
           <p>
-            e-class, 종정시, 공지사항을 한번에
+            학교 서비스에 손쉽게
             <strong> 접근</strong>
             이 가능하고,
             <br />
-            학식 등 유용한
+            유용한
             <strong> 학교 생활 정보</strong>
             를 접할 수 있으며,
             <br />

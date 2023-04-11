@@ -41,6 +41,7 @@ const BookWritePage = () => {
           bookName,
           state,
           writing,
+          broken,
         })
         .then(() => {
           alert("작성되었습니다!");

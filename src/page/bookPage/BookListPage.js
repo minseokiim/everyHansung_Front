@@ -57,7 +57,7 @@ const BookListPage = () => {
       </div>
 
       <hr />
-      <div className="m-4">
+      <div>
         <form onSubmit={onSearch}>
           <input
             type="text"

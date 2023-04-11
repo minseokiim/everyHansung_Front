@@ -30,9 +30,6 @@ const LectureWritePage = () => {
       alert("본문을 입력하세요");
       return;
     } else {
-      //공백이 아닐때 axios.post로 title, content보내고 , 리스트로 이동
-      //https://localhost:8080/lectureboardlist
-
       axios
         .post("http://localhost:8080/lecture/register", {
           lectureName,
