@@ -14,7 +14,8 @@
 - [프로젝트 아키텍처](#-프로젝트-아키텍처)
 - [프로젝트 데모 영상](#-프로젝트-데모-영상)
 - [팀원 소개](#-팀원-소개)
-  <br/>
+
+<br/>
 
 ## 🖥️ 프로젝트 개요
 
@@ -56,6 +57,9 @@
 <img src="https://img.shields.io/badge/hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white">
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 </div>
+
+<br/>
+<br/>
 
 ## 🛠 프로젝트 아키텍처
 
