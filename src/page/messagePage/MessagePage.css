@@ -20,3 +20,25 @@
 .message-button:hover {
   color: #ffffff;
 }
+
+.message-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-textarea {
+  resize: none;
+  margin-bottom: 1rem;
+}

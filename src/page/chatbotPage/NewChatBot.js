@@ -2,6 +2,7 @@ import React from "react";
 import ChatBot from "react-simple-chatbot";
 import logo from "./everyhansung.png";
 import chatlogo from "./chatlogo.png";
+import { ThemeProvider } from "styled-components";
 
 const NewChatBot = () => {
   const steps = [
@@ -78,8 +79,7 @@ const NewChatBot = () => {
 
     {
       id: "12",
-      message:
-        "8월 14일(월) ~8월 18일(금) ** 학년마다 다르니 꼭 페이지 참조하기",
+      message: "8월 14일(월) ~8월 18일(금)",
       trigger: "3",
     },
     {
@@ -215,25 +215,37 @@ const NewChatBot = () => {
       trigger: "3",
     },
   ];
+  const theme = {
+    background: "#f5f8fb",
+    headerBgColor: "hsl(227, 49%, 31%)",
+    headerFontColor: "#fff",
+    headerFontSize: "17px",
+    botBubbleColor: "white",
+    botFontColor: "hsl(227, 49%, 31%)",
+    userBubbleColor: "hsl(227, 49%, 31%)",
+    userFontColor: "white",
+  };
 
   return (
-    <ChatBot
-      botAvatar={logo}
-      userAvatar={chatlogo}
-      steps={steps}
-      hideHeader={false}
-      headerTitle="자주 묻는 질문"
-      placeholder={"채팅이 불가한 채널입니다."}
-      width="70%" // 챗봇 너비 설정
-      height="100%" // 챗봇 높이 설정
-      bubbleStyle={{ backgroundColor: "white", color: "navy" }}
-      userBubbleStyle={{ backgroundColor: "white", color: "navy" }}
-      optionStyle={{ backgroundColor: "white", color: "navy" }}
-      optionHoverStyle={{
-        backgroundColor: "rgba(0,0,128,0.8)",
-        color: "white",
-      }}
-    />
+    <ThemeProvider theme={theme}>
+      <ChatBot
+        botAvatar={logo}
+        userAvatar={chatlogo}
+        steps={steps}
+        hideHeader={false}
+        headerTitle="자주 묻는 질문"
+        placeholder={"채팅이 불가한 채널입니다."}
+        width="70%" // 챗봇 너비 설정
+        height="100%" // 챗봇 높이 설정
+        // bubbleStyle={{ backgroundColor: "white", color: "navy" }}
+        // userBubbleStyle={{ backgroundColor: "white", color: "navy" }}
+        //optionStyle={{ backgroundColor: "navy", color: "white" }}
+        // optionHoverStyle={{
+        //   backgroundColor: "rgba(0,0,128,0.8)",
+        //   color: "white",
+        // }}
+      />
+    </ThemeProvider>
   );
 };
 
