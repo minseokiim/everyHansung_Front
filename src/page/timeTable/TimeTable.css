@@ -1,0 +1,41 @@
+h1 {
+  margin-bottom: 1rem;
+}
+
+.time-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+}
+
+.time-table th,
+.time-table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.time-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.time-table td {
+  background-color: #fff;
+}
+
+/* .save-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  color: #fff;
+  background-color: #4caf50;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #3e8e41;
+} */
