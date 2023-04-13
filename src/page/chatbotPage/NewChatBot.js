@@ -35,6 +35,8 @@ const NewChatBot = () => {
         { value: "app-2", label: "2학기 수강신청", trigger: "12" },
         { value: "season-fin", label: "계절학기 종강", trigger: "13" },
         { value: "want", label: "휴복학신청", trigger: "14" },
+        { value: "number", label: "학교 연락처", trigger: "15" },
+        { value: "depart-num", label: "과 사무실 연락처", trigger: "26" },
       ],
     },
     {
@@ -88,6 +90,128 @@ const NewChatBot = () => {
     {
       id: "14",
       message: "8월 1일(화) ~ 8월 25일 (금)",
+      trigger: "3",
+    },
+    {
+      id: "15",
+      options: [
+        { value: "operation", label: "학사운영팀", trigger: "16" },
+        { value: "scholarship", label: "학생장학팀", trigger: "17" },
+        { value: "em-support", label: "취업지원팀", trigger: "18" },
+        { value: "st-support", label: "창업지원팀", trigger: "19" },
+        { value: "edu-support", label: "교육혁신지원팀", trigger: "20" },
+        { value: "edu-dev", label: "교육역량개발센터", trigger: "21" },
+        { value: "counseling", label: "학생상담센터", trigger: "22" },
+        { value: "info-team", label: "정보화팀 ", trigger: "23" },
+        { value: "fac-support", label: "시설지원팀", trigger: "24" },
+        { value: "dis-support", label: "장애학생지원센터", trigger: "25" },
+      ],
+    },
+    {
+      id: "16",
+      message:
+        "학적, 교무, 성적, 졸업, 전자출결, 교직, 휴학, 복학 (02-760-4219)",
+      trigger: "3",
+    },
+    {
+      id: "17",
+      message: "장학 (02-760-4221)",
+      trigger: "3",
+    },
+    {
+      id: "18",
+      message: "교육장학금, 365캠퍼스, 취업지원, 진로상담 (02-760-4295)",
+      trigger: "3",
+    },
+    {
+      id: "19",
+      message: "학생창업 (02-760-5610)",
+      trigger: "3",
+    },
+    {
+      id: "20",
+      message:
+        "한성e-포트폴리오 HOPE, 학생이력관리시스템, 비교과포인트, 지도교수 (02-760-5816)",
+      trigger: "3",
+    },
+    {
+      id: "21",
+      message: "한성E-CLASS (02-760-4248)",
+      trigger: "3",
+    },
+    {
+      id: "22",
+      message: "학생상담센터 (02-760-4171)",
+      trigger: "3",
+    },
+    {
+      id: "23",
+      message:
+        "홈페이지, 전산처리, Wi-Fi, 네트워크, 한성웹메일, 오피스365 (02-760-4291)",
+      trigger: "3",
+    },
+    {
+      id: "24",
+      message: "시설, 건축, 안전 (02-760-4232)",
+      trigger: "3",
+    },
+    {
+      id: "25",
+      message: "장애학생지원 (02-760-4363)",
+      trigger: "3",
+    },
+    {
+      id: "26",
+      options: [
+        { value: "creative", label: "크리에이티브인문예술대학", trigger: "27" },
+        { value: "social", label: "미래융합사회과학대학", trigger: "28" },
+        { value: "design", label: "디자인대학", trigger: "29" },
+        { value: "it", label: "IT공과대학", trigger: "30" },
+        { value: "conv", label: "창의융합대학", trigger: "31" },
+        { value: "plus", label: "미래플러스대학", trigger: "32" },
+        { value: "sangsang", label: "상상력교양대학 ", trigger: "33" },
+        { value: "inter-center", label: "국제교류원", trigger: "34" },
+      ],
+    },
+    {
+      id: "27",
+      message: "크리에이티브인문예술대학: 02-760-5674",
+      trigger: "3",
+    },
+    {
+      id: "28",
+      message: "미래융합사회과학대학: 02-760-4431",
+      trigger: "3",
+    },
+    {
+      id: "29",
+      message: "디자인대학: 02-760-4432",
+      trigger: "3",
+    },
+    {
+      id: "30",
+      message: "IT공과대학: 02-760-4433",
+      trigger: "3",
+    },
+    {
+      id: "31",
+      message: "창의융합대학: 02-760-5735",
+      trigger: "3",
+    },
+    {
+      id: "32",
+      message: "미래플러스대학: 02-760-5745",
+      trigger: "3",
+    },
+
+    {
+      id: "33",
+      message: "상상력교양대학: 02-760-5821",
+      trigger: "3",
+    },
+    {
+      id: "34",
+      message: "국제교류원: 02-760-4473/4095",
       trigger: "3",
     },
   ];
