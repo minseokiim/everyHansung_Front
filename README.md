@@ -1,8 +1,7 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/108450681/230785106-1a2cbcf2-8686-4f57-bba0-b12b45fb8fb8.png" width="100px;" height="100px" alt=""/>
+<h1>에브리한성</h1>
 </div>
-<br/>
-<h1 align="center">에브리한성</h1>
 <br/>
 
 ## 📝 목차
@@ -15,7 +14,8 @@
 - [프로젝트 아키텍처](#-프로젝트-아키텍처)
 - [프로젝트 데모 영상](#-프로젝트-데모-영상)
 - [팀원 소개](#-팀원-소개)
-  <br/>
+
+<br/>
 
 ## 🖥️ 프로젝트 개요
 
@@ -57,6 +57,9 @@
 <img src="https://img.shields.io/badge/hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white">
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 </div>
+
+<br/>
+<br/>
 
 ## 🛠 프로젝트 아키텍처
 
