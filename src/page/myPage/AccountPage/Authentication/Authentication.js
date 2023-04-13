@@ -13,7 +13,7 @@ const Authentication = () => {
       <strong>
         <AiFillSafetyCertificate />
         인증하기
-      </strong>{" "}
+      </strong>
       <br />
       <br />
       <div

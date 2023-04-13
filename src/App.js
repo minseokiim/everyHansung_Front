@@ -51,7 +51,7 @@ import BookListPage from "./page/bookPage/BookListPage";
 import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
-import TimeTable from "./timeTable/TimeTable";
+import TimeTable from "./page/timeTable/TimeTable";
 
 const App = () => {
   return (
@@ -63,7 +63,7 @@ const App = () => {
             path="/timetable"
             element={
               <div className="p-5 m-5 ">
-                {/* <TimeTable /> */}
+                <TimeTable />
                 <br />
                 <br />
                 <Footer />

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Star from "./Star";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import apiClient from "../../apiClient";
 
 const LectureListPage = () => {
   const move = useNavigate();
