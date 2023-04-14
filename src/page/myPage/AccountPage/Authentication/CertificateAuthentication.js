@@ -6,7 +6,6 @@ import apiClient from "../../../../apiClient";
 
 const CertificateAuthentication = () => {
   const studentId = localStorage.getItem("studentId");
-  const move = useNavigate();
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
 

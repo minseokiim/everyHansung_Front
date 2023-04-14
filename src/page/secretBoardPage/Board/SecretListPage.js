@@ -15,7 +15,7 @@ const SecretListPage = () => {
   const getPosts = () => {
     axios.get("http://localhost:8080/secretposts").then((res) => {
       setPosts(res.data);
-      setFilteredPosts(res.data);
+      // setFilteredPosts(res.data);
     });
   };
 
@@ -33,7 +33,11 @@ const SecretListPage = () => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [posts.length]);
+
+  useEffect(() => {
+    filterPosts();
+  }, [posts]);
 
   const handleSearch = (e) => {
     e.preventDefault();

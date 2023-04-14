@@ -73,14 +73,14 @@ const PolicyPage = () => {
         <br />
         <div className=" p-3">
           <li>
-            방송통신심의위원회 : :
+            방송통신심의위원회 :
             <a href="http://www.kocsc.or.kr/mainPage.do">
               http://www.kocsc.or.kr/mainPage.do
             </a>
           </li>
           <br />
           <li>
-            사이버범죄 신고시스템 : : :
+            사이버범죄 신고시스템 :
             <a href="https://ecrm.police.go.kr">https://ecrm.police.go.kr</a>
           </li>
         </div>

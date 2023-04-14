@@ -1,22 +1,14 @@
 {
   "secretposts": [
     {
-      "title": "비밀게시글",
-      "content": "ㅎㅎ",
-      "createdAt": 1679833805564,
+      "title": "ㅁㄴ",
+      "content": "ㄴ",
+      "createdAt": 1681478149647,
       "isAnonymous": false,
-      "id": 1
+      "id": 5
     }
   ],
-  "freeposts": [
-    {
-      "title": "자유게시글",
-      "content": "ㄴㄴ",
-      "createdAt": 1679835693704,
-      "isAnonymous": false,
-      "id": 1
-    }
-  ],
+  "freeposts": [],
   "lectures": [
     {
       "lectureName": "웹프레임워크 1",
@@ -43,31 +35,8 @@
       "id": 3
     }
   ],
-  "freecomments": [
-    {
-      "commentContent": "댓글1",
-      "commentCreatedAt": 1679835696106,
-      "commentIsAnonymous": false,
-      "freepostId": "1",
-      "id": 1
-    }
-  ],
-  "secretcomments": [
-    {
-      "commentContent": "댓글1",
-      "commentCreatedAt": 1679833809629,
-      "commentIsAnonymous": false,
-      "secretpostId": "2",
-      "id": 1
-    },
-    {
-      "commentContent": "d",
-      "commentCreatedAt": 1680786614378,
-      "commentIsAnonymous": false,
-      "secretpostId": "1",
-      "id": 2
-    }
-  ],
+  "freecomments": [],
+  "secretcomments": [],
   "login": [
     {
       "studentId": "1891014",
