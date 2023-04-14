@@ -37,7 +37,7 @@ const NewChatBot = () => {
         { value: "season-fin", label: "계절학기 종강", trigger: "13" },
         { value: "want", label: "휴복학신청", trigger: "14" },
         { value: "number", label: "학교 연락처", trigger: "15" },
-        { value: "depart-num", label: "과 사무실 연락처", trigger: "26" },
+        { value: "depart-num", label: "단과대학 사무실 연락처", trigger: "26" },
       ],
     },
     {
@@ -238,8 +238,6 @@ const NewChatBot = () => {
         width="70%" // 챗봇 너비 설정
         height="100%" // 챗봇 높이 설정
         // bubbleStyle={{ backgroundColor: "white", color: "navy" }}
-        // userBubbleStyle={{ backgroundColor: "white", color: "navy" }}
-        //optionStyle={{ backgroundColor: "navy", color: "white" }}
         // optionHoverStyle={{
         //   backgroundColor: "rgba(0,0,128,0.8)",
         //   color: "white",

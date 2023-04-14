@@ -10,10 +10,8 @@ const Authentication = () => {
 
   return (
     <div className="p-3">
-      <strong>
-        <AiFillSafetyCertificate />
-        인증하기
-      </strong>
+      <AiFillSafetyCertificate />
+      <strong className="p-1">인증하기</strong>
       <br />
       <br />
       <div
@@ -23,10 +21,8 @@ const Authentication = () => {
           move("/auth/student");
         }}
       >
-        <strong>
-          <FaSchool />
-          재학생 인증
-        </strong>
+        <FaSchool />
+        <strong className="p-1">재학생 인증</strong>
         <br />
         <div className="grey">학생증이나, 재학 증명 자료를 통해 이용 가능</div>
       </div>
@@ -38,10 +34,8 @@ const Authentication = () => {
           move("/auth/graduate");
         }}
       >
-        <strong>
-          <FaUserGraduate />
-          졸업생 인증
-        </strong>
+        <FaUserGraduate />
+        <strong className="p-1">졸업생 인증</strong>
         <br />
         <div className="grey">졸업 증명 자료를 통해 이용 가능</div>
       </div>

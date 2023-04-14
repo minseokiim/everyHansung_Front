@@ -8,10 +8,8 @@ const AccountPage = () => {
   return (
     <div>
       <div className="mini-card p-3">
-        <strong>
-          <AiFillSafetyCertificate />
-          &nbsp; 계정
-        </strong>
+        <AiFillSafetyCertificate />
+        <strong className="p-1"> 계정</strong>
         <br /> <br />
         <div
           className="cursor-pointer"
