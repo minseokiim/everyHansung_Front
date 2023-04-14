@@ -15,7 +15,7 @@ const FreeListPage = () => {
   const getPosts = () => {
     axios.get("http://localhost:8080/freeposts").then((res) => {
       setPosts(res.data);
-      setFilteredPosts(res.data);
+      //setFilteredPosts(res.data);
     });
   };
 
@@ -33,7 +33,11 @@ const FreeListPage = () => {
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [posts.length]);
+
+  useEffect(() => {
+    filterPosts();
+  }, [posts]);
 
   const handleSearch = (e) => {
     e.preventDefault();

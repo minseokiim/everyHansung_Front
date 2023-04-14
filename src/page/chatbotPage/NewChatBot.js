@@ -37,7 +37,7 @@ const NewChatBot = () => {
         { value: "season-fin", label: "계절학기 종강", trigger: "13" },
         { value: "want", label: "휴복학신청", trigger: "14" },
         { value: "number", label: "학교 연락처", trigger: "15" },
-        { value: "depart-num", label: "단과대학 사무실 연락처", trigger: "26" },
+        { value: "depart-num", label: "단과대학/트랙 연락처", trigger: "26" },
       ],
     },
     {
@@ -176,17 +176,18 @@ const NewChatBot = () => {
     {
       id: "27",
       message: "크리에이티브인문예술대학: 02-760-5674",
-      trigger: "3",
+      trigger: "35",
     },
     {
       id: "28",
       message: "미래융합사회과학대학: 02-760-4431",
-      trigger: "3",
+      trigger: "44",
     },
     {
       id: "29",
       message: "디자인대학: 02-760-4432",
       trigger: "3",
+      //trigger : 52로 수정 이어서 하기
     },
     {
       id: "30",
@@ -214,6 +215,131 @@ const NewChatBot = () => {
       message: "국제교류원: 02-760-4473/4095",
       trigger: "3",
     },
+    {
+      id: "35",
+      options: [
+        { value: "eng", label: "영미문학문화/영미언어정보트랙", trigger: "36" },
+        { value: "korean", label: "한국어교육트랙", trigger: "37" },
+        {
+          value: "his",
+          label: "역사문화큐레이션/역사콘텐츠트랙",
+          trigger: "38",
+        },
+        {
+          value: "lib",
+          label: "도서관정보문화트랙/디지털인문정보학트랙",
+          trigger: "39",
+        },
+        { value: "art", label: "동/서양화전공", trigger: "40" },
+        { value: "dance", label: "한국/현대무용/발레전공", trigger: "41" },
+        { value: "kor-dan", label: "한국무용전공", trigger: "42" },
+        { value: "cul", label: "이민/다문화트랙 ", trigger: "43" },
+      ],
+    },
+    {
+      id: "36",
+      message: "영미문학문화/영미언어정보트랙: 02-760-4027",
+      trigger: "3",
+    },
+    {
+      id: "37",
+      message: "한국어교육트랙: 02-760-4017",
+      trigger: "3",
+    },
+    {
+      id: "38",
+      message: "역사문화큐레이션/역사콘텐츠트랙: 02-760-4037",
+      trigger: "3",
+    },
+    {
+      id: "39",
+      message: "도서관정보문화트랙/디지털인문정보학트랙: 02-760-4087",
+      trigger: "3",
+    },
+    {
+      id: "40",
+      message: "동/서양화전공: 02-760-4117",
+      trigger: "3",
+    },
+    {
+      id: "41",
+      message: "한국/현대무용/발레전공: 02-760-4107",
+      trigger: "3",
+    },
+    {
+      id: "42",
+      message: "동/서양화전공: 02-760-4117",
+      trigger: "3",
+    },
+    {
+      id: "43",
+      message: "이민/다문화트랙: 02-760-4268",
+      trigger: "3",
+    },
+    {
+      id: "44",
+      options: [
+        { value: "trade", label: "국제무역트랙", trigger: "45" },
+        { value: "global", label: "글로벌비즈니스트랙", trigger: "46" },
+        { value: "econ", label: "기업경제분석트랙", trigger: "47" },
+        {
+          value: "finan-data",
+          label: "금융데이터분석트랙",
+          trigger: "48",
+        },
+        {
+          value: "pub-law",
+          label: "공공행정/법&정책트랙",
+          trigger: "49",
+        },
+        {
+          value: "city",
+          label: "부동산트랙/스마트도시교통계획트랙",
+          trigger: "50",
+        },
+        {
+          value: "finance",
+          label: "기업/벤처/회계재무경영트랙",
+          trigger: "51",
+        },
+      ],
+    },
+    {
+      id: "45",
+      message: "국제무역트랙: 02-760-4057",
+      trigger: "3",
+    },
+    {
+      id: "46",
+      message: "글로벌비즈니스트랙: 02-760-5722",
+      trigger: "3",
+    },
+    {
+      id: "47",
+      message: "기업경제분석트랙: 02-760-4067",
+      trigger: "3",
+    },
+    {
+      id: "48",
+      message: "금융데이터분석트랙: 02-760-4067",
+      trigger: "3",
+    },
+    {
+      id: "49",
+      message: "공공행정/법&정책트랙: 02-760-4077",
+      trigger: "3",
+    },
+    {
+      id: "50",
+      message: "부동산트랙/스마트도시교통계획트랙: 02-760-4427",
+      trigger: "3",
+    },
+    {
+      id: "51",
+      message: "기업/벤처/회계재무경영트랙: 02-760-4047",
+      trigger: "3",
+    },
+    //디자인대학부터 추가
   ];
   const theme = {
     background: "#f5f8fb",
