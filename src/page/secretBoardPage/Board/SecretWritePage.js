@@ -3,18 +3,21 @@ import "./SecretWritePage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import propTypes from "prop-types";
+import apiClient from "../../../apiClient";
 
 const SecretWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
 
+  const studentId = localStorage.getItem("studentId");
+
   const move = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
+      apiClient.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
@@ -32,8 +35,9 @@ const SecretWritePage = ({ editing }) => {
       alert("본문을 입력하세요");
       return;
     } else if (editing) {
-      axios
-        .patch(`http://localhost:8080/secretposts/${id}`, {
+      apiClient
+        .patch(`http://localhost:8080/secretboard/${id}`, {
+          studentId,
           title,
           content,
           isAnonymous,
@@ -42,8 +46,9 @@ const SecretWritePage = ({ editing }) => {
           move(`/secretboard/${id}`);
         });
     } else {
-      axios
-        .post("http://localhost:8080/secretposts", {
+      apiClient
+        .post("http://localhost:8080/secretboard", {
+          studentId,
           title,
           content,
           createdAt: Date.now(),
@@ -57,6 +62,7 @@ const SecretWritePage = ({ editing }) => {
   };
 
   const onChangeAnonymous = (e) => {
+    e.preventDefault();
     setIsAnonymous(e.target.checked);
   };
 

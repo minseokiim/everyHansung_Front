@@ -26,16 +26,20 @@ const NewChatBot = () => {
     {
       id: "4",
       options: [
-        { value: "date", label: "학사일정 페이지", trigger: "5" },
-        { value: "open", label: "개강", trigger: "6" },
-        { value: "mid-exam", label: "중간고사 기간", trigger: "7" },
-        { value: "fin-exam", label: "기말고사 기간", trigger: "8" },
-        { value: "season", label: "계절학기 개강", trigger: "9" },
-        { value: "fin", label: "1학기 종강", trigger: "10" },
-        { value: "re", label: "재입학 신청", trigger: "11" },
-        { value: "app-2", label: "2학기 수강신청", trigger: "12" },
-        { value: "season-fin", label: "계절학기 종강", trigger: "13" },
-        { value: "want", label: "휴복학신청", trigger: "14" },
+        { value: "academic-schedule", label: "학사일정 페이지", trigger: "5" },
+        { value: "start-of-class", label: "개강", trigger: "6" },
+        { value: "midterm", label: "중간고사 기간", trigger: "7" },
+        { value: "final", label: "기말고사 기간", trigger: "8" },
+        { value: "start-of-season", label: "계절학기 개강", trigger: "9" },
+        { value: "finish-of-class", label: "1학기 종강", trigger: "10" },
+        { value: "re-admission", label: "재입학 신청", trigger: "11" },
+        { value: "application-for", label: "2학기 수강신청", trigger: "12" },
+        { value: "finish-of-season", label: "계절학기 종강", trigger: "13" },
+        {
+          value: "leave-or-back-to-school",
+          label: "휴복학신청",
+          trigger: "14",
+        },
         { value: "number", label: "학교 연락처", trigger: "15" },
         { value: "depart-num", label: "단과대학/트랙 연락처", trigger: "26" },
       ],
@@ -97,10 +101,14 @@ const NewChatBot = () => {
       options: [
         { value: "operation", label: "학사운영팀", trigger: "16" },
         { value: "scholarship", label: "학생장학팀", trigger: "17" },
-        { value: "em-support", label: "취업지원팀", trigger: "18" },
-        { value: "st-support", label: "창업지원팀", trigger: "19" },
-        { value: "edu-support", label: "교육혁신지원팀", trigger: "20" },
-        { value: "edu-dev", label: "교육역량개발센터", trigger: "21" },
+        { value: "employment-support", label: "취업지원팀", trigger: "18" },
+        { value: "startup-support", label: "창업지원팀", trigger: "19" },
+        { value: "education-support", label: "교육혁신지원팀", trigger: "20" },
+        {
+          value: "education-develop",
+          label: "교육역량개발센터",
+          trigger: "21",
+        },
         { value: "counseling", label: "학생상담센터", trigger: "22" },
         { value: "info-team", label: "정보화팀 ", trigger: "23" },
         { value: "fac-support", label: "시설지원팀", trigger: "24" },
@@ -186,13 +194,13 @@ const NewChatBot = () => {
     {
       id: "29",
       message: "디자인대학: 02-760-4432",
-      trigger: "3",
-      //trigger : 52로 수정 이어서 하기
+      trigger: "52",
     },
     {
       id: "30",
       message: "IT공과대학: 02-760-4433",
       trigger: "3",
+      //trigger : 수정 이어서 하기
     },
     {
       id: "31",
@@ -233,7 +241,7 @@ const NewChatBot = () => {
         { value: "art", label: "동/서양화전공", trigger: "40" },
         { value: "dance", label: "한국/현대무용/발레전공", trigger: "41" },
         { value: "kor-dan", label: "한국무용전공", trigger: "42" },
-        { value: "cul", label: "이민/다문화트랙 ", trigger: "43" },
+        { value: "cul", label: "이민·다문화트랙 ", trigger: "43" },
       ],
     },
     {
@@ -273,7 +281,7 @@ const NewChatBot = () => {
     },
     {
       id: "43",
-      message: "이민/다문화트랙: 02-760-4268",
+      message: "이민·다문화트랙: 02-760-4268",
       trigger: "3",
     },
     {
@@ -299,7 +307,7 @@ const NewChatBot = () => {
         },
         {
           value: "finance",
-          label: "기업/벤처/회계재무경영트랙",
+          label: "기업/벤처/회계·재무경영트랙",
           trigger: "51",
         },
       ],
@@ -336,10 +344,63 @@ const NewChatBot = () => {
     },
     {
       id: "51",
-      message: "기업/벤처/회계재무경영트랙: 02-760-4047",
+      message: "기업/벤처/회계·재무경영트랙: 02-760-4047",
       trigger: "3",
     },
-    //디자인대학부터 추가
+    {
+      id: "52",
+      options: [
+        {
+          value: "fashion-marketing",
+          label: "패션마케팅/디자인/크리에이티브디렉션트랙",
+          trigger: "53",
+        },
+        {
+          value: "advertisement",
+          label: "뉴미디어광고·커뮤니케이션디자인/브랜드패키지디자인트랙",
+          trigger: "54",
+        },
+        {
+          value: "animation",
+          label: "영상애니메이션/UX·UI/게임그래픽/게임그래픽디자인트랙",
+          trigger: "55",
+        },
+        {
+          value: "interior",
+          label: "인테리어디자인/VMD전시디자인트랙",
+          trigger: "56",
+        },
+        { value: "beauty", label: "뷰티디자인매니지먼트학과", trigger: "57" },
+      ],
+    },
+    {
+      id: "53",
+      message:
+        "패션마케팅/디자인/크리에이티브디렉션트랙: 02-760-5794/4147/4467",
+      trigger: "3",
+    },
+    {
+      id: "54",
+      message: "뉴미디어광고·커뮤니케이션/브랜드패키지디자인트랙: 02-760-4157",
+      trigger: "3",
+    },
+    {
+      id: "55",
+      message:
+        "영상애니메이션/UX·UI/게임그래픽/게임그래픽디자인트랙: 02-760-4422",
+      trigger: "3",
+    },
+    {
+      id: "56",
+      message: "인테리어디자인/VMD전시디자인트랙: 02-760-5792",
+      trigger: "3",
+    },
+    {
+      id: "57",
+      message: "뷰티디자인매니지먼트학과: 02-760-4422",
+      trigger: "3",
+    },
+    //공대부터 이어서 하기
   ];
   const theme = {
     background: "#f5f8fb",

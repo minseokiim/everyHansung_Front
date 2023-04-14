@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./FreeWritePage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import propTypes from "prop-types";
-import apiClient from "../../../apiClient"
+import apiClient from "../../../apiClient";
 import axios from "axios";
 
 const FreeWritePage = ({ editing }) => {
@@ -17,7 +17,7 @@ const FreeWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
+      apiClient.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
@@ -41,7 +41,7 @@ const FreeWritePage = ({ editing }) => {
           studentId,
           title,
           content,
-          isAnonymous
+          isAnonymous,
         })
         .then(() => {
           move(`/freeboard/${id}`);
@@ -52,7 +52,8 @@ const FreeWritePage = ({ editing }) => {
           studentId,
           title,
           content,
-          isAnonymous
+          createdAt: Date.now(),
+          isAnonymous,
         })
         .then(() => {
           alert("작성되었습니다!");
@@ -62,6 +63,7 @@ const FreeWritePage = ({ editing }) => {
   };
 
   const onChangeIsAnonymous = (e) => {
+    e.preventDefault();
     setIsAnonymous(e.target.checked);
   };
 
