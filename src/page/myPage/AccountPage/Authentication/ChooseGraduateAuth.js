@@ -48,10 +48,8 @@ const ChooseGraduateAuth = () => {
 
   return (
     <div className="p-3">
-      <strong>
-        <TbCertificate />
-        졸업 증명서
-      </strong>
+      <TbCertificate />
+      <strong className="p-1">졸업 증명서</strong>
       <div className="cursor-pointer">
         <div className="grey">
           학교에서 공식적으로 발급한 졸업 증명서를 제출 하여 인증

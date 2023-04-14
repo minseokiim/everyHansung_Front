@@ -4,7 +4,6 @@ import Modal from "react-modal";
 import axios from "axios";
 import "./TimeTable.css";
 // import SubjectInputPopup from "./SubjectInputPopup";
-
 // Modal.setAppElement("#root");
 
 const TimeTable = () => {
@@ -196,15 +195,19 @@ const TimeTable = () => {
   //   };
 
   return (
-    <div>
+    <div className="table-all">
       <h4>
         <strong>시간표</strong>
       </h4>
+      <br />
       <Table columns={columns} data={data} onDataChange={onDataChange} />
-      <button onClick={handleSave} className="button">
+      <br />
+
+      <button onClick={handleSave} className="table-button">
         시간표 저장
       </button>
-      {/* <Modal
+      {
+        /* <Modal
         isOpen={showModal}
         onRequestClose={closeModal}
         contentLabel="과목 입력"
@@ -212,7 +215,9 @@ const TimeTable = () => {
         <h2>과목 입력</h2>
         <input type="text" onChange={handleInput} />
         <button onClick={closeModal}>확인</button>
-      </Modal> */}
+      </Modal> */
+        //최종 목표:modal로 시간, 장소, 교수, 과목 받기
+      }
     </div>
   );
 };

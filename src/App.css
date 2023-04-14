@@ -9,3 +9,8 @@
   font-family: "NotoSans";
   flex-direction: column;
 }
+
+.chatback {
+  padding-top: 80px;
+  margin-left: 340px;
+}

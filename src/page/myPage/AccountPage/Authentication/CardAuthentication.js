@@ -50,10 +50,8 @@ const CardAuthentication = () => {
 
   return (
     <div className="p-3">
-      <strong>
-        <AiFillIdcard />
-        학생증
-      </strong>
+      <AiFillIdcard />
+      <strong className="p-1">학생증</strong>
       <br />
       <div className=" cursor-pointer">
         <div className="grey">학생증을 스캔·촬영·캡처 후 첨부하여 인증</div>

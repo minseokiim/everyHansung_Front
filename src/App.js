@@ -15,7 +15,6 @@ import SecretWritePage from "./page/secretBoardPage/SecretWritePage";
 import SecretListPage from "./page/secretBoardPage/SecretListPage";
 import SecretEditPage from "./page/secretBoardPage/SecretEditPage";
 import SecretShowPage from "./page/secretBoardPage/SecretShowPage";
-import ChatBotPage from "./page/chatbotPage/ChatBotPage";
 import NewChatBot from "./page/chatbotPage/NewChatBot";
 
 import LoginPage from "./page/loginPage/LoginPage";
@@ -62,7 +61,7 @@ const App = () => {
           <Route
             path="/timetable"
             element={
-              <div className="p-5 m-5 ">
+              <div className="p-5 m-5">
                 <TimeTable />
                 <br />
                 <br />
@@ -74,7 +73,7 @@ const App = () => {
           <Route
             path="/chatbot"
             element={
-              <div className="p-5 m-5">
+              <div className="chatback">
                 <NewChatBot />
                 <br />
                 <br />
