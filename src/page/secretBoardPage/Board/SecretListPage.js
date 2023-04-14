@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "../secretBoardPage/SecretListPage.css";
+import "../Board/SecretListPage.css";
 
 const SecretListPage = () => {
   // const studentId = useSelector((state) => state.auth.studentId);

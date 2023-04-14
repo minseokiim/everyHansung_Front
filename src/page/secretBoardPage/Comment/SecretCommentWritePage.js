@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import "../freeBoardPage/FreeCommentPage.css";
+import "../../freeBoardPage/Comment/FreeCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 

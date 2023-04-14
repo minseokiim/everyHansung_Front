@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import FreeCommentWritePage from "./FreeCommentWritePage";
-import FreeCommentListPage from "./FreeCommentListPage";
+import FreeCommentWritePage from "../Comment/FreeCommentWritePage";
+import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import "./FreeWritePage.css";
 import { useSelector } from "react-redux";
 import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";

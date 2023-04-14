@@ -9,7 +9,7 @@ const MainPage = () => {
     <div className="notlogin">
       <aside>
         <div className="login">
-          <div className="padd">
+          <div className="logo-pad">
             <img
               alt="everyhansung"
               src="img/everyhansung.png"

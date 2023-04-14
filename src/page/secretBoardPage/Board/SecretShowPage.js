@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SecretCommentListPage from "./SecretCommentListPage";
-import SecretCommentWritePage from "./SecretCommentWritePage";
-import "../freeBoardPage/FreeWritePage.css";
+import SecretCommentListPage from "../Comment/SecretCommentListPage";
+import SecretCommentWritePage from "../Comment/SecretCommentWritePage";
+import "../../freeBoardPage/Comment/FreeCommentPage.css";
 import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
 
 const SecretShowPage = () => {
