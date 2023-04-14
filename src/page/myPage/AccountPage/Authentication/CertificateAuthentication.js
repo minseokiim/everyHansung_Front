@@ -35,6 +35,7 @@ const CertificateAuthentication = () => {
           },
         }
       );
+      //사진을 올리면 검토중/확인 완료 화면 뜨게 하기
 
       // Handle the server response here
       console.log(response.data);
