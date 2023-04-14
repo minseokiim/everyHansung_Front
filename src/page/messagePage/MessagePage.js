@@ -22,7 +22,7 @@ const MessagePage = () => {
 
   return (
     <div>
-      <form className="p-3">
+      <form className="p-4">
         <input
           className="message-input"
           placeholder="수신자의 학번을 입력해주세요."

@@ -30,6 +30,7 @@ import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
 import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
 import PrivacyPage from "./page/myPage/AboutPage/PrivacyPage";
+import PolicyPage from "./page/myPage/AboutPage/PolicyPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./page/mainPage/MainPage";
@@ -61,7 +62,7 @@ const App = () => {
           <Route
             path="/timetable"
             element={
-              <div className="p-5 m-5">
+              <div className="p-5">
                 <TimeTable />
                 <br />
                 <br />
@@ -266,6 +267,20 @@ const App = () => {
               <div>
                 <Card>
                   <PrivacyPage />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/page/youthpolicy"
+            element={
+              <div>
+                <Card>
+                  <PolicyPage />
                 </Card>
                 <br />
                 <br />

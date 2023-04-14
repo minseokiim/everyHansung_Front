@@ -156,17 +156,13 @@ const PrivacyPage = () => {
             <br />
             <br />
             <li>
-              {" "}
               개인정보 분쟁조정위원회 :
-              <a href="https://www.kopico.go.kr">
-                https://www.kopico.go.kr
-              </a>{" "}
+              <a href="https://www.kopico.go.kr">https://www.kopico.go.kr</a>
             </li>
             <li>
               사이버범죄 신고시스템 :
               <a href="https://ecrm.police.go.kr">https://ecrm.police.go.kr</a>
             </li>
-            <br />
           </p>
         </div>
       </div>
