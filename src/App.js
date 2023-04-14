@@ -2,19 +2,19 @@ import NavBar from "./NavBar";
 import "./App.css";
 import Card from "./Card";
 
-import FreeWritePage from "./page/freeBoardPage/FreeWritePage";
-import FreeListPage from "./page/freeBoardPage/FreeListPage";
-import FreeEditPage from "./page/freeBoardPage/FreeEditPage";
-import FreeShowPage from "./page/freeBoardPage/FreeShowPage";
+import FreeWritePage from "./page/freeBoardPage/Board/FreeWritePage";
+import FreeListPage from "./page/freeBoardPage/Board/FreeListPage";
+import FreeEditPage from "./page/freeBoardPage/Board/FreeEditPage";
+import FreeShowPage from "./page/freeBoardPage/Board/FreeShowPage";
 
 import LectureWritePage from "./page/lectureBoardPage/LectureWritePage";
 import LectureListPage from "./page/lectureBoardPage/LectureListPage";
 import LectureShowPage from "./page/lectureBoardPage/LectureShowPage";
 
-import SecretWritePage from "./page/secretBoardPage/SecretWritePage";
-import SecretListPage from "./page/secretBoardPage/SecretListPage";
-import SecretEditPage from "./page/secretBoardPage/SecretEditPage";
-import SecretShowPage from "./page/secretBoardPage/SecretShowPage";
+import SecretWritePage from "./page/secretBoardPage/Board/SecretWritePage";
+import SecretListPage from "./page/secretBoardPage/Board/SecretListPage";
+import SecretEditPage from "./page/secretBoardPage/Board/SecretEditPage";
+import SecretShowPage from "./page/secretBoardPage/Board/SecretShowPage";
 import NewChatBot from "./page/chatbotPage/NewChatBot";
 
 import LoginPage from "./page/loginPage/LoginPage";

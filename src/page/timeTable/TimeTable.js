@@ -3,8 +3,6 @@ import Table from "./Table";
 import Modal from "react-modal";
 import axios from "axios";
 import "./TimeTable.css";
-// import SubjectInputPopup from "./SubjectInputPopup";
-// Modal.setAppElement("#root");
 
 const TimeTable = () => {
   const columns = React.useMemo(
@@ -135,24 +133,6 @@ const TimeTable = () => {
       fri: "",
     },
   ]);
-  //   const [showModal, setShowModal] = useState(false);
-  //   const [selectedCell, setSelectedCell] = useState({
-  //     rowIndex: null,
-  //     columnId: null,
-  //   });
-
-  //   const openModal = (rowIndex, columnId) => {
-  //     setSelectedCell({ rowIndex, columnId });
-  //     setShowModal(true);
-  //   };
-
-  //   const closeModal = () => {
-  //     setShowModal(false);
-  //   };
-
-  //   const handleInput = (e) => {
-  //     onDataChange(selectedCell.rowIndex, selectedCell.columnId, e.target.value);
-  //   };
 
   const handleSave = async () => {
     try {
@@ -178,22 +158,6 @@ const TimeTable = () => {
     });
   };
 
-  //   const [popupInfo, setPopupInfo] = useState({
-  //     isOpen: false,
-  //     rowIndex: null,
-  //     columnId: null,
-  //   });
-
-  //   const handleCellClick = (rowIndex, columnId) => {
-  //     if (columnId !== "time") {
-  //       setPopupInfo({ isOpen: true, rowIndex, columnId });
-  //     }
-  //   };
-
-  //   const closePopup = () => {
-  //     setPopupInfo({ isOpen: false, rowIndex: null, columnId: null });
-  //   };
-
   return (
     <div className="table-all">
       <h4>
@@ -206,18 +170,8 @@ const TimeTable = () => {
       <button onClick={handleSave} className="table-button">
         시간표 저장
       </button>
-      {
-        /* <Modal
-        isOpen={showModal}
-        onRequestClose={closeModal}
-        contentLabel="과목 입력"
-      >
-        <h2>과목 입력</h2>
-        <input type="text" onChange={handleInput} />
-        <button onClick={closeModal}>확인</button>
-      </Modal> */
-        //최종 목표:modal로 시간, 장소, 교수, 과목 받기
-      }
+
+      {/* 최종 목표:modal로 시간, 장소, 교수, 과목 받기 */}
     </div>
   );
 };
