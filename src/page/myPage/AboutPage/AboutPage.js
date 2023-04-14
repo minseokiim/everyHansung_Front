@@ -38,6 +38,16 @@ const AboutPage = () => {
         >
           개인정보 처리방침
         </div>
+        <br />
+        <div
+          className="cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            move("/page/youthpolicy");
+          }}
+        >
+          청소년 보호정책
+        </div>
       </div>
     </div>
   );
