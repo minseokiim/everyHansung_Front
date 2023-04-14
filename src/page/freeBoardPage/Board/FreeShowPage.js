@@ -13,7 +13,7 @@ const FreeShowPage = () => {
   const move = useNavigate();
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/freeposts/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
       setPost(res.data);
     });
   };

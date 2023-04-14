@@ -13,7 +13,7 @@ const FreeListPage = () => {
   const { id } = useParams();
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/freeposts").then((res) => {
+    axios.get("http://localhost:8080/freeboard/all").then((res) => {
       setPosts(res.data);
       setFilteredPosts(res.data);
     });
@@ -22,7 +22,7 @@ const FreeListPage = () => {
   const deletePost = (e, id) => {
     alert("삭제하시겠습니까?");
     e.stopPropagation();
-    axios.delete(`http://localhost:8080/freeposts/${id}`).then(() =>
+    axios.delete(`http://localhost:8080/freeboard/${id}`).then(() =>
       setPosts((prevPosts) => {
         return prevPosts.filter((post) => {
           return post.id !== id;
