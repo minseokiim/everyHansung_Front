@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import "./FreeWritePage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import propTypes from "prop-types";
+import apiClient from "../../../apiClient"
+import axios from "axios";
 
 const FreeWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   // const [question, setQuestion] = useState(false);
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const studentId = localStorage.getItem("studentId");
 
   const move = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/freeposts/${id}`).then((res) => {
+      axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
@@ -34,22 +36,23 @@ const FreeWritePage = ({ editing }) => {
       alert("본문을 입력하세요");
       return;
     } else if (editing) {
-      axios
-        .patch(`http://localhost:8080/freeposts/${id}`, {
+      apiClient
+        .patch(`http://localhost:8080/freeboard/${id}`, {
+          studentId,
           title,
           content,
-          isAnonymous,
+          isAnonymous
         })
         .then(() => {
           move(`/freeboard/${id}`);
         });
     } else {
-      axios
-        .post("http://localhost:8080/freeposts", {
+      apiClient
+        .post("http://localhost:8080/freeboard", {
+          studentId,
           title,
           content,
-          createdAt: Date.now(),
-          isAnonymous,
+          isAnonymous
         })
         .then(() => {
           alert("작성되었습니다!");
