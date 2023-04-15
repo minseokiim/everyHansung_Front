@@ -10,14 +10,6 @@
     },
     {
       "studentId": "1891014",
-      "title": "ㅇ",
-      "content": "ㅇㄴㅇㄴㅇㄴㅇ",
-      "createdAt": 1681591024369,
-      "isAnonymous": false,
-      "id": 3
-    },
-    {
-      "studentId": "1891014",
       "title": "ㄴ",
       "content": "ㄴ",
       "createdAt": 1681591114365,
@@ -31,14 +23,6 @@
       "createdAt": 1681591389423,
       "isAnonymous": false,
       "id": 5
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㅇㅇ",
-      "content": "ㅇㅇㅇㄴㄴ",
-      "createdAt": 1681591507298,
-      "isAnonymous": false,
-      "id": 6
     }
   ],
   "freeboard": [
@@ -77,7 +61,85 @@
     }
   ],
   "freecomments": [],
-  "secretcomments": [],
+  "secretcomments": [
+    {
+      "commentContent": "ㄴ",
+      "commentCreatedAt": 1681595983579,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 4
+    },
+    {
+      "commentContent": "ㅁ",
+      "commentCreatedAt": 1681595984946,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 5
+    },
+    {
+      "commentContent": "ㄴ",
+      "commentCreatedAt": 1681596270110,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 6
+    },
+    {
+      "commentContent": "ㄴ",
+      "commentCreatedAt": 1681596705091,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 7
+    },
+    {
+      "commentContent": "ㅁ",
+      "commentCreatedAt": 1681596732861,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 8
+    },
+    {
+      "commentContent": "ㅁ",
+      "commentCreatedAt": 1681596738620,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 9
+    },
+    {
+      "commentContent": "ㅇ",
+      "commentCreatedAt": 1681596739993,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 10
+    },
+    {
+      "commentContent": "ㅇ",
+      "commentCreatedAt": 1681596767651,
+      "commentIsAnonymous": false,
+      "secretpostId": "4",
+      "id": 11
+    },
+    {
+      "commentContent": "ㅁ",
+      "commentCreatedAt": 1681596769680,
+      "commentIsAnonymous": false,
+      "secretpostId": "5",
+      "id": 12
+    },
+    {
+      "commentContent": "ㅇ",
+      "commentCreatedAt": 1681596771530,
+      "commentIsAnonymous": false,
+      "secretpostId": "5",
+      "id": 13
+    },
+    {
+      "commentContent": "ㅁㄴ",
+      "commentCreatedAt": 1681596773881,
+      "commentIsAnonymous": false,
+      "secretpostId": "5",
+      "id": 14
+    }
+  ],
   "login": [
     {
       "studentId": "1891014",

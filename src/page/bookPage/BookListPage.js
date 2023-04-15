@@ -69,23 +69,26 @@ const BookListPage = () => {
         </form>
         <br />
         {filteredPosts.length > 0
-          ? filteredPosts.map((post) => {
-              return (
-                <div
-                  key={post.id}
-                  className=" card-body cursor-pointer"
-                  onClick={() => move(`/bookstore/${post.id}`)}
-                >
-                  <div>
-                    <FaChalkboardTeacher /> &nbsp;
-                    {post.lectureName}
-                    <hr />
-                    <BsBook /> &nbsp;
-                    {post.bookName}&nbsp;/ {post.author}&nbsp;/ {post.publisher}
+          ? filteredPosts
+              .sort((a, b) => b.id - a.id) //최신순
+              .map((post) => {
+                return (
+                  <div
+                    key={post.id}
+                    className=" card-body cursor-pointer"
+                    onClick={() => move(`/bookstore/${post.id}`)}
+                  >
+                    <div>
+                      <FaChalkboardTeacher /> &nbsp;
+                      {post.lectureName}
+                      <hr />
+                      <BsBook /> &nbsp;
+                      {post.bookName}&nbsp;/ {post.author}&nbsp;/{" "}
+                      {post.publisher}
+                    </div>
                   </div>
-                </div>
-              );
-            })
+                );
+              })
           : "게시물이 없습니다."}
       </div>
     </div>

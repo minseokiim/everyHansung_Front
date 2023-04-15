@@ -10,26 +10,25 @@ import apiClient from "../../../apiClient";
 const SecretShowPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
+  const [comments, setComments] = useState([]);
   // const [postNick, setPostNick] = useState("");
   const move = useNavigate();
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
       setPost(res.data);
-
-      // //isAnonymous 체크여부에 따라 게시물 작성자 바뀜
-      // if (res.data.isAnonymous === true) {
-      //   setPostNick("익명");
-      //   console.log("익명", postNick);
-      // } else if (res.data.isAnonymous === false) {
-      //   setPostNick(res.data.studentId);
-      //   console.log("실명", postNick);
-      // }
     });
+  };
+
+  const getComments = (id) => {
+    axios
+      .get(`http://localhost:8080/secretposts/${id}/secretcomments`)
+      .then((res) => setComments(res.data));
   };
 
   useEffect(() => {
     getPost(id);
+    getComments();
   }, []);
 
   const printDate = (timestamp) => {
@@ -68,6 +67,7 @@ const SecretShowPage = () => {
       <br />
       <div className="comment">
         <SecretCommentListPage />
+        <br />
         <SecretCommentWritePage />
       </div>
     </div>

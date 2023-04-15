@@ -45,6 +45,9 @@ import ChooseStudentAuth from "./page/myPage/AccountPage/Authentication/ChooseSt
 import CardAuthentication from "./page/myPage/AccountPage/Authentication/CardAuthentication";
 import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseGraduateAuth";
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
+import Check from "./page/myPage/AccountPage/Authentication/Check";
+import Success from "./page/myPage/AccountPage/Authentication/Success";
+
 import MemberMainPage from "./page/mainPage/MemberMainPage";
 
 import BookListPage from "./page/bookPage/BookListPage";
@@ -362,6 +365,34 @@ const App = () => {
               <div>
                 <Card>
                   <CertificateAuthentication />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/auth/check"
+            element={
+              <div>
+                <Card>
+                  <Check />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/auth/success"
+            element={
+              <div>
+                <Card>
+                  <Success />
                 </Card>
                 <br />
                 <br />
