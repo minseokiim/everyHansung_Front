@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../Board/SecretListPage.css";
@@ -10,7 +10,6 @@ const SecretListPage = () => {
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const { id } = useParams();
 
   const getPosts = () => {
     axios.get("http://localhost:8080/secretposts").then((res) => {

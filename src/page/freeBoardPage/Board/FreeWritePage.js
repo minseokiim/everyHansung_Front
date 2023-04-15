@@ -17,7 +17,7 @@ const FreeWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      apiClient.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
+      axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
@@ -52,19 +52,18 @@ const FreeWritePage = ({ editing }) => {
           studentId,
           title,
           content,
-          createdAt: Date.now(),
-          isAnonymous,
+          isAnonymous
         })
         .then(() => {
-          alert("작성되었습니다!");
+          console.log("isAnonymous" + isAnonymous);
           move("/freeboard/list");
         });
     }
   };
 
   const onChangeIsAnonymous = (e) => {
-    e.preventDefault();
     setIsAnonymous(e.target.checked);
+    console.log("isAnonymous: " + e.target.checked); // 추가된 코드
   };
 
   // const onChangeQuestion = (e) => {

@@ -10,7 +10,6 @@ const FreeListPage = () => {
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const { id } = useParams();
 
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
@@ -46,7 +45,7 @@ const FreeListPage = () => {
 
   const filterPosts = () => {
     const filtered = posts.filter((post) =>
-      post.title.toLowerCase().includes(searchText.toLowerCase())
+      post.title && post.title.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredPosts(filtered);
   };
