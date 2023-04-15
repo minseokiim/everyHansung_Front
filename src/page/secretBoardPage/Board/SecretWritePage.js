@@ -17,7 +17,7 @@ const SecretWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      apiClient.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
+      axios.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
