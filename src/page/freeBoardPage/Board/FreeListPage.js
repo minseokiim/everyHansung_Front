@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const FreeListPage = () => {
   const move = useNavigate();
@@ -122,12 +123,7 @@ const FreeListPage = () => {
                     </div>
                   </div>
                   <div>
-                    <button
-                      className=" btn btn-danger btn-sm"
-                      onClick={(e) => deletePost(e, post.id)}
-                    >
-                      삭제
-                    </button>
+                    <BsFillTrashFill onClick={(e) => deletePost(e, post.id)} />
                   </div>
                 </div>
               );

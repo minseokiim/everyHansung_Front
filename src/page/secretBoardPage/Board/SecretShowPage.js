@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import SecretCommentListPage from "../Comment/SecretCommentListPage";
 import SecretCommentWritePage from "../Comment/SecretCommentWritePage";
 import "../../freeBoardPage/Comment/FreeCommentPage.css";
-import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
 import apiClient from "../../../apiClient";
+import { BiTimeFive } from "react-icons/bi";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const SecretShowPage = () => {
   const { id } = useParams();
@@ -40,22 +42,20 @@ const SecretShowPage = () => {
       <div className="d-flex">
         <h4 className="flex-grow-1">{post.title}</h4>
         <div>
-          <button
-            className="button"
+          <AiFillEdit
+            className="cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               move(`/secretboard/edit/${id}`);
             }}
-          >
-            수정하기
-          </button>
+          />
         </div>
       </div>
       <div className="text-muted post-time">
-        작성일: {printDate(post.createdAt)}
+        <BiTimeFive /> {printDate(post.createdAt)}
       </div>
       <div className="text-muted post-time">
-        작성자: {post.isAnonymous ? "익명" : post.studentId}
+        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.studentId}
       </div>
       <hr />
       <p>{post.content}</p>
