@@ -10,6 +10,7 @@ const SecretWritePage = ({ editing }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
 
+  const [postNick, setPostNick] = useState("");
   const studentId = localStorage.getItem("studentId");
 
   const move = useNavigate();
@@ -17,13 +18,22 @@ const SecretWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
+      axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
       });
     }
   }, [id, editing]);
+
+  // //작성자 익명실명
+  // useEffect(() => {
+  //   if (!isAnonymous) {
+  //     setPostNick("익명");
+  //   } else {
+  //     setPostNick(studentId);
+  //   }
+  // }, [isAnonymous]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -36,23 +46,25 @@ const SecretWritePage = ({ editing }) => {
       return;
     } else if (editing) {
       apiClient
-        .patch(`http://localhost:8080/secretboard/${id}`, {
+        .patch(`http://localhost:8080/secretposts/${id}`, {
           studentId,
           title,
           content,
           isAnonymous,
+          // postNick,
         })
         .then((res) => {
           move(`/secretboard/${id}`);
         });
     } else {
       apiClient
-        .post("http://localhost:8080/secretboard", {
+        .post("http://localhost:8080/secretposts", {
           studentId,
           title,
           content,
           createdAt: Date.now(),
           isAnonymous,
+          //postNick,
         })
         .then(() => {
           alert("작성되었습니다!");

@@ -45,6 +45,9 @@ const FreeShowPage = () => {
       <div className="text-muted post-time">
         작성일: {printDate(post.createdAt)}
       </div>
+      <div className="text-muted post-time">
+        작성자: {post.isAnonymous ? "익명" : post.studentId}
+      </div>
       <hr />
       <p>{post.content}</p>
       <br />

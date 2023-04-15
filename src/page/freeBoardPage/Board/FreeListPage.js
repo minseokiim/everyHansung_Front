@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
 
 const FreeListPage = () => {
-  // const studentId = useSelector((state) => state.auth.studentId);
-
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -14,7 +12,6 @@ const FreeListPage = () => {
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
       setPosts(res.data);
-      //setFilteredPosts(res.data);
     });
   };
 
@@ -43,9 +40,32 @@ const FreeListPage = () => {
     filterPosts();
   };
 
+  const timeDifference = (timestamp) => {
+    const now = new Date();
+    const postDate = new Date(timestamp);
+    const diffInSeconds = Math.floor((now - postDate) / 1000);
+
+    const days = Math.floor(diffInSeconds / 86400);
+    const hours = Math.floor((diffInSeconds % 86400) / 3600);
+    const minutes = Math.floor((diffInSeconds % 3600) / 60);
+    const seconds = diffInSeconds % 60;
+
+    if (days > 0) {
+      return `${days}일 전`;
+    } else if (hours > 0) {
+      return `${hours}시간 전`;
+    } else if (minutes > 0) {
+      return `${minutes}분 전`;
+    } else {
+      return `${seconds}초 전`;
+    }
+  };
+
   const filterPosts = () => {
-    const filtered = posts.filter((post) =>
-      post.title && post.title.toLowerCase().includes(searchText.toLowerCase())
+    const filtered = posts.filter(
+      (post) =>
+        post.title &&
+        post.title.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredPosts(filtered);
   };
@@ -81,6 +101,7 @@ const FreeListPage = () => {
       {filteredPosts.length > 0
         ? filteredPosts
             .filter((post) => post.title !== 0)
+            .sort((a, b) => b.id - a.id)
             .map((post) => {
               return (
                 <div
@@ -88,11 +109,21 @@ const FreeListPage = () => {
                   className="d-flex justify-content-between card-body cursor-pointer"
                   onClick={() => move(`/freeboard/${post.id}`)}
                 >
-                  {post.title}
-
+                  <div>
+                    {post.title}
+                    <br />
+                    <div className="grey">
+                      {post.content}
+                      <br />
+                      {timeDifference(post.createdAt)}&nbsp;
+                      <span className="black">
+                        {post.isAnonymous ? "익명" : post.studentId}
+                      </span>
+                    </div>
+                  </div>
                   <div>
                     <button
-                      className="btn btn-danger btn-sm"
+                      className=" btn btn-danger btn-sm"
                       onClick={(e) => deletePost(e, post.id)}
                     >
                       삭제
