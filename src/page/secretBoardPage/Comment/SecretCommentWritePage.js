@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import "../../freeBoardPage/Comment/FreeCommentPage.css";
+import "./SecretCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -30,6 +30,8 @@ const SecretCommentWritePage = () => {
 
   return (
     <div>
+      <input type="checkbox" />
+      익명
       <input
         className="comment-input"
         type="text"
@@ -44,8 +46,6 @@ const SecretCommentWritePage = () => {
           }
         }}
       />
-      <input type="checkbox" />
-      익명
       <button className="comment-button" onClick={onSubmit}>
         작성
       </button>

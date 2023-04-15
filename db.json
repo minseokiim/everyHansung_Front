@@ -6,34 +6,10 @@
       "content": "본문입니당",
       "createdAt": 1681591004689,
       "isAnonymous": false,
-      "id": 2
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㄴ",
-      "content": "ㄴ",
-      "createdAt": 1681591114365,
-      "isAnonymous": true,
-      "id": 4
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㅇ",
-      "content": "ㅇ",
-      "createdAt": 1681591389423,
-      "isAnonymous": false,
-      "id": 5
-    }
-  ],
-  "freeboard": [
-    {
-      "studentId": "1891014",
-      "title": "as",
-      "content": "s",
-      "isAnonymous": false,
       "id": 1
     }
   ],
+  "freeboard": [],
   "lectures": [
     {
       "lectureName": "웹프레임워크 1",
@@ -46,110 +22,15 @@
       "test": "1회",
       "team": "많음",
       "id": 1
-    },
-    {
-      "lectureName": "웹프로그래밍",
-      "professor": "ㅇ",
-      "content": "ㄴ",
-      "selectedStar": 3,
-      "semester": "2023-1학기",
-      "homework": "보통",
-      "score": "보통",
-      "test": "2회",
-      "team": "보통",
-      "id": 3
     }
   ],
   "freecomments": [],
-  "secretcomments": [
-    {
-      "commentContent": "ㄴ",
-      "commentCreatedAt": 1681595983579,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 4
-    },
-    {
-      "commentContent": "ㅁ",
-      "commentCreatedAt": 1681595984946,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 5
-    },
-    {
-      "commentContent": "ㄴ",
-      "commentCreatedAt": 1681596270110,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 6
-    },
-    {
-      "commentContent": "ㄴ",
-      "commentCreatedAt": 1681596705091,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 7
-    },
-    {
-      "commentContent": "ㅁ",
-      "commentCreatedAt": 1681596732861,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 8
-    },
-    {
-      "commentContent": "ㅁ",
-      "commentCreatedAt": 1681596738620,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 9
-    },
-    {
-      "commentContent": "ㅇ",
-      "commentCreatedAt": 1681596739993,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 10
-    },
-    {
-      "commentContent": "ㅇ",
-      "commentCreatedAt": 1681596767651,
-      "commentIsAnonymous": false,
-      "secretpostId": "4",
-      "id": 11
-    },
-    {
-      "commentContent": "ㅁ",
-      "commentCreatedAt": 1681596769680,
-      "commentIsAnonymous": false,
-      "secretpostId": "5",
-      "id": 12
-    },
-    {
-      "commentContent": "ㅇ",
-      "commentCreatedAt": 1681596771530,
-      "commentIsAnonymous": false,
-      "secretpostId": "5",
-      "id": 13
-    },
-    {
-      "commentContent": "ㅁㄴ",
-      "commentCreatedAt": 1681596773881,
-      "commentIsAnonymous": false,
-      "secretpostId": "5",
-      "id": 14
-    }
-  ],
+  "secretcomments": [],
   "login": [
     {
       "studentId": "1891014",
       "passwd": "8",
       "id": 9
-    },
-    {
-      "studentId": "5",
-      "passwd": "5",
-      "id": 10
     }
   ],
   "members": [],

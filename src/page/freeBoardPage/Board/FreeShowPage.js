@@ -5,7 +5,9 @@ import FreeCommentWritePage from "../Comment/FreeCommentWritePage";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import "./FreeWritePage.css";
 import { useSelector } from "react-redux";
-import { AiOutlineComment, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
+import { BiTimeFive } from "react-icons/bi";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -31,22 +33,20 @@ const FreeShowPage = () => {
       <div className="d-flex">
         <h4 className="flex-grow-1">{post.title}</h4>
         <div>
-          <button
-            className="button"
+          <AiFillEdit
+            className="cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               move(`/freeboard/edit/${id}`);
             }}
-          >
-            수정하기
-          </button>
+          />
         </div>
       </div>
       <div className="text-muted post-time">
-        작성일: {printDate(post.createdAt)}
+        <BiTimeFive /> {printDate(post.createdAt)}
       </div>
       <div className="text-muted post-time">
-        작성자: {post.isAnonymous ? "익명" : post.studentId}
+        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.studentId}
       </div>
       <hr />
       <p>{post.content}</p>
