@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Star from "./Star";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import apiClient from "../../apiClient";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 const LectureListPage = () => {
   const move = useNavigate();
@@ -11,6 +12,29 @@ const LectureListPage = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const createArray = (length) => [...Array(length)];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
+  const totalPages = () => {
+    return Math.ceil(filteredPosts.length / postsPerPage);
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages()) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const onSearch = (e) => {
     if (e.key === "Enter") {
@@ -69,8 +93,8 @@ const LectureListPage = () => {
         />
         <br />
 
-        {filteredPosts.length > 0
-          ? filteredPosts
+        {currentPosts.length > 0
+          ? currentPosts
               .sort((a, b) => b.id - a.id) //최신순
               .map((post) => {
                 return (
@@ -93,6 +117,24 @@ const LectureListPage = () => {
                 );
               })
           : "게시물이 없습니다."}
+        <br />
+        <div className="pagination">
+          <div className="pagination-container">
+            <MdNavigateBefore
+              className="cursor-pointer"
+              onClick={prevPage}
+              disabled={currentPage === 1}
+            />
+            <span className="grey">
+              {currentPage} / {totalPages()}
+            </span>
+            <MdNavigateNext
+              className="cursor-pointer"
+              onClick={nextPage}
+              disabled={currentPage === totalPages()}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

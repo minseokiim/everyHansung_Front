@@ -3,12 +3,35 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../Board/SecretListPage.css";
 import { BsFillTrashFill } from "react-icons/bs";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 const SecretListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+
+  const totalPages = () => {
+    return Math.ceil(filteredPosts.length / postsPerPage);
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages()) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const getPosts = () => {
     axios.get("http://localhost:8080/secretposts").then((res) => {
@@ -97,8 +120,8 @@ const SecretListPage = () => {
         />
       </form>
       <br />
-      {filteredPosts.length > 0
-        ? filteredPosts
+      {currentPosts.length > 0
+        ? currentPosts
             .filter((post) => post.title !== 0)
             .sort((a, b) => b.id - a.id)
             .map((post) => {
@@ -127,6 +150,24 @@ const SecretListPage = () => {
               );
             })
         : "게시물이 없습니다"}
+      <br />
+      <div className="pagination">
+        <div className="pagination-container">
+          <MdNavigateBefore
+            className="cursor-pointer"
+            onClick={prevPage}
+            disabled={currentPage === 1}
+          />
+          <span className="grey">
+            {currentPage} / {totalPages()}
+          </span>
+          <MdNavigateNext
+            className="cursor-pointer"
+            onClick={nextPage}
+            disabled={currentPage === totalPages()}
+          />
+        </div>
+      </div>
     </div>
   );
 };
