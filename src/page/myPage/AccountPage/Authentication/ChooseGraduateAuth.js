@@ -37,7 +37,7 @@ const ChooseGraduateAuth = () => {
           },
         }
       );
-
+      move("/auth/check");
       // Handle the server response here
       console.log(response.data);
     } catch (error) {

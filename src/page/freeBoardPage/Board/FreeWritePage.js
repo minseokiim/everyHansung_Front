@@ -52,7 +52,7 @@ const FreeWritePage = ({ editing }) => {
           studentId,
           title,
           content,
-          isAnonymous
+          isAnonymous,
         })
         .then(() => {
           console.log("isAnonymous" + isAnonymous);
@@ -63,7 +63,7 @@ const FreeWritePage = ({ editing }) => {
 
   const onChangeIsAnonymous = (e) => {
     setIsAnonymous(e.target.checked);
-    console.log("isAnonymous: " + e.target.checked); // 추가된 코드
+    console.log("isAnonymous: " + e.target.checked); // 확인 코드
   };
 
   // const onChangeQuestion = (e) => {

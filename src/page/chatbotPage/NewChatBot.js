@@ -199,29 +199,27 @@ const NewChatBot = () => {
     {
       id: "30",
       message: "IT공과대학: 02-760-4433",
-      trigger: "3",
-      //trigger : 수정 이어서 하기
+      trigger: "58",
     },
     {
       id: "31",
       message: "창의융합대학: 02-760-5735",
-      trigger: "3",
+      trigger: "64",
     },
     {
       id: "32",
       message: "미래플러스대학: 02-760-5745",
-      trigger: "3",
+      trigger: "69",
     },
-
     {
       id: "33",
       message: "상상력교양대학: 02-760-5821",
-      trigger: "3",
+      trigger: "72",
     },
     {
       id: "34",
       message: "국제교류원: 02-760-4473/4095",
-      trigger: "3",
+      trigger: "76",
     },
     {
       id: "35",
@@ -400,7 +398,171 @@ const NewChatBot = () => {
       message: "뷰티디자인매니지먼트학과: 02-760-4422",
       trigger: "3",
     },
-    //공대부터 이어서 하기
+    {
+      id: "58",
+      options: [
+        {
+          value: "computer",
+          label: "모바일소프트웨어/빅데이터/웹공학/디지털콘텐츠·가상현실트랙",
+          trigger: "59",
+        },
+        {
+          value: "electronics",
+          label: "전자/시스템반도체트랙",
+          trigger: "60",
+        },
+        {
+          value: "machinery",
+          label: "기계설계/자동화트랙",
+          trigger: "61",
+        },
+        {
+          value: "industrial-engineering",
+          label: "산업공학트랙",
+          trigger: "62",
+        },
+        { value: "sm-fac-con", label: "스마트팩토리컨설팅학과", trigger: "63" },
+      ],
+    },
+    {
+      id: "59",
+      message:
+        "모바일소프트웨어/빅데이터/웹공학/디지털콘텐츠·가상현실트랙: 02-760-4438",
+      trigger: "3",
+    },
+    {
+      id: "60",
+      message: "전자/시스템반도체트랙: 02-760-4434",
+      trigger: "3",
+    },
+    {
+      id: "61",
+      message: "기계설계/자동화트랙: 02-760-4327",
+      trigger: "3",
+    },
+    {
+      id: "62",
+      message: "산업공학트랙: 02-760-4127",
+      trigger: "3",
+    },
+    {
+      id: "63",
+      message: "스마트팩토리컨설팅학과: 02-760-5777",
+      trigger: "3",
+    },
+    {
+      id: "64",
+      options: [
+        {
+          value: "sangsang-dept",
+          label: "상상력인재학부",
+          trigger: "65",
+        },
+
+        {
+          value: "li-cul-contents",
+          label: "문학문화콘텐츠학과",
+          trigger: "66",
+        },
+        { value: "ai-application", label: "AI응용학과", trigger: "67" },
+        { value: "conver-security", label: "융합보안학과", trigger: "68" },
+      ],
+    },
+    {
+      id: "65",
+      message: "상상력인재학부: 02-760-5742",
+      trigger: "3",
+    },
+    {
+      id: "66",
+      message: "문학문화콘텐츠학과: 02-760-5637",
+      trigger: "3",
+    },
+    {
+      id: "67",
+      message: "AI응용학과: 02-760-4736",
+      trigger: "3",
+    },
+    {
+      id: "68",
+      message: "융합보안학과: 02-760-5732",
+      trigger: "3",
+    },
+    {
+      id: "69",
+      options: [
+        {
+          value: "future-1",
+          label: "융합행정/호텔외식경영/뷰티디자인학과",
+          trigger: "70",
+        },
+        {
+          value: "future-2",
+          label: "비즈니스컨설팅/ICT융합디자인학과",
+          trigger: "71",
+        },
+      ],
+    },
+    {
+      id: "70",
+      message: "융합행정/호텔외식경영/뷰티디자인학과: 02-760-5747",
+      trigger: "3",
+    },
+    {
+      id: "71",
+      message: "비즈니스컨설팅/ICT융합디자인학과: 02-760-5745",
+      trigger: "3",
+    },
+    {
+      id: "72",
+      options: [
+        {
+          value: "b-liberal",
+          label: "기초교양학부",
+          trigger: "73",
+        },
+        {
+          value: "p-liberal",
+          label: "소양·핵심교양학부",
+          trigger: "74",
+        },
+        {
+          value: "f-liberal",
+          label: "자율교양학부",
+          trigger: "75",
+        },
+      ],
+    },
+    {
+      id: "73",
+      message: "기초교양학부: 02-760-4354",
+      trigger: "3",
+    },
+    {
+      id: "74",
+      message: "소양·핵심교양학부: 02-760-5821/4446",
+      trigger: "3",
+    },
+    {
+      id: "75",
+      message: "자율교양학부: 02-760-4167",
+      trigger: "3",
+    },
+    {
+      id: "76",
+      options: [
+        {
+          value: "lang-edu",
+          label: "언어교육센터",
+          trigger: "77",
+        },
+      ],
+    },
+    {
+      id: "77",
+      message: "언어교육센터: 02-760-4374",
+      trigger: "3",
+    },
   ];
   const theme = {
     background: "#f5f8fb",

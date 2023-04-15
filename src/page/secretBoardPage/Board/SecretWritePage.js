@@ -74,7 +74,6 @@ const SecretWritePage = ({ editing }) => {
   };
 
   const onChangeAnonymous = (e) => {
-    e.preventDefault();
     setIsAnonymous(e.target.checked);
   };
 

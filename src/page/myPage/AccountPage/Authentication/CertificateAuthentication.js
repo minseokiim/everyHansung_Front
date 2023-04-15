@@ -8,6 +8,7 @@ const CertificateAuthentication = () => {
   const studentId = localStorage.getItem("studentId");
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
+  const move = useNavigate();
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -39,6 +40,7 @@ const CertificateAuthentication = () => {
 
       // Handle the server response here
       console.log(response.data);
+      move("/auth/check");
     } catch (error) {
       // Handle errors here
       console.error("Error uploading the file:", error);

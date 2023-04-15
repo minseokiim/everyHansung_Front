@@ -58,6 +58,7 @@ const FreeShowPage = () => {
       <br />
       <div className="comment">
         <FreeCommentListPage />
+        <br />
         <FreeCommentWritePage />
       </div>
     </div>

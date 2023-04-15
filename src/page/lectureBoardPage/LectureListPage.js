@@ -70,26 +70,28 @@ const LectureListPage = () => {
         <br />
 
         {filteredPosts.length > 0
-          ? filteredPosts.map((post) => {
-              return (
-                <div
-                  key={post.id}
-                  className=" card-body cursor-pointer"
-                  onClick={() => move(`/lectureboard/${post.id}`)}
-                >
-                  <div>
-                    {createArray(5).map((n, i) => (
-                      <Star key={i} selected={post.selectedStars > i} />
-                    ))}
-                    <hr />
+          ? filteredPosts
+              .sort((a, b) => b.id - a.id) //최신순
+              .map((post) => {
+                return (
+                  <div
+                    key={post.id}
+                    className=" card-body cursor-pointer"
+                    onClick={() => move(`/lectureboard/${post.id}`)}
+                  >
+                    <div>
+                      {createArray(5).map((n, i) => (
+                        <Star key={i} selected={post.selectedStars > i} />
+                      ))}
+                      <hr />
+                    </div>
+                    <div>
+                      <FaChalkboardTeacher />
+                      &nbsp; {post.lectureName}, {post.professor} 교수님
+                    </div>
                   </div>
-                  <div>
-                    <FaChalkboardTeacher />
-                    &nbsp; {post.lectureName}, {post.professor} 교수님
-                  </div>
-                </div>
-              );
-            })
+                );
+              })
           : "게시물이 없습니다."}
       </div>
     </div>
