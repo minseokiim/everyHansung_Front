@@ -55,7 +55,7 @@ const FreeWritePage = ({ editing }) => {
     } else if (editing) {
       apiClient
         .patch(`http://localhost:8080/freeboard/${id}`, {
-          //studentId, 학번 patch할 필요 없음
+          studentId,
           title,
           content,
           isAnonymous,
