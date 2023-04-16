@@ -2,12 +2,31 @@ import { useEffect, useState, useCallback } from "react";
 import "./SecretCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../../apiClient";
 
 const SecretCommentWritePage = () => {
   const [commentContent, setCommentContent] = useState("");
   const [commentIsAnonymous, setCommentIsAnonymous] = useState(false);
   const { id } = useParams();
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
+  const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,15 +42,18 @@ const SecretCommentWritePage = () => {
           commentContent,
           commentCreatedAt: Date.now(),
           commentIsAnonymous,
+          nickname,
         })
         .then(move("/secretboard/list"));
     }
   };
 
+  const onChangeIsAnonymous = (e) => {
+    setCommentIsAnonymous(e.target.checked);
+  };
+
   return (
     <div>
-      <input type="checkbox" />
-      익명
       <input
         className="comment-input"
         type="text"
@@ -46,6 +68,12 @@ const SecretCommentWritePage = () => {
           }
         }}
       />
+      <input
+        type="checkbox"
+        checked={commentIsAnonymous}
+        onChange={onChangeIsAnonymous}
+      />
+      익명
       <button className="comment-button" onClick={onSubmit}>
         작성
       </button>

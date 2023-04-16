@@ -15,12 +15,29 @@ const FreeShowPage = () => {
   const studentId = localStorage.getItem("studentId");
   const [post, setPost] = useState([]);
   const move = useNavigate();
+  const [nickname, setNickname] = useState("");
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
       setPost(res.data);
     });
   };
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
 
   useEffect(() => {
     getPost(id);
@@ -32,7 +49,9 @@ const FreeShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/freeboard/${studentId}/${id}`);
+      await apiClient.delete(
+        `http://localhost:8080/freeboard/${studentId}/${id}`
+      );
       alert("게시물이 삭제되었습니다.");
       move("/freeboard/list");
     } catch (error) {
@@ -43,28 +62,34 @@ const FreeShowPage = () => {
   return (
     <div className="p-4">
       <div className="d-flex">
-        <h4 className="flex-grow-1">{post.title}</h4>
-        <div>
-          <AiFillEdit
-            className="cursor-pointer"
-            onClick={(e) => {
-              e.preventDefault();
-              move(`/freeboard/edit/${id}`);
-            }}
-          />
-        </div>
-        <div>
-          <div>
-            <BsFillTrashFill
-              className="cursor-pointer"
-              onClick={() => {
-                if (window.confirm("게시물을 삭제하시겠습니까?")) {
-                  deletePost(id);
-                }
-              }}
-            />
-          </div>
-        </div>
+        <h4 className="flex-grow-1">
+          <strong>{post.title}</strong>
+        </h4>
+        {post.nickname === nickname && (
+          <>
+            <div>
+              <AiFillEdit
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  move(`/freeboard/edit/${id}`);
+                }}
+              />
+            </div>
+            <div>
+              <span className="p-2">
+                <BsFillTrashFill
+                  className="cursor-pointer"
+                  onClick={() => {
+                    if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                      deletePost(id);
+                    }
+                  }}
+                />
+              </span>
+            </div>
+          </>
+        )}
       </div>
       <div className="text-muted post-time">
         <BiTimeFive /> {printDate(post.createdAt)}
@@ -75,12 +100,14 @@ const FreeShowPage = () => {
       <hr />
       <p>{post.content}</p>
       <br />
+      {/* 좋아요 컴포넌트 */}
       <FreeBoardHeart />
       <hr />
       <AiOutlineComment />
       <strong>댓글</strong>
       <br />
       <div className="comment">
+        {/* 댓글 컴포넌트 */}
         <FreeCommentListPage />
         <br />
         <FreeCommentWritePage />

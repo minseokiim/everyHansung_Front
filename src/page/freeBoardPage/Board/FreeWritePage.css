@@ -25,3 +25,8 @@
 .black {
   color: black;
 }
+
+.heart-icon-container {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -65,7 +65,31 @@
     }
   ],
   "freecomments": [],
-  "secretcomments": [],
+  "secretcomments": [
+    {
+      "commentContent": "as",
+      "commentCreatedAt": 1681645110525,
+      "commentIsAnonymous": false,
+      "secretpostId": "5",
+      "id": 1
+    },
+    {
+      "commentContent": "sa",
+      "commentCreatedAt": 1681645331835,
+      "commentIsAnonymous": true,
+      "nickname": "",
+      "secretpostId": "5",
+      "id": 2
+    },
+    {
+      "commentContent": "s",
+      "commentCreatedAt": 1681645335374,
+      "commentIsAnonymous": false,
+      "nickname": "",
+      "secretpostId": "5",
+      "id": 3
+    }
+  ],
   "login": [
     {
       "studentId": "1891014",

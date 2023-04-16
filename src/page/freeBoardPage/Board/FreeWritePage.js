@@ -11,6 +11,7 @@ const FreeWritePage = ({ editing }) => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
+  const [countLike, setCountLike] = useState(0); //좋아요 개수
 
   const move = useNavigate();
   const { id } = useParams();
@@ -44,8 +45,6 @@ const FreeWritePage = ({ editing }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    //console.log(nickname);
-
     if (title.trim().length === 0) {
       alert("제목을 입력하세요");
       return;
@@ -54,8 +53,7 @@ const FreeWritePage = ({ editing }) => {
       return;
     } else if (editing) {
       apiClient
-        .patch(`http://localhost:8080/freeboard/${id}`, {
-          studentId,
+        .patch(`http://localhost:8080/freeboard/${studentId}/${id}`, {
           title,
           content,
           isAnonymous,
@@ -71,9 +69,9 @@ const FreeWritePage = ({ editing }) => {
           content,
           isAnonymous,
           nickname,
+          countLike, //디폴트 0
         })
         .then(() => {
-          // console.log("isAnonymous" + isAnonymous);
           move("/freeboard/list");
         });
     }
@@ -81,7 +79,6 @@ const FreeWritePage = ({ editing }) => {
 
   const onChangeIsAnonymous = (e) => {
     setIsAnonymous(e.target.checked);
-    // console.log("isAnonymous: " + e.target.checked); // 확인 코드
   };
 
   return (
