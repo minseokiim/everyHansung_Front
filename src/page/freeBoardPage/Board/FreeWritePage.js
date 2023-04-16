@@ -44,7 +44,7 @@ const FreeWritePage = ({ editing }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log(nickname);
+    //console.log(nickname);
 
     if (title.trim().length === 0) {
       alert("제목을 입력하세요");

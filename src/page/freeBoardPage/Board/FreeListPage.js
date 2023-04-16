@@ -40,7 +40,6 @@ const FreeListPage = () => {
   };
 
   // const deletePost = (e, id) => {
-  //   alert("삭제하시겠습니까?");
   //   e.stopPropagation();
   //   axios.delete(`http://localhost:8080/freeboard/${id}`).then(() =>
   //     setPosts((prevPosts) => {
