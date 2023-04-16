@@ -7,9 +7,11 @@ import "./FreeWritePage.css";
 import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
+import apiClient from "../../../apiClient";
 
 const FreeShowPage = () => {
   const { id } = useParams();
+  const studentId = localStorage.getItem("studentId");
   const [post, setPost] = useState([]);
   const move = useNavigate();
 
@@ -29,7 +31,7 @@ const FreeShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/freeboard/${id}`);
+      await apiClient.delete(`http://localhost:8080/freeboard/${studentId}/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/freeboard/list");
     } catch (error) {
