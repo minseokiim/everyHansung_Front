@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import FreeCommentWritePage from "../Comment/FreeCommentWritePage";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
+import FreeBoardHeart from "../Heart/FreeBoardHeart";
 import "./FreeWritePage.css";
 import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
@@ -72,7 +73,7 @@ const FreeShowPage = () => {
       <hr />
       <p>{post.content}</p>
       <br />
-      <AiOutlineHeart /> <strong>공감</strong>
+      <FreeBoardHeart />
       <hr />
       <AiOutlineComment />
       <strong>댓글</strong>
