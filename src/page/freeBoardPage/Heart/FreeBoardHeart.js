@@ -1,10 +1,12 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const FreeBoardHeart = ({ id }) => {
+const FreeBoardHeart = () => {
   const [isFilled, setIsFilled] = useState(false);
   const [countLike, setCountLike] = useState(0);
+  const { id } = useParams();
 
   const clickHeart = () => {
     if (!isFilled) {
@@ -13,7 +15,7 @@ const FreeBoardHeart = ({ id }) => {
 
       //좋아요 수 patch
       axios.patch(`http://localhost:8080/freeboard/${id}`, {
-        countLike
+        countLike,
       });
     } else {
       setIsFilled(false);
