@@ -8,12 +8,28 @@ import axios from "axios";
 const FreeWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  // const [question, setQuestion] = useState(false);
   const [isAnonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
+  const [nickname, setNickname] = useState("");
 
   const move = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
 
   useEffect(() => {
     if (editing) {
@@ -21,13 +37,14 @@ const FreeWritePage = ({ editing }) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
-        // setQuestion(res.data.question);
       });
     }
   }, [id, editing]);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    console.log(nickname);
 
     if (title.trim().length === 0) {
       alert("제목을 입력하세요");
@@ -38,7 +55,7 @@ const FreeWritePage = ({ editing }) => {
     } else if (editing) {
       apiClient
         .patch(`http://localhost:8080/freeboard/${id}`, {
-          studentId,
+          //studentId, 학번 patch할 필요 없음
           title,
           content,
           isAnonymous,
@@ -53,9 +70,10 @@ const FreeWritePage = ({ editing }) => {
           title,
           content,
           isAnonymous,
+          nickname,
         })
         .then(() => {
-          console.log("isAnonymous" + isAnonymous);
+          // console.log("isAnonymous" + isAnonymous);
           move("/freeboard/list");
         });
     }
@@ -63,12 +81,8 @@ const FreeWritePage = ({ editing }) => {
 
   const onChangeIsAnonymous = (e) => {
     setIsAnonymous(e.target.checked);
-    console.log("isAnonymous: " + e.target.checked); // 확인 코드
+    // console.log("isAnonymous: " + e.target.checked); // 확인 코드
   };
-
-  // const onChangeQuestion = (e) => {
-  //   setQuestion(e.target.checked);
-  // };
 
   return (
     <form className="back">
@@ -105,10 +119,6 @@ const FreeWritePage = ({ editing }) => {
           onChange={onChangeIsAnonymous}
         />
         익명
-        {/* &nbsp;
-        <input type="checkbox" checked={question} onChange={onChangeQuestion} />
-        질문
-        <br /> */}
         <div className="mb-3">
           <button
             className="button "

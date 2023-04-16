@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
 import { BsFillTrashFill } from "react-icons/bs";
-
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
 const FreeListPage = () => {
@@ -40,17 +39,17 @@ const FreeListPage = () => {
     });
   };
 
-  const deletePost = (e, id) => {
-    alert("삭제하시겠습니까?");
-    e.stopPropagation();
-    axios.delete(`http://localhost:8080/freeboard/${id}`).then(() =>
-      setPosts((prevPosts) => {
-        return prevPosts.filter((post) => {
-          return post.id !== id;
-        });
-      })
-    );
-  };
+  // const deletePost = (e, id) => {
+  //   alert("삭제하시겠습니까?");
+  //   e.stopPropagation();
+  //   axios.delete(`http://localhost:8080/freeboard/${id}`).then(() =>
+  //     setPosts((prevPosts) => {
+  //       return prevPosts.filter((post) => {
+  //         return post.id !== id;
+  //       });
+  //     })
+  //   );
+  // };
 
   useEffect(() => {
     getPosts();
@@ -142,13 +141,13 @@ const FreeListPage = () => {
                       <br />
                       {timeDifference(post.createdAt)}&nbsp;
                       <span className="black">
-                        {post.isAnonymous ? "익명" : post.studentId}
+                        {post.isAnonymous ? "익명" : post.nickname}
                       </span>
                     </div>
                   </div>
-                  <div>
+                  {/* <div>
                     <BsFillTrashFill onClick={(e) => deletePost(e, post.id)} />
-                  </div>
+                  </div> */}
                 </div>
               );
             })

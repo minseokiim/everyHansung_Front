@@ -4,10 +4,9 @@ import { useEffect, useState, useCallback } from "react";
 import FreeCommentWritePage from "../Comment/FreeCommentWritePage";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import "./FreeWritePage.css";
-import { useSelector } from "react-redux";
 import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -28,6 +27,16 @@ const FreeShowPage = () => {
     return new Date(timestamp).toLocaleString();
   };
 
+  const deletePost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/freeboard/${id}`);
+      alert("게시물이 삭제되었습니다.");
+      move("/freeboard/list");
+    } catch (error) {
+      alert("게시물 삭제에 실패했습니다.");
+    }
+  };
+
   return (
     <div className="p-4">
       <div className="d-flex">
@@ -41,12 +50,24 @@ const FreeShowPage = () => {
             }}
           />
         </div>
+        <div>
+          <div>
+            <BsFillTrashFill
+              className="cursor-pointer"
+              onClick={() => {
+                if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                  deletePost(id);
+                }
+              }}
+            />
+          </div>
+        </div>
       </div>
       <div className="text-muted post-time">
         <BiTimeFive /> {printDate(post.createdAt)}
       </div>
       <div className="text-muted post-time">
-        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.studentId}
+        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
       </div>
       <hr />
       <p>{post.content}</p>
