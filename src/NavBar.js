@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { AiOutlineUser } from "react-icons/ai";
 import { BiMessage } from "react-icons/bi";
-import { BsPeopleFill } from "react-icons/bs";
+import { GiTurtleShell, GiTurtle } from "react-icons/gi";
 
 const NavBar = () => {
   return (
@@ -14,7 +14,7 @@ const NavBar = () => {
       <Navbar className="color-nav" variant="dark">
         <Container>
           <Navbar.Brand href="/membermain">
-            <BsPeopleFill />
+            <GiTurtle />
             <span className="p-1">에브리한성</span>
           </Navbar.Brand>
           <Nav className="p-3 mx-auto">

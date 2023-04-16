@@ -2,12 +2,31 @@ import { useEffect, useState, useCallback } from "react";
 import "./FreeCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../../apiClient";
 
 const FreeCommentWritePage = () => {
   const [commentContent, setCommentContent] = useState("");
   const [commentIsAnonymous, setCommentIsAnonymous] = useState(false);
   const { id } = useParams();
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
+  const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -17,14 +36,19 @@ const FreeCommentWritePage = () => {
       return;
     } else {
       setCommentContent("");
-      axios
-        .post(`http://localhost:8080/freeposts/${id}/freecomments`, {
+      apiClient
+        .post(`http://localhost:8080/freeboard/${id}/freecomments`, {
           commentContent,
           commentCreatedAt: Date.now(),
           commentIsAnonymous,
+          nickname,
         })
         .then(move(`/freeboard/list`));
     }
+  };
+
+  const onChangeIsAnonymous = (e) => {
+    setCommentIsAnonymous(e.target.checked);
   };
 
   return (
@@ -43,7 +67,11 @@ const FreeCommentWritePage = () => {
           }
         }}
       />
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={commentIsAnonymous}
+        onChange={onChangeIsAnonymous}
+      />
       익명
       <button className="comment-button" onClick={onSubmit}>
         작성

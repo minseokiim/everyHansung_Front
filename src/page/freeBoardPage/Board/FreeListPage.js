@@ -2,14 +2,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
-import { BsFillTrashFill } from "react-icons/bs";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 
 const FreeListPage = () => {
   const move = useNavigate();
   const [posts, setPosts] = useState([]);
+  //게시물 검색
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
 
@@ -38,17 +40,6 @@ const FreeListPage = () => {
       setPosts(res.data);
     });
   };
-
-  // const deletePost = (e, id) => {
-  //   e.stopPropagation();
-  //   axios.delete(`http://localhost:8080/freeboard/${id}`).then(() =>
-  //     setPosts((prevPosts) => {
-  //       return prevPosts.filter((post) => {
-  //         return post.id !== id;
-  //       });
-  //     })
-  //   );
-  // };
 
   useEffect(() => {
     getPosts();
@@ -129,7 +120,7 @@ const FreeListPage = () => {
               return (
                 <div
                   key={post.id}
-                  className="d-flex justify-content-between card-body cursor-pointer"
+                  className=" card-body cursor-pointer"
                   onClick={() => move(`/freeboard/${post.id}`)}
                 >
                   <div>
@@ -141,12 +132,16 @@ const FreeListPage = () => {
                       {timeDifference(post.createdAt)}&nbsp;
                       <span className="black">
                         {post.isAnonymous ? "익명" : post.nickname}
+                        <span className="heart-icon-container">
+                          <AiOutlineHeart style={{ color: "#c62917" }} />
+                          {/* 좋아요 개수 */}
+                          {post.countLike} &nbsp;
+                          <AiOutlineComment />
+                          {/* 댓글 개수 */}
+                        </span>
                       </span>
                     </div>
                   </div>
-                  {/* <div>
-                    <BsFillTrashFill onClick={(e) => deletePost(e, post.id)} />
-                  </div> */}
                 </div>
               );
             })
