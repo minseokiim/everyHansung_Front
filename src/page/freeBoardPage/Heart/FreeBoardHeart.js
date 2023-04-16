@@ -1,6 +1,6 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import React, { useState, useEffect } from "react";
-import apiClient from "../../../apiClient";
+import axios from "axios";
 
 const FreeBoardHeart = ({ id }) => {
   const [isFilled, setIsFilled] = useState(false);
@@ -8,17 +8,13 @@ const FreeBoardHeart = ({ id }) => {
 
   const clickHeart = () => {
     if (!isFilled) {
-      const confirmResult = window.confirm("좋아요를 누르시겠습니까?");
+      setIsFilled(true);
+      setCountLike(countLike + 1);
 
-      if (confirmResult) {
-        setIsFilled(true);
-        setCountLike(countLike + 1);
-
-        //좋아요 수 patch
-        apiClient.patch(`http://localhost:8080/freeboard/${id}`, {
-          countLike,
-        });
-      }
+      //좋아요 수 patch
+      axios.patch(`http://localhost:8080/freeboard/${id}`, {
+        countLike
+      });
     } else {
       setIsFilled(false);
       setCountLike(countLike - 1);
