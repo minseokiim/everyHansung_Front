@@ -36,6 +36,7 @@ const SecretListPage = () => {
   const getPosts = () => {
     axios.get("http://localhost:8080/secretposts").then((res) => {
       setPosts(res.data);
+      console.log(res.data);
     });
   };
 
