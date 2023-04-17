@@ -6,9 +6,10 @@ import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import FreeBoardHeart from "../Heart/FreeBoardHeart";
 import "./FreeWritePage.css";
 import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
-import { BiTimeFive } from "react-icons/bi";
+import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
+import SendMessagePage from "../../messagePage/SendMessagePage";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const FreeShowPage = () => {
   const [post, setPost] = useState([]);
   const move = useNavigate();
   const [nickname, setNickname] = useState("");
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
@@ -87,6 +89,23 @@ const FreeShowPage = () => {
                   }}
                 />
               </span>
+            </div>
+          </>
+        )}
+
+        {post.nickname !== nickname && (
+          <>
+            <div>
+              <BiMessage
+                className="cursor-pointer"
+                onClick={() => {
+                  setIsMessageModalOpen(true);
+                }}
+              />
+              <SendMessagePage
+                isOpen={isMessageModalOpen}
+                onRequestClose={() => setIsMessageModalOpen(false)}
+              />
             </div>
           </>
         )}

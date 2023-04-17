@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import OtherPage from "./OtherPage/OtherPage";
 import { FaUserCircle } from "react-icons/fa";
-import apiClient from '../../apiClient';
+import apiClient from "../../apiClient";
 
 const MyPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -43,6 +43,7 @@ const MyPage = () => {
               className="logout-button m-1 "
               onClick={(e) => {
                 e.preventDefault();
+                localStorage.clear(); //모든 정보 삭제
                 move("/");
               }}
             >

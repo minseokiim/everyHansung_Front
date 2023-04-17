@@ -12,6 +12,7 @@ const BookListPage = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5); //페이지네이션
+  const studentId = localStorage.getItem("studentId");
 
   const totalPages = () => {
     return Math.ceil(filteredPosts.length / postsPerPage);
@@ -68,14 +69,16 @@ const BookListPage = () => {
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">책방</strong>
-          <button
-            className="m-2  write-button"
-            onClick={() => {
-              move("/bookstore/post");
-            }}
-          >
-            작성하기
-          </button>
+          {studentId && (
+            <button
+              className="m-2  write-button"
+              onClick={() => {
+                move("/bookstore/post");
+              }}
+            >
+              작성하기
+            </button>
+          )}
         </div>
       </div>
 
