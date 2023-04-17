@@ -1,9 +1,11 @@
 import React from "react";
 import "./MainPage.css";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
+  const move = useNavigate();
+
   return (
     //jshint ignore:start
     <div className="notlogin">
@@ -13,7 +15,8 @@ const MainPage = () => {
             <img
               alt="everyhansung"
               src="img/everyhansung.png"
-              className="logo-image"
+              className="logo-image cursor-pointer"
+              onClick={() => move("/membermain")}
             />
           </div>
           <Link to="/login" className="button login">
@@ -43,7 +46,8 @@ const MainPage = () => {
             <img
               alt="sangsangs"
               src="img/sangsangs.png"
-              className="sangsangs"
+              className="sangsangs cursor-pointer"
+              onClick={() => move("/membermain")}
             />
           </p>
         </h2>

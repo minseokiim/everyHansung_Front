@@ -24,7 +24,7 @@ import FindPwPage from "./page/signupPage/FindPwPage";
 import EmailAuthPage from "./page/signupPage/EmailAuthPage";
 import SetPasswdPage from "./page/signupPage/SetPasswdPage";
 
-import MessagePage from "./page/messagePage/MessagePage";
+import MessageListPage from "./page/messagePage/MessageListPage";
 
 import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
@@ -102,11 +102,17 @@ const App = () => {
           <Route
             path="/message"
             element={
-              <Card>
-                <MessagePage />
-              </Card>
+              <div>
+                <Card>
+                  <MessageListPage />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
             }
           />
+
           <Route
             path="/freeboard/post"
             element={

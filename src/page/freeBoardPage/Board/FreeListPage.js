@@ -14,6 +14,8 @@ const FreeListPage = () => {
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
+  //작성 버튼 활성화
+  const studentId = localStorage.getItem("studentId");
 
   const totalPages = () => {
     return Math.ceil(filteredPosts.length / postsPerPage);
@@ -89,14 +91,17 @@ const FreeListPage = () => {
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">자유게시판</strong>
-          <button
-            className="m-2  write-button"
-            onClick={() => {
-              move("/freeboard/post");
-            }}
-          >
-            작성하기
-          </button>
+
+          {studentId && (
+            <button
+              className="m-2  write-button"
+              onClick={() => {
+                move("/freeboard/post");
+              }}
+            >
+              작성하기
+            </button>
+          )}
         </div>
       </div>
       <hr />
@@ -116,7 +121,6 @@ const FreeListPage = () => {
         ? currentPosts
             .filter((post) => post.title !== 0)
             .sort((a, b) => b.freeboardId - a.freeboardId)
-
             .map((post) => {
               return (
                 <div

@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { AiOutlineUser } from "react-icons/ai";
 import { BiMessage } from "react-icons/bi";
-import { GiTurtleShell, GiTurtle } from "react-icons/gi";
+import { GiTurtle } from "react-icons/gi";
 
 const NavBar = () => {
   return (
@@ -44,9 +44,6 @@ const NavBar = () => {
                 <AiOutlineUser />
               </Nav.Link>
             </div>
-            {/* <Nav.Link href="">
-              <div className="grey">{studentId}님, 안녕하세요!</div>
-            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>

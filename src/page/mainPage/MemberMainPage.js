@@ -33,10 +33,29 @@ const MemberMainPage = () => {
   return (
     <div className=" p-3">
       <div className="service ">
-        <div className=" my-info ">
-          <img alt="hansung" src="img/chatlogo.png" className="logo" />
-          {studentId}님, 안녕하세요!
-        </div>
+        {/* 로그인 정보가 있으면 뜨고 없으면 안뜸 */}
+        {name && (
+          <div className=" my-info ">
+            <img
+              alt="hansung"
+              src="img/chatlogo.png"
+              className="logo cursor-pointer"
+              onClick={() => move("/my")}
+            />
+            {name}님, 안녕하세요!
+          </div>
+        )}
+        {!name && (
+          <div className=" my-info ">
+            <img
+              alt="hansung"
+              src="img/chatlogo.png"
+              className="logo cursor-pointer"
+              onClick={() => move("/")}
+            />
+            로그인이나 회원가입 하시려면 저를 눌러주세요!
+          </div>
+        )}
         <hr />
         <br />
         <h2>

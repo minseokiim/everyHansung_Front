@@ -13,6 +13,8 @@ const LectureListPage = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
   const createArray = (length) => [...Array(length)];
 
+  const studentId = localStorage.getItem("studentId");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
 
@@ -67,14 +69,16 @@ const LectureListPage = () => {
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">강의평</strong>
-          <button
-            className="m-2  write-button"
-            onClick={() => {
-              move("/lectureboard/post");
-            }}
-          >
-            작성하기
-          </button>
+          {studentId && (
+            <button
+              className="m-2  write-button"
+              onClick={() => {
+                move("/lectureboard/post");
+              }}
+            >
+              작성하기
+            </button>
+          )}
         </div>
       </div>
 
