@@ -47,6 +47,7 @@ import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseG
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
 import Check from "./page/myPage/AccountPage/Authentication/Check";
 import Success from "./page/myPage/AccountPage/Authentication/Success";
+import CheckingAuth from "./page/myPage/AccountPage/Authentication/CheckingAuth";
 
 import MemberMainPage from "./page/mainPage/MemberMainPage";
 
