@@ -123,7 +123,7 @@ const FreeShowPage = () => {
 
       <div className="d-flex">
         <FreeBoardHeart />
-        {post.countLike}
+        {/* {post.countLike} */}
       </div>
 
       <hr />
