@@ -8,19 +8,19 @@ const FreeBoardHeart = () => {
   const [isFilled, setIsFilled] = useState(false);
   const [countLike, setCountLike] = useState(0);
   const studentId = localStorage.getItem("studentId");
-  const { freeboardId } = useParams();
+  const { id } = useParams();
   const [message, setMessage] = useState('');
 
   const clickHeart = async () => {
     try {
-      console.log("freeboardId = " + freeboardId);
-      const response = await apiClient.post(`http://localhost:8080/heart`, null, {
+      const response = await apiClient.patch(`http://localhost:8080/heart`, null, {
         params: {
-          memberId: studentId,
-          freeboardId: freeboardId
+          studentId: studentId,
+          freeboardId: id
         }
       });
-      if (response.status === 201) {
+      setIsFilled(true);
+      if (response.status === 200) { // 여기를 수정했습니다.
         setMessage('좋아요가 추가되었습니다.');
       } else {
         setMessage('좋아요 추가에 실패했습니다.');
