@@ -45,6 +45,7 @@ const MemberMainPage = () => {
             {name}님, 안녕하세요!
           </div>
         )}
+        {/* 로그인 안했을 경우엔 이 화면 뜸 */}
         {!name && (
           <div className=" my-info ">
             <img

@@ -88,6 +88,14 @@
       "nickname": "",
       "secretpostId": "5",
       "id": 3
+    },
+    {
+      "commentContent": "d",
+      "commentCreatedAt": 1681730870299,
+      "commentIsAnonymous": false,
+      "nickname": "",
+      "secretpostId": "5",
+      "id": 4
     }
   ],
   "login": [
@@ -109,6 +117,20 @@
       "state": "보통",
       "writing": "필기 많음",
       "id": 1
+    }
+  ],
+  "heart": [
+    {
+      "isFilled": false,
+      "studentId": "1891014",
+      "secretpostId": "5",
+      "id": 1
+    },
+    {
+      "isFilled": false,
+      "studentId": "1891014",
+      "secretpostId": "5",
+      "id": 2
     }
   ]
 }

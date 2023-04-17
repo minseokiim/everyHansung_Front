@@ -7,6 +7,8 @@ const SecretCommentListPage = () => {
   const [comments, setComments] = useState([]);
   const { id } = useParams();
 
+  const studentId = localStorage.getItem("studentId");
+
   const getComments = () => {
     axios
       .get(`http://localhost:8080/secretposts/${id}/secretcomments`)
@@ -35,7 +37,7 @@ const SecretCommentListPage = () => {
           .map((comment) => {
             return (
               <div className="comment-box" key={comment.id}>
-                {comment.commentIsAnonymous ? "익명" : comment.nickname} :
+                {comment.commentIsAnonymous ? "익명" : studentId} :
                 {comment.commentContent}
                 <div className="comment-time">
                   {printDate(comment.commentCreatedAt)}

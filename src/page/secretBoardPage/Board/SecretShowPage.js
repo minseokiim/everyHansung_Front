@@ -8,6 +8,7 @@ import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
 import apiClient from "../../../apiClient";
 import { BiTimeFive } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
+import SecretBoardHeart from "../Heart/SectretBoardHeart";
 
 const SecretShowPage = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const SecretShowPage = () => {
   const [comments, setComments] = useState([]);
   // const [postNick, setPostNick] = useState("");
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
@@ -60,7 +62,11 @@ const SecretShowPage = () => {
       <hr />
       <p>{post.content}</p>
       <br />
-      <AiOutlineHeart /> <strong>공감</strong>
+      <div className="d-flex">
+        <SecretBoardHeart />
+        {post.countLike}
+      </div>
+
       <hr />
       <AiOutlineComment />
       <strong>댓글</strong>

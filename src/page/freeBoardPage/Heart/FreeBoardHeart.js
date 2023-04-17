@@ -6,90 +6,62 @@ import apiClient from "../../../apiClient";
 
 const FreeBoardHeart = () => {
   const [isFilled, setIsFilled] = useState(false);
-  const [countLike, setCountLike] = useState(0);
   const studentId = localStorage.getItem("studentId");
   const { id } = useParams();
-  const [message, setMessage] = useState('');
+
+  // const clickEmptyHeart = () => {
+  //   setIsFilled(true);
+
+  //   apiClient
+  //     .post(`http://localhost:8080/heart`, null, {
+  //       params: {
+  //         studentId: studentId,
+  //         freeboardId: id,
+  //       },
+  //     })
+  //     .then(() => {
+  //       console.log("post성공");
+  //     });
+  // };
+
+  // const clickFillHeart = () => {
+  //   setIsFilled(false);
+
+  //   apiClient
+  //     .delete(`http://localhost:8080/heart/${studentId}/${id}`)
+  //     .then(() => {
+  //       console.log("delete성공");
+  //     });
+  // };
+
+  const clickEmptyHeart = () => {};
+  const clickFillHeart = () => {};
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await apiClient.get(`http://localhost:8080/heart/${studentId}/${id}`);
+      // 게시물의 좋아요 정보를 조회
+      const response = await apiClient.get(
+        `http://localhost:8080/heart/${studentId}/${id}`
+      );
       if (response.data) {
+        // 좋아요 정보를 받아와 상태 업데이트
         setIsFilled(true);
       }
     };
     fetchData();
   }, []);
 
-  const clickHeart = async () => {
-    try {
-      console.log("freeboardId = " + id + " & " + "studentId = " + studentId);
-      const response = await apiClient.post(`http://localhost:8080/heart`, null, {
-        params: {
-          studentId: studentId,
-          freeboardId: id
-        }
-      });
-      setIsFilled(true);
-      if (response.status === 201) {
-        setMessage('좋아요가 추가되었습니다.');
-      } else {
-        setMessage('좋아요 추가에 실패했습니다.');
-      }
-    } catch (error) {
-      if (error.response.status === 400) {
-        setMessage(`Error: ${error.response.data}`);
-      } else {
-        setMessage(`Error: ${error.message}`);
-      }
-    }
-  };
-
-
-  // const clickHeart = () => {
-  //   if (!isFilled) {
-  //     setIsFilled(true);
-  //     setCountLike(countLike + 1);
-
-  //     //좋아요 수 patch
-  //     apiClient.post(`http://localhost:8080/hearts`, null, {
-  //       params: {
-  //           memberId: studentId,
-  //           freeboardId: id
-  //       }
-  //   })
-  //   .then(response => {
-  //       // 요청이 성공한 경우 처리
-  //   })
-  //   .catch(error => {
-  //       if (error.response.status === 400) {
-  //           // 400 오류 발생 시 처리
-  //           console.log("Error:", error.response.data);
-  //       } else {
-  //           // 다른 오류 발생 시 처리
-  //           console.log("Error:", error.message);
-  //       }
-  //   });
-  //   } else {
-  //     setIsFilled(false);
-  //     setCountLike(countLike - 1);
-  //   }
-  // };
-
   return (
     <div>
       {isFilled ? (
         <AiFillHeart
           className="cursor-pointer"
-          onClick={clickHeart}
+          onClick={clickFillHeart}
           style={{ color: "#c62917" }}
         />
       ) : (
-        <AiOutlineHeart className="cursor-pointer" onClick={clickHeart} />
+        <AiOutlineHeart className="cursor-pointer" onClick={clickEmptyHeart} />
       )}
-      <span>
-        <strong> {countLike}</strong>
-      </span>
     </div>
   );
 };

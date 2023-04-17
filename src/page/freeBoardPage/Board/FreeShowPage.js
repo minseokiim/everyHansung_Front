@@ -120,7 +120,12 @@ const FreeShowPage = () => {
       <p>{post.content}</p>
       <br />
       {/* 좋아요 컴포넌트 */}
-      <FreeBoardHeart />
+
+      <div className="d-flex">
+        <FreeBoardHeart />
+        {post.countLike}
+      </div>
+
       <hr />
       <AiOutlineComment />
       <strong>댓글</strong>
