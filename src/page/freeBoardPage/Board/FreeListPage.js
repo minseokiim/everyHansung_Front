@@ -37,7 +37,7 @@ const FreeListPage = () => {
 
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
-      setPosts(res.data);
+      setPosts(res.data.sort((a, b) => b.id - a.id));
     });
   };
 
@@ -116,6 +116,7 @@ const FreeListPage = () => {
         ? currentPosts
             .filter((post) => post.title !== 0)
             .sort((a, b) => b.freeboardId - a.freeboardId)
+
             .map((post) => {
               return (
                 <div
