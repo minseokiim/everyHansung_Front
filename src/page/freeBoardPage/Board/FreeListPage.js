@@ -115,13 +115,13 @@ const FreeListPage = () => {
       {currentPosts.length > 0
         ? currentPosts
             .filter((post) => post.title !== 0)
-            .sort((a, b) => b.id - a.id)
+            .sort((a, b) => b.freeboardId - a.freeboardId)
             .map((post) => {
               return (
                 <div
-                  key={post.id}
+                  key={post.freeboardId}
                   className=" card-body cursor-pointer"
-                  onClick={() => move(`/freeboard/${post.id}`)}
+                  onClick={() => move(`/freeboard/${post.freeboardId}`)}
                 >
                   <div>
                     {post.title}
