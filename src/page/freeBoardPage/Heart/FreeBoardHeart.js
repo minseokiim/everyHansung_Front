@@ -34,9 +34,6 @@ const FreeBoardHeart = () => {
   //     });
   // };
 
-  const clickEmptyHeart = () => {};
-  const clickFillHeart = () => {};
-
   useEffect(() => {
     const fetchData = async () => {
       // 게시물의 좋아요 정보를 조회
