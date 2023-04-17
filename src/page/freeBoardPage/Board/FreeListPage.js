@@ -39,7 +39,7 @@ const FreeListPage = () => {
 
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
-      setPosts(res.data.sort((a, b) => b.id - a.id));
+      setPosts(res.data);
     });
   };
 
@@ -120,13 +120,13 @@ const FreeListPage = () => {
       {currentPosts.length > 0
         ? currentPosts
             .filter((post) => post.title !== 0)
-            .sort((a, b) => b.freeboardId - a.freeboardId)
+            .sort((a, b) => b.id - a.id)
             .map((post) => {
               return (
                 <div
-                  key={post.freeboardId}
+                  key={post.id}
                   className=" card-body cursor-pointer"
-                  onClick={() => move(`/freeboard/${post.freeboardId}`)}
+                  onClick={() => move(`/freeboard/${post.id}`)}
                 >
                   <div>
                     {post.title}
