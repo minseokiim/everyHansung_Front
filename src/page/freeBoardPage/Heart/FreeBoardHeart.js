@@ -11,16 +11,27 @@ const FreeBoardHeart = () => {
   const { id } = useParams();
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await apiClient.get(`http://localhost:8080/heart/${studentId}/${id}`);
+      if (response.data) {
+        setIsFilled(true);
+      }
+    };
+    fetchData();
+  }, []);
+
   const clickHeart = async () => {
     try {
-      const response = await apiClient.patch(`http://localhost:8080/heart`, null, {
+      console.log("freeboardId = " + id + " & " + "studentId = " + studentId);
+      const response = await apiClient.post(`http://localhost:8080/heart`, null, {
         params: {
           studentId: studentId,
           freeboardId: id
         }
       });
       setIsFilled(true);
-      if (response.status === 200) { // 여기를 수정했습니다.
+      if (response.status === 201) {
         setMessage('좋아요가 추가되었습니다.');
       } else {
         setMessage('좋아요 추가에 실패했습니다.');
