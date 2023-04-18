@@ -7,46 +7,6 @@
       "createdAt": 1681591004689,
       "isAnonymous": false,
       "id": 1
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㄴ",
-      "content": "ㄴㄴㄴ",
-      "createdAt": 1681599298169,
-      "isAnonymous": false,
-      "id": 2
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㅁ",
-      "content": "ㅁ",
-      "createdAt": 1681599302244,
-      "isAnonymous": false,
-      "id": 3
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㄴ",
-      "content": "ㄴ",
-      "createdAt": 1681599305503,
-      "isAnonymous": false,
-      "id": 4
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㅁ",
-      "content": "ㄴ",
-      "createdAt": 1681599734818,
-      "isAnonymous": false,
-      "id": 5
-    },
-    {
-      "studentId": "1891014",
-      "title": "ㅁ",
-      "content": "ㄴ",
-      "createdAt": 1681599740648,
-      "isAnonymous": false,
-      "id": 6
     }
   ],
   "freeboard": [],
@@ -72,30 +32,6 @@
       "commentIsAnonymous": false,
       "secretpostId": "5",
       "id": 1
-    },
-    {
-      "commentContent": "sa",
-      "commentCreatedAt": 1681645331835,
-      "commentIsAnonymous": true,
-      "nickname": "",
-      "secretpostId": "5",
-      "id": 2
-    },
-    {
-      "commentContent": "s",
-      "commentCreatedAt": 1681645335374,
-      "commentIsAnonymous": false,
-      "nickname": "",
-      "secretpostId": "5",
-      "id": 3
-    },
-    {
-      "commentContent": "d",
-      "commentCreatedAt": 1681730870299,
-      "commentIsAnonymous": false,
-      "nickname": "",
-      "secretpostId": "5",
-      "id": 4
     }
   ],
   "login": [

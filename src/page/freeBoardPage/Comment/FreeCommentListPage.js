@@ -6,8 +6,10 @@ import axios from "axios";
 const FreeCommentListPage = () => {
   const [comments, setComments] = useState([]);
   const { id } = useParams();
+  const studentId = localStorage.getItem("studentId"); //학번 정보 받아오기
 
   const getComments = () => {
+    //해당 게시물의 댓글 받아오기
     axios
       .get(`http://localhost:8080/freeboard/${id}/freecomments`)
       .then((res) => setComments(res.data));
@@ -20,7 +22,8 @@ const FreeCommentListPage = () => {
   const deleteComment = (e, commentId) => {
     alert("삭제하시겠습니까?");
     e.stopPropagation();
-    //apiClient.delete의 api추가
+
+    //apiClient.delete 해서 댓글 정보 삭제하기
   };
 
   const printDate = (timestamp) => {
