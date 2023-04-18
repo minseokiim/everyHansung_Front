@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import "./FreeCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../../../apiClient";
 
 const FreeCommentListPage = () => {
   const [comments, setComments] = useState([]);
@@ -10,7 +11,7 @@ const FreeCommentListPage = () => {
 
   const getComments = () => {
     //해당 게시물의 댓글 받아오기
-    axios
+    apiClient
       .get(`http://localhost:8080/freeboard/${id}/freecomments`)
       .then((res) => setComments(res.data));
   };
@@ -24,6 +25,7 @@ const FreeCommentListPage = () => {
     e.stopPropagation();
 
     //apiClient.delete 해서 댓글 정보 삭제하기
+    // apiClient.delete()
   };
 
   const printDate = (timestamp) => {
