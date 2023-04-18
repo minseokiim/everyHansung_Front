@@ -56,6 +56,7 @@ import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
 import TimeTable from "./page/timeTable/TimeTable";
+import InfoTablePage from "./page/infoTablePage/InfoTablePage";
 
 const App = () => {
   return (
@@ -68,6 +69,18 @@ const App = () => {
             element={
               <div className="p-5">
                 <TimeTable />
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/infotable"
+            element={
+              <div className="p-5">
+                <InfoTablePage />
                 <br />
                 <br />
                 <Footer />

@@ -19,7 +19,7 @@ const NavBar = () => {
           </Navbar.Brand>
           <Nav className="p-3 mx-auto">
             <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
-            <Nav.Link /> <Nav.Link />
+            <Nav.Link />
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">
                 자유 게시판
@@ -32,6 +32,7 @@ const NavBar = () => {
             <Nav.Link href="/bookstore/list">책방</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/timetable">시간표</Nav.Link>
+            <Nav.Link href="/infotable">정보</Nav.Link>
           </Nav>
           <Nav className="ms-auto">
             <div className="white">

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Table from "./Table";
 import Modal from "react-modal";
 import axios from "axios";
 import "./TimeTable.css";
 
 const TimeTable = () => {
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
         Header: "시간",
