@@ -133,6 +133,7 @@ const SingUpPage = () => {
       setCheckNicknameDisplay("none");
     }
   };
+  //원래 onSubmit
 
   // const onSubmit = (e) => {
   //   e.preventDefault();
@@ -180,7 +181,7 @@ const SingUpPage = () => {
   //   }
   // };
 
-  //인증코드 주석해놨을때 쓰는 submit
+  //인증코드 주석해놨을때 쓰는 onSubmit
   const onSubmit = (e) => {
     e.preventDefault();
     if (
@@ -199,7 +200,7 @@ const SingUpPage = () => {
           username,
           nickname,
         })
-        .then((response) => {
+        .then(() => {
           alert(username + "님, 회원가입을 축하합니다.");
           move("/login");
         })

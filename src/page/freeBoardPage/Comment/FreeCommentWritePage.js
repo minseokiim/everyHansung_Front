@@ -12,6 +12,7 @@ const FreeCommentWritePage = () => {
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
 
+  //댓글 작성 위해 닉네임 받아오기
   useEffect(() => {
     if (studentId) {
       apiClient
