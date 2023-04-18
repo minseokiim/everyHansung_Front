@@ -12,7 +12,7 @@ const FreeCommentListPage = () => {
   const getComments = () => {
     //해당 게시물의 댓글 받아오기
     apiClient
-      .get(`http://localhost:8080/freeboard/${id}/freecomments`)
+      .get(`http://localhost:8080/comment/freeboard/${id}`)
       .then((res) => setComments(res.data));
   };
 
