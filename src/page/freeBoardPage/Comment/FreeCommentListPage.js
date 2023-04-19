@@ -33,7 +33,7 @@ const FreeCommentListPage = () => {
     // apiClient.delete() 하기
     apiClient
       .delete(
-        `http://localhost:8080/freeboard/comment/${commentId}/${comment.id}`
+        `http://localhost:8080/freeboard/comment/${id}/${commentId}`
       )
       .then((res) => {
         setComment(res.data);
