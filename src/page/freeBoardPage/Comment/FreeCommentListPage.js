@@ -16,7 +16,7 @@ const FreeCommentListPage = () => {
   const getComments = () => {
     //해당 게시물의 댓글 받아오기
     apiClient
-      .get(`http://localhost:8080/comment/freeboard/${id}`)
+      .get(`http://localhost:8080/freeboard/comment/${id}`)
       .then((res) => {
         setComment(res.data);
       });
@@ -33,7 +33,7 @@ const FreeCommentListPage = () => {
     // apiClient.delete() 하기
     apiClient
       .delete(
-        `http://localhost:8080/comment/freeboard/${studentId}/${comment.id}`
+        `http://localhost:8080/freeboard/comment/${commentId}/${comment.id}`
       )
       .then((res) => {
         setComment(res.data);
