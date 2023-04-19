@@ -5,7 +5,7 @@ import axios from "axios";
 import apiClient from "../../../apiClient";
 
 const FreeCommentListPage = () => {
-  const [comments, setComments] = useState([]);
+  const [comment, setComment] = useState([]);
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId"); //학번 정보 받아오기
 
@@ -13,7 +13,9 @@ const FreeCommentListPage = () => {
     //해당 게시물의 댓글 받아오기
     apiClient
       .get(`http://localhost:8080/comment/freeboard/${id}`)
-      .then((res) => setComments(res.data));
+      .then((res) => {
+        setComment(res.data)
+      });
   };
 
   useEffect(() => {
@@ -34,19 +36,19 @@ const FreeCommentListPage = () => {
 
   return (
     <div>
-      {comments.length > 0 ? (
-        comments
-          .filter((comment) => comment.commentContent !== 0)
+      {comment.length > 0 ? (
+        comment
+          .filter((comment) => comment.content !== 0)
           .map((comment) => {
             return (
               <div className="comment-box" key={comment.id}>
-                {comment.commentIsAnonymous ? "익명" : comment.nickname} :
-                {comment.commentContent}
+                {comment.isAnonymous ? "익명" : comment.nickname} :
+                {comment.content}
                 <div className="comment-time">
-                  {printDate(comment.commentCreatedAt)}
+                  {printDate(comment.createdAt)}
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={(e) => deleteComment(e, comment.id)}
+                    onClick={(e) => deleteComment(e, comment.boardId)}
                   >
                     삭제
                   </button>
