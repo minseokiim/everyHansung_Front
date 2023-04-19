@@ -37,7 +37,6 @@ const FreeCommentListPage = () => {
 
   const deleteComment = (e, id, commentId) => {
     e.stopPropagation();
-
     apiClient
       .delete(`http://localhost:8080/freeboard/comment/${id}/${commentId}`)
       .then(() => {
