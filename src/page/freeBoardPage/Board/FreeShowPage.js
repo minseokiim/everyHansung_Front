@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import FreeCommentWritePage from "../Comment/FreeCommentWritePage";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import FreeBoardHeart from "../Heart/FreeBoardHeart";
 import "./FreeWritePage.css";
-import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
+import { AiOutlineComment, AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
@@ -125,13 +124,10 @@ const FreeShowPage = () => {
 
           <div className="d-flex">
             <FreeBoardHeart />
-            {/* {post.countLike} */}
           </div>
 
           <hr />
-          <AiOutlineComment />
-          <strong className="p-2">댓글</strong>
-          <br />
+
           <div className="comment">
             {/* 댓글 컴포넌트 */}
             <FreeCommentListPage />
