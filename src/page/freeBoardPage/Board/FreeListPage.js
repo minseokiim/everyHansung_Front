@@ -165,7 +165,11 @@ const FreeListPage = () => {
                           {post.countLike} &nbsp;
                           <AiOutlineComment />
                           {/* 댓글 개수 */}
+<<<<<<< HEAD
                           {post.countComment}
+=======
+                          {post.countComment} &nbsp;
+>>>>>>> 3f3851ecb0f76cb6b816ca508d06cb6f9456e3d0
                         </span>
                       </span>
                     </div>
