@@ -20,7 +20,7 @@ const FreeCommentWritePage = ({ refetchComments }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/comment/${id}`, {
+        .post(`http://localhost:8080/freeboard/comment/${id}`, {
           studentId,
           content,
           isAnonymous,
