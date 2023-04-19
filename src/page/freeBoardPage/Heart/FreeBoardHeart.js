@@ -1,6 +1,6 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 
 const FreeBoardHeart = () => {
@@ -75,6 +75,7 @@ const FreeBoardHeart = () => {
       ) : (
         <AiOutlineHeart className="cursor-pointer" onClick={clickHeart} />
       )}
+      <strong className="p-1">좋아요</strong>
       <span>
         <strong> {countLike}</strong>
       </span>

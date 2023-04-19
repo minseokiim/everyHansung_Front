@@ -9,22 +9,20 @@ const FreeCommentWritePage = ({ refetchComments }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const { id } = useParams();
+  const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = (e) => {
-    e.preventDefault();
-
     if (content.trim().length === 0) {
       alert("댓글을 입력하세요");
       return;
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/comment/${id}`, {
+        .post(`http://localhost:8080/freeboard/comment/${id}`, {
           studentId,
           content,
           isAnonymous,
-          // commentCreatedAt: Date.now(),
         })
         .then(() => {
           refetchComments();
@@ -38,7 +36,7 @@ const FreeCommentWritePage = ({ refetchComments }) => {
   };
 
   return (
-    <div>
+    <>
       <input
         type="checkbox"
         checked={isAnonymous}
@@ -64,7 +62,7 @@ const FreeCommentWritePage = ({ refetchComments }) => {
           작성
         </BiMessage>
       </span>
-    </div>
+    </>
   );
 };
 
