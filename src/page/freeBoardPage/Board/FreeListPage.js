@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
+import apiClient from "../../../apiClient";
 
 const FreeListPage = () => {
   const move = useNavigate();
@@ -16,6 +17,7 @@ const FreeListPage = () => {
   const [postsPerPage] = useState(5);
   //작성 버튼 활성화
   const studentId = localStorage.getItem("studentId");
+  const [name, setName] = useState("");
 
   const totalPages = () => {
     return Math.ceil(filteredPosts.length / postsPerPage);
@@ -50,6 +52,20 @@ const FreeListPage = () => {
   useEffect(() => {
     filterPosts();
   }, [posts]);
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -92,7 +108,7 @@ const FreeListPage = () => {
         <div className="d-flex justify-content-between">
           <strong className="p-3">자유게시판</strong>
 
-          {studentId && (
+          {name && (
             <button
               className="m-2  write-button"
               onClick={() => {
@@ -126,7 +142,13 @@ const FreeListPage = () => {
                 <div
                   key={post.id}
                   className=" card-body cursor-pointer"
-                  onClick={() => move(`/freeboard/${post.id}`)}
+                  onClick={() => {
+                    if (name) {
+                      move(`/freeboard/${post.id}`);
+                    } else {
+                      alert("로그인 해야 게시물 확인 가능합니다");
+                    }
+                  }}
                 >
                   <div>
                     {post.title}

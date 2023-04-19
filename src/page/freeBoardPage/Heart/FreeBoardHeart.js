@@ -17,7 +17,7 @@ const FreeBoardHeart = () => {
       .then((response) => {
         // 좋아요 정보를 받아와 상태 업데이트
         setCountLike(response.data.countLike);
-        console.log("response.data.isFilled : " + response.data.isFilled);
+        //console.log("response.data.isFilled : " + response.data.isFilled);
         setIsFilled(response.data.isFilled);
       })
       .catch((error) => {

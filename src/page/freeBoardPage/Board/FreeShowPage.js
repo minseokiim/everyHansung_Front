@@ -63,79 +63,82 @@ const FreeShowPage = () => {
 
   return (
     <div className="p-4">
-      <div className="d-flex">
-        <h4 className="flex-grow-1">
-          <strong>{post.title}</strong>
-        </h4>
-        {post.nickname === nickname && (
-          <>
-            <div>
-              <AiFillEdit
-                className="cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  move(`/freeboard/edit/${id}`);
-                }}
-              />
-            </div>
-            <div>
-              <span className="p-2">
-                <BsFillTrashFill
-                  className="cursor-pointer"
-                  onClick={() => {
-                    if (window.confirm("게시물을 삭제하시겠습니까?")) {
-                      deletePost(id);
-                    }
-                  }}
-                />
-              </span>
-            </div>
-          </>
-        )}
+      {nickname && (
+        <>
+          <div className="d-flex">
+            <h4 className="flex-grow-1">
+              <strong>{post.title}</strong>
+            </h4>
+            {post.nickname === nickname && (
+              <>
+                <div>
+                  <AiFillEdit
+                    className="cursor-pointer icon"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      move(`/freeboard/edit/${id}`);
+                    }}
+                  />
+                </div>
+                <div>
+                  <span className="p-2">
+                    <BsFillTrashFill
+                      className="cursor-pointer icon"
+                      onClick={() => {
+                        if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                          deletePost(id);
+                        }
+                      }}
+                    />
+                  </span>
+                </div>
+              </>
+            )}
 
-        {post.nickname !== nickname && (
-          <>
-            <div>
-              <BiMessage
-                className="cursor-pointer"
-                onClick={() => {
-                  setIsMessageModalOpen(true);
-                }}
-              />
-              <SendMessagePage
-                isOpen={isMessageModalOpen}
-                onRequestClose={() => setIsMessageModalOpen(false)}
-              />
-            </div>
-          </>
-        )}
-      </div>
-      <div className="text-muted post-time">
-        <BiTimeFive /> {printDate(post.createdAt)}
-      </div>
-      <div className="text-muted post-time">
-        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
-      </div>
-      <hr />
-      <p>{post.content}</p>
-      <br />
-      {/* 좋아요 컴포넌트 */}
+            {post.nickname !== nickname && (
+              <>
+                <div>
+                  <BiMessage
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setIsMessageModalOpen(true);
+                    }}
+                  />
+                  <SendMessagePage
+                    isOpen={isMessageModalOpen}
+                    onRequestClose={() => setIsMessageModalOpen(false)}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+          <div className="text-muted post-time">
+            <BiTimeFive /> {printDate(post.createdAt)}
+          </div>
+          <div className="text-muted post-time">
+            <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
+          </div>
+          <hr />
+          <p>{post.content}</p>
+          <br />
+          {/* 좋아요 컴포넌트 */}
 
-      <div className="d-flex">
-        <FreeBoardHeart />
-        {/* {post.countLike} */}
-      </div>
+          <div className="d-flex">
+            <FreeBoardHeart />
+            {/* {post.countLike} */}
+          </div>
 
-      <hr />
-      <AiOutlineComment />
-      <strong>댓글</strong>
-      <br />
-      <div className="comment">
-        {/* 댓글 컴포넌트 */}
-        <FreeCommentListPage />
-        <br />
-        <FreeCommentWritePage />
-      </div>
+          <hr />
+          <AiOutlineComment />
+          <strong className="p-2">댓글</strong>
+          <br />
+          <div className="comment">
+            {/* 댓글 컴포넌트 */}
+            <FreeCommentListPage />
+            <br />
+          </div>
+        </>
+      )}
     </div>
   );
 };

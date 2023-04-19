@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import apiClient from "../../apiClient";
 
 const BookListPage = () => {
   const move = useNavigate();
@@ -13,6 +14,21 @@ const BookListPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5); //페이지네이션
   const studentId = localStorage.getItem("studentId");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
 
   const totalPages = () => {
     return Math.ceil(filteredPosts.length / postsPerPage);
@@ -69,7 +85,7 @@ const BookListPage = () => {
       <div>
         <div className="d-flex justify-content-between">
           <strong className="p-3">책방</strong>
-          {studentId && (
+          {name && (
             <button
               className="m-2  write-button"
               onClick={() => {
@@ -102,7 +118,13 @@ const BookListPage = () => {
                   <div
                     key={post.id}
                     className=" card-body cursor-pointer"
-                    onClick={() => move(`/bookstore/${post.id}`)}
+                    onClick={() => {
+                      if (name) {
+                        move(`/bookstore/${post.id}`);
+                      } else {
+                        alert("로그인 해야 게시물 확인 가능합니다");
+                      }
+                    }}
                   >
                     <div>
                       <FaChalkboardTeacher /> &nbsp;
