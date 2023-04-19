@@ -31,12 +31,14 @@ const FreeCommentListPage = () => {
     if (window.confirm("삭제하시겠습니까?")) {
       e.stopPropagation();
 
-      apiClient
-        .delete(`http://localhost:8080/freeboard/comment/${boardId}/${id}`)
-        .then((res) => {
-          getComments();
-        });
-    }
+    // apiClient.delete() 하기
+    apiClient
+      .delete(
+        `http://localhost:8080/freeboard/comment/${commentId}/${comment.id}`
+      )
+      .then((res) => {
+        setComment(res.data);
+      });
   };
 
   const printDate = (timestamp) => {
