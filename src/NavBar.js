@@ -7,8 +7,27 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { AiOutlineUser } from "react-icons/ai";
 import { BiMessage } from "react-icons/bi";
 import { GiTurtle } from "react-icons/gi";
+import { useState, useEffect } from "react";
+import apiClient from "./apiClient";
 
 const NavBar = () => {
+  const studentId = localStorage.getItem("studentId");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
+
   return (
     <div>
       <Navbar className="color-nav" variant="dark">
@@ -18,7 +37,7 @@ const NavBar = () => {
             <span className="p-1">에브리한성</span>
           </Navbar.Brand>
           <Nav className="p-3 mx-auto">
-            <Nav.Link /> <Nav.Link /> <Nav.Link /> <Nav.Link />
+            <Nav.Link /> <Nav.Link /> <Nav.Link />
             <Nav.Link />
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard/list">
@@ -34,17 +53,39 @@ const NavBar = () => {
             <Nav.Link href="/timetable">시간표</Nav.Link>
             <Nav.Link href="/infotable">정보</Nav.Link>
           </Nav>
+
           <Nav className="ms-auto">
-            <div className="white">
-              <Nav.Link href="/message">
-                <BiMessage />
-              </Nav.Link>
-            </div>
-            <div className="white">
-              <Nav.Link href="/my">
-                <AiOutlineUser />
-              </Nav.Link>
-            </div>
+            {name && (
+              <>
+                <div className="white">
+                  <Nav.Link href="/message">
+                    <BiMessage />
+                  </Nav.Link>
+                </div>
+                <div className="white">
+                  <Nav.Link href="/my">
+                    <AiOutlineUser />
+                  </Nav.Link>
+                </div>
+                <div className="white">
+                  <Nav.Link
+                    href="/"
+                    onClick={() => {
+                      localStorage.clear();
+                    }}
+                  >
+                    로그아웃
+                  </Nav.Link>
+                </div>
+              </>
+            )}
+            {!name && (
+              <>
+                <div className="white">
+                  <Nav.Link href="/login">로그인</Nav.Link>
+                </div>
+              </>
+            )}
           </Nav>
         </Container>
       </Navbar>

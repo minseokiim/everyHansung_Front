@@ -3,10 +3,14 @@ import "./FreeCommentPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import apiClient from "../../../apiClient";
+import { BsFillTrashFill } from "react-icons/bs";
+import FreeCommentWritePage from "./FreeCommentWritePage";
+import { FaRegCommentDots } from "react-icons/fa";
 
 const FreeCommentListPage = () => {
   const [comment, setComment] = useState([]);
   const { id } = useParams();
+  const [showReplyForm, setShowReplyForm] = useState(null);
   const studentId = localStorage.getItem("studentId"); //학번 정보 받아오기
 
   const getComments = () => {
@@ -14,7 +18,7 @@ const FreeCommentListPage = () => {
     apiClient
       .get(`http://localhost:8080/comment/freeboard/${id}`)
       .then((res) => {
-        setComment(res.data)
+        setComment(res.data);
       });
   };
 
@@ -26,13 +30,23 @@ const FreeCommentListPage = () => {
     alert("삭제하시겠습니까?");
     e.stopPropagation();
 
-    //apiClient.delete 해서 댓글 정보 삭제하기
-    // apiClient.delete()
+    // apiClient.delete() 하기
+    apiClient
+      .delete(
+        `http://localhost:8080/comment/freeboard/${studentId}/${comment.id}`
+      )
+      .then((res) => {
+        setComment(res.data);
+      });
   };
 
   const printDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
   };
+
+  const refetchComments = useCallback(() => {
+    getComments();
+  }, []);
 
   return (
     <div>
@@ -41,17 +55,35 @@ const FreeCommentListPage = () => {
           .filter((comment) => comment.content !== 0)
           .map((comment) => {
             return (
-              <div className="comment-box" key={comment.id}>
-                {comment.isAnonymous ? "익명" : comment.nickname} :
-                {comment.content}
-                <div className="comment-time">
-                  {printDate(comment.createdAt)}
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={(e) => deleteComment(e, comment.boardId)}
-                  >
-                    삭제
-                  </button>
+              <div className="d-flex" key={comment.id}>
+                <div className="comment-box flex-grow-1">
+                  {comment.isAnonymous ? "익명" : comment.nickname} :
+                  <span className="p-1">{comment.content}</span>
+                  <div className="comment-time ">
+                    {printDate(comment.createdAt)}
+                  </div>
+                </div>
+                <div>
+                  {/* 대댓글 다는 기능으로 바꾸기 */}
+                  <FaRegCommentDots
+                    className="cursor-pointer icon"
+                    onClick={() =>
+                      setShowReplyForm(
+                        showReplyForm === comment.id ? null : comment.id
+                      )
+                    }
+                  />
+
+                  {studentId === comment.studentId && (
+                    <>
+                      <span className="p-2">
+                        <BsFillTrashFill
+                          className="cursor-pointer icon"
+                          onClick={(e) => deleteComment(e, comment.boardId)}
+                        />
+                      </span>
+                    </>
+                  )}
                 </div>
               </div>
             );
@@ -62,6 +94,9 @@ const FreeCommentListPage = () => {
           <br /> <br />
         </div>
       )}
+      <br />
+      <br />
+      <FreeCommentWritePage refetchComments={refetchComments} />
     </div>
   );
 };
