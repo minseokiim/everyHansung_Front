@@ -5,8 +5,8 @@ import axios from "axios";
 import apiClient from "../../../apiClient";
 
 const FreeCommentWritePage = () => {
-  const [commentContent, setCommentContent] = useState("");
-  const [commentIsAnonymous, setCommentIsAnonymous] = useState(false);
+  const [content, setContent] = useState("");
+  const [isAnonymous, setIsAnonymous] = useState(false);
   const { id } = useParams();
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
@@ -32,24 +32,28 @@ const FreeCommentWritePage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (commentContent.trim().length === 0) {
+    if (content.trim().length === 0) {
       alert("댓글을 입력하세요");
       return;
     } else {
-      setCommentContent("");
+      setContent("");
       apiClient
-        .post(`http://localhost:8080/freeboard/${id}/freecomments`, {
-          commentContent,
-          commentCreatedAt: Date.now(),
-          commentIsAnonymous,
-          nickname,
+        .post(`http://localhost:8080/comment/${id}`, {
+          studentId,
+          content,
+          isAnonymous
+          // content,
+          // commentCreatedAt: Date.now(),
+          // isAnonymous,
+          // nickname,
         })
-        .then(move(`/freeboard/list`));
+        // .then(move(`/freeboard/list`));
     }
   };
 
   const onChangeIsAnonymous = (e) => {
-    setCommentIsAnonymous(e.target.checked);
+    console.log("값 말해봐 : " + e.target.checked);
+    setIsAnonymous(e.target.checked);
   };
 
   return (
@@ -58,9 +62,9 @@ const FreeCommentWritePage = () => {
         className="comment-input"
         type="text"
         placeholder="댓글을 입력하세요"
-        value={commentContent}
+        value={content}
         onChange={(e) => {
-          setCommentContent(e.target.value);
+          setContent(e.target.value);
         }}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
@@ -70,7 +74,7 @@ const FreeCommentWritePage = () => {
       />
       <input
         type="checkbox"
-        checked={commentIsAnonymous}
+        checked={isAnonymous}
         onChange={onChangeIsAnonymous}
       />
       익명
