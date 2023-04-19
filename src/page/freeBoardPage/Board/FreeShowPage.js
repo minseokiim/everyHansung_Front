@@ -21,6 +21,7 @@ const FreeShowPage = () => {
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
       setPost(res.data);
+      console.log(res.data);
     });
   };
 
@@ -111,25 +112,29 @@ const FreeShowPage = () => {
               </>
             )}
           </div>
-          <div className="text-muted post-time">
-            <BiTimeFive /> {printDate(post.createdAt)}
+          <div className=" mt-1">
+            <div className="text-muted post-time ">
+              <BiTimeFive /> 작성 : {printDate(post.createdAt)}
+            </div>
+            {post.createdAt !== post.updatedAt && (
+              <div className="text-muted post-time ">
+                <AiFillEdit /> 수정 : {printDate(post.updatedAt)}
+              </div>
+            )}
           </div>
-          <div className="text-muted post-time">
+          <div className=" post-time pt-2">
             <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
           </div>
           <hr />
-          <p>{post.content}</p>
+          <div className="big-grey p-2">{post.content}</div>
           <br />
           {/* 좋아요 컴포넌트 */}
-
           <div className="d-flex">
             <FreeBoardHeart />
           </div>
-
           <hr />
-
+          {/* 댓글 컴포넌트 */}
           <div className="comment">
-            {/* 댓글 컴포넌트 */}
             <FreeCommentListPage />
             <br />
           </div>

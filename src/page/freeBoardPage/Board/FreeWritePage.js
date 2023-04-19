@@ -12,6 +12,7 @@ const FreeWritePage = ({ editing }) => {
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
   const [countLike, setCountLike] = useState(0); //좋아요 개수
+  const [updatedAt, setUpdatedAt] = useState("");
 
   const move = useNavigate();
   const { id } = useParams();
@@ -38,6 +39,7 @@ const FreeWritePage = ({ editing }) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
+        setUpdatedAt(res.data.updatedAt);
       });
     }
   }, [id, editing]);
@@ -57,6 +59,7 @@ const FreeWritePage = ({ editing }) => {
           title,
           content,
           isAnonymous,
+          updatedAt,
         })
         .then(() => {
           move(`/freeboard/${id}`);
