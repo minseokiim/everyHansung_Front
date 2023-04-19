@@ -18,7 +18,7 @@ const FreeCommentListPage = () => {
     apiClient
       .get(`http://localhost:8080/freeboard/comment/${id}`)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setComment(res.data);
       });
   };
@@ -26,20 +26,6 @@ const FreeCommentListPage = () => {
   useEffect(() => {
     getComments();
   }, []);
-
-  const deleteComment = (e, boardId, id) => {
-    if (window.confirm("삭제하시겠습니까?")) {
-      e.stopPropagation();
-
-    // apiClient.delete() 하기
-    apiClient
-      .delete(
-        `http://localhost:8080/freeboard/comment/${commentId}/${comment.id}`
-      )
-      .then((res) => {
-        setComment(res.data);
-      });
-  };
 
   const printDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
@@ -49,14 +35,25 @@ const FreeCommentListPage = () => {
     getComments();
   }, []);
 
+  const deleteComment = (e, id, commentId) => {
+    e.stopPropagation();
+
+    apiClient
+      .delete(`http://localhost:8080/freeboard/comment/${id}/${commentId}`)
+      .then(() => {
+        getComments();
+      });
+  };
+
   return (
     <>
       <div>
-        <strong>
-          <AiOutlineComment />
-          댓글
-        </strong>
-        <div className="p-2">
+        <AiOutlineComment />
+        <span className="p-1">
+          <strong>댓글 </strong>
+        </span>
+
+        <div className="p-1">
           {comment.length > 0 ? (
             comment
               .filter((comment) => comment.content !== 0)
@@ -64,11 +61,12 @@ const FreeCommentListPage = () => {
                 return (
                   <div className="d-flex" key={comment.id}>
                     <div className="comment-box flex-grow-1">
-                      {comment.isAnonymous ? "익명" : comment.nickname} :
+                      {comment.isAnonymous ? "익명" : comment.nickname}:
                       <span className="p-1">{comment.content}</span>
                       <div className="comment-time ">
                         {printDate(comment.createdAt)}
                       </div>
+                      <hr />
                     </div>
                     <div>
                       {/* 대댓글 다는 기능으로 바꾸기 */}
@@ -86,7 +84,15 @@ const FreeCommentListPage = () => {
                           <span className="p-2">
                             <BsFillTrashFill
                               className="cursor-pointer icon"
-                              onClick={(e) => deleteComment(e, comment.boardId)}
+                              onClick={(e) => {
+                                {
+                                  if (
+                                    window.confirm("게시물을 삭제하시겠습니까?")
+                                  ) {
+                                    deleteComment(e, id, comment.id);
+                                  }
+                                }
+                              }}
                             />
                           </span>
                         </>

@@ -30,3 +30,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.big-grey {
+  color: hsl(0, 0%, 42%);
+}

@@ -1,7 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import "./FreeCommentPage.css";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { BiMessage } from "react-icons/bi";
 
@@ -9,7 +8,6 @@ const FreeCommentWritePage = ({ refetchComments }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const { id } = useParams();
-  const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = (e) => {
@@ -36,14 +34,15 @@ const FreeCommentWritePage = ({ refetchComments }) => {
   };
 
   return (
-    <>
+    <div className="comment-wrapper">
       <input
         type="checkbox"
         checked={isAnonymous}
         onChange={onChangeIsAnonymous}
+        className="comment-checkbox"
       />
-      익명
-      <span>
+      <label className="comment-label">익명</label>
+      <span className="comment-input-wrapper">
         <input
           className="comment-input"
           type="text"
@@ -58,11 +57,11 @@ const FreeCommentWritePage = ({ refetchComments }) => {
             }
           }}
         />
-        <BiMessage className="cursor-pointer comment-icon" onClick={onSubmit}>
+        <button className="cursor-pointer button" onClick={onSubmit}>
           작성
-        </BiMessage>
+        </button>
       </span>
-    </>
+    </div>
   );
 };
 

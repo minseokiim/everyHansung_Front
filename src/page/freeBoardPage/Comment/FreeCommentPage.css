@@ -1,27 +1,21 @@
-.comment-input {
-  margin: 2px;
-  flex: 1;
-  font-size: 14px;
-  border: none;
-  outline: none;
-  border: 1px solid rgb(141, 141, 141);
-  border-radius: 3px;
-  width: 800%;
-  height: 35px;
-}
-.comment-icon {
-  margin-left: 98%;
+.comment-checkbox {
+  margin-right: 5px;
 }
 
-.comment-icon:hover {
-  color: #5e50c7;
+.comment-label {
+  margin-right: 10px;
+}
+
+.comment-input-wrapper {
+  display: flex;
+}
+
+.comment-input {
+  margin-right: 5px;
 }
 
 .icon:hover {
   color: #5e50c7;
-}
-.comment-box {
-  padding: 3px;
 }
 
 .comment-time {
@@ -32,4 +26,9 @@
 .no-comment {
   font-size: 15px;
   color: grey;
+}
+
+.comment-box {
+  font-size: 14px;
+  /* margin: 2px; */
 }

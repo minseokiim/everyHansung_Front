@@ -11,7 +11,7 @@ const ChangeNickPage = () => {
 
   const [checkNicknameDisplay, setCheckNicknameDisplay] = useState("none");
   const [clearNicknameDisplay, setClearNicknameDisplay] = useState("none");
-
+  const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
 
   const nicknameCheck = (e) => {
@@ -31,13 +31,14 @@ const ChangeNickPage = () => {
     if (checkNicknameDisplay === "block") {
       apiClient
         .patch(`http://localhost:8080/member/${studentId}/nickname`, {
-          nickname
+          nickname,
         })
         .then(() => {
           alert("닉네임 변경하였습니다.");
+          move("/my");
         })
-        .catch((error) => {
-          alert("닉네임 변경에 실패하셨습니다.");
+        .catch(() => {
+          alert("닉네임 변경 실패하셨습니다.");
         });
     }
   };

@@ -5,6 +5,8 @@ import "../../secretBoardPage/Board/SecretListPage.css";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import apiClient from "../../../apiClient";
+import { BsFillPersonFill } from "react-icons/bs";
+import { BiTimeFive } from "react-icons/bi";
 
 const FreeListPage = () => {
   const move = useNavigate();
@@ -153,25 +155,31 @@ const FreeListPage = () => {
                   <div>
                     {post.title}
                     <br />
-                    <div className="grey">
-                      {post.content}
+                    <div className="big-grey">
+                      {post.content.slice(0, 50)}
+                      {post.content.length > 50 ? "..." : ""}
                       <br />
-                      {timeDifference(post.createdAt)}&nbsp;
-                      <span className="black">
-                        {post.isAnonymous ? "익명" : post.nickname}
-                        <span className="heart-icon-container">
-                          <AiOutlineHeart style={{ color: "#c62917" }} />
-                          {/* 좋아요 개수 */}
-                          {post.countLike} &nbsp;
-                          <AiOutlineComment />
-                          {/* 댓글 개수 */}
-<<<<<<< HEAD
-                          {post.countComment}
-=======
-                          {post.countComment} &nbsp;
->>>>>>> 3f3851ecb0f76cb6b816ca508d06cb6f9456e3d0
+                      <div className="grey ">
+                        <BiTimeFive />
+                        &nbsp;
+                        {timeDifference(post.createdAt)}&nbsp; &nbsp;
+                        <span className="black">
+                          <BsFillPersonFill />
+                          &nbsp;
+                          {post.isAnonymous ? "익명" : post.nickname}
+                          <span className="heart-icon-container ">
+                            <AiOutlineHeart style={{ color: "#c62917" }} />
+                            {/* 좋아요 개수 */}
+                            {post.countLike} &nbsp;
+                            <span className="heart-icon-container">
+                              <AiOutlineComment />
+                              {/* 댓글 개수 */}
+                              {post.countComment}
+                            </span>
+                            &nbsp;
+                          </span>
                         </span>
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -199,4 +207,5 @@ const FreeListPage = () => {
     </div>
   );
 };
+
 export default FreeListPage;
