@@ -35,7 +35,7 @@ const MainPage = () => {
 
       <section className="service white">
         <h2>
-          한성대 학생을 위한
+          한성대 학생의 커뮤니티
           <br />
           <strong>
             "에브리한성"
@@ -49,6 +49,7 @@ const MainPage = () => {
               className="sangsangs cursor-pointer"
               onClick={() => move("/membermain")}
             />
+            <div className="grey"> (그림을 클릭하면 페이지로 이동합니다.)</div>
           </p>
         </h2>
         <div className="paragraph">
@@ -65,29 +66,29 @@ const MainPage = () => {
             <strong> 익명 커뮤니티</strong>를 이용할 수 있습니다.
           </p>
         </div>
-      </section>
-      <section className="footer white">
-        <ul className="links">
-          <li>
-            <a href="/page/serviceagreement">서비스 이용약관</a>
-          </li>
-          <li className="privacy">
-            <a href="/page/rules">커뮤니티 이용규칙</a>
-          </li>
+        <section className="footer white" style={{ paddingLeft: "22%" }}>
+          <ul className="links">
+            <li>
+              <a href="/page/serviceagreement">서비스 이용약관</a>
+            </li>
+            <li className="privacy">
+              <a href="/page/rules">커뮤니티 이용규칙</a>
+            </li>
 
-          <li>
-            <a href="/page/privacy">개인정보처리방침</a>
-          </li>
-          <li>
-            <a href="/page/youthpolicy">청소년 보호정책</a>
-          </li>
-          <li>
-            <p>문의: capstone23m@gmail.com</p>
-          </li>
-          <li className="copyright">
-            <a href="/">© 에브리 한성</a>
-          </li>
-        </ul>
+            <li>
+              <a href="/page/privacy">개인정보처리방침</a>
+            </li>
+            <li>
+              <a href="/page/youthpolicy">청소년 보호정책</a>
+            </li>
+            <li>
+              <p>문의: capstone23m@gmail.com</p>
+            </li>
+            <li className="copyright">
+              <a href="/">© 에브리 한성</a>
+            </li>
+          </ul>
+        </section>
       </section>
     </div>
     //jshint ignore:end
