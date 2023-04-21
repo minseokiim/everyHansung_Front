@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { BiMessage } from "react-icons/bi";
 
-const FreeCommentWritePage = ({ refetchComments }) => {
+const FreeCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const { id } = useParams();
@@ -29,7 +29,7 @@ const FreeCommentWritePage = ({ refetchComments }) => {
   };
 
   const onChangeIsAnonymous = (e) => {
-    console.log("값 말해봐 : " + e.target.checked);
+    //console.log("값 말해봐 : " + e.target.checked);
     setIsAnonymous(e.target.checked);
   };
 

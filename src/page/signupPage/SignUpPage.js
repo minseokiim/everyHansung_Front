@@ -227,7 +227,7 @@ const SingUpPage = () => {
 
       <div className="input">
         <div className="label">
-          <label>학번</label>
+          <label>아이디</label>
         </div>
         <div className="inputbox idAvailable">
           <input
@@ -235,7 +235,7 @@ const SingUpPage = () => {
             type="text"
             name="user_id"
             maxLength="20"
-            placeholder="아이디를 입력하세요."
+            placeholder="학번을 입력하세요."
             className="search id_search"
           />
           <CheckIcon
@@ -331,7 +331,7 @@ const SingUpPage = () => {
             type="text"
             name="user_nickName"
             maxLength="20"
-            placeholder="닉네임(별명)을 입력하세요."
+            placeholder="닉네임을 입력하세요."
             className="search"
           />
           <CheckIcon
