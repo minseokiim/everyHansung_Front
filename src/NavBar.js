@@ -34,7 +34,7 @@ const NavBar = () => {
         <Container>
           <Navbar.Brand href="/membermain">
             <GiTurtle />
-            <span className="p-1">에브리한성</span>
+            에브리한성
           </Navbar.Brand>
           <Nav className="p-3 mx-auto">
             <Nav.Link /> <Nav.Link /> <Nav.Link />
