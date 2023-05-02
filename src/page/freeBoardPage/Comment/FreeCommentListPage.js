@@ -10,13 +10,12 @@ import FreeReplyCommentPage from "./FreeReplyCommentPage";
 
 const FreeCommentListPage = () => {
   const [comment, setComment] = useState([]);
+  const [replies, setReplies] = useState({});
   const { id } = useParams();
   const [showReplyForm, setShowReplyForm] = useState(null);
-  const studentId = localStorage.getItem("studentId");
+  const studentId = localStorage.getItem("studentId"); //학번 정보 받아오기
 
-  //여기서 id는 게시물 아이디이므로 못받아옴
   const getComments = () => {
-    //해당 게시물의 댓글 받아오기 ->오류 나는 이유:id가 겹침
     apiClient
       .get(`http://localhost:8080/freeboard/comment/${id}`)
       .then((res) => {
@@ -24,19 +23,11 @@ const FreeCommentListPage = () => {
       });
   };
 
-  //여기서 get해올때 undefined
   const getReplies = (parentId) => {
     apiClient
       .get(`http://localhost:8080/freeboard/comment/${parentId}/replies`)
       .then((res) => {
-        const updatedComments = comment.map((c) => {
-          if (c.id === parentId) {
-            return { ...c, replies: res.data };
-          } else {
-            return c;
-          }
-        });
-        setComment(updatedComments);
+        setReplies((prevReplies) => ({ ...prevReplies, [parentId]: res.data }));
       });
   };
 
@@ -49,8 +40,7 @@ const FreeCommentListPage = () => {
   };
 
   const refetchComments = useCallback(() => {
-    //getComments();
-    getReplies();
+    getComments();
   }, []);
 
   const deleteComment = (e, id, commentId) => {
@@ -130,8 +120,8 @@ const FreeCommentListPage = () => {
                       </div>
                     )}
                     {/* 대댓글 추가되면 보이는 대댓글 리스트 ->현재 안됨*/}
-                    {comment.replies &&
-                      comment.replies.map((reply) => (
+                    {replies[comment.id] &&
+                      replies[comment.id].map((reply) => (
                         <div key={reply.id} className="nested-reply">
                           <div className="d-flex">
                             <div className="comment-box flex-grow-1">

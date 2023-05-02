@@ -8,13 +8,9 @@ import axios from "axios";
 
 const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
   //보내고 난 후에는 modal이 close되게?
-
-  const [message, setMessage] = useState("");
-  const move = useNavigate();
-  const [nickname, setNickname] = useState(""); //익명이랑 닉네임 선택 위해
+  const [content, setContent] = useState("");
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId"); //발신자 정보
-  const [isAnonymous, setIsAnonymous] = useState(false);
   const [postId, setPostId] = useState(""); //작성자 정보 저장
 
   const customStyles = {
@@ -29,7 +25,7 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
   };
 
   const handleMessageChange = (e) => {
-    setMessage(e.target.value);
+    setContent(e.target.value);
   };
 
   const getPostId = (id) => {
@@ -38,45 +34,26 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
     });
   };
 
-  useEffect(() => {
-    if (studentId) {
-      apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
-        .then((res) => {
-          setNickname(res.data.nickname);
-        })
-        .catch((error) => {
-          console.error("Error fetching name:", error);
-        });
-    } else {
-      console.log("닉네임 못받아옴");
-    }
-  }, [studentId]);
-
   const onSubmit = (e) => {
     e.preventDefault();
     getPostId(id);
 
-    if (message.trim().length === 0) {
+    if (content.trim().length === 0) {
       alert("쪽지 내용을 입력하세요");
       return;
     } else {
       apiClient
         .post("http://localhost:8080/message", {
-          studentId,
-          message,
-          isAnonymous,
-          nickname,
+          receiver: postId,
+          sender: studentId,
+          content,
           //시간은 백엔드에서 처리
         })
         .then(() => {
-          move("/messages");
+          alert("전송 완료");
+          setContent("");
         });
     }
-  };
-
-  const onChangeIsAnonymous = (e) => {
-    setIsAnonymous(e.target.checked);
   };
 
   return (
@@ -92,15 +69,10 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
             rows="10"
             cols="40"
             placeholder="쪽지를 입력해주세요."
-            value={message}
+            value={content}
             onChange={handleMessageChange}
           />
-          <input
-            type="checkbox"
-            checked={isAnonymous}
-            onChange={onChangeIsAnonymous}
-          />
-          익명
+
           <br />
           <BsFillSendFill className="message-button" onClick={onSubmit} />
         </form>
