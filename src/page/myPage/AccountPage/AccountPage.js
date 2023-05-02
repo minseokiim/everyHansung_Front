@@ -38,7 +38,7 @@ const AccountPage = () => {
             move("/my/nickname");
           }}
         >
-          닉네임 설정
+          닉네임 변경
         </div>
       </div>
     </div>

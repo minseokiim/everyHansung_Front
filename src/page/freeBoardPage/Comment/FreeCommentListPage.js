@@ -18,6 +18,7 @@ const FreeCommentListPage = () => {
     //해당 게시물의 댓글 받아오기
     apiClient
       .get(`http://localhost:8080/freeboard/comment/${id}`)
+      //***************************************  대댓글 있으면 대댓글도 받아와야함
       .then((res) => {
         setComment(res.data);
       });
@@ -25,7 +26,7 @@ const FreeCommentListPage = () => {
 
   useEffect(() => {
     getComments();
-  }, []);
+  }, [comment.length]);
 
   const printDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
