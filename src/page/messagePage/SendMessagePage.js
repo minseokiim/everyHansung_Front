@@ -28,10 +28,10 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
     setContent(e.target.value);
   };
 
-  const getPostId = (id) => {
-    axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
-      setPostId(res.data.studentId); //작성자 정보 받아오기
-    });
+  const getPostId = async (id) => {
+    const res = await axios.get(`http://localhost:8080/freeboard/${id}`);
+    setPostId(res.data.studentId);
+    console.log("작성자 정보 " + res.data.studentId);
   };
 
   const onSubmit = (e) => {
@@ -50,7 +50,6 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
           //시간은 백엔드에서 처리
         })
         .then(() => {
-          alert("전송 완료");
           setContent("");
         });
     }
