@@ -6,7 +6,7 @@ import { useState } from "react";
 const FreeReplyCommentPage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
-  const { id } = useParams();
+
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = (e) => {
