@@ -11,7 +11,7 @@ const MessageListPage = () => {
   const [messages, setMessages] = useState([]);
 
   const getMessages = () => {
-    apiClient.get(`http://localhost:8080/message/${studentId}`).then((res) => {
+    apiClient.get(`http://localhost:8080/message/${studentId}/all`).then((res) => {
       setMessages(res.data);
       console.log(res.data);
     });
