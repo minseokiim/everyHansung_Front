@@ -169,11 +169,9 @@ const FreeListPage = () => {
                           {post.isAnonymous ? "익명" : post.nickname}
                           <span className="heart-icon-container ">
                             <AiOutlineHeart style={{ color: "#c62917" }} />
-                            {/* 좋아요 개수 */}
                             {post.countLike} &nbsp;
                             <span className="heart-icon-container">
                               <AiOutlineComment />
-                              {/* 댓글 개수 */}
                               {post.countComment}
                             </span>
                             &nbsp;
