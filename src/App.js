@@ -25,6 +25,7 @@ import EmailAuthPage from "./page/signupPage/EmailAuthPage";
 import SetPasswdPage from "./page/signupPage/SetPasswdPage";
 
 import MessageListPage from "./page/messagePage/MessageListPage";
+import MessageShowPage from "./page/messagePage/MessageShowPage";
 
 import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
@@ -125,6 +126,20 @@ const App = () => {
               </div>
             }
           />
+          {/* 
+          <Route
+            path="/message:studentId"
+            element={
+              <div>
+                <Card>
+                  <MessageShowPage />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          /> */}
 
           <Route
             path="/freeboard/post"
