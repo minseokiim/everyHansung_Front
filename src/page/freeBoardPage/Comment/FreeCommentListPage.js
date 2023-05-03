@@ -91,8 +91,8 @@ const FreeCommentListPage = () => {
                 return (
                   <div key={comment.id}>
                     <div className="d-flex">
-                      <div className="comment-box flex-grow-1">
-                        <BsFillPersonFill />{" "}
+                      <div className="comment-box flex-grow-1 p-1">
+                        <BsFillPersonFill />
                         {comment.isAnonymous ? "익명" : comment.nickname}:
                         <span className="p-1">{comment.content}</span>
                         <div className="comment-time ">
@@ -113,9 +113,7 @@ const FreeCommentListPage = () => {
                                 onClick={(e) => {
                                   {
                                     if (
-                                      window.confirm(
-                                        "게시물을 삭제하시겠습니까?"
-                                      )
+                                      window.confirm("댓글을 삭제하시겠습니까?")
                                     ) {
                                       deleteComment(e, id, comment.id);
                                     }
@@ -133,7 +131,7 @@ const FreeCommentListPage = () => {
                           replies[comment.id].map((reply) => (
                             <div key={reply.id}>
                               <div className="d-flex">
-                                <div className="comment-box flex-grow-1">
+                                <div className="comment-box flex-grow-1 p-1">
                                   <div className="reply-box">
                                     &nbsp;&nbsp; <GrFormNext />
                                     {reply.isAnonymous
@@ -157,7 +155,7 @@ const FreeCommentListPage = () => {
                                           {
                                             if (
                                               window.confirm(
-                                                "게시물을 삭제하시겠습니까?"
+                                                "댓글을 삭제하시겠습니까?"
                                               )
                                             ) {
                                               deleteReply(
@@ -177,6 +175,7 @@ const FreeCommentListPage = () => {
                           ))}
                       </div>
                     </div>
+
                     {showReplyForm === comment.id && (
                       <FreeReplyCommentPage
                         parentId={comment.id}
