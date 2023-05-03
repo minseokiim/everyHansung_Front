@@ -9,6 +9,7 @@ import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
 import SendMessagePage from "../../messagePage/SendMessagePage";
+import "../Comment/FreeCommentPage.css";
 
 const FreeShowPage = () => {
   const { id } = useParams();

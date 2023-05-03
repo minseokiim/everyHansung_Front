@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "../Board/SecretListPage.css";
+import "../Board/SecretWritePage.css";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 
