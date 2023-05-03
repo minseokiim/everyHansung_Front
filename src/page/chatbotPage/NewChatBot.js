@@ -566,12 +566,12 @@ const NewChatBot = () => {
   ];
   const theme = {
     background: "#f5f8fb",
-    headerBgColor: "hsl(227, 49%, 31%)",
-    headerFontColor: "#fff",
-    headerFontSize: "17px",
+    headerBgColor: "hwb(240 18% 61%)",
+    headerFontColor: "white",
+    headerFontSize: "15px",
     botBubbleColor: "white",
-    botFontColor: "hsl(227, 49%, 31%)",
-    userBubbleColor: "hsl(227, 49%, 31%)",
+    botFontColor: "hwb(240 18% 61%)",
+    userBubbleColor: "hwb(240 18% 61%)",
     userFontColor: "white",
   };
 
@@ -582,9 +582,9 @@ const NewChatBot = () => {
         userAvatar={chatlogo}
         steps={steps}
         hideHeader={false}
-        headerTitle="자주 묻는 질문"
+        headerTitle="자주 하는 질문"
         placeholder={"채팅이 불가한 채널입니다."}
-        width="70%" // 챗봇 너비 설정
+        width="80%" // 챗봇 너비 설정
         height="100%" // 챗봇 높이 설정
         // bubbleStyle={{ backgroundColor: "white", color: "navy" }}
         // optionHoverStyle={{

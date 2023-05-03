@@ -5,10 +5,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { AiOutlineUser } from "react-icons/ai";
-import { BiMessage } from "react-icons/bi";
 import { GiTurtle } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
+import { TfiEmail } from "react-icons/tfi";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
@@ -59,7 +59,7 @@ const NavBar = () => {
               <>
                 <div className="white">
                   <Nav.Link href="/message">
-                    <BiMessage />
+                    <TfiEmail />
                   </Nav.Link>
                 </div>
                 <div className="white">

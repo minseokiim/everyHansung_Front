@@ -92,12 +92,14 @@ const App = () => {
           <Route
             path="/chatbot"
             element={
-              <div className="chatback">
-                <NewChatBot />
-                <br />
-                <br />
+              <>
+                <div className="chatback">
+                  <NewChatBot />
+                  <br />
+                  <br />
+                </div>
                 <Footer />
-              </div>
+              </>
             }
           />
           <Route

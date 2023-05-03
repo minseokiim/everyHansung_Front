@@ -123,7 +123,7 @@ const FreeShowPage = () => {
               </div>
             )}
           </div>
-          <div className=" post-time pt-2">
+          <div className="post-time pt-2">
             <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
           </div>
           <hr />

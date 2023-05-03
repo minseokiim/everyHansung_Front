@@ -2,12 +2,13 @@ import { useEffect, useState, useCallback } from "react";
 import "./FreeCommentPage.css";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
-import { BsFillTrashFill } from "react-icons/bs";
 import FreeCommentWritePage from "./FreeCommentWritePage";
-import { FaRegCommentDots } from "react-icons/fa";
+import { FaRegCommentDots, FaCommentMedical } from "react-icons/fa";
+import { BiMessage } from "react-icons/bi";
 import { AiOutlineComment } from "react-icons/ai";
 import FreeReplyCommentPage from "./FreeReplyCommentPage";
 import { GrFormNext } from "react-icons/gr";
+import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 
 const FreeCommentListPage = () => {
   const [comment, setComment] = useState([]);
@@ -72,11 +73,7 @@ const FreeCommentListPage = () => {
   return (
     <div>
       <div>
-        <AiOutlineComment />
-        <span className="p-1">
-          <strong>댓글 </strong>
-        </span>
-
+        <AiOutlineComment /> <strong>댓글 </strong>
         <div className="p-1">
           {comment.length > 0 ? (
             comment
@@ -86,6 +83,7 @@ const FreeCommentListPage = () => {
                   <div key={comment.id}>
                     <div className="d-flex">
                       <div className="comment-box flex-grow-1">
+                        <BsFillPersonFill />{" "}
                         {comment.isAnonymous ? "익명" : comment.nickname}:
                         <span className="p-1">{comment.content}</span>
                         <div className="comment-time ">
@@ -93,7 +91,6 @@ const FreeCommentListPage = () => {
                         </div>
                       </div>
                       <div>
-                        {/* 대댓글 다는 기능으로 바꾸기 */}
                         <FaRegCommentDots
                           className="cursor-pointer icon  grey"
                           onClick={() => toggleReplyForm(comment.id)}
@@ -123,43 +120,38 @@ const FreeCommentListPage = () => {
                     </div>
 
                     {/* 대댓글 창 */}
-                    {showReplyForm !== comment.id && (
-                      <div className="reply-form">
-                        <div className="reply-box">
-                          {replies[comment.id] &&
-                            replies[comment.id].map((reply) => (
-                              <div key={reply.id}>
-                                <div className="d-flex">
-                                  <div className="comment-box flex-grow-1">
-                                    <div className="reply-box">
-                                      &nbsp;&nbsp; <GrFormNext />
-                                      {reply.isAnonymous
-                                        ? "익명"
-                                        : reply.nickname}
-                                      :
-                                      <span className="p-1">
-                                        {reply.content}
-                                      </span>
-                                      <div className="comment-time ">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        {printDate(reply.createdAt)}
-                                      </div>
+
+                    <div className="reply-comment">
+                      <div className="reply-box">
+                        {replies[comment.id] &&
+                          replies[comment.id].map((reply) => (
+                            <div key={reply.id}>
+                              <div className="d-flex">
+                                <div className="comment-box flex-grow-1">
+                                  <div className="reply-box">
+                                    &nbsp;&nbsp; <GrFormNext />
+                                    {reply.isAnonymous
+                                      ? "익명"
+                                      : reply.nickname}
+                                    :
+                                    <span className="p-1">{reply.content}</span>
+                                    <div className="comment-time ">
+                                      &nbsp;&nbsp;&nbsp;&nbsp;
+                                      {printDate(reply.createdAt)}
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                            ))}
-                        </div>
+                            </div>
+                          ))}
                       </div>
+                    </div>
+                    {showReplyForm === comment.id && (
+                      <FreeReplyCommentPage
+                        parentId={comment.id}
+                        refetchReplies={() => refetchReplies(comment.id)}
+                      />
                     )}
-                    {/* <FreeReplyCommentPage
-                          parentId={comment.id}
-                          refetchComments={refetchComments}
-                        /> */}
-                    <FreeReplyCommentPage
-                      parentId={comment.id}
-                      refetchReplies={() => refetchReplies(comment.id)}
-                    />
                   </div>
                 );
               })
