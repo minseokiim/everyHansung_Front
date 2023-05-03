@@ -2,11 +2,29 @@ import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import { FaUserGraduate, FaSchool } from "react-icons/fa";
 import { AiFillSafetyCertificate } from "react-icons/ai";
+import apiClient from "../../../../apiClient";
+import { useState, useEffect } from "react";
 
 const Authentication = () => {
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
+  const [isCertification, setIsCertification] = useState(false);
 
-  return (
+  const getAuth = () => {
+    apiClient
+      .get(`http://localhost:8080/${studentId}/uploadStudentCard`)
+      .then((res) => {
+        setIsCertification(res.data.isCertification);
+      });
+  };
+
+  useEffect(() => {
+    getAuth();
+  }, []);
+
+  return isCertification ? (
+    move("/auth/success")
+  ) : (
     <div className="p-3">
       <AiFillSafetyCertificate />
       <strong className="p-1">인증하기</strong>

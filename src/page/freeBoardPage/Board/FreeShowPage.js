@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import FreeBoardHeart from "../Heart/FreeBoardHeart";
 import "./FreeWritePage.css";
-import { AiOutlineComment, AiFillEdit } from "react-icons/ai";
+import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
@@ -21,7 +21,6 @@ const FreeShowPage = () => {
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
       setPost(res.data);
-      // console.log(res.data);
     });
   };
 
@@ -113,9 +112,11 @@ const FreeShowPage = () => {
             )}
           </div>
           <div className=" mt-1">
-            <div className="text-muted post-time ">
-              <BiTimeFive /> 작성 : {printDate(post.createdAt)}
-            </div>
+            {post.createdAt === post.updatedAt && (
+              <div className="text-muted post-time ">
+                <BiTimeFive /> 작성 : {printDate(post.createdAt)}
+              </div>
+            )}
             {post.createdAt !== post.updatedAt && (
               <div className="text-muted post-time ">
                 <AiFillEdit /> 수정 : {printDate(post.updatedAt)}
@@ -128,12 +129,12 @@ const FreeShowPage = () => {
           <hr />
           <div className="big-grey p-2">{post.content}</div>
           <br />
-          {/* 좋아요 컴포넌트 */}
+
           <div className="d-flex">
             <FreeBoardHeart />
           </div>
           <hr />
-          {/* 댓글 컴포넌트 */}
+
           <div className="comment">
             <FreeCommentListPage />
             <br />
