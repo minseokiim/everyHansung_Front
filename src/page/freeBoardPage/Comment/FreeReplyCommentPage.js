@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { useState } from "react";
 
-const FreeReplyCommentPage = ({ parentId, refetchReplies }) => {
+const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
@@ -19,6 +19,7 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies }) => {
           studentId,
           content,
           isAnonymous,
+          boardId,
         })
         .then(() => {
           refetchReplies();
