@@ -12,9 +12,9 @@ const Authentication = () => {
 
   const getAuth = () => {
     apiClient
-      .get(`http://localhost:8080/${studentId}/uploadStudentCard`)
+      .get(`http://localhost:8080/member/${studentId}`)
       .then((res) => {
-        setIsCertification(res.data.isCertification);
+        setIsCertification(res.data.certification);
       });
   };
 
