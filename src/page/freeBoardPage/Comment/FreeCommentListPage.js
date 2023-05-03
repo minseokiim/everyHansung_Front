@@ -64,6 +64,24 @@ const FreeCommentListPage = () => {
       });
   };
 
+  // const deleteReply = (e, id, commentId) => {
+  //   e.stopPropagation();
+  //   apiClient
+  //     .delete(`http://localhost:8080/freeboard/comment/${id}/${commentId}`)
+  //     .then(() => {
+  //       refetchReplies(parentId);
+  //     });
+  // }
+
+  const deleteReply = (e, parentId, replyId) => {
+    e.stopPropagation();
+    apiClient
+      .delete(`http://localhost:8080/freeboard/comment/${parentId}/${replyId}`)
+      .then(() => {
+        refetchReplies(parentId);
+      });
+  };
+
   const toggleReplyForm = (commentId) => {
     //부모 아이디 넘겨줘서 토글 열리게 하기
     setShowReplyForm((prev) => (prev === commentId ? null : commentId));
@@ -78,6 +96,7 @@ const FreeCommentListPage = () => {
           {comment.length > 0 ? (
             comment
               .filter((comment) => comment.content !== 0)
+              .filter((comment) => comment.parentId === 0)
               .map((comment) => {
                 return (
                   <div key={comment.id}>
@@ -141,6 +160,31 @@ const FreeCommentListPage = () => {
                                     </div>
                                   </div>
                                 </div>
+
+                                {studentId === reply.studentId && (
+                                  <div>
+                                    <span className="p-2">
+                                      <BsFillTrashFill
+                                        className="cursor-pointer icon grey"
+                                        onClick={(e) => {
+                                          {
+                                            if (
+                                              window.confirm(
+                                                "게시물을 삭제하시겠습니까?"
+                                              )
+                                            ) {
+                                              deleteReply(
+                                                e,
+                                                comment.id,
+                                                reply.id
+                                              );
+                                            }
+                                          }
+                                        }}
+                                      />
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           ))}
