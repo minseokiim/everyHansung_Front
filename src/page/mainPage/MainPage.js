@@ -7,7 +7,6 @@ const MainPage = () => {
   const move = useNavigate();
 
   return (
-    //jshint ignore:start
     <div className="notlogin">
       <aside>
         <div className="login">
@@ -91,7 +90,6 @@ const MainPage = () => {
         </section>
       </section>
     </div>
-    //jshint ignore:end
   );
 };
 

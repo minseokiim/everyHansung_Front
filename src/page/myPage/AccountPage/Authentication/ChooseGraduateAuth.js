@@ -38,11 +38,9 @@ const ChooseGraduateAuth = () => {
         }
       );
       move("/auth/check");
-      // Handle the server response here
       console.log(response.data);
     } catch (error) {
-      // Handle errors here
-      console.error("Error uploading the file:", error);
+      console.error("파일 업로드 중 에러발생", error);
     }
   };
 

@@ -15,7 +15,7 @@ const FreeCommentListPage = () => {
   const [replies, setReplies] = useState({});
   const { id } = useParams();
   const [showReplyForm, setShowReplyForm] = useState(null);
-  const studentId = localStorage.getItem("studentId"); //학번 정보 받아오기
+  const studentId = localStorage.getItem("studentId");
 
   const getComments = () => {
     apiClient
@@ -64,15 +64,6 @@ const FreeCommentListPage = () => {
       });
   };
 
-  // const deleteReply = (e, id, commentId) => {
-  //   e.stopPropagation();
-  //   apiClient
-  //     .delete(`http://localhost:8080/freeboard/comment/${id}/${commentId}`)
-  //     .then(() => {
-  //       refetchReplies(parentId);
-  //     });
-  // }
-
   const deleteReply = (e, parentId, replyId) => {
     e.stopPropagation();
     apiClient
@@ -83,7 +74,6 @@ const FreeCommentListPage = () => {
   };
 
   const toggleReplyForm = (commentId) => {
-    //부모 아이디 넘겨줘서 토글 열리게 하기
     setShowReplyForm((prev) => (prev === commentId ? null : commentId));
     getReplies(commentId);
   };
@@ -137,9 +127,6 @@ const FreeCommentListPage = () => {
                         )}
                       </div>
                     </div>
-
-                    {/* 대댓글 창 */}
-
                     <div className="reply-comment">
                       <div className="reply-box">
                         {replies[comment.id] &&
@@ -210,7 +197,6 @@ const FreeCommentListPage = () => {
       </div>
       <br />
       <br />
-      {/* 일반 댓글창 */}
       <FreeCommentWritePage refetchComments={refetchComments} />
     </div>
   );

@@ -7,11 +7,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
-  //보내고 난 후에는 modal이 close되게?
   const [content, setContent] = useState("");
   const { id } = useParams();
-  const studentId = localStorage.getItem("studentId"); //발신자 정보
-  const [postId, setPostId] = useState(""); //작성자 정보 저장
+  const studentId = localStorage.getItem("studentId");
+  const [postId, setPostId] = useState("");
 
   const customStyles = {
     content: {
@@ -47,7 +46,6 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
           receiver: postId,
           sender: studentId,
           content,
-          //시간은 백엔드에서 처리
         })
         .then(() => {
           setContent("");

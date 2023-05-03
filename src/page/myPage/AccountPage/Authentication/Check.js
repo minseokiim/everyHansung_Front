@@ -1,6 +1,3 @@
-//인증 검토중인 화면
-// /auth/check
-
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const Check = () => {

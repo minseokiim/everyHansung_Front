@@ -36,14 +36,10 @@ const CertificateAuthentication = () => {
           },
         }
       );
-      //사진을 올리면 검토중/확인 완료 화면 뜨게 하기
-
-      // Handle the server response here
       console.log(response.data);
       move("/auth/check");
     } catch (error) {
-      // Handle errors here
-      console.error("Error uploading the file:", error);
+      console.error("파일 업로드 중 에러발생", error);
     }
   };
 

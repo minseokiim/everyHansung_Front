@@ -45,7 +45,7 @@ apiClient.interceptors.response.use(
         ] = `Bearer ${response.data.accessToken}`;
         return apiClient(originalRequest);
       } catch (err) {
-        // Handle refresh token failure, log out or show a message to the user
+        console.log("refresh token failure");
       }
     }
 

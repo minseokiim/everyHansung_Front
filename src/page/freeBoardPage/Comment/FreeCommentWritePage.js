@@ -29,7 +29,6 @@ const FreeCommentWritePage = ({ parentId, refetchComments }) => {
   };
 
   const onChangeIsAnonymous = (e) => {
-    //console.log("값 말해봐 : " + e.target.checked);
     setIsAnonymous(e.target.checked);
   };
 
