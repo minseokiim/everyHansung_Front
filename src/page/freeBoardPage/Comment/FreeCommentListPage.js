@@ -150,6 +150,7 @@ const FreeCommentListPage = () => {
                       <FreeReplyCommentPage
                         parentId={comment.id}
                         refetchReplies={() => refetchReplies(comment.id)}
+                        boardId={id}
                       />
                     )}
                   </div>

@@ -9,13 +9,13 @@ const Authentication = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
   const [isCertification, setIsCertification] = useState(false);
+  const [isFile, setIsFile] = useState(false);
 
   const getAuth = () => {
-    apiClient
-      .get(`http://localhost:8080/member/${studentId}`)
-      .then((res) => {
-        setIsCertification(res.data.certification);
-      });
+    apiClient.get(`http://localhost:8080/member/${studentId}`).then((res) => {
+      setIsCertification(res.data.certification);
+      setIsFile(res.data.file);
+    });
   };
 
   useEffect(() => {
@@ -24,6 +24,8 @@ const Authentication = () => {
 
   return isCertification ? (
     move("/auth/success")
+  ) : isFile ? (
+    move("/auth/check")
   ) : (
     <div className="p-3">
       <AiFillSafetyCertificate />
