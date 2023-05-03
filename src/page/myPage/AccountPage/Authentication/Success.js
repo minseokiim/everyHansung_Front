@@ -1,6 +1,3 @@
-//인증 완료 화면
-///auth/success
-
 import { AiFillCheckCircle } from "react-icons/ai";
 
 const Success = () => {

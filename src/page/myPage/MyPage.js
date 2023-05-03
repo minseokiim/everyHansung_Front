@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import "./MyPage.css";
 import AccountPage from "./AccountPage/AccountPage";
 import AboutPage from "./AboutPage/AboutPage";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import OtherPage from "./OtherPage/OtherPage";
-import { FaUserCircle } from "react-icons/fa";
 import apiClient from "../../apiClient";
 
 const MyPage = () => {
@@ -43,7 +41,7 @@ const MyPage = () => {
               className="logout-button m-1 "
               onClick={(e) => {
                 e.preventDefault();
-                localStorage.clear(); //모든 정보 삭제
+                localStorage.clear();
                 move("/");
               }}
             >

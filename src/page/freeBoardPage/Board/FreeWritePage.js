@@ -11,8 +11,9 @@ const FreeWritePage = ({ editing }) => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
-  const [countLike, setCountLike] = useState(0); //좋아요 개수
+  const [countLike, setCountLike] = useState(0);
   const [updatedAt, setUpdatedAt] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const move = useNavigate();
   const { id } = useParams();
@@ -44,7 +45,7 @@ const FreeWritePage = ({ editing }) => {
     }
   }, [id, editing]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (title.trim().length === 0) {
@@ -53,36 +54,47 @@ const FreeWritePage = ({ editing }) => {
     } else if (content.trim().length === 0) {
       alert("본문을 입력하세요");
       return;
-    } else if (editing) {
+    }
+
+    let base64Image = null;
+    if (imageFile) {
+      base64Image = await toBase64(imageFile);
+    }
+
+    const data = {
+      studentId,
+      title,
+      content,
+      isAnonymous,
+      nickname,
+      countLike,
+      imageFile: base64Image,
+    };
+
+    if (editing) {
       apiClient
-        .patch(`http://localhost:8080/freeboard/${studentId}/${id}`, {
-          title,
-          content,
-          isAnonymous,
-          updatedAt,
-        })
+        .patch(`http://localhost:8080/freeboard/${studentId}/${id}`, data)
         .then(() => {
           move(`/freeboard/${id}`);
         });
     } else {
-      apiClient
-        .post("http://localhost:8080/freeboard", {
-          studentId,
-          title,
-          content,
-          isAnonymous,
-          nickname,
-          countLike, //디폴트 0
-        })
-        .then(() => {
-          move("/freeboard/list");
-        });
+      apiClient.post("http://localhost:8080/freeboard", data).then(() => {
+        move("/freeboard/list");
+      });
     }
   };
 
   const onChangeIsAnonymous = (e) => {
     setIsAnonymous(e.target.checked);
   };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
   return (
     <form className="back">
@@ -112,6 +124,17 @@ const FreeWritePage = ({ editing }) => {
           placeholder="본문을 입력해주세요."
         ></textarea>
       </div>
+
+      <div className="mb-3">
+        <label htmlFor="imageFile">이미지 업로드:</label>
+        <input
+          type="file"
+          id="imageFile"
+          onChange={(e) => setImageFile(e.target.files[0])}
+          accept="image/*"
+        />
+      </div>
+
       <div className="mb-3">
         <input
           type="checkbox"

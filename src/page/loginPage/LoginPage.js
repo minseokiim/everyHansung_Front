@@ -27,7 +27,7 @@ const LoginPage = () => {
           move("/membermain");
         })
         .catch(() => {
-          // 로그인 실패 시 아무것도 하지 않음
+          console.log("로그인 실패");
         });
     }
   }, [rememberMe, studentId, password, move]);

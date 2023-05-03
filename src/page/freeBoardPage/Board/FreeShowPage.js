@@ -33,7 +33,7 @@ const FreeShowPage = () => {
           setNickname(member.nickname);
         })
         .catch((error) => {
-          console.error("Error fetching name:", error);
+          console.error("Error:", error);
         });
     } else {
       console.log("닉네임 못받아옴");

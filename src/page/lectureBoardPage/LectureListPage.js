@@ -112,7 +112,7 @@ const LectureListPage = () => {
 
         {currentPosts.length > 0
           ? currentPosts
-              .sort((a, b) => b.id - a.id) //최신순
+              .sort((a, b) => b.id - a.id)
               .map((post) => {
                 return (
                   <div
