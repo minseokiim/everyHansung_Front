@@ -1,44 +1,60 @@
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 
 const SecretBoardHeart = () => {
   const [isFilled, setIsFilled] = useState(false);
+  const [countLike, setCountLike] = useState(0);
   const studentId = localStorage.getItem("studentId");
-  //이 페이지는 개인마다 보이는 페이지이므로 하트는 각각 한번씩만 보여야함
   const { id } = useParams();
-
-  //게시물 정보 먼저 받아오기 (게시물id)
-  const getHearts = () => {
-    axios.get(`http://localhost:8080/secretposts/${id}/heart`);
-  };
-
-  //정보 보내는 함수
-  const clickHeart = () => {
-    if (!isFilled) {
-      setIsFilled(true);
-
-      //filled랑 studentId랑 post.id 전송해주기
-      axios.post(`http://localhost:8080/secretposts/${id}/heart`, {
-        isFilled,
-        studentId,
-      });
-    } else {
-      setIsFilled(false);
-      //이미 하트 눌린 경우
-      //
-      //   axios.patch(`http://localhost:8080/secretposts/${id}/heart`, {
-      //     isFilled, // 하트 수를 패치
-      //     studentId,
-      //   });
-    }
-  };
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    getHearts();
-  }, [isFilled]);
+    apiClient
+      .get(`http://localhost:8080/heart/${studentId}/${id}`)
+      .then((response) => {
+        setCountLike(response.data.countLike);
+        setIsFilled(response.data.isFilled);
+      })
+      .catch((error) => {
+        console.error("Failed to get like information", error);
+      });
+  }, []);
+
+  const clickHeart = () => {
+    if (isFilled) {
+      apiClient
+        .delete(`http://localhost:8080/heart/${studentId}/${id}`, {
+          params: {
+            studentId: studentId,
+            secretboardId: id,
+          },
+        })
+        .then(() => {
+          setIsFilled(false);
+          setCountLike(countLike - 1);
+        })
+        .catch((error) => {
+          console.error("Failed to delete like", error);
+        });
+    } else {
+      apiClient
+        .post(`http://localhost:8080/heart/${studentId}/${id}`, null, {
+          params: {
+            studentId: studentId,
+            secretboardId: id,
+          },
+        })
+        .then((response) => {
+          setIsFilled(true);
+          setCountLike(countLike + 1);
+        })
+        .catch((error) => {
+          console.error("Failed to add like", error);
+        });
+    }
+  };
 
   return (
     <div>
@@ -51,6 +67,10 @@ const SecretBoardHeart = () => {
       ) : (
         <AiOutlineHeart className="cursor-pointer" onClick={clickHeart} />
       )}
+      <strong className="p-1">좋아요</strong>
+      <span>
+        <strong> {countLike}</strong>
+      </span>
     </div>
   );
 };

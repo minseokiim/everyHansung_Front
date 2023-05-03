@@ -1,9 +1,9 @@
+import "./SecretCommentPage.css";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { useState } from "react";
-import "./FreeCommentPage.css";
 
-const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
+const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
@@ -15,7 +15,7 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/freeboard/comment/${parentId}/replies`, {
+        .post(`http://localhost:8080/secretboard/comment/${parentId}/replies`, {
           studentId,
           content,
           isAnonymous,
@@ -66,4 +66,4 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   );
 };
 
-export default FreeReplyCommentPage;
+export default SecretReplyCommentPage;

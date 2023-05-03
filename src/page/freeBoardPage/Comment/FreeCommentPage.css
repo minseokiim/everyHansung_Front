@@ -1,17 +1,30 @@
-.comment-checkbox {
-  margin-right: 5px;
+.comment-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.comment-label {
+.comment-checkbox {
   margin-right: 10px;
+}
+.comment-label {
+  margin-right: 20px;
+  font-weight: bold;
 }
 
 .comment-input-wrapper {
   display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .comment-input {
-  margin-right: 5px;
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .icon:hover {
@@ -33,29 +46,11 @@
   /* margin: 2px; */
 }
 
-/* .reply-input {
-  margin-right: 5px;
-  font-size: 15px;
-}
-
-.reply-comment {
-  font-size: 15px;
-  color: hwb(0 28% 72%);
-}
-
-.reply-input {
-  margin-right: 5px;
-  font-size: 15px;
-}
-
-.reply-checkbox {
-  margin-right: 5px;
-}
-
-.reply-label {
-  margin-right: 10px;
-}
-
-.reply-input-wrapper {
+.free-comment-list-container {
   display: flex;
-} */
+  flex-direction: column;
+}
+
+.free-comment-list-container > :last-child {
+  margin-bottom: 0px;
+}

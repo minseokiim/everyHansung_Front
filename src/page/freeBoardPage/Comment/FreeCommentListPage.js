@@ -79,7 +79,7 @@ const FreeCommentListPage = () => {
   };
 
   return (
-    <div>
+    <div className="free-comment-list-container">
       <div>
         <AiOutlineComment /> <strong>댓글 </strong>
         <div className="p-1">
@@ -195,8 +195,6 @@ const FreeCommentListPage = () => {
           )}
         </div>
       </div>
-      <br />
-      <br />
       <FreeCommentWritePage refetchComments={refetchComments} />
     </div>
   );
