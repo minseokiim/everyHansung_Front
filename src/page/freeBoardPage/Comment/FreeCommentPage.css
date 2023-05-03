@@ -25,7 +25,7 @@
 
 .no-comment {
   font-size: 15px;
-  color: grey;
+  color: rgb(203, 196, 196);
 }
 
 .comment-box {
@@ -33,6 +33,29 @@
   /* margin: 2px; */
 }
 
-.reply-input {
-  margin-right: 3px;
+/* .reply-input {
+  margin-right: 5px;
+  font-size: 15px;
 }
+
+.reply-comment {
+  font-size: 15px;
+  color: hwb(0 28% 72%);
+}
+
+.reply-input {
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.reply-checkbox {
+  margin-right: 5px;
+}
+
+.reply-label {
+  margin-right: 10px;
+}
+
+.reply-input-wrapper {
+  display: flex;
+} */
