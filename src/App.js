@@ -126,9 +126,10 @@ const App = () => {
               </div>
             }
           />
-          {/* 
+
+          {/* 사용할지 말지 */}
           <Route
-            path="/message:studentId"
+            path="/message/:studentId"
             element={
               <div>
                 <Card>
@@ -139,7 +140,7 @@ const App = () => {
                 <Footer />
               </div>
             }
-          /> */}
+          />
 
           <Route
             path="/freeboard/post"

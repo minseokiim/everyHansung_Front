@@ -3,13 +3,12 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { useState } from "react";
 
-const FreeReplyCommentPage = ({ parentId, refetchComments }) => {
+const FreeReplyCommentPage = ({ parentId, refetchReplies }) => {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
-
   const studentId = localStorage.getItem("studentId");
 
-  const onSubmit = (e) => {
+  const onSubmit = () => {
     if (content.trim().length === 0) {
       alert("댓글을 입력하세요");
       return;
@@ -22,7 +21,7 @@ const FreeReplyCommentPage = ({ parentId, refetchComments }) => {
           isAnonymous,
         })
         .then(() => {
-          refetchComments();
+          refetchReplies();
         });
     }
   };

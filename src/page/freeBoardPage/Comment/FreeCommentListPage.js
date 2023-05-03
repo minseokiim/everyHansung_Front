@@ -7,6 +7,7 @@ import FreeCommentWritePage from "./FreeCommentWritePage";
 import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import FreeReplyCommentPage from "./FreeReplyCommentPage";
+import { GrFormNext } from "react-icons/gr";
 
 const FreeCommentListPage = () => {
   const [comment, setComment] = useState([]);
@@ -20,20 +21,26 @@ const FreeCommentListPage = () => {
       .get(`http://localhost:8080/freeboard/comment/${id}`)
       .then((res) => {
         setComment(res.data);
-      });
-  };
-
-  const getReplies = (parentId) => {
-    apiClient
-      .get(`http://localhost:8080/freeboard/comment/${parentId}/replies`)
-      .then((res) => {
-        setReplies((prevReplies) => ({ ...prevReplies, [parentId]: res.data }));
+        res.data.forEach((comment) => {
+          getReplies(comment.id);
+        });
       });
   };
 
   useEffect(() => {
     getComments();
   }, []);
+
+  const getReplies = (parentId) => {
+    apiClient
+      .get(`http://localhost:8080/freeboard/comment/${parentId}/replies`)
+      .then((res) => {
+        setReplies((prevReplies) => ({
+          ...prevReplies,
+          [parentId]: res.data,
+        }));
+      });
+  };
 
   const printDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
@@ -42,6 +49,10 @@ const FreeCommentListPage = () => {
   const refetchComments = useCallback(() => {
     getComments();
   }, []);
+
+  const refetchReplies = (parentId) => {
+    getReplies(parentId);
+  };
 
   const deleteComment = (e, id, commentId) => {
     e.stopPropagation();
@@ -53,6 +64,7 @@ const FreeCommentListPage = () => {
   };
 
   const toggleReplyForm = (commentId) => {
+    //부모 아이디 넘겨줘서 토글 열리게 하기
     setShowReplyForm((prev) => (prev === commentId ? null : commentId));
     getReplies(commentId);
   };
@@ -109,32 +121,45 @@ const FreeCommentListPage = () => {
                         )}
                       </div>
                     </div>
-                    <hr />
+
                     {/* 대댓글 창 */}
-                    {showReplyForm === comment.id && (
+                    {showReplyForm !== comment.id && (
                       <div className="reply-form">
-                        <FreeReplyCommentPage
-                          parentId={comment.id}
-                          postReply={refetchComments()}
-                        />
+                        <div className="reply-box">
+                          {replies[comment.id] &&
+                            replies[comment.id].map((reply) => (
+                              <div key={reply.id}>
+                                <div className="d-flex">
+                                  <div className="comment-box flex-grow-1">
+                                    <div className="reply-box">
+                                      &nbsp;&nbsp; <GrFormNext />
+                                      {reply.isAnonymous
+                                        ? "익명"
+                                        : reply.nickname}
+                                      :
+                                      <span className="p-1">
+                                        {reply.content}
+                                      </span>
+                                      <div className="comment-time ">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        {printDate(reply.createdAt)}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                        </div>
                       </div>
                     )}
-                    {/* 대댓글 추가되면 보이는 대댓글 리스트 ->현재 안됨*/}
-                    {replies[comment.id] &&
-                      replies[comment.id].map((reply) => (
-                        <div key={reply.id} className="nested-reply">
-                          <div className="d-flex">
-                            <div className="comment-box flex-grow-1">
-                              {reply.isAnonymous ? "익명" : reply.nickname}:
-                              <span className="p-1">{reply.content}</span>
-                              <div className="comment-time ">
-                                {printDate(reply.createdAt)}
-                              </div>
-                            </div>
-                          </div>
-                          <hr />
-                        </div>
-                      ))}
+                    {/* <FreeReplyCommentPage
+                          parentId={comment.id}
+                          refetchComments={refetchComments}
+                        /> */}
+                    <FreeReplyCommentPage
+                      parentId={comment.id}
+                      refetchReplies={() => refetchReplies(comment.id)}
+                    />
                   </div>
                 );
               })
