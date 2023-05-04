@@ -7,6 +7,7 @@ import { AiOutlineHeart, AiOutlineComment } from "react-icons/ai";
 import apiClient from "../../../apiClient";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiTimeFive } from "react-icons/bi";
+import { AiOutlinePicture } from "react-icons/ai";
 
 const FreeListPage = () => {
   const move = useNavigate();
@@ -153,7 +154,8 @@ const FreeListPage = () => {
                   }}
                 >
                   <div>
-                    {post.title}
+                    {post.title} &nbsp;
+                    {post.fileDir ? <AiOutlinePicture /> : ""}
                     <br />
                     <div className="big-grey">
                       {post.content.slice(0, 50)}

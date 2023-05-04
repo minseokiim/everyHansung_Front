@@ -128,7 +128,18 @@ const FreeShowPage = () => {
             <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
           </div>
           <hr />
-          <div className="big-grey p-2">{post.content}</div>
+          <div className="big-grey p-2">
+            {post.content}
+            {post.fileDir && (
+              <div className="mt-3">
+                <img
+                  src={post.fileDir}
+                  alt="uploaded"
+                  className="uploaded-image"
+                />
+              </div>
+            )}
+          </div>
           <br />
 
           <div className="d-flex">
