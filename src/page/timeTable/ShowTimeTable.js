@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 const ShowTimeTable = () => {
   const [timeTableData, setTimeTableData] = useState([]);
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
 
   useEffect(() => {
     const fetchTimeTableData = async () => {
       try {
         const response = await apiClient.get(
-          "https://localhost:3000/timetable"
+          `http://localhost:8080/time/${studentId}`
         );
         if (response.status === 200) {
           setTimeTableData(response.data);
@@ -46,6 +47,8 @@ const ShowTimeTable = () => {
         <thead>
           <tr>
             <th>과목명</th>
+            <th>교수님</th>
+            <th>강의실</th>
             <th>요일</th>
             <th>시작 시간</th>
             <th>종료 시간</th>
@@ -55,6 +58,8 @@ const ShowTimeTable = () => {
           {timeTableData.map((item, index) => (
             <tr key={index}>
               <td>{item.subject}</td>
+              <td>{item.professor}</td>
+              <td>{item.room}</td>
               <td>{item.day}</td>
               <td>{item.startTime}</td>
               <td>{item.endTime}</td>

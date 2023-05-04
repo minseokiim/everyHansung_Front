@@ -2,22 +2,30 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import apiClient from "../../apiClient";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   subject: Yup.string().required("과목명을 입력해주세요."),
   day: Yup.string().required("요일을 선택해주세요."),
   startTime: Yup.string().required("시작 시간을 입력해주세요."),
   endTime: Yup.string().required("종료 시간을 입력해주세요."),
+  room: Yup.string().required("강의실을 입력해주세요."),
+  professor: Yup.string().required("교수님 성함을 입력해주세요."),
 });
 
 const TimeTable = () => {
   const studentId = localStorage.getItem("studentId");
+  const move = useNavigate();
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const { startTime, endTime } = values;
-      const timestampStartTime = new Date(`${new Date().toDateString()} ${startTime}`).toISOString();
-      const timestampEndTime = new Date(`${new Date().toDateString()} ${endTime}`).toISOString();
+      const timestampStartTime = new Date(
+        `${new Date().toDateString()} ${startTime}`
+      ).toISOString();
+      const timestampEndTime = new Date(
+        `${new Date().toDateString()} ${endTime}`
+      ).toISOString();
       const timestampValues = {
         ...values,
         startTime: timestampStartTime,
@@ -30,7 +38,7 @@ const TimeTable = () => {
       );
 
       if (response.status === 200) {
-        alert("입력 되었습니다.");
+        move("/timetable/show");
       } else {
         console.error("실패했습니다.");
       }
@@ -61,6 +69,16 @@ const TimeTable = () => {
             <Field name="subject" type="text" className="comment-input" />
             {errors.subject && touched.subject ? (
               <div>{errors.subject}</div>
+            ) : null}
+            <br /> <br />
+            <label htmlFor="room">*강의실: &nbsp; </label>
+            <Field name="room" type="text" className="comment-input" />
+            {errors.room && touched.room ? <div>{errors.room}</div> : null}
+            <br /> <br />
+            <label htmlFor="professor">*교수님: &nbsp; </label>
+            <Field name="professor" type="text" className="comment-input" />
+            {errors.professor && touched.professor ? (
+              <div>{errors.professor}</div>
             ) : null}
             <br /> <br />
             <label htmlFor="day">*요일: &nbsp; </label>
