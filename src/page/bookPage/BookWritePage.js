@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./BookWritePage.css";
+import apiClient from "../../apiClient";
 
 const BookWritePage = () => {
+  const studentId = localStorage.getItem("studentId");
+
   const [lectureName, setLectureName] = useState("");
   const [bookName, setBookName] = useState("");
   const [author, setAuthor] = useState("");
@@ -13,9 +16,11 @@ const BookWritePage = () => {
   const [broken, setBroken] = useState("평가 안함");
   const [writing, setWriting] = useState("평가 안함");
   const [content, setContent] = useState("");
+  const [imageFile, setImageFile] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
   const move = useNavigate();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (lectureName.trim().length === 0) {
@@ -30,24 +35,43 @@ const BookWritePage = () => {
     } else if (publisher.trim().length === 0) {
       alert("출판사를 입력하세요");
       return;
-    } else {
-      axios
-        .post("http://localhost:8080/bookstore", {
-          lectureName,
-          author,
-          publisher,
-          content,
-          semester,
-          bookName,
-          state,
-          writing,
-          broken,
-        })
-        .then(() => {
-          alert("작성되었습니다!");
-          move("/bookstore/list");
-        });
     }
+
+    let base64Image = null;
+    if (imageFile) {
+      base64Image = await toBase64(imageFile);
+    }
+
+    const data = {
+      lectureName,
+      author,
+      publisher,
+      content,
+      semester,
+      bookName,
+      state,
+      writing,
+      broken,
+      imageFile: base64Image,
+    };
+
+    apiClient.post("http://localhost:8080/bookstore", data).then(() => {
+      alert("작성되었습니다!");
+      move("/bookstore/list");
+    });
+  };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  const onImageChange = (e) => {
+    setImageFile(e.target.files[0]);
+    setPreviewImage(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -203,6 +227,24 @@ const BookWritePage = () => {
             }}
           />
           없음
+        </div>
+        <div className="mb-3">
+          <label htmlFor="imageFile">*책 사진 </label>
+          <input
+            type="file"
+            id="imageFile"
+            onChange={onImageChange}
+            accept="image/*"
+          />
+          {previewImage && (
+            <div>
+              <img
+                src={previewImage}
+                alt="preview"
+                style={{ maxWidth: "100%" }}
+              />
+            </div>
+          )}
         </div>
 
         <textarea

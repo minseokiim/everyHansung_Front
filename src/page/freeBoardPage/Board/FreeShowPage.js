@@ -130,12 +130,13 @@ const FreeShowPage = () => {
           <hr />
           <div className="big-grey p-2">
             {post.content}
+
             {post.fileDir && (
               <div className="mt-3">
                 <img
                   src={post.fileDir}
                   alt="uploaded"
-                  className="uploaded-image"
+                  // className="uploaded-image"
                 />
               </div>
             )}

@@ -13,7 +13,8 @@ const FreeWritePage = ({ editing }) => {
   const [nickname, setNickname] = useState("");
   const [countLike, setCountLike] = useState(0);
   const [updatedAt, setUpdatedAt] = useState("");
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFile, setImageFile] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
 
   const move = useNavigate();
   const { id } = useParams();
@@ -41,6 +42,7 @@ const FreeWritePage = ({ editing }) => {
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
         setUpdatedAt(res.data.updatedAt);
+        setImageFile(res.data.imageFile);
       });
     }
   }, [id, editing]);
@@ -96,6 +98,11 @@ const FreeWritePage = ({ editing }) => {
       reader.onerror = (error) => reject(error);
     });
 
+  const onImageChange = (e) => {
+    setImageFile(e.target.files[0]);
+    setPreviewImage(URL.createObjectURL(e.target.files[0]));
+  };
+
   return (
     <form className="back">
       <div className="mb-3">
@@ -130,9 +137,18 @@ const FreeWritePage = ({ editing }) => {
         <input
           type="file"
           id="imageFile"
-          onChange={(e) => setImageFile(e.target.files[0])}
+          onChange={onImageChange}
           accept="image/*"
         />
+        {previewImage && (
+          <div>
+            <img
+              src={previewImage}
+              alt="preview"
+              style={{ maxWidth: "100%" }}
+            />
+          </div>
+        )}
       </div>
 
       <div className="mb-3">
