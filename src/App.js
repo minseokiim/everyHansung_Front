@@ -57,6 +57,8 @@ import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
 import TimeTable from "./page/timeTable/TimeTable";
+import ShowTimeTable from "./page/timeTable/ShowTimeTable";
+
 import InfoTablePage from "./page/infoTablePage/InfoTablePage";
 
 const App = () => {
@@ -66,19 +68,35 @@ const App = () => {
         {/* //nav 보여주고 싶은 페이지 */}
         <Route element={<NavBar />}>
           <Route
-            path="/timetable"
+            path="/timetable/post"
             element={
-              <div className="p-5">
-                <TimeTable />
-                <br />
-                <br />
+              <div>
+                <Card>
+                  <TimeTable />
+                  <br />
+                  <br />
+                </Card>
                 <Footer />
               </div>
             }
           />
 
           <Route
-            path="/infotable"
+            path="/timetable/show"
+            element={
+              <div>
+                <Card>
+                  <ShowTimeTable />
+                  <br />
+                  <br />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/require"
             element={
               <div className="p-5">
                 <InfoTablePage />

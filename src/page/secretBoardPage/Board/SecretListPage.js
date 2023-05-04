@@ -99,7 +99,7 @@ const SecretListPage = () => {
         <div className="d-flex justify-content-between">
           <strong className="p-3">비밀게시판</strong>
           <button
-            className="m-2  write-button"
+            className="m-2 write-button"
             onClick={() => {
               move("/secretboard/post");
             }}
