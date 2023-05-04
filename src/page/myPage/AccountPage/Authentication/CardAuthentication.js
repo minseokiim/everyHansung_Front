@@ -2,9 +2,10 @@ import { useState } from "react";
 import "../../../signupPage/SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
-import { AiOutlinePicture } from "react-icons/ai";
 import { AiFillIdcard } from "react-icons/ai";
 import apiClient from "../../../../apiClient";
+import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const CardAuthentication = () => {
   const studentId = localStorage.getItem("studentId");
@@ -50,30 +51,33 @@ const CardAuthentication = () => {
       <AiFillIdcard />
       <strong className="p-1">학생증</strong>
       <br />
-      <div className=" cursor-pointer">
+      <div className="cursor-pointer">
         <div className="grey">학생증을 스캔·촬영·캡처 후 첨부하여 인증</div>
         <hr />
         <input
           type="file"
           accept="file/*"
           onChange={handleImageChange}
-          className="t-3"
           id="file-input"
         />
-        <label htmlFor="file-input">파일 선택</label>
+        <label htmlFor="file-input">
+          <AiOutlinePaperClip className="icon" />
+        </label>
 
         {preview && (
           <div className="mt-3">
-            <img src={preview} alt="preview" width="400" />
+            <img
+              src={preview}
+              alt="preview"
+              style={{ width: "300px", height: "auto" }}
+            />
             <br /> <br />
-            <button type="button" onClick={removeImage} className="button ml-3">
-              파일 삭제
-            </button>
+            <BsFillTrashFill onClick={removeImage} className="icon ml-3" />
           </div>
         )}
         <hr />
         <button type="button" onClick={handleSubmit} className=" button ">
-          파일 제출
+          제출
         </button>
       </div>
     </div>

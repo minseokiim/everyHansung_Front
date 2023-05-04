@@ -566,12 +566,12 @@ const NewChatBot = () => {
   ];
   const theme = {
     background: "#f5f8fb",
-    headerBgColor: "rgb(12, 13, 59)",
+    headerBgColor: "hsl(227, 49%, 31%)",
     headerFontColor: "white",
     headerFontSize: "15px",
     botBubbleColor: "white",
     botFontColor: "hwb(240 18% 61%)",
-    userBubbleColor: "rgb(12, 13, 59)",
+    userBubbleColor: "hsl(227, 49%, 31%)",
     userFontColor: "white",
   };
 

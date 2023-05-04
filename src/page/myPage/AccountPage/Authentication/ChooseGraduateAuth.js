@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import apiClient from "../../../../apiClient";
 import { TbCertificate } from "react-icons/tb";
+import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const ChooseGraduateAuth = () => {
   const studentId = localStorage.getItem("studentId");
@@ -57,22 +59,26 @@ const ChooseGraduateAuth = () => {
           type="file"
           accept="file/*"
           onChange={handleImageChange}
-          className="t-3"
           id="file-input"
         />
-        <label for="file-input">파일 선택</label>
+        <label htmlFor="file-input">
+          <AiOutlinePaperClip className="icon" />
+        </label>
+
         {preview && (
           <div className="mt-3">
-            <img src={preview} alt="preview" width="400" />
+            <img
+              src={preview}
+              alt="preview"
+              style={{ width: "300px", height: "auto" }}
+            />
             <br /> <br />
-            <button type="button" onClick={removeImage} className="button ml-3">
-              파일 삭제
-            </button>
+            <BsFillTrashFill onClick={removeImage} className="icon ml-3" />
           </div>
         )}
         <hr />
         <button type="button" onClick={handleSubmit} className=" button ">
-          파일 제출
+          제출
         </button>
       </div>
     </div>

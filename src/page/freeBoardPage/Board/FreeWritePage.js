@@ -3,7 +3,8 @@ import "./FreeWritePage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import propTypes from "prop-types";
 import apiClient from "../../../apiClient";
-import axios from "axios";
+import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const FreeWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
@@ -37,7 +38,7 @@ const FreeWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
+      apiClient.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setIsAnonymous(res.data.isAnonymous);
@@ -90,6 +91,11 @@ const FreeWritePage = ({ editing }) => {
     setIsAnonymous(e.target.checked);
   };
 
+  const removeImage = () => {
+    setImageFile("");
+    setPreviewImage("");
+  };
+
   const toBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -99,8 +105,13 @@ const FreeWritePage = ({ editing }) => {
     });
 
   const onImageChange = (e) => {
-    setImageFile(e.target.files[0]);
-    setPreviewImage(URL.createObjectURL(e.target.files[0]));
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+      setPreviewImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImageFile("");
+      setPreviewImage("");
+    }
   };
 
   return (
@@ -133,34 +144,50 @@ const FreeWritePage = ({ editing }) => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="imageFile">이미지 업로드:</label>
+        <label htmlFor="imageFile" className="d-inline-block">
+          <AiOutlinePaperClip
+            className="icon"
+            style={{ cursor: "pointer" }}
+            size={24}
+          />
+        </label>
         <input
           type="file"
           id="imageFile"
           onChange={onImageChange}
           accept="image/*"
+          style={{ display: "none" }}
         />
+        {imageFile && (
+          <BsFillTrashFill
+            onClick={removeImage}
+            style={{ cursor: "pointer", marginLeft: "10px" }}
+            size={20}
+            className="icon"
+          />
+        )}
         {previewImage && (
           <div>
             <img
               src={previewImage}
               alt="preview"
-              style={{ maxWidth: "100%" }}
+              style={{ width: "100px", height: "auto" }}
             />
           </div>
         )}
+        <span className="grey">사진은 한장만 선택 가능합니다.</span>
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 d-flex align-items-center">
         <input
           type="checkbox"
           checked={isAnonymous}
           onChange={onChangeIsAnonymous}
         />
-        익명
-        <div className="mb-3">
+        <span>익명</span>
+        <div className="ms-auto">
           <button
-            className="button "
+            className="dan-button"
             type="submit"
             onClick={(e) => {
               e.preventDefault();

@@ -24,7 +24,7 @@ const LoginPage = () => {
           password,
         })
         .then(() => {
-          move("/membermain");
+          move("/");
         })
         .catch(() => {
           console.log("로그인 실패");
@@ -54,7 +54,7 @@ const LoginPage = () => {
         } else {
           localStorage.removeItem("rememberMe");
         }
-        move("/membermain");
+        move("/");
       })
       .catch((error) => {
         if (error.response) {

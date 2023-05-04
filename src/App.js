@@ -82,7 +82,7 @@ const App = () => {
           />
 
           <Route
-            path="/timetable/show"
+            path="/timetable"
             element={
               <div>
                 <Card>
@@ -481,7 +481,7 @@ const App = () => {
           />
 
           <Route
-            path="/membermain"
+            path="/main"
             element={
               <div>
                 <Card>

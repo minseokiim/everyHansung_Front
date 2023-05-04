@@ -298,7 +298,6 @@ section {
   width: 100%;
   box-sizing: border-box;
   word-break: break-all;
-  font-family: NanumSquare;
   text-align: center;
 }
 
@@ -315,7 +314,6 @@ section h2 {
 section h1 > strong,
 section h2 > strong {
   color: #c62917;
-  font-family: NanumSquareEB;
 }
 
 section.init > div.wrap > div.stores {
@@ -425,4 +423,46 @@ section.footer > ul.links > li > a {
 section.footer > ul.links > li.copyright > a,
 section.footer > ul.links > li.privacy > a {
   font-weight: bold;
+}
+
+.logout-button {
+  margin: 2px;
+  background-color: #c62917;
+  border: 1px solid #e3e3e3;
+  border-width: 0px;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 5px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: rgb(249, 216, 214);
+}
+
+.new-button {
+  margin: 2px;
+  background-color: hsl(227, 49%, 31%);
+  border: 1px solid #e3e3e3;
+  border-width: 0px;
+  border-radius: 3px;
+  display: block;
+  margin-bottom: 5px;
+  height: 40px;
+  line-height: 40px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.new-button:hover {
+  background-color: #8c90b9;
 }

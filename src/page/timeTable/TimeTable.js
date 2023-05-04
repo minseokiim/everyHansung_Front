@@ -38,7 +38,7 @@ const TimeTable = () => {
       );
 
       if (response.status === 200) {
-        move("/timetable/show");
+        move("/timetable");
       } else {
         console.error("실패했습니다.");
       }

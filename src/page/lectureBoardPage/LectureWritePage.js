@@ -266,7 +266,7 @@ const LectureWritePage = () => {
         </div>
         <br />
         <button
-          className="lec-button mb-3"
+          className="dan-button mb-3"
           type="submit"
           onClick={(e) => {
             e.preventDefault();

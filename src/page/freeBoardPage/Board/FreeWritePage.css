@@ -34,3 +34,27 @@
 .big-grey {
   color: hsl(0, 0%, 42%);
 }
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.dan-button {
+  margin: 2px;
+  background-color: hwb(6 25% 25%);
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 3px;
+}
+
+.dan-button:hover {
+  background-color: rgb(239, 199, 193);
+}

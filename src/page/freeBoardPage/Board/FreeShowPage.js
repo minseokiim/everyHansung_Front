@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
 import FreeBoardHeart from "../Heart/FreeBoardHeart";
 import "./FreeWritePage.css";
@@ -130,13 +130,13 @@ const FreeShowPage = () => {
           <hr />
           <div className="big-grey p-2">
             {post.content}
-
-            {post.fileDir && (
+            {/* 사진 보여주기 */}
+            {post.fileName && (
               <div className="mt-3">
                 <img
-                  src={post.fileDir}
-                  alt="uploaded"
-                  // className="uploaded-image"
+                  src={`http://localhost:8080/${post.fileName}`}
+                  alt="preview"
+                  style={{ maxWidth: "100%" }}
                 />
               </div>
             )}
