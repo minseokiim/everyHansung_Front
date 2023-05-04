@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./BookWritePage.css";
 import apiClient from "../../apiClient";
 
@@ -43,6 +42,7 @@ const BookWritePage = () => {
     }
 
     const data = {
+      studentId,
       lectureName,
       author,
       publisher,
@@ -264,7 +264,7 @@ const BookWritePage = () => {
         </div>
         <br />
         <button
-          className="lec-button mb-3"
+          className="dan-button mb-3"
           type="submit"
           onClick={(e) => {
             e.preventDefault();

@@ -2,9 +2,27 @@ import React from "react";
 import "./MainPage.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../../apiClient";
+import { useState, useEffect } from "react";
 
 const MainPage = () => {
   const move = useNavigate();
+  const studentId = localStorage.getItem("studentId");
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setName(member.username);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    }
+  }, [studentId]);
 
   return (
     <div className="notlogin">
@@ -15,20 +33,47 @@ const MainPage = () => {
               alt="everyhansung"
               src="img/everyhansung.png"
               className="logo-image cursor-pointer"
-              onClick={() => move("/membermain")}
+              onClick={() => move("/")}
             />
           </div>
-          <Link to="/login" className="button login">
-            로그인
-          </Link>
+          {!name && (
+            <>
+              <Link to="/login" className="button login">
+                로그인
+              </Link>
+              <Link to="/register" className="button regis">
+                회원가입
+              </Link>
+              <p className="find">
+                <a href="/forgot">아이디/비밀번호 찾기</a>
+              </p>
+              <hr />
+            </>
+          )}
 
-          <Link to="/register" className="button regis">
-            회원가입
-          </Link>
-          <p className="find">
-            <a href="/forgot">아이디/비밀번호 찾기</a>
-          </p>
-          <hr />
+          {name && (
+            <div className=" my-info">
+              {name}님, 안녕하세요!
+              <br /> <br />
+              <div
+                className="new-button cursor-pointer"
+                onClick={() => {
+                  move("/main");
+                }}
+              >
+                에브리한성 접속
+              </div>
+              <div
+                className="logout-button cursor-pointer"
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+              >
+                로그아웃
+              </div>
+            </div>
+          )}
         </div>
       </aside>
 
@@ -40,16 +85,16 @@ const MainPage = () => {
             "에브리한성"
             <br />
           </strong>
-          <p>
+          <div>
             <br />
             <img
               alt="sangsangs"
               src="img/sangsangs.png"
               className="sangsangs cursor-pointer"
-              onClick={() => move("/membermain")}
+              onClick={() => move("/main")}
             />
             <div className="grey"> (그림을 클릭하면 페이지로 이동합니다.)</div>
-          </p>
+          </div>
         </h2>
         <div className="paragraph">
           <p>

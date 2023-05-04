@@ -32,7 +32,7 @@ const NavBar = () => {
     <div>
       <Navbar className="color-nav" variant="dark">
         <Container>
-          <Navbar.Brand href="/membermain">
+          <Navbar.Brand href="/main">
             <GiTurtle />
             에브리한성
           </Navbar.Brand>
@@ -50,7 +50,7 @@ const NavBar = () => {
             <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
             <Nav.Link href="/bookstore/list">책방</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
-            <Nav.Link href="/timetable/show">시간표</Nav.Link>
+            <Nav.Link href="/timetable">시간표</Nav.Link>
             <Nav.Link href="/require">졸업요건</Nav.Link>
           </Nav>
 

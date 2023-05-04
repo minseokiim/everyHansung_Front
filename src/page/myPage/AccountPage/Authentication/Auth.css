@@ -4,7 +4,6 @@
 
 #file-input + label {
   cursor: pointer;
-  background-color: hwb(227 63% 6%);
   color: white;
   border-width: 0px;
   border-radius: 3px;
@@ -12,7 +11,7 @@
   padding: 0px 5px;
 }
 
-#file-input + label:hover {
+/* #file-input + label:hover {
   border-color: #888;
   background-color: hsl(227, 49%, 31%);
   color: white;
@@ -25,4 +24,4 @@
 #file-input:checked + label {
   background-color: #007bff;
   color: #fff;
-}
+} */

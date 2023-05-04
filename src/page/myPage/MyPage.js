@@ -38,7 +38,7 @@ const MyPage = () => {
           <strong className="p-3">내 정보</strong>
           <div className="p-3">
             <button
-              className="logout-button m-1 "
+              className="dan-button p-1 "
               onClick={(e) => {
                 e.preventDefault();
                 localStorage.clear();
