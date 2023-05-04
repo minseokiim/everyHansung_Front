@@ -15,9 +15,18 @@ const TimeTable = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
+      const { startTime, endTime } = values;
+      const timestampStartTime = new Date(`${new Date().toDateString()} ${startTime}`).toISOString();
+      const timestampEndTime = new Date(`${new Date().toDateString()} ${endTime}`).toISOString();
+      const timestampValues = {
+        ...values,
+        startTime: timestampStartTime,
+        endTime: timestampEndTime,
+      };
+
       const response = await apiClient.post(
-        "https://localhost:3000/timetable",
-        values
+        "http://localhost:8080/time",
+        timestampValues
       );
 
       if (response.status === 200) {
