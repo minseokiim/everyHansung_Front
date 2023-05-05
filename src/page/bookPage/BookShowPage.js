@@ -59,7 +59,7 @@ const BookShowPage = () => {
                 className="button"
                 onClick={(e) => {
                   e.preventDefault();
-                  move("/bookstore/list");
+                  move("/bookstore");
                 }}
               >
                 뒤로 가기

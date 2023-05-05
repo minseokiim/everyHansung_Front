@@ -9,6 +9,10 @@ import { GiTurtle } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 import { TfiEmail } from "react-icons/tfi";
+import { BsFillHouseFill } from "react-icons/bs";
+import { FaRegComments } from "react-icons/fa";
+import { HiOutlineBookOpen } from "react-icons/hi";
+import { ImNewspaper } from "react-icons/im";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
@@ -40,15 +44,16 @@ const NavBar = () => {
             <Nav.Link /> <Nav.Link /> <Nav.Link />
             <Nav.Link />
             <NavDropdown title="게시판" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/freeboard/list">
-                자유 게시판
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/secretboard/list">
+              <NavDropdown.Item href="/freeboard">자유 게시판</NavDropdown.Item>
+              <NavDropdown.Item href="/secretboard">
                 비밀 게시판
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/lectureboard/list">강의평</Nav.Link>
-            <Nav.Link href="/bookstore/list">책방</Nav.Link>
+            <Nav.Link href="/lectureboard">강의평</Nav.Link>
+            <Nav.Link href="/bookstore">
+              <HiOutlineBookOpen />
+              책방
+            </Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/timetable">시간표</Nav.Link>
             <Nav.Link href="/require">졸업요건</Nav.Link>

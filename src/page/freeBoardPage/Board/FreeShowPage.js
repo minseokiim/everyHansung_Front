@@ -55,7 +55,7 @@ const FreeShowPage = () => {
         `http://localhost:8080/freeboard/${studentId}/${id}`
       );
       alert("게시물이 삭제되었습니다.");
-      move("/freeboard/list");
+      move("/freeboard");
     } catch (error) {
       alert("게시물 삭제에 실패했습니다.");
     }

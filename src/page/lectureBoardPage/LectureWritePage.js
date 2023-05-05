@@ -44,7 +44,7 @@ const LectureWritePage = () => {
         })
         .then(() => {
           alert("작성되었습니다!");
-          move("/lectureboard/list");
+          move("/lectureboard");
         });
     }
   };
@@ -270,7 +270,7 @@ const LectureWritePage = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            move("/lectureboard/list");
+            move("/lectureboard");
           }}
         >
           돌아가기

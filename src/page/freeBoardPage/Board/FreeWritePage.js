@@ -82,7 +82,7 @@ const FreeWritePage = ({ editing }) => {
         });
     } else {
       apiClient.post("http://localhost:8080/freeboard", data).then(() => {
-        move("/freeboard/list");
+        move("/freeboard");
       });
     }
   };
@@ -191,7 +191,7 @@ const FreeWritePage = ({ editing }) => {
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              move("/freeboard/list");
+              move("/freeboard");
             }}
           >
             취소
