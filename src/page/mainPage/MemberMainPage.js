@@ -34,12 +34,12 @@ const MemberMainPage = () => {
     <div className=" p-3">
       <div className="service ">
         {name && (
-          <div className=" my-info ">
+          <div className="my-info">
             <img
               alt="hansung"
-              src="img/chatlogo.png"
-              className="logo cursor-pointer"
-              onClick={() => move("/my")}
+              src="img/everyhansung.png"
+              className="every-logo cursor-pointer"
+              onClick={() => move("/")}
             />
             {name}님, 안녕하세요!
           </div>
@@ -48,8 +48,8 @@ const MemberMainPage = () => {
           <div className=" my-info ">
             <img
               alt="hansung"
-              src="img/chatlogo.png"
-              className="logo cursor-pointer"
+              src="img/everyhansung.png"
+              className="every-logo cursor-pointer"
               onClick={() => move("/")}
             />
             로그인이나 회원가입 하시려면 저를 눌러주세요!

@@ -4,13 +4,13 @@ import "./SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import axios from "axios";
-
 import emailjs from "emailjs-com";
 
 const SingUpPage = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [inputVerificationCode, setInputVerificationCode] = useState("");
   const [isVerificationCodeSent, setIsVerificationCodeSent] = useState(false);
+  const [isHansungEmail, setIsHansungEmail] = useState("");
 
   const sendEmail = async () => {
     const generatedCode = Math.floor(100000 + Math.random() * 900000); // 6자리 인증 코드 생성
@@ -105,9 +105,11 @@ const SingUpPage = () => {
         setEmail(e.target.value);
         setCheckEmailDisplay("block");
         setClearEmailDisplay("none");
+        setIsHansungEmail(e.target.value.endsWith("@hansung.ac.kr"));
       } else {
         setClearEmailDisplay("block");
         setCheckEmailDisplay("none");
+        setIsHansungEmail(false);
       }
     } catch (e) {}
   };
@@ -354,7 +356,7 @@ const SingUpPage = () => {
             type="email"
             name="user_email"
             maxLength="50"
-            placeholder="이메일을 입력하세요."
+            placeholder="ex) ******@hansung.ac.kr "
             className="search"
           />
           <CheckIcon
@@ -367,9 +369,8 @@ const SingUpPage = () => {
           />
         </div>
       </div>
-      {/* 이메일 인증코드 일단 주석처리 */}
 
-      {/* {isVerificationCodeSent && (
+      {isVerificationCodeSent && (
         <div className="input">
           <input
             type="text"
@@ -380,15 +381,23 @@ const SingUpPage = () => {
             placeholder="인증 번호"
           ></input>
         </div>
-      )} */}
-      <div className="input">
-        {/* <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
-          {isVerificationCodeSent ? "인증 번호 확인" : "이메일 인증"}
-        </button> */}
+      )}
 
-        <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
-          가입하기
-        </button>
+      <div className="input">
+        {!isHansungEmail && (
+          <div className="important-sm p-1">
+            <strong>
+              * 한성대학교 이메일(@hansung.ac.kr)로 입력해주세요. <br />
+              회원 가입 후에는 자주 사용하는 이메일로 변경 가능합니다.
+            </strong>
+          </div>
+        )}
+        {isHansungEmail && (
+          <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
+            가입하기
+            {/* {isVerificationCodeSent ? "가입하기" : "이메일 인증"} */}
+          </button>
+        )}
       </div>
 
       <br />

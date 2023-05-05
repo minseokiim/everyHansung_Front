@@ -57,7 +57,7 @@ const BookWritePage = () => {
 
     apiClient.post("http://localhost:8080/bookstore", data).then(() => {
       alert("작성되었습니다!");
-      move("/bookstore/list");
+      move("/bookstore");
     });
   };
 
@@ -268,7 +268,7 @@ const BookWritePage = () => {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            move("/bookstore/list");
+            move("/bookstore");
           }}
         >
           돌아가기

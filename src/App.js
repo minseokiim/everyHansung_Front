@@ -171,7 +171,7 @@ const App = () => {
             }
           />
           <Route
-            path="/freeboard/list"
+            path="/freeboard"
             element={
               <div>
                 <Card>
@@ -209,7 +209,7 @@ const App = () => {
             }
           />
           <Route
-            path="/secretboard/list"
+            path="/secretboard"
             element={
               <div>
                 <Card>
@@ -247,7 +247,7 @@ const App = () => {
             }
           />
           <Route
-            path="/lectureboard/list"
+            path="/lectureboard"
             element={
               <div>
                 <Card>
@@ -278,7 +278,7 @@ const App = () => {
             }
           />
           <Route
-            path="/bookstore/list"
+            path="/bookstore"
             element={
               <div>
                 <Card>

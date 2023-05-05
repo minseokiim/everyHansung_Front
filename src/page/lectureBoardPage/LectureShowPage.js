@@ -55,7 +55,7 @@ const LectureShowPage = () => {
                 className="button"
                 onClick={(e) => {
                   e.preventDefault();
-                  move("/lectureboard/list");
+                  move("/lectureboard");
                 }}
               >
                 뒤로 가기

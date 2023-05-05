@@ -56,8 +56,10 @@ const TimeTable = () => {
         initialValues={{
           subject: "",
           day: "",
+          room: "",
           startTime: "",
           endTime: "",
+          professor: "",
           studentId,
         }}
         validationSchema={validationSchema}

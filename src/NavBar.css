@@ -10,3 +10,41 @@
 .white {
   color: rgb(205, 205, 205);
 }
+.nav-link:hover,
+.dropdown-item:hover {
+  color: hwb(197 62% 14%);
+  transition: all 0.3s;
+}
+.color-nav {
+  background-color: hwb(240, 18%, 61%);
+}
+
+.nav-link {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.logo,
+.nav-link {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@media (max-width: 767px) {
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .nav-item {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
