@@ -156,7 +156,7 @@ const FreeListPage = () => {
                   <div>
                     {post.title}
                     <span className="p-1">
-                      {post.fileName ? <AiOutlinePicture /> : ""}
+                      {post.fileDir ? <AiOutlinePicture /> : ""}
                     </span>
                     <br />
                     <div className="big-grey">
