@@ -144,7 +144,7 @@ const BookListPage = () => {
             <MdNavigateBefore
               className="cursor-pointer"
               onClick={prevPage}
-              disabled={currentPage === 1}
+              dabled={currentPage === 1}
             />
             <span className="grey">
               {currentPage} / {totalPages()}
@@ -152,7 +152,7 @@ const BookListPage = () => {
             <MdNavigateNext
               className="cursor-pointer"
               onClick={nextPage}
-              disabled={currentPage === totalPages()}
+              dabled={currentPage === totalPages()}
             />
           </div>
         </div>

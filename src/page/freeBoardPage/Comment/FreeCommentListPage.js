@@ -93,7 +93,7 @@ const FreeCommentListPage = () => {
                     <div className="d-flex">
                       <div className="comment-box flex-grow-1 p-1">
                         <BsFillPersonFill />
-                        {comment.isAnonymous ? "익명" : comment.nickname}:
+                        {comment.anonymous ? "익명" : comment.nickname}:
                         <span className="p-1">{comment.content}</span>
                         <div className="comment-time ">
                           {printDate(comment.createdAt)}
@@ -134,10 +134,7 @@ const FreeCommentListPage = () => {
                                 <div className="comment-box flex-grow-1 p-1">
                                   <div className="reply-box">
                                     &nbsp;&nbsp; <GrFormNext />
-                                    {reply.isAnonymous
-                                      ? "익명"
-                                      : reply.nickname}
-                                    :
+                                    {reply.anonymous ? "익명" : reply.nickname}:
                                     <span className="p-1">{reply.content}</span>
                                     <div className="comment-time ">
                                       &nbsp;&nbsp;&nbsp;&nbsp;

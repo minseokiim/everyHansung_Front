@@ -9,7 +9,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 const FreeWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [anonymous, setAnonymous] = useState(true);
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
   const [countLike, setCountLike] = useState(0);
@@ -41,7 +41,7 @@ const FreeWritePage = ({ editing }) => {
       apiClient.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
-        setIsAnonymous(res.data.isAnonymous);
+        setAnonymous(res.data.anonymous);
         setUpdatedAt(res.data.updatedAt);
         setImageFile(res.data.imageFile);
       });
@@ -68,7 +68,7 @@ const FreeWritePage = ({ editing }) => {
       studentId,
       title,
       content,
-      isAnonymous,
+      anonymous,
       nickname,
       countLike,
       imageFile: base64Image,
@@ -87,8 +87,8 @@ const FreeWritePage = ({ editing }) => {
     }
   };
 
-  const onChangeIsAnonymous = (e) => {
-    setIsAnonymous(e.target.checked);
+  const onChangeAnonymous = (e) => {
+    setAnonymous(e.target.checked);
   };
 
   const removeImage = () => {
@@ -166,7 +166,7 @@ const FreeWritePage = ({ editing }) => {
             className="icon"
           />
         )}
-        {previewImage && (
+        {imageFile && (
           <div>
             <img
               src={previewImage}
@@ -176,7 +176,7 @@ const FreeWritePage = ({ editing }) => {
           </div>
         )}
 
-        {imageFile && (
+        {/* {imageFile && (
           <div className="mt-3">
             <img
               src={`data:image/png;base64,${imageFile}`}
@@ -184,15 +184,15 @@ const FreeWritePage = ({ editing }) => {
               style={{ width: "200px", height: "auto" }}
             />
           </div>
-        )}
+        )} */}
         <span className="grey">사진은 한장만 선택 가능합니다.</span>
       </div>
 
       <div className="mb-3 d-flex align-items-center">
         <input
           type="checkbox"
-          checked={isAnonymous}
-          onChange={onChangeIsAnonymous}
+          checked={anonymous}
+          onChange={onChangeAnonymous}
         />
         <span>익명</span>
         <div className="ms-auto">

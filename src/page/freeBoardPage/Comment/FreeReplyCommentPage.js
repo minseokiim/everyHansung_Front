@@ -5,7 +5,7 @@ import "./FreeCommentPage.css";
 
 const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [anonymous, setIsAnonymous] = useState(false);
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = () => {
@@ -18,7 +18,7 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
         .post(`http://localhost:8080/freeboard/comment/${parentId}/replies`, {
           studentId,
           content,
-          isAnonymous,
+          anonymous,
           boardId,
         })
         .then(() => {
@@ -36,7 +36,7 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
       <div className="comment-wrapper p-2">
         <input
           type="checkbox"
-          checked={isAnonymous}
+          checked={anonymous}
           onChange={onChangeIsAnonymous}
           className="comment-checkbox"
         />

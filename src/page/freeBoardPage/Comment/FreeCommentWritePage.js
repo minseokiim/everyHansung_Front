@@ -6,7 +6,7 @@ import { BiMessage } from "react-icons/bi";
 
 const FreeCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [anonymous, setIsAnonymous] = useState(false);
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
 
@@ -20,7 +20,7 @@ const FreeCommentWritePage = ({ parentId, refetchComments }) => {
         .post(`http://localhost:8080/freeboard/comment/${id}`, {
           studentId,
           content,
-          isAnonymous,
+          anonymous,
         })
         .then(() => {
           refetchComments();
@@ -36,7 +36,7 @@ const FreeCommentWritePage = ({ parentId, refetchComments }) => {
     <div className="comment-wrapper">
       <input
         type="checkbox"
-        checked={isAnonymous}
+        checked={anonymous}
         onChange={onChangeIsAnonymous}
         className="comment-checkbox"
       />
