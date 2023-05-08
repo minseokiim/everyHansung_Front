@@ -44,6 +44,7 @@ const ShowTimeTable = () => {
       const response = await apiClient.delete(
         `http://localhost:8080/time/${id}`
       );
+
       if (response.status === 200) {
         setTimeTableData(timeTableData.filter((item) => item.id !== id));
       } else {

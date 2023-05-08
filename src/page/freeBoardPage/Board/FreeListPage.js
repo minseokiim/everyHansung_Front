@@ -45,6 +45,7 @@ const FreeListPage = () => {
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
       setPosts(res.data);
+      console.log(res.data);
     });
   };
 
@@ -170,7 +171,8 @@ const FreeListPage = () => {
                         <span className="black">
                           <BsFillPersonFill />
                           &nbsp;
-                          {post.isAnonymous ? "익명" : post.nickname}
+                          {/* anonymous가 console.log에서는 anonymous로 보여서 수정*/}
+                          {post.anonymous ? "익명" : post.nickname}
                           <span className="heart-icon-container ">
                             <AiOutlineHeart style={{ color: "#c62917" }} />
                             {post.countLike} &nbsp;
@@ -194,7 +196,7 @@ const FreeListPage = () => {
           <MdNavigateBefore
             className="cursor-pointer"
             onClick={prevPage}
-            disabled={currentPage === 1}
+            dabled={currentPage === 1}
           />
           <span className="grey">
             {currentPage} / {totalPages()}
@@ -202,7 +204,7 @@ const FreeListPage = () => {
           <MdNavigateNext
             className="cursor-pointer"
             onClick={nextPage}
-            disabled={currentPage === totalPages()}
+            dabled={currentPage === totalPages()}
           />
         </div>
       </div>

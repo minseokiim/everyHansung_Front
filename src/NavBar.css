@@ -33,10 +33,10 @@
   }
 }
 
-.logo,
+/* .logo,
 .nav-link {
   animation: fadeIn 1.5s ease-in-out;
-}
+} */
 
 @media (max-width: 767px) {
   .nav-link {

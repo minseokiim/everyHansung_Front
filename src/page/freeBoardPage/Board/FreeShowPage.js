@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FreeCommentListPage from "../Comment/FreeCommentListPage";
@@ -10,6 +9,7 @@ import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
 import SendMessagePage from "../../messagePage/SendMessagePage";
 import "../Comment/FreeCommentPage.css";
+import axios from "axios";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -125,7 +125,7 @@ const FreeShowPage = () => {
             )}
           </div>
           <div className="post-time pt-2">
-            <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.nickname}
+            <BsFillPersonFill /> {post.anonymous ? "익명" : post.nickname}
           </div>
           <hr />
           <div className="big-grey p-2">
