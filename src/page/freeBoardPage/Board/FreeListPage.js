@@ -44,8 +44,9 @@ const FreeListPage = () => {
 
   const getPosts = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
-      setPosts(res.data);
-      console.log(res.data);
+      const sortedPosts = res.data.sort((a, b) => b.id - a.id);
+      setPosts(sortedPosts);
+      console.log(sortedPosts);
     });
   };
 
@@ -160,9 +161,9 @@ const FreeListPage = () => {
                       {post.fileDir ? <AiOutlinePicture /> : ""}
                     </span>
                     <br />
-                    <div className="big-grey">
-                      {post.content.slice(0, 50)}
-                      {post.content.length > 50 ? "..." : ""}
+                    <div className="grey">
+                      {post.content.slice(0, 80)}
+                      {post.content.length > 80 ? "..." : ""}
                       <br />
                       <div className="grey ">
                         <BiTimeFive />

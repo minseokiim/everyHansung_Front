@@ -14,7 +14,7 @@ const BookShowPage = () => {
   const [nickname, setNickname] = useState("");
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/bookstore/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/book/${id}`).then((res) => {
       setPost(res.data);
     });
   };

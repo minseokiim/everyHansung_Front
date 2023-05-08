@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { BsFillSendFill } from "react-icons/bs";
 import apiClient from "../../apiClient";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import { VscChromeClose } from "react-icons/vsc";
 
-const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
+const SendMessagePage = ({ isOpen, onRequestClose }) => {
   const [content, setContent] = useState("");
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
@@ -33,9 +34,9 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
     console.log("작성자 정보 " + res.data.studentId);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    getPostId(id);
+    await getPostId(id);
 
     if (content.trim().length === 0) {
       alert("쪽지 내용을 입력하세요");
@@ -49,6 +50,7 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
         })
         .then(() => {
           setContent("");
+          onRequestClose(); // 모달 닫기 기능 추가
         });
     }
   };
@@ -60,6 +62,11 @@ const SendMessagePage = ({ isOpen, onRequestClose, isClose }) => {
         onRequestClose={onRequestClose}
         style={customStyles}
       >
+        {/* 위치 수정하기 */}
+        <VscChromeClose
+          className="message-button icon"
+          onClick={onRequestClose}
+        />
         <form className="p-4">
           <textarea
             className="message-input"

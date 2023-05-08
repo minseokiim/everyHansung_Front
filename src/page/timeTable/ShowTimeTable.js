@@ -30,12 +30,17 @@ const ShowTimeTable = () => {
     fetchTimeTableData();
   }, []);
 
+  const dayToNumber = (day) => {
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+    return days.indexOf(day);
+  };
+
   const sortByDayAndTime = (data) => {
     return data.sort((a, b) => {
-      if (a.day === b.day) {
+      if (dayToNumber(a.day) === dayToNumber(b.day)) {
         return new Date(a.startTime) - new Date(b.startTime);
       }
-      return a.day.localeCompare(b.day);
+      return dayToNumber(a.day) - dayToNumber(b.day);
     });
   };
 
@@ -81,17 +86,33 @@ const ShowTimeTable = () => {
       { groupBy: "Day", format: "dddd" },
       { groupBy: "Hour", format: "h tt" },
     ],
-    scale: "Manual",
     businessBeginsHour: 9, // start from 9 AM
     businessEndsHour: 23, // end at 11 PM
   };
 
-  const events = timeTableData.map((item) => ({
-    start: item.startTime,
-    end: item.endTime,
-    id: item.id,
-    text: `${item.subject} - ${item.professor} - ${item.room}`,
-  }));
+  const events = timeTableData.map((item) => {
+    const startDate = new Date(item.startTime);
+    const endDate = new Date(item.endTime);
+
+    const startDay = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate() + (dayToNumber(item.day) - new Date().getDay())
+    );
+
+    const startDateWithDay = new Date(startDay);
+    startDateWithDay.setHours(startDate.getHours(), startDate.getMinutes());
+
+    const endDateWithDay = new Date(startDay);
+    endDateWithDay.setHours(endDate.getHours(), endDate.getMinutes());
+
+    return {
+      start: startDateWithDay,
+      end: endDateWithDay,
+      id: item.id,
+      text: `${item.subject} - ${item.professor} - ${item.room}`,
+    };
+  });
 
   return (
     <div className="p-3">
