@@ -131,12 +131,13 @@ const FreeShowPage = () => {
           <div className="big-grey p-2">
             {post.content}
             {/* 사진 보여주기 */}
+            <br />
             {post.imageFile && (
               <div className="mt-3">
                 <img
                   src={`data:image/png;base64,${post.imageFile}`}
                   alt="preview"
-                  style={{ maxWidth: "100%" }}
+                  style={{ width: "200px", height: "auto" }}
                 />
               </div>
             )}
