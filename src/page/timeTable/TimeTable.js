@@ -21,11 +21,11 @@ const TimeTable = () => {
     try {
       const { startTime, endTime } = values;
       const timestampStartTime = new Date(
-        `${new Date().toDateString()} ${startTime}`
-      ).toISOString();
+        `${new Date().toLocaleDateString()} ${startTime}`
+      );
       const timestampEndTime = new Date(
-        `${new Date().toDateString()} ${endTime}`
-      ).toISOString();
+        `${new Date().toLocaleDateString()} ${endTime}`
+      );
       const timestampValues = {
         ...values,
         startTime: timestampStartTime,

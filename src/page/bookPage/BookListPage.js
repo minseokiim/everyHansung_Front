@@ -70,7 +70,7 @@ const BookListPage = () => {
   };
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/bookstore").then((res) => {
+    axios.get("http://localhost:8080/book").then((res) => {
       setPosts(res.data);
       setFilteredPosts(res.data);
     });

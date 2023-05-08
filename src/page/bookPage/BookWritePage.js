@@ -53,9 +53,10 @@ const BookWritePage = () => {
       writing,
       broken,
       imageFile: base64Image,
+      studentId: studentId,
     };
 
-    apiClient.post("http://localhost:8080/bookstore", data).then(() => {
+    apiClient.post("http://localhost:8080/book", data).then(() => {
       alert("작성되었습니다!");
       move("/bookstore");
     });
