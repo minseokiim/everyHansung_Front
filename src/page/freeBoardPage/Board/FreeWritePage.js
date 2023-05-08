@@ -171,7 +171,17 @@ const FreeWritePage = ({ editing }) => {
             <img
               src={previewImage}
               alt="preview"
-              style={{ width: "100px", height: "auto" }}
+              style={{ width: "150px", height: "auto" }}
+            />
+          </div>
+        )}
+
+        {imageFile && (
+          <div className="mt-3">
+            <img
+              src={`data:image/png;base64,${imageFile}`}
+              alt="preview"
+              style={{ width: "200px", height: "auto" }}
             />
           </div>
         )}
