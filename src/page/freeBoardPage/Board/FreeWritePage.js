@@ -166,25 +166,31 @@ const FreeWritePage = ({ editing }) => {
             className="icon"
           />
         )}
-        {imageFile && (
+        {imageFile && !editing && (
           <div>
             <img
               src={previewImage}
-              alt="preview"
+              style={{ width: "150px", height: "auto" }}
+            />
+          </div>
+        )}
+        {imageFile && editing && !previewImage && (
+          <div className="mt-3">
+            <img
+              src={`data:image/png;base64,${imageFile}`}
+              style={{ width: "200px", height: "auto" }}
+            />
+          </div>
+        )}
+        {imageFile && editing && previewImage && (
+          <div>
+            <img
+              src={previewImage}
               style={{ width: "150px", height: "auto" }}
             />
           </div>
         )}
 
-        {/* {imageFile && (
-          <div className="mt-3">
-            <img
-              src={`data:image/png;base64,${imageFile}`}
-              alt="preview"
-              style={{ width: "200px", height: "auto" }}
-            />
-          </div>
-        )} */}
         <span className="grey">사진은 한장만 선택 가능합니다.</span>
       </div>
 
