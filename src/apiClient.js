@@ -22,7 +22,7 @@ apiClient.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (
-      error.response.status === 401 &&
+      (error.response.status === 401 || error.response.status === 403) && // 수정된 부분
       !originalRequest._retry &&
       localStorage.getItem("refreshToken")
     ) {
@@ -32,11 +32,13 @@ apiClient.interceptors.response.use(
         const refreshToken = localStorage.getItem("refreshToken");
         const response = await axios.post(
           "http://localhost:8080/auth/refresh",
+          {},
           {
-            refreshToken,
+            params: {
+              refresh_token: refreshToken, // 여기에 refresh_token 파라미터 추가
+            },
           }
         );
-
         localStorage.setItem("accessToken", response.data.accessToken);
 
         originalRequest.headers[
