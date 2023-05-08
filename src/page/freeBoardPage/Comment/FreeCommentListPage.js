@@ -67,7 +67,7 @@ const FreeCommentListPage = () => {
   const deleteReply = (e, parentId, replyId) => {
     e.stopPropagation();
     apiClient
-      .delete(`http://localhost:8080/freeboard/comment/${parentId}/${replyId}`)
+      .delete(`http://localhost:8080/freeboard/comment/${id}/${replyId}/replies`)
       .then(() => {
         refetchReplies(parentId);
       });
