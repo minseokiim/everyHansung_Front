@@ -1,16 +1,29 @@
 import { BsFillTrashFill } from "react-icons/bs";
+import "./TimeTableList.css";
 
 const TimeTableList = ({ timeTableData, deleteTimeTableItem, formatTime }) => {
   return (
     <table className="table">
       <thead>
         <tr>
-          <th>과목</th>
-          <th>교수</th>
-          <th>강의실</th>
-          <th>요일</th>
-          <th>시작</th>
-          <th>종료</th>
+          <th>
+            <strong>과목</strong>
+          </th>
+          <th>
+            <strong>교수</strong>
+          </th>
+          <th>
+            <strong>강의실</strong>
+          </th>
+          <th>
+            <strong>요일</strong>
+          </th>
+          <th>
+            <strong>시작</strong>
+          </th>
+          <th>
+            <strong>종료</strong>
+          </th>
           <th> </th>
         </tr>
       </thead>

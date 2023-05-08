@@ -170,7 +170,7 @@ const FreeWritePage = ({ editing }) => {
           <div>
             <img
               src={previewImage}
-              style={{ width: "150px", height: "auto" }}
+              style={{ width: "200px", height: "auto" }}
             />
           </div>
         )}
@@ -186,7 +186,7 @@ const FreeWritePage = ({ editing }) => {
           <div>
             <img
               src={previewImage}
-              style={{ width: "150px", height: "auto" }}
+              style={{ width: "200px", height: "auto" }}
             />
           </div>
         )}

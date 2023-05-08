@@ -1,8 +1,8 @@
-import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import apiClient from "../../apiClient";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const validationSchema = Yup.object().shape({
   subject: Yup.string().required("과목명을 입력해주세요."),
@@ -20,12 +20,8 @@ const TimeTable = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const { startTime, endTime } = values;
-      const timestampStartTime = new Date(
-        `${new Date().toLocaleDateString()} ${startTime}`
-      );
-      const timestampEndTime = new Date(
-        `${new Date().toLocaleDateString()} ${endTime}`
-      );
+      const timestampStartTime = moment(startTime, "HH:mm").toDate();
+      const timestampEndTime = moment(endTime, "HH:mm").toDate();
       const timestampValues = {
         ...values,
         startTime: timestampStartTime,
@@ -86,11 +82,11 @@ const TimeTable = () => {
             <label htmlFor="day">*요일: &nbsp; </label>
             <Field name="day" as="select" className="comment-input">
               <option value="">선택하세요</option>
-              <option value="mon">월요일</option>
-              <option value="tue">화요일</option>
-              <option value="wed">수요일</option>
-              <option value="thu">목요일</option>
-              <option value="fri">금요일</option>
+              <option value="월">월요일</option>
+              <option value="화">화요일</option>
+              <option value="수">수요일</option>
+              <option value="목">목요일</option>
+              <option value="금">금요일</option>
             </Field>
             {errors.day && touched.day ? <div>{errors.day}</div> : null}
             <br /> <br />
