@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import apiClient from "../../apiClient";
 import { useNavigate } from "react-router-dom";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
-
-import "../../themes/calendar_green.css";
 import TimeTableList from "./TimeTableList";
-
+import moment from "moment";
+import "../../themes/calendar_green.css";
 const ShowTimeTable = () => {
   const [timeTableData, setTimeTableData] = useState([]);
   const move = useNavigate();
@@ -31,7 +30,7 @@ const ShowTimeTable = () => {
   }, []);
 
   const dayToNumber = (day) => {
-    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+    const days = ["일", "월", "화", "수", "목", "금", "토"];
     return days.indexOf(day);
   };
 
@@ -63,52 +62,52 @@ const ShowTimeTable = () => {
   const sortedTimeTableData = sortByDayAndTime(timeTableData);
 
   const formatTime = (time) => {
-    return new Date(time).toLocaleTimeString("ko-KR", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
+    return moment(time).format("hh:mm A");
   };
 
   const config = {
     viewType: "Week",
-    onTimeRangeSelected: async (args) => {
-      // handle time range selection
-    },
-    onEventClick: async (args) => {
-      // handle event click
-    },
+    // onTimeRangeSelected: async (args) => {
+    //   // handle time range selection
+    // },
+    // onEventClick: async (args) => {
+    //   // handle event click
+    // },
     headerDateFormat: "dddd",
-    cellDuration: 60, // each cell represents 1 hour
-    cellWidth: 150, // width of each cell
+    cellDuration: 60,
+    cellWidth: 150,
     timeHeaders: [
-      // time header format
       { groupBy: "Day", format: "dddd" },
       { groupBy: "Hour", format: "h tt" },
     ],
-    businessBeginsHour: 9, // start from 9 AM
-    businessEndsHour: 23, // end at 11 PM
+    businessBeginsHour: 9,
+    businessEndsHour: 23,
+    days: moment.weekdays().slice(1, 6), //월요일부터 금요일까지
   };
 
   const events = timeTableData.map((item) => {
-    const startDate = new Date(item.startTime);
-    const endDate = new Date(item.endTime);
+    const startDate = moment(item.startTime);
+    const endDate = moment(item.endTime);
 
-    const startDay = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate() + (dayToNumber(item.day) - new Date().getDay())
-    );
+    const startDay = moment()
+      .startOf("week")
+      .add(1, "days")
+      .add(dayToNumber(item.day), "days");
 
-    const startDateWithDay = new Date(startDay);
-    startDateWithDay.setHours(startDate.getHours(), startDate.getMinutes());
-
-    const endDateWithDay = new Date(startDay);
-    endDateWithDay.setHours(endDate.getHours(), endDate.getMinutes());
+    const startDateWithDay = startDay
+      .clone()
+      .hours(startDate.hours())
+      .minutes(startDate.minutes())
+      .subtract(15, "hours"); //강제로 시차 없앰
+    const endDateWithDay = startDay
+      .clone()
+      .hours(endDate.hours())
+      .minutes(endDate.minutes())
+      .subtract(15, "hours");
 
     return {
-      start: startDateWithDay,
-      end: endDateWithDay,
+      start: startDateWithDay.toDate(),
+      end: endDateWithDay.toDate(),
       id: item.id,
       text: `${item.subject} - ${item.professor} - ${item.room}`,
     };
@@ -125,19 +124,20 @@ const ShowTimeTable = () => {
               move("/timetable/post");
             }}
           >
-            작성하기
+            추가하기
           </button>
         </div>
       </div>
       <hr />
 
       <TimeTableList
-        timeTableData={timeTableData}
+        timeTableData={sortedTimeTableData}
         deleteTimeTableItem={deleteTimeTableItem}
         formatTime={formatTime}
       />
       <div className="calendar-container">
         <DayPilotCalendar {...config} events={events} />
+        {/*  theme="calendar_green" */}
       </div>
     </div>
   );

@@ -46,7 +46,6 @@ const FreeListPage = () => {
     axios.get("http://localhost:8080/freeboard/all").then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
-      console.log(sortedPosts);
     });
   };
 
@@ -197,7 +196,7 @@ const FreeListPage = () => {
           <MdNavigateBefore
             className="cursor-pointer"
             onClick={prevPage}
-            dabled={currentPage === 1}
+            disabled={currentPage === 1}
           />
           <span className="grey">
             {currentPage} / {totalPages()}
@@ -205,7 +204,7 @@ const FreeListPage = () => {
           <MdNavigateNext
             className="cursor-pointer"
             onClick={nextPage}
-            dabled={currentPage === totalPages()}
+            disabled={currentPage === totalPages()}
           />
         </div>
       </div>

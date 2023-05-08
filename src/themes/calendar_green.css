@@ -1,9 +1,38 @@
+/* .dp-theme-calendar_green .dp-calendar {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+}
+
+.dp-theme-calendar_green .dp-header {
+  background-color: #1066a8;
+  color: #f0bdbd;
+  border-bottom: 1px solid #c5d3e3;
+}
+
+.dp-theme-calendar_green .dp-cell {
+  background-color: #957f7f;
+  color: black;
+  border-bottom: 1px solid #c5d3e3;
+}
+
+.dp-theme-calendar_green .dp-cell.dp-business {
+  background-color: hsl(0, 10%, 30%);
+}
+
+.dp-theme-calendar_green .dp-cell.dp-weekend {
+  background-color: hsl(206, 20%, 44%);
+}
+
+.dp-theme-calendar_green .dp-event {
+  background-color: #1066a8;
+  border: 1px solid #5393c5;
+  color: #eb0606;
+  font-size: 12px;
+  cursor: default;
+} */
+
 .calendar_default_event_inner {
-  background: #2e78d6;
+  background: rgb(16, 52, 113);
   color: #fff;
-  border: none;
-  border-radius: 5px;
   font-size: 10pt;
-  padding: 5px;
-  opacity: 0.8;
 }

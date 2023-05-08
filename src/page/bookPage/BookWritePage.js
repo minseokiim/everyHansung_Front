@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./BookWritePage.css";
 import apiClient from "../../apiClient";
+import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const BookWritePage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -60,6 +62,11 @@ const BookWritePage = () => {
       alert("작성되었습니다!");
       move("/bookstore");
     });
+  };
+
+  const removeImage = () => {
+    setImageFile("");
+    setPreviewImage("");
   };
 
   const toBase64 = (file) =>
@@ -125,7 +132,9 @@ const BookWritePage = () => {
         </div>
 
         <div className="mb-3 p-1">
-          <label>*책을 구매한 학기</label>
+          <label>
+            <strong>*책을 구매한 학기</strong>
+          </label>
           <br />
 
           <select
@@ -147,7 +156,7 @@ const BookWritePage = () => {
         </div>
 
         <div className="mb-3 p-1">
-          *필기 흔적 <br />
+          <strong> *필기 흔적</strong> <br />
           <input
             type="radio"
             name="writing"
@@ -178,7 +187,8 @@ const BookWritePage = () => {
         </div>
 
         <div className="mb-3 p-1">
-          *책 상태 <br />
+          <strong> *책 상태 </strong>
+          <br />
           <input
             type="radio"
             name="state"
@@ -209,7 +219,7 @@ const BookWritePage = () => {
         </div>
 
         <div className="mb-3 p-1">
-          *책 훼손 <br />
+          <strong> *책 훼손</strong> <br />
           <input
             type="radio"
             name="broken"
@@ -230,22 +240,38 @@ const BookWritePage = () => {
           없음
         </div>
         <div className="mb-3">
-          <label htmlFor="imageFile">*책 사진 </label>
+          <strong> *책 사진</strong> <br />
+          <label htmlFor="imageFile" className="d-inline-block">
+            <AiOutlinePaperClip
+              className="icon"
+              style={{ cursor: "pointer" }}
+              size={24}
+            />
+          </label>
           <input
             type="file"
             id="imageFile"
             onChange={onImageChange}
             accept="image/*"
+            style={{ display: "none" }}
           />
-          {previewImage && (
-            <div>
-              <img
-                src={previewImage}
-                alt="preview"
-                style={{ maxWidth: "100%" }}
-              />
-            </div>
+          {imageFile && (
+            <BsFillTrashFill
+              onClick={removeImage}
+              style={{ cursor: "pointer", marginLeft: "10px" }}
+              size={20}
+              className="icon"
+            />
           )}
+          <div>
+            <img
+              src={previewImage}
+              style={{ width: "200px", height: "auto" }}
+            />
+          </div>
+          <span className="grey">
+            책 상태를 볼 수 있는 사진 한장만 첨부해주세요.
+          </span>
         </div>
 
         <textarea
