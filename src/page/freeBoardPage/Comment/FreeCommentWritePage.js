@@ -6,7 +6,7 @@ import { BiMessage } from "react-icons/bi";
 
 const FreeCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
-  const [anonymous, setIsAnonymous] = useState(false);
+  const [anonymous, setIsAnonymous] = useState(true);
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
 
