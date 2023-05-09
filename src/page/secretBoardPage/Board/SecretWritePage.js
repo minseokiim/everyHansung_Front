@@ -1,41 +1,54 @@
 import { useEffect, useState } from "react";
 import "./SecretWritePage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import propTypes from "prop-types";
 import apiClient from "../../../apiClient";
+import { AiOutlinePaperClip } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const SecretWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
-
-  const [postNick, setPostNick] = useState("");
+  const [anonymous, setAnonymous] = useState(true);
   const studentId = localStorage.getItem("studentId");
+  const [nickname, setNickname] = useState("");
+  const [countLike, setCountLike] = useState(0);
+  const [updatedAt, setUpdatedAt] = useState("");
+  const [imageFile, setImageFile] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
 
   const move = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error fetching name:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
+
+  useEffect(() => {
     if (editing) {
-      axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
+      apiClient.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
-        setIsAnonymous(res.data.isAnonymous);
+        setAnonymous(res.data.anonymous);
+        setUpdatedAt(res.data.updatedAt);
+        setImageFile(res.data.imageFile);
       });
     }
   }, [id, editing]);
 
-  // //작성자 익명실명
-  // useEffect(() => {
-  //   if (!isAnonymous) {
-  //     setPostNick("익명");
-  //   } else {
-  //     setPostNick(studentId);
-  //   }
-  // }, [isAnonymous]);
-
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (title.trim().length === 0) {
@@ -44,37 +57,61 @@ const SecretWritePage = ({ editing }) => {
     } else if (content.trim().length === 0) {
       alert("본문을 입력하세요");
       return;
-    } else if (editing) {
+    }
+
+    let base64Image = null;
+    if (imageFile) {
+      base64Image = await toBase64(imageFile);
+    }
+
+    const data = {
+      studentId,
+      title,
+      content,
+      anonymous,
+      nickname,
+      countLike,
+      imageFile: base64Image,
+    };
+
+    if (editing) {
       apiClient
-        .patch(`http://localhost:8080/secretposts/${id}`, {
-          studentId,
-          title,
-          content,
-          isAnonymous,
-          // postNick,
-        })
-        .then((res) => {
+        .patch(`http://localhost:8080/secretboard/${studentId}/${id}`, data)
+        .then(() => {
           move(`/secretboard/${id}`);
         });
     } else {
-      apiClient
-        .post("http://localhost:8080/secretposts", {
-          studentId,
-          title,
-          content,
-          createdAt: Date.now(),
-          isAnonymous,
-          //postNick,
-        })
-        .then(() => {
-          alert("작성되었습니다!");
-          move("/secretboard/list");
-        });
+      apiClient.post("http://localhost:8080/secretboard", data).then(() => {
+        move("/secretboard");
+      });
     }
   };
 
   const onChangeAnonymous = (e) => {
-    setIsAnonymous(e.target.checked);
+    setAnonymous(e.target.checked);
+  };
+
+  const removeImage = () => {
+    setImageFile("");
+    setPreviewImage("");
+  };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  const onImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+      setPreviewImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImageFile("");
+      setPreviewImage("");
+    }
   };
 
   return (
@@ -105,21 +142,72 @@ const SecretWritePage = ({ editing }) => {
           placeholder="본문을 입력해주세요."
         ></textarea>
       </div>
+
       <div className="mb-3">
+        <label htmlFor="imageFile" className="d-inline-block">
+          <AiOutlinePaperClip
+            className="icon"
+            style={{ cursor: "pointer" }}
+            size={24}
+          />
+        </label>
+        <input
+          type="file"
+          id="imageFile"
+          onChange={onImageChange}
+          accept="image/*"
+          style={{ display: "none" }}
+        />
+        {imageFile && (
+          <BsFillTrashFill
+            onClick={removeImage}
+            style={{ cursor: "pointer", marginLeft: "10px" }}
+            size={20}
+            className="icon"
+          />
+        )}
+        {imageFile && !editing && (
+          <div>
+            <img
+              src={previewImage}
+              style={{ width: "200px", height: "auto" }}
+            />
+          </div>
+        )}
+        {imageFile && editing && !previewImage && (
+          <div className="mt-3">
+            <img
+              src={`data:image/png;base64,${imageFile}`}
+              style={{ width: "200px", height: "auto" }}
+            />
+          </div>
+        )}
+        {imageFile && editing && previewImage && (
+          <div>
+            <img
+              src={previewImage}
+              style={{ width: "200px", height: "auto" }}
+            />
+          </div>
+        )}
+
+        <span className="grey">사진은 한장만 선택 가능합니다.</span>
+      </div>
+
+      <div className="mb-3 d-flex align-items-center">
         <input
           type="checkbox"
-          checked={isAnonymous}
+          checked={anonymous}
           onChange={onChangeAnonymous}
         />
-        익명
-        <br />
-        <div className="mb-3">
+        <span>익명</span>
+        <div className="ms-auto">
           <button
-            className="button "
+            className="dan-button"
             type="submit"
             onClick={(e) => {
               e.preventDefault();
-              move("/secretboard/list");
+              move("/secretboard");
             }}
           >
             취소

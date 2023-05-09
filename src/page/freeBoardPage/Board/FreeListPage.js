@@ -171,7 +171,6 @@ const FreeListPage = () => {
                         <span className="black">
                           <BsFillPersonFill />
                           &nbsp;
-                          {/* anonymous가 console.log에서는 anonymous로 보여서 수정*/}
                           {post.anonymous ? "익명" : post.nickname}
                           <span className="heart-icon-container ">
                             <AiOutlineHeart style={{ color: "#c62917" }} />
