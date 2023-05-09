@@ -1,3 +1,17 @@
 .table {
   border-style: dotted;
 }
+
+.calendar_default_event_inner {
+  color: hsl(60, 3%, 6%);
+  font-size: 10pt;
+  border-radius: 6px;
+  border-style: none;
+  margin: 1px;
+  padding: 1px;
+  opacity: 0.8;
+}
+
+.calendar_default_event_bar {
+  visibility: hidden;
+}
