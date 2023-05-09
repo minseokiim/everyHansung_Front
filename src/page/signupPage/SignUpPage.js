@@ -135,90 +135,88 @@ const SingUpPage = () => {
       setCheckNicknameDisplay("none");
     }
   };
-  //원래 onSubmit
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (isVerificationCodeSent) {
-  //     if (inputVerificationCode === verificationCode.toString()) {
-  //       alert("인증 번호가 확인되었습니다.");
-
-  //       if (
-  //         checkIdDisplay === "block" &&
-  //         checkPasswordDisplay === "block" &&
-  //         checkConfirmpasswdDisplay === "block" &&
-  //         checkEmailDisplay === "block" &&
-  //         checknameDisplay === "block" &&
-  //         checkNicknameDisplay === "block"
-  //       ) {
-  //         axios
-  //           .post("http://localhost:8080/auth/register", {
-  //             studentId,
-  //             email,
-  //             password,
-  //             username,
-  //             nickname,
-  //           })
-  //           .then((response) => {
-  //             alert(username + "님, 회원가입을 축하합니다.");
-  //             move("/login");
-  //           })
-  //           .catch((error) => {
-  //             if (error.response.status === 401) {
-  //               setClearIdDisplay("block");
-  //               setCheckIdDisplay("none");
-  //               alert("이미 가입된 학번입니다.");
-  //             } else if (error.response.status === 402) {
-  //               setClearNicknameDisplay("block");
-  //               setCheckNicknameDisplay("none");
-  //               alert("이미 사용중인 닉네임입니다.");
-  //             }
-  //           });
-  //       }
-  //     } else {
-  //       alert("인증 번호가 일치하지 않습니다.");
-  //     }
-  //   } else {
-  //     sendEmail();
-  //   }
-  // };
-
-  //인증코드 주석해놨을때 쓰는 onSubmit
   const onSubmit = (e) => {
     e.preventDefault();
-    if (
-      checkIdDisplay === "block" &&
-      checkPasswordDisplay === "block" &&
-      checkConfirmpasswdDisplay === "block" &&
-      checkEmailDisplay === "block" &&
-      checknameDisplay === "block" &&
-      checkNicknameDisplay === "block"
-    ) {
-      axios
-        .post("http://localhost:8080/auth/register", {
-          studentId,
-          email,
-          password,
-          username,
-          nickname,
-        })
-        .then(() => {
-          alert(username + "님, 회원가입을 축하합니다.");
-          move("/login");
-        })
-        .catch((error) => {
-          if (error.response.status === 401) {
-            setClearIdDisplay("block");
-            setCheckIdDisplay("none");
-            alert("이미 가입된 학번입니다.");
-          } else if (error.response.status === 402) {
-            setClearNicknameDisplay("block");
-            setCheckNicknameDisplay("none");
-            alert("이미 사용중인 닉네임입니다.");
-          }
-        });
+    if (isVerificationCodeSent) {
+      if (inputVerificationCode === verificationCode.toString()) {
+        alert("인증 번호가 확인되었습니다.");
+
+        if (
+          checkIdDisplay === "block" &&
+          checkPasswordDisplay === "block" &&
+          checkConfirmpasswdDisplay === "block" &&
+          checkEmailDisplay === "block" &&
+          checknameDisplay === "block" &&
+          checkNicknameDisplay === "block"
+        ) {
+          axios
+            .post("http://localhost:8080/auth/register", {
+              studentId,
+              email,
+              password,
+              username,
+              nickname,
+            })
+            .then((response) => {
+              alert(username + "님, 회원가입을 축하합니다.");
+              move("/login");
+            })
+            .catch((error) => {
+              if (error.response.status === 401) {
+                setClearIdDisplay("block");
+                setCheckIdDisplay("none");
+                alert("이미 가입된 학번입니다.");
+              } else if (error.response.status === 402) {
+                setClearNicknameDisplay("block");
+                setCheckNicknameDisplay("none");
+                alert("이미 사용중인 닉네임입니다.");
+              }
+            });
+        }
+      } else {
+        alert("인증 번호가 일치하지 않습니다.");
+      }
+    } else {
+      sendEmail();
     }
   };
+
+  // //인증코드 주석해놨을때 쓰는 onSubmit
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     checkIdDisplay === "block" &&
+  //     checkPasswordDisplay === "block" &&
+  //     checkConfirmpasswdDisplay === "block" &&
+  //     checkEmailDisplay === "block" &&
+  //     checknameDisplay === "block" &&
+  //     checkNicknameDisplay === "block"
+  //   ) {
+  //     axios
+  //       .post("http://localhost:8080/auth/register", {
+  //         studentId,
+  //         email,
+  //         password,
+  //         username,
+  //         nickname,
+  //       })
+  //       .then(() => {
+  //         alert(username + "님, 회원가입을 축하합니다.");
+  //         move("/login");
+  //       })
+  //       .catch((error) => {
+  //         if (error.response.status === 401) {
+  //           setClearIdDisplay("block");
+  //           setCheckIdDisplay("none");
+  //           alert("이미 가입된 학번입니다.");
+  //         } else if (error.response.status === 402) {
+  //           setClearNicknameDisplay("block");
+  //           setCheckNicknameDisplay("none");
+  //           alert("이미 사용중인 닉네임입니다.");
+  //         }
+  //       });
+  //   }
+  // };
 
   return (
     <div id="register-container">
@@ -394,8 +392,7 @@ const SingUpPage = () => {
         )}
         {isHansungEmail && (
           <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
-            가입하기
-            {/* {isVerificationCodeSent ? "가입하기" : "이메일 인증"} */}
+            {isVerificationCodeSent ? "가입하기" : "이메일 인증"}
           </button>
         )}
       </div>
