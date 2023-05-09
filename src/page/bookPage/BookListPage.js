@@ -70,15 +70,19 @@ const BookListPage = () => {
   };
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/book").then((res) => {
-      setPosts(res.data);
-      setFilteredPosts(res.data);
+    axios.get("http://localhost:8080/book/all").then((res) => {
+      const sortedPosts = res.data.sort((a, b) => b.id - a.id);
+      setPosts(sortedPosts);
     });
   };
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [posts.length]);
+
+  useEffect(() => {
+    filterPosts();
+  }, [posts]);
 
   return (
     <div className="p-3">
@@ -144,7 +148,7 @@ const BookListPage = () => {
             <MdNavigateBefore
               className="cursor-pointer"
               onClick={prevPage}
-              dabled={currentPage === 1}
+              disabled={currentPage === 1}
             />
             <span className="grey">
               {currentPage} / {totalPages()}
@@ -152,7 +156,7 @@ const BookListPage = () => {
             <MdNavigateNext
               className="cursor-pointer"
               onClick={nextPage}
-              dabled={currentPage === totalPages()}
+              disabled={currentPage === totalPages()}
             />
           </div>
         </div>
