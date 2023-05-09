@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import TimeTableList from "./TimeTableList";
 import moment from "moment";
-import "../../themes/calendar_green.css";
+import "./TimeTableList.css";
+
 const ShowTimeTable = () => {
   const [timeTableData, setTimeTableData] = useState([]);
   const move = useNavigate();
@@ -85,7 +86,9 @@ const ShowTimeTable = () => {
     days: moment.weekdays().slice(1, 6), //월요일부터 금요일까지
   };
 
-  const events = timeTableData.map((item) => {
+  const colors = ["#82c1dc", "#eda5a5", "#9dbc72", "#fffac8", "#949494"];
+
+  const events = timeTableData.map((item, index) => {
     const startDate = moment(item.startTime);
     const endDate = moment(item.endTime);
 
@@ -109,7 +112,10 @@ const ShowTimeTable = () => {
       start: startDateWithDay.toDate(),
       end: endDateWithDay.toDate(),
       id: item.id,
-      text: `${item.subject} - ${item.professor} - ${item.room}`,
+      text: `${item.subject} 
+       ${item.professor}
+        ${item.room}`,
+      backColor: colors[index % colors.length],
     };
   });
 
