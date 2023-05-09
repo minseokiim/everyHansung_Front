@@ -1,81 +1,160 @@
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SecretCommentListPage from "../Comment/SecretCommentListPage";
-import SecretCommentWritePage from "../Comment/SecretCommentWritePage";
-import "../../freeBoardPage/Comment/FreeCommentPage.css";
-import { AiOutlineComment, AiOutlineHeart, AiFillEdit } from "react-icons/ai";
+import SecretBoardHeart from "../Heart/SecretBoardHeart";
+import "./SecretWritePage.css";
+import { AiFillEdit } from "react-icons/ai";
+import { BiTimeFive, BiMessage } from "react-icons/bi";
+import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
-import { BiTimeFive } from "react-icons/bi";
-import { BsFillPersonFill } from "react-icons/bs";
-import SecretBoardHeart from "../Heart/SectretBoardHeart";
+import SendMessagePage from "../../messagePage/SendMessagePage";
+import "../Comment/SecretCommentPage.css";
+import axios from "axios";
 
 const SecretShowPage = () => {
   const { id } = useParams();
-  const [post, setPost] = useState([]);
-  const [comments, setComments] = useState([]);
-  // const [postNick, setPostNick] = useState("");
-  const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
+  const [post, setPost] = useState([]);
+  const move = useNavigate();
+  const [nickname, setNickname] = useState("");
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/secretposts/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
       setPost(res.data);
     });
   };
 
-  const getComments = (id) => {
-    axios
-      .get(`http://localhost:8080/secretposts/${id}/secretcomments`)
-      .then((res) => setComments(res.data));
-  };
+  useEffect(() => {
+    if (studentId) {
+      apiClient
+        .get(`http://localhost:8080/member/${studentId}`)
+        .then((res) => {
+          const member = res.data;
+          setNickname(member.nickname);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } else {
+      console.log("닉네임 못받아옴");
+    }
+  }, [studentId]);
 
   useEffect(() => {
     getPost(id);
-    getComments();
   }, []);
 
   const printDate = (timestamp) => {
     return new Date(timestamp).toLocaleString();
   };
 
+  const deletePost = async (id) => {
+    try {
+      await apiClient.delete(
+        `http://localhost:8080/secretboard/${studentId}/${id}`
+      );
+      alert("게시물이 삭제되었습니다.");
+      move("/secretboard");
+    } catch (error) {
+      alert("게시물 삭제에 실패했습니다.");
+    }
+  };
+
   return (
     <div className="p-4">
-      <div className="d-flex">
-        <h4 className="flex-grow-1">{post.title}</h4>
-        <div>
-          <AiFillEdit
-            className="cursor-pointer"
-            onClick={(e) => {
-              e.preventDefault();
-              move(`/secretboard/edit/${id}`);
-            }}
-          />
-        </div>
-      </div>
-      <div className="text-muted post-time">
-        <BiTimeFive /> {printDate(post.createdAt)}
-      </div>
-      <div className="text-muted post-time">
-        <BsFillPersonFill /> {post.isAnonymous ? "익명" : post.studentId}
-      </div>
-      <hr />
-      <p>{post.content}</p>
-      <br />
-      <div className="d-flex">
-        <SecretBoardHeart />
-        {post.countLike}
-      </div>
+      {nickname && (
+        <>
+          <div className="d-flex">
+            <h4 className="flex-grow-1">
+              <strong>{post.title}</strong>
+            </h4>
+            {post.nickname === nickname && (
+              <>
+                <div>
+                  <AiFillEdit
+                    className="cursor-pointer icon"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      move(`/secretboard/edit/${id}`);
+                    }}
+                  />
+                </div>
+                <div>
+                  <span className="p-2">
+                    <BsFillTrashFill
+                      className="cursor-pointer icon"
+                      onClick={() => {
+                        if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                          deletePost(id);
+                        }
+                      }}
+                    />
+                  </span>
+                </div>
+              </>
+            )}
 
-      <hr />
-      <AiOutlineComment />
-      <strong>댓글</strong>
-      <br />
-      <div className="comment">
-        <SecretCommentListPage />
-        <br />
-        <SecretCommentWritePage />
-      </div>
+            {post.nickname !== nickname && (
+              <>
+                <div>
+                  <BiMessage
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setIsMessageModalOpen(true);
+                    }}
+                  />
+                  <SendMessagePage
+                    isOpen={isMessageModalOpen}
+                    onRequestClose={() => setIsMessageModalOpen(false)}
+                  />
+                </div>
+              </>
+            )}
+          </div>
+          <div className=" mt-1">
+            {post.createdAt === post.updatedAt && (
+              <div className="text-muted post-time ">
+                <BiTimeFive /> 작성 : {printDate(post.createdAt)}
+              </div>
+            )}
+            {post.createdAt !== post.updatedAt && (
+              <div className="text-muted post-time ">
+                <AiFillEdit /> 수정 : {printDate(post.updatedAt)}
+              </div>
+            )}
+          </div>
+          <div className="post-time pt-2">
+            <BsFillPersonFill /> {post.anonymous ? "익명" : post.nickname}
+          </div>
+          <hr />
+          <div className="big-grey p-2">
+            {post.content}
+            {/* 사진 보여주기 */}
+            <br />
+            {post.imageFile && (
+              <div className="mt-3">
+                <img
+                  src={`data:image/png;base64,${post.imageFile}`}
+                  alt="preview"
+                  style={{ width: "400px", height: "auto" }}
+                />
+              </div>
+            )}
+          </div>
+          <br />
+
+          <div className="d-flex">
+            <SecretBoardHeart />
+          </div>
+          <hr />
+
+          <div className="comment">
+            <SecretCommentListPage />
+            <br />
+          </div>
+        </>
+      )}
     </div>
   );
 };
