@@ -23,7 +23,7 @@ const BookShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/book/${studentId}/${id}`);
+      await apiClient.delete(`http://localhost:8080/book/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/bookstore");
     } catch (error) {
