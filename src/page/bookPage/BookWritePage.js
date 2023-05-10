@@ -19,12 +19,16 @@ const BookWritePage = () => {
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState("");
   const [previewImage, setPreviewImage] = useState("");
+  const [reservation, setReservation] = useState(false);
+
   const move = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (lectureName.trim().length === 0) {
+    if (!imageFile) {
+      alert("책 사진을 넣어주세요");
+      return;
+    } else if (lectureName.trim().length === 0) {
       alert("강의명을 입력하세요");
       return;
     } else if (bookName.trim().length === 0) {
@@ -56,6 +60,7 @@ const BookWritePage = () => {
       broken,
       imageFile: base64Image,
       studentId: studentId,
+      reservation,
     };
 
     apiClient.post("http://localhost:8080/book", data).then(() => {

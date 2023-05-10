@@ -9,7 +9,6 @@ import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
 import SendMessagePage from "../../messagePage/SendMessagePage";
 import "../Comment/SecretCommentPage.css";
-import axios from "axios";
 
 const SecretShowPage = () => {
   const { id } = useParams();
