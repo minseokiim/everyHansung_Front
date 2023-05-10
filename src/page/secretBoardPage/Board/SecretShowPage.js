@@ -20,7 +20,7 @@ const SecretShowPage = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
+    apiClient.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
       setPost(res.data);
     });
   };
