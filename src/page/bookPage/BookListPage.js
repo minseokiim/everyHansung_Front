@@ -5,6 +5,7 @@ import { BsBook } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import apiClient from "../../apiClient";
+import { SlOptionsVertical } from "react-icons/sl";
 
 const BookListPage = () => {
   const move = useNavigate();
@@ -15,6 +16,23 @@ const BookListPage = () => {
   const [postsPerPage] = useState(5); //페이지네이션
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
+
+  // const [books, setBooks] = useState([]);
+
+  // const handleReservation = (index) => {
+  //   const updatedBooks = books.map((book, i) => {
+  //     if (i === index) {
+  //       return {
+  //         ...book,
+  //         reservation: true,
+  //       };
+  //     } else {
+  //       return book;
+  //     }
+  //   });
+
+  //   setBooks(updatedBooks);
+  // };
 
   useEffect(() => {
     if (studentId) {
@@ -133,9 +151,16 @@ const BookListPage = () => {
                     <div>
                       <FaChalkboardTeacher /> &nbsp;
                       {post.lectureName}
+                      <div>
+                        {/* {book.studentId === studentId && (
+            <button onClick={() => handleReservation(index)}>
+              {book.reservation ? "Reserved" : "Reserve"}
+            </button>
+          )} */}
+                      </div>
                       <hr />
                       <BsBook /> &nbsp;
-                      {post.bookName}&nbsp;/ {post.author}&nbsp;/{" "}
+                      {post.bookName}&nbsp;/ {post.author}&nbsp;/
                       {post.publisher}
                     </div>
                   </div>

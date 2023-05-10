@@ -1,17 +1,19 @@
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCardChecklist, BsBook } from "react-icons/bs";
 import apiClient from "../../apiClient";
+import SendMessagePage from "../messagePage/SendMessagePage";
+import { BiMessage } from "react-icons/bi";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const BookShowPage = () => {
   const { id } = useParams();
   const [post, setPost] = useState([]);
   const move = useNavigate();
-
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+  //const receiver=post.id;
   const studentId = localStorage.getItem("studentId");
-  const [nickname, setNickname] = useState("");
 
   const getPost = (id) => {
     apiClient.get(`http://localhost:8080/book/${id}`).then((res) => {
@@ -19,32 +21,26 @@ const BookShowPage = () => {
     });
   };
 
+  const deletePost = async (id) => {
+    try {
+      await apiClient.delete(`http://localhost:8080/book/${studentId}/${id}`);
+      alert("게시물이 삭제되었습니다.");
+      move("/bookstore");
+    } catch (error) {
+      alert("게시물 삭제에 실패했습니다.");
+    }
+  };
+
   useEffect(() => {
     getPost(id);
   }, []);
 
-  useEffect(() => {
-    if (studentId) {
-      apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
-        .then((res) => {
-          const member = res.data;
-          setNickname(member.nickname);
-        })
-        .catch((error) => {
-          console.error("Error fetching name:", error);
-        });
-    } else {
-      console.log("닉네임 못받아옴");
-    }
-  }, [studentId]);
-
   return (
     <div className="p-4">
-      {nickname && (
+      {studentId && (
         <>
           <div className="d-flex">
-            <h4 className="flex-grow-1">
+            <div className="flex-grow-1">
               <h5>
                 <FaChalkboardTeacher /> &nbsp;
                 {post.lectureName}
@@ -53,18 +49,39 @@ const BookShowPage = () => {
               <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
               &nbsp;/&nbsp;
               {post.publisher}
-            </h4>
-            <div>
-              <button
-                className="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  move("/bookstore");
-                }}
-              >
-                뒤로 가기
-              </button>
             </div>
+
+            {post.studentId === studentId && (
+              <div>
+                <span className="p-2">
+                  <BsFillTrashFill
+                    className="cursor-pointer icon"
+                    onClick={() => {
+                      if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                        deletePost(id);
+                      }
+                    }}
+                  />
+                </span>
+              </div>
+            )}
+
+            {post.studentId !== studentId && (
+              <>
+                <div>
+                  <BiMessage
+                    className="cursor-pointer"
+                    onClick={() => {
+                      setIsMessageModalOpen(true);
+                    }}
+                  />
+                  <SendMessagePage
+                    isOpen={isMessageModalOpen}
+                    onRequestClose={() => setIsMessageModalOpen(false)}
+                  />
+                </div>
+              </>
+            )}
           </div>
           <hr />
           <strong>
@@ -93,11 +110,29 @@ const BookShowPage = () => {
           <br /> <br />
           <strong>
             <BsCardChecklist />
+            &nbsp; 책 사진
+          </strong>
+          <br />:
+          {post.imageFile && (
+            <div className="mt-3">
+              <img
+                src={`data:image/png;base64,${post.imageFile}`}
+                alt="preview"
+                style={{ width: "400px", height: "auto" }}
+              />
+            </div>
+          )}
+          <br /> <br />
+          <strong>
+            <BsCardChecklist />
             &nbsp; 총평
           </strong>
           <br />: {post.content}
-          <hr />
-          <div className="important">** 책방은 수정 및 삭제 불가능합니다.</div>
+          <br />
+          <br />
+          <div className="grey">
+            ** 책 구매를 원하면 쪽지 기능을 활용하세요!
+          </div>
         </>
       )}
     </div>
