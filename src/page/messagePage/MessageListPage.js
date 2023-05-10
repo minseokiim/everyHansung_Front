@@ -15,7 +15,7 @@ const MessageListPage = () => {
       .get(`http://localhost:8080/message/${studentId}/all`)
       .then((res) => {
         setMessages(res.data);
-        console.log(res.data);
+        //console.log(res.data);
       });
   };
 
@@ -43,7 +43,6 @@ const MessageListPage = () => {
       return `${seconds}초 전`;
     }
   };
-
   return (
     <div className="p-3">
       <strong className="p-3">쪽지함</strong> <hr />
@@ -62,7 +61,7 @@ const MessageListPage = () => {
                   <br />
                   <div className="big-grey">
                     <div className="grey ">
-                      {timeDifference(message.createdAt)}&nbsp; &nbsp;
+                      {timeDifference(message.timestamp)}&nbsp; &nbsp;
                     </div>
                   </div>
                 </div>

@@ -22,6 +22,7 @@ const FreeShowPage = () => {
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
       setPost(res.data);
+      //console.log(res.data);
     });
   };
 
