@@ -31,13 +31,12 @@ const BookSendMessagePage = ({ isOpen, onRequestClose }) => {
   const getPostId = async (id) => {
     const res = await axios.get(`http://localhost:8080/book/${id}`);
     console.log("작성자 정보 " + res.data.studentId);
-    setPostId(res.data.studentId);
-    console.log("작성자 정보 " + res.data.studentId);
+    return res.data.studentId; // 값을 반환하도록 변경
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await getPostId(id);
+    const postId = await getPostId(id);
 
     if (content.trim().length === 0) {
       alert("쪽지 내용을 입력하세요");

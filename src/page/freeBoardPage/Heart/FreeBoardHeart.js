@@ -12,7 +12,7 @@ const FreeBoardHeart = () => {
 
   useEffect(() => {
     apiClient
-      .get(`http://localhost:8080/heart/${studentId}/${id}`)
+      .get(`http://localhost:8080/free/heart/${studentId}/${id}`)
       .then((response) => {
         setCountLike(response.data.countLike);
         setIsFilled(response.data.isFilled);
@@ -25,7 +25,7 @@ const FreeBoardHeart = () => {
   const clickHeart = () => {
     if (isFilled) {
       apiClient
-        .delete(`http://localhost:8080/heart/${studentId}/${id}`, {
+        .delete(`http://localhost:8080/free/heart/${studentId}/${id}`, {
           params: {
             studentId: studentId,
             freeboardId: id,
@@ -40,7 +40,7 @@ const FreeBoardHeart = () => {
         });
     } else {
       apiClient
-        .post(`http://localhost:8080/heart/${studentId}/${id}`, null, {
+        .post(`http://localhost:8080/free/heart/${studentId}/${id}`, null, {
           params: {
             studentId: studentId,
             freeboardId: id,
