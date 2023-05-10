@@ -28,15 +28,44 @@ const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
     setContent(e.target.value);
   };
 
+  // const getPostId = async (id) => {
+  //   const res = await axios.get(`http://localhost:8080/freeboard/${id}`);
+  //   setPostId(res.data.studentId);
+  //   console.log("작성자 정보 " + res.data.studentId);
+  // };
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const postId = await getPostId(id);
+
+  //   if (content.trim().length === 0) {
+  //     alert("쪽지 내용을 입력하세요");
+  //     return;
+  //   } else {
+  //     apiClient
+  //       .post("http://localhost:8080/message", {
+  //         receiver: postId,
+  //         sender: studentId,
+  //         content,
+  //       })
+  //       .then(() => {
+  //         setContent("");
+  //         onRequestClose(); // 모달 닫기 기능 추가
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //       });
+  //   }
+  // };
   const getPostId = async (id) => {
     const res = await axios.get(`http://localhost:8080/freeboard/${id}`);
-    setPostId(res.data.studentId);
     console.log("작성자 정보 " + res.data.studentId);
+    return res.data.studentId; // 값을 반환하도록 변경
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await getPostId(id);
+    const postId = await getPostId(id);
 
     if (content.trim().length === 0) {
       alert("쪽지 내용을 입력하세요");
