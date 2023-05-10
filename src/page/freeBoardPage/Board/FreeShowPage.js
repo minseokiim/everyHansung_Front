@@ -7,7 +7,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
-import SendMessagePage from "../../messagePage/SendMessagePage";
+import FreeSendMessagePage from "../../messagePage/FreeSendMessagePage";
 import "../Comment/FreeCommentPage.css";
 import axios from "axios";
 
@@ -104,7 +104,7 @@ const FreeShowPage = () => {
                       setIsMessageModalOpen(true);
                     }}
                   />
-                  <SendMessagePage
+                  <FreeSendMessagePage
                     isOpen={isMessageModalOpen}
                     onRequestClose={() => setIsMessageModalOpen(false)}
                   />
