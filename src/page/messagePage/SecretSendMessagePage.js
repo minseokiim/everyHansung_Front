@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { VscChromeClose } from "react-icons/vsc";
 
-const SendMessagePage = ({ isOpen, onRequestClose }) => {
+const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
   const [content, setContent] = useState("");
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
@@ -29,7 +29,7 @@ const SendMessagePage = ({ isOpen, onRequestClose }) => {
   };
 
   const getPostId = async (id) => {
-    const res = await axios.get(`http://localhost:8080/freeboard/${id}`);
+    const res = await axios.get(`http://localhost:8080/secretboard/${id}`);
     setPostId(res.data.studentId);
     console.log("작성자 정보 " + res.data.studentId);
   };
@@ -51,6 +51,9 @@ const SendMessagePage = ({ isOpen, onRequestClose }) => {
         .then(() => {
           setContent("");
           onRequestClose(); // 모달 닫기 기능 추가
+        })
+        .catch((error) => {
+          console.error(error);
         });
     }
   };
@@ -85,4 +88,4 @@ const SendMessagePage = ({ isOpen, onRequestClose }) => {
   );
 };
 
-export default SendMessagePage;
+export default SecretSendMessagePage;

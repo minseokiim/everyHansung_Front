@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCardChecklist, BsBook } from "react-icons/bs";
 import apiClient from "../../apiClient";
-import SendMessagePage from "../messagePage/SendMessagePage";
+import BookSendMessagePage from "../messagePage/BookSendMessagePage";
 import { BiMessage } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
 
@@ -75,7 +75,7 @@ const BookShowPage = () => {
                       setIsMessageModalOpen(true);
                     }}
                   />
-                  <SendMessagePage
+                  <BookSendMessagePage
                     isOpen={isMessageModalOpen}
                     onRequestClose={() => setIsMessageModalOpen(false)}
                   />
@@ -118,11 +118,11 @@ const BookShowPage = () => {
               <img
                 src={`data:image/png;base64,${post.imageFile}`}
                 alt="preview"
-                style={{ width: "400px", height: "auto" }}
+                style={{ width: "300px", height: "auto" }}
               />
             </div>
           )}
-          <br /> <br />
+          <br />
           <strong>
             <BsCardChecklist />
             &nbsp; 총평

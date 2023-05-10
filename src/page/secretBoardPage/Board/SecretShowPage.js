@@ -7,7 +7,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
-import SendMessagePage from "../../messagePage/SendMessagePage";
+import SecretSendMessagePage from "../../messagePage/SecretSendMessagePage";
 import "../Comment/SecretCommentPage.css";
 
 const SecretShowPage = () => {
@@ -103,7 +103,7 @@ const SecretShowPage = () => {
                       setIsMessageModalOpen(true);
                     }}
                   />
-                  <SendMessagePage
+                  <SecretSendMessagePage
                     isOpen={isMessageModalOpen}
                     onRequestClose={() => setIsMessageModalOpen(false)}
                   />
