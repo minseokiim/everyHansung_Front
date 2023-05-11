@@ -45,6 +45,17 @@ const MessageListPage = () => {
       return `${seconds}초 전`;
     }
   };
+
+  //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
+  const deleteMessage = async (id) => {
+    try {
+      await apiClient.delete(`http://localhost:8080/message/${id}`);
+      alert("쪽지가 삭제되었습니다.");
+    } catch (error) {
+      alert("쪽지 삭제에 실패했습니다.");
+    }
+  };
+
   return (
     <>
       <div className="p-4">
@@ -52,8 +63,7 @@ const MessageListPage = () => {
         &nbsp;&nbsp;
         <strong
           className="notimportant cursor-pointer"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             move("/message/my");
           }}
         >
@@ -65,7 +75,12 @@ const MessageListPage = () => {
               return (
                 <div key={message.id}>
                   {message.sender !== studentId && (
-                    <div className="card-body cursor-pointer">
+                    <div
+                      className="card-body cursor-pointer"
+                      onClick={() => {
+                        move(`/message/${message.id}`);
+                      }}
+                    >
                       <div
                         style={{
                           display: "flex",
@@ -80,10 +95,14 @@ const MessageListPage = () => {
                             display: "flex",
                             alignItems: "center",
                           }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                          }}
                         >
                           <BiMessage
                             className="cursor-pointer icon"
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               setOpenModalMessageId(message.id);
                             }}
                           />
@@ -93,7 +112,13 @@ const MessageListPage = () => {
                             onRequestClose={() => setOpenModalMessageId(null)}
                             messageSender={message.sender}
                           />
-                          <BsFillTrashFill className="icon" />
+                          <BsFillTrashFill
+                            className="icon"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              deleteMessage(message.id);
+                            }}
+                          />
                         </span>
                       </div>
                       <span className="grey">
