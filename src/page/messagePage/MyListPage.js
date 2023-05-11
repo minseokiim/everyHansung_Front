@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import apiClient from "../../apiClient";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./MessagePage.css";
-import ReplyMessagePage from "./ReplyMessagePage";
-import { BiTimeFive, BiMessage } from "react-icons/bi";
+import { BiTimeFive } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 
-const MessageListPage = () => {
+const MyListPage = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
   const [messages, setMessages] = useState([]);
-  const [openModalMessageId, setOpenModalMessageId] = useState(null);
+  const { id } = useParams();
 
   const getMessages = () => {
     apiClient
@@ -19,6 +18,16 @@ const MessageListPage = () => {
       .then((res) => {
         setMessages(res.data);
       });
+  };
+
+  //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
+  const deleteMessage = async (id) => {
+    // try {
+    //   await apiClient.delete(`http://localhost:8080/message/${id}`);
+    //   alert("쪽지가 삭제되었습니다.");
+    // } catch (error) {
+    //   alert("쪽지 삭제에 실패했습니다.");
+    // }
   };
 
   useEffect(() => {
@@ -48,23 +57,23 @@ const MessageListPage = () => {
   return (
     <>
       <div className="p-4">
-        <strong className="important-navy">받은 쪽지함</strong>
-        &nbsp;&nbsp;
         <strong
           className="notimportant cursor-pointer"
           onClick={(e) => {
             e.preventDefault();
-            move("/message/my");
+            move("/message");
           }}
         >
-          보낸 쪽지함
+          받은 쪽지함
         </strong>
+        &nbsp;&nbsp;
+        <strong className="important-navy">보낸 쪽지함</strong>
         <hr />
         {messages.length > 0
           ? messages.map((message) => {
               return (
                 <div key={message.id}>
-                  {message.sender !== studentId && (
+                  {message.sender === studentId && (
                     <div className="card-body cursor-pointer">
                       <div
                         style={{
@@ -81,19 +90,12 @@ const MessageListPage = () => {
                             alignItems: "center",
                           }}
                         >
-                          <BiMessage
-                            className="cursor-pointer icon"
+                          <BsFillTrashFill
+                            className="icon"
                             onClick={() => {
-                              setOpenModalMessageId(message.id);
+                              deleteMessage(message.id);
                             }}
                           />
-                          &nbsp;
-                          <ReplyMessagePage
-                            isOpen={openModalMessageId === message.id}
-                            onRequestClose={() => setOpenModalMessageId(null)}
-                            messageSender={message.sender}
-                          />
-                          <BsFillTrashFill className="icon" />
                         </span>
                       </div>
                       <span className="grey">
@@ -110,4 +112,4 @@ const MessageListPage = () => {
     </>
   );
 };
-export default MessageListPage;
+export default MyListPage;

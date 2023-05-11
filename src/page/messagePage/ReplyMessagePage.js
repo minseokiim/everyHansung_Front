@@ -4,10 +4,9 @@ import Modal from "react-modal";
 import { BsFillSendFill } from "react-icons/bs";
 import apiClient from "../../apiClient";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { VscChromeClose } from "react-icons/vsc";
 
-const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
+const ReplyMessagePage = ({ isOpen, onRequestClose, messageSender }) => {
   const [content, setContent] = useState("");
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
@@ -28,15 +27,8 @@ const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
     setContent(e.target.value);
   };
 
-  const getPostId = async (id) => {
-    const res = await axios.get(`http://localhost:8080/freeboard/${id}`);
-    //console.log("작성자 정보 " + res.data.studentId);
-    return res.data.studentId; // 값을 반환하도록 변경
-  };
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    const postId = await getPostId(id);
 
     if (content.trim().length === 0) {
       alert("쪽지 내용을 입력하세요");
@@ -44,7 +36,7 @@ const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
     } else {
       apiClient
         .post("http://localhost:8080/message", {
-          receiver: postId,
+          receiver: messageSender,
           sender: studentId,
           content,
         })
@@ -78,7 +70,6 @@ const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
             value={content}
             onChange={handleMessageChange}
           />
-
           <br />
           <BsFillSendFill className="message-button" onClick={onSubmit} />
         </form>
@@ -87,4 +78,4 @@ const FreeSendMessagePage = ({ isOpen, onRequestClose }) => {
   );
 };
 
-export default FreeSendMessagePage;
+export default ReplyMessagePage;
