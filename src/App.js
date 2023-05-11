@@ -26,6 +26,7 @@ import SetPasswdPage from "./page/signupPage/SetPasswdPage";
 
 import MessageListPage from "./page/messagePage/MessageListPage";
 import MessageShowPage from "./page/messagePage/MessageShowPage";
+import MyListPage from "./page/messagePage/MyListPage";
 
 import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
@@ -139,6 +140,20 @@ const App = () => {
               <div>
                 <Card>
                   <MessageListPage />
+                </Card>
+                <br />
+                <br />
+                <Footer />
+              </div>
+            }
+          />
+
+          <Route
+            path="/message/my"
+            element={
+              <div>
+                <Card>
+                  <MyListPage />
                 </Card>
                 <br />
                 <br />

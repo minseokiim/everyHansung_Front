@@ -30,7 +30,7 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
 
   const getPostId = async (id) => {
     const res = await axios.get(`http://localhost:8080/secretboard/${id}`);
-    console.log("작성자 정보 " + res.data.studentId);
+    //console.log("작성자 정보 " + res.data.studentId);
     return res.data.studentId; // 값을 반환하도록 변경
   };
 
@@ -50,7 +50,7 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
         })
         .then(() => {
           setContent("");
-          onRequestClose(); // 모달 닫기 기능 추가
+          onRequestClose();
         })
         .catch((error) => {
           console.error(error);
@@ -65,7 +65,6 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
         onRequestClose={onRequestClose}
         style={customStyles}
       >
-        {/* 위치 수정하기 */}
         <VscChromeClose
           className="message-button icon"
           onClick={onRequestClose}
@@ -75,7 +74,7 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
             className="message-input"
             rows="10"
             cols="40"
-            placeholder="쪽지를 입력해주세요."
+            placeholder="쪽지 내용을 입력해주세요."
             value={content}
             onChange={handleMessageChange}
           />
