@@ -22,12 +22,12 @@ const MyListPage = () => {
 
   //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
   const deleteMessage = async (id) => {
-    // try {
-    //   await apiClient.delete(`http://localhost:8080/message/${id}`);
-    //   alert("쪽지가 삭제되었습니다.");
-    // } catch (error) {
-    //   alert("쪽지 삭제에 실패했습니다.");
-    // }
+    try {
+      await apiClient.delete(`http://localhost:8080/message/${id}`);
+      alert("쪽지가 삭제되었습니다.");
+    } catch (error) {
+      alert("쪽지 삭제에 실패했습니다.");
+    }
   };
 
   useEffect(() => {
@@ -81,6 +81,9 @@ const MyListPage = () => {
                           justifyContent: "space-between",
                           marginBottom: "0",
                         }}
+                        onClick={() => {
+                          move(`/message/${message.id}`);
+                        }}
                       >
                         {message.content}
 
@@ -92,7 +95,8 @@ const MyListPage = () => {
                         >
                           <BsFillTrashFill
                             className="icon"
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               deleteMessage(message.id);
                             }}
                           />

@@ -152,9 +152,9 @@ const BookListPage = () => {
                       <FaChalkboardTeacher /> &nbsp;
                       {post.lectureName}
                       <div>
-                        {/* {book.studentId === studentId && (
+                        {/* {post.studentId === studentId && (
             <button onClick={() => handleReservation(index)}>
-              {book.reservation ? "Reserved" : "Reserve"}
+              {post.reservation ? "Reserved" : "Reserve"}
             </button>
           )} */}
                       </div>

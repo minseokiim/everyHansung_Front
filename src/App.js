@@ -134,12 +134,13 @@ const App = () => {
               </div>
             }
           />
+
           <Route
-            path="/message"
+            path="/message/:id"
             element={
               <div>
                 <Card>
-                  <MessageListPage />
+                  <MessageShowPage />
                 </Card>
                 <br />
                 <br />
@@ -162,13 +163,12 @@ const App = () => {
             }
           />
 
-          {/* 사용할지 말지 */}
           <Route
-            path="/message/:studentId"
+            path="/message"
             element={
               <div>
                 <Card>
-                  <MessageShowPage />
+                  <MessageListPage />
                 </Card>
                 <br />
                 <br />
@@ -176,7 +176,6 @@ const App = () => {
               </div>
             }
           />
-
           <Route
             path="/freeboard/post"
             element={
