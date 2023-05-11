@@ -30,6 +30,11 @@ const MessageShowPage = () => {
   //       console.error("Error", error);
   //     });
   // }, []);
+
+  // if (window.confirm("게시물을 삭제하시겠습니까?")) {
+  //   deletePost(id);
+  // }
+
   // return (
   //   <div>
   //     {messages.map((message, index) => (

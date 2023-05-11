@@ -116,7 +116,9 @@ const MessageListPage = () => {
                             className="icon"
                             onClick={(e) => {
                               e.stopPropagation();
-                              deleteMessage(message.id);
+                              if (window.confirm("쪽지를 삭제하시겠습니까?")) {
+                                deleteMessage(message.id);
+                              }
                             }}
                           />
                         </span>

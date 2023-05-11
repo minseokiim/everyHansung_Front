@@ -43,6 +43,7 @@ const ReplyMessagePage = ({ isOpen, onRequestClose, messageSender }) => {
         .then(() => {
           setContent("");
           onRequestClose();
+          alert("쪽지가 전송되었습니다");
         })
         .catch((error) => {
           console.error(error);
