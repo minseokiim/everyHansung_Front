@@ -6,7 +6,12 @@ import apiClient from "../../../apiClient";
 import { useParams } from "react-router-dom";
 import { VscChromeClose } from "react-icons/vsc";
 
-const ReplyMessagePage = ({ isOpen, onRequestClose, messageSender }) => {
+const ReplyMessagePage = ({
+  isOpen,
+  onRequestClose,
+  messageSender,
+  setRefresh,
+}) => {
   const [content, setContent] = useState("");
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
@@ -44,6 +49,7 @@ const ReplyMessagePage = ({ isOpen, onRequestClose, messageSender }) => {
           setContent("");
           onRequestClose();
           alert("쪽지가 전송되었습니다");
+          setRefresh((prevRefresh) => !prevRefresh);
         })
         .catch((error) => {
           console.error(error);

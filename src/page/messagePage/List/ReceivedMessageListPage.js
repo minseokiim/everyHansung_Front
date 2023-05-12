@@ -12,6 +12,7 @@ const ReceivedMessageListPage = () => {
   const studentId = localStorage.getItem("studentId");
   const [messages, setMessages] = useState([]);
   const [openModalMessageId, setOpenModalMessageId] = useState(null);
+  const [refresh, setRefresh] = useState(false);
 
   const getMessages = () => {
     apiClient
@@ -47,10 +48,9 @@ const ReceivedMessageListPage = () => {
     }
   };
 
-  //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
   const deleteMessage = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/message/${id}`);
+      await apiClient.delete(`http://localhost:8080/message/room/${id}`);
       alert("쪽지가 삭제되었습니다.");
     } catch (error) {
       alert("쪽지 삭제에 실패했습니다.");
@@ -60,32 +60,22 @@ const ReceivedMessageListPage = () => {
   return (
     <>
       <div className="p-4">
-        <strong className="important-navy">받은 쪽지함</strong>
+        <strong>쪽지함</strong>
         &nbsp;&nbsp;
-        <strong
-          className="notimportant cursor-pointer"
-          onClick={() => {
-            move("/message/my");
-          }}
-        >
-          보낸 쪽지함
-        </strong>
         <hr />
         {messages.length > 0
           ? messages.map((message) => {
               return (
                 <div key={message.id}>
-                  {/* {message.sender !== studentId && ( */}
                   <div
                     className="card-body cursor-pointer"
                     onClick={() => {
-                      move(`/message/${message.id}`);
+                      move(`/message/${message.room.id}`);
                     }}
                   >
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "space-between",
                         marginBottom: "0",
                       }}
                     >
@@ -95,6 +85,7 @@ const ReceivedMessageListPage = () => {
                         style={{
                           display: "flex",
                           alignItems: "center",
+                          marginLeft: "auto",
                         }}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -112,13 +103,18 @@ const ReceivedMessageListPage = () => {
                           isOpen={openModalMessageId === message.id}
                           onRequestClose={() => setOpenModalMessageId(null)}
                           messageSender={message.sender}
+                          setRefresh={setRefresh}
                         />
                         <BsFillTrashFill
                           className="icon"
                           onClick={(e) => {
                             e.stopPropagation();
-                            if (window.confirm("쪽지를 삭제하시겠습니까?")) {
-                              deleteMessage(message.id);
+                            if (
+                              window.confirm(
+                                "쪽지 내용을 모두 삭제하시겠습니까?"
+                              )
+                            ) {
+                              deleteMessage(message.room.id);
                             }
                           }}
                         />
@@ -129,7 +125,6 @@ const ReceivedMessageListPage = () => {
                       &nbsp;
                     </span>
                   </div>
-                  {/* )} */}
                 </div>
               );
             })

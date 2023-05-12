@@ -1,6 +1,7 @@
 import NavBar from "./NavBar";
 import "./App.css";
 import Card from "./Card";
+import Footer from "./page/mainPage/Footer";
 
 import FreeWritePage from "./page/freeBoardPage/Board/FreeWritePage";
 import FreeListPage from "./page/freeBoardPage/Board/FreeListPage";
@@ -15,7 +16,11 @@ import SecretWritePage from "./page/secretBoardPage/Board/SecretWritePage";
 import SecretListPage from "./page/secretBoardPage/Board/SecretListPage";
 import SecretEditPage from "./page/secretBoardPage/Board/SecretEditPage";
 import SecretShowPage from "./page/secretBoardPage/Board/SecretShowPage";
+
 import NewChatBot from "./page/chatbotPage/NewChatBot";
+import TimeTable from "./page/timeTable/TimeTable";
+import ShowTimeTable from "./page/timeTable/ShowTimeTable";
+import InfoTablePage from "./page/infoTablePage/InfoTablePage";
 
 import LoginPage from "./page/loginPage/LoginPage";
 import SignUpPage from "./page/signupPage/SignUpPage";
@@ -23,24 +28,21 @@ import FindIdPage from "./page/signupPage/FindIdPage";
 import FindPwPage from "./page/signupPage/FindPwPage";
 import EmailAuthPage from "./page/signupPage/EmailAuthPage";
 import SetPasswdPage from "./page/signupPage/SetPasswdPage";
-
-import MessageListPage from "./page/messagePage/List/ReceivedMessageListPage";
-import MessageShowPage from "./page/messagePage/MessageShowPage";
-import SentListPage from "./page/messagePage/List/SentListPage";
-
+import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
+import ChangeNickPage from "./page/myPage/AccountPage/ChangeNickPage";
+import DeleteAccountPage from "./page/myPage/OtherPage/DeleteAccountPage";
 import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
 import ServiceAgreementPage from "./page/myPage/AboutPage/ServiceAgreementPage";
 import PrivacyPage from "./page/myPage/AboutPage/PrivacyPage";
 import PolicyPage from "./page/myPage/AboutPage/PolicyPage";
+import MainPage from "./page/mainPage/MainPage";
+import MemberMainPage from "./page/mainPage/MemberMainPage";
+
+import MessageListPage from "./page/messagePage/List/ReceivedMessageListPage";
+import ShowRoomPage from "./page/messagePage/List/ShowRoomPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./page/mainPage/MainPage";
-import ChangeEmailPage from "./page/myPage/AccountPage/ChangeEmailPage";
-import ChangeNickPage from "./page/myPage/AccountPage/ChangeNickPage";
-import DeleteAccountPage from "./page/myPage/OtherPage/DeleteAccountPage";
-
-import Footer from "./page/mainPage/Footer";
 
 import Authentication from "./page/myPage/AccountPage/Authentication/Authentication";
 import ChooseStudentAuth from "./page/myPage/AccountPage/Authentication/ChooseStudentAuth";
@@ -49,18 +51,10 @@ import ChooseGraduateAuth from "./page/myPage/AccountPage/Authentication/ChooseG
 import CertificateAuthentication from "./page/myPage/AccountPage/Authentication/CertificateAuthentication";
 import Check from "./page/myPage/AccountPage/Authentication/Check";
 import Success from "./page/myPage/AccountPage/Authentication/Success";
-import CheckingAuth from "./page/myPage/AccountPage/Authentication/CheckingAuth";
-
-import MemberMainPage from "./page/mainPage/MemberMainPage";
 
 import BookListPage from "./page/bookPage/BookListPage";
 import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
-
-import TimeTable from "./page/timeTable/TimeTable";
-import ShowTimeTable from "./page/timeTable/ShowTimeTable";
-
-import InfoTablePage from "./page/infoTablePage/InfoTablePage";
 
 const App = () => {
   return (
@@ -140,7 +134,7 @@ const App = () => {
             element={
               <div>
                 <Card>
-                  <MessageShowPage />
+                  <ShowRoomPage />
                 </Card>
                 <br />
                 <br />
@@ -149,7 +143,7 @@ const App = () => {
             }
           />
 
-          <Route
+          {/* <Route
             path="/message/my"
             element={
               <div>
@@ -161,7 +155,7 @@ const App = () => {
                 <Footer />
               </div>
             }
-          />
+          /> */}
 
           <Route
             path="/message"
