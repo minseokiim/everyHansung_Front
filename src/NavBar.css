@@ -15,9 +15,6 @@
   color: hwb(197 62% 14%);
   transition: all 0.3s;
 }
-.color-nav {
-  background-color: hwb(240, 18%, 61%);
-}
 
 .nav-link {
   padding-top: 15px;
@@ -32,11 +29,6 @@
     opacity: 1;
   }
 }
-
-/* .logo,
-.nav-link {
-  animation: fadeIn 1.5s ease-in-out;
-} */
 
 @media (max-width: 767px) {
   .nav-link {

@@ -7,7 +7,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
-import SecretSendMessagePage from "../../messagePage/SecretSendMessagePage";
+import SecretSendMessagePage from "../../messagePage/Send/SecretSendMessagePage";
 import "../Comment/SecretCommentPage.css";
 
 const SecretShowPage = () => {

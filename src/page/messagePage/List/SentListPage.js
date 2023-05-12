@@ -1,24 +1,34 @@
 import { useState, useEffect } from "react";
-import apiClient from "../../apiClient";
-import { useParams } from "react-router-dom";
+import apiClient from "../../../apiClient";
 import { useNavigate } from "react-router-dom";
-import "./MessagePage.css";
-import ReplyMessagePage from "./ReplyMessagePage";
-import { BiTimeFive, BiMessage } from "react-icons/bi";
+import "../MessagePage.css";
+import { BiTimeFive } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 
-const MessageListPage = () => {
+const SentListPage = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
   const [messages, setMessages] = useState([]);
-  const [openModalMessageId, setOpenModalMessageId] = useState(null);
+  const { id } = useParams();
 
   const getMessages = () => {
     apiClient
       .get(`http://localhost:8080/message/${studentId}/all`)
       .then((res) => {
         setMessages(res.data);
+        console.log(res.data);
       });
+  };
+
+  //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
+  const deleteMessage = async (id) => {
+    try {
+      await apiClient.delete(`http://localhost:8080/message/${id}`);
+      alert("쪽지가 삭제되었습니다.");
+    } catch (error) {
+      alert("쪽지 삭제에 실패했습니다.");
+    }
   };
 
   useEffect(() => {
@@ -45,47 +55,35 @@ const MessageListPage = () => {
       return `${seconds}초 전`;
     }
   };
-
-  //   백엔드랑 api다름, 백엔드는 나가기 기능으로 되어있음 ->둘중 하나 수정
-  const deleteMessage = async (id) => {
-    try {
-      await apiClient.delete(`http://localhost:8080/message/${id}`);
-      alert("쪽지가 삭제되었습니다.");
-    } catch (error) {
-      alert("쪽지 삭제에 실패했습니다.");
-    }
-  };
-
   return (
     <>
       <div className="p-4">
-        <strong className="important-navy">받은 쪽지함</strong>
-        &nbsp;&nbsp;
         <strong
           className="notimportant cursor-pointer"
-          onClick={() => {
-            move("/message/my");
+          onClick={(e) => {
+            e.preventDefault();
+            move("/message");
           }}
         >
-          보낸 쪽지함
+          받은 쪽지함
         </strong>
+        &nbsp;&nbsp;
+        <strong className="important-navy">보낸 쪽지함</strong>
         <hr />
         {messages.length > 0
           ? messages.map((message) => {
               return (
                 <div key={message.id}>
-                  {message.sender !== studentId && (
-                    <div
-                      className="card-body cursor-pointer"
-                      onClick={() => {
-                        move(`/message/${message.id}`);
-                      }}
-                    >
+                  {message.sender === studentId && (
+                    <div className="card-body cursor-pointer">
                       <div
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
                           marginBottom: "0",
+                        }}
+                        onClick={() => {
+                          move(`/message/${message.id}`);
                         }}
                       >
                         {message.content}
@@ -95,23 +93,7 @@ const MessageListPage = () => {
                             display: "flex",
                             alignItems: "center",
                           }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                          }}
                         >
-                          <BiMessage
-                            className="cursor-pointer icon"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setOpenModalMessageId(message.id);
-                            }}
-                          />
-                          &nbsp;
-                          <ReplyMessagePage
-                            isOpen={openModalMessageId === message.id}
-                            onRequestClose={() => setOpenModalMessageId(null)}
-                            messageSender={message.sender}
-                          />
                           <BsFillTrashFill
                             className="icon"
                             onClick={(e) => {
@@ -124,7 +106,7 @@ const MessageListPage = () => {
                         </span>
                       </div>
                       <span className="grey">
-                        <BiTimeFive /> {timeDifference(message.timestamp)}&nbsp;
+                        <BiTimeFive /> {timeDifference(message.sendTime)}&nbsp;
                         &nbsp;
                       </span>
                     </div>
@@ -137,4 +119,4 @@ const MessageListPage = () => {
     </>
   );
 };
-export default MessageListPage;
+export default SentListPage;

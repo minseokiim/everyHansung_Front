@@ -7,7 +7,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
-import FreeSendMessagePage from "../../messagePage/FreeSendMessagePage";
+import FreeSendMessagePage from "../../messagePage/Send/FreeSendMessagePage";
 import "../Comment/FreeCommentPage.css";
 import axios from "axios";
 
