@@ -24,9 +24,9 @@ import FindPwPage from "./page/signupPage/FindPwPage";
 import EmailAuthPage from "./page/signupPage/EmailAuthPage";
 import SetPasswdPage from "./page/signupPage/SetPasswdPage";
 
-import MessageListPage from "./page/messagePage/MessageListPage";
+import MessageListPage from "./page/messagePage/List/ReceivedMessageListPage";
 import MessageShowPage from "./page/messagePage/MessageShowPage";
-import MyListPage from "./page/messagePage/MyListPage";
+import SentListPage from "./page/messagePage/List/SentListPage";
 
 import MyPage from "./page/myPage/MyPage";
 import HowToUsePage from "./page/myPage/AboutPage/HowToUsePage";
@@ -154,7 +154,7 @@ const App = () => {
             element={
               <div>
                 <Card>
-                  <MyListPage />
+                  <SentListPage />
                 </Card>
                 <br />
                 <br />

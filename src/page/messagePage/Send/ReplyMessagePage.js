@@ -1,8 +1,8 @@
-import "./MessagePage.css";
+import "../MessagePage.css";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { BsFillSendFill } from "react-icons/bs";
-import apiClient from "../../apiClient";
+import apiClient from "../../../apiClient";
 import { useParams } from "react-router-dom";
 import { VscChromeClose } from "react-icons/vsc";
 

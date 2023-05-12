@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCardChecklist, BsBook } from "react-icons/bs";
 import apiClient from "../../apiClient";
-import BookSendMessagePage from "../messagePage/BookSendMessagePage";
+import BookSendMessagePage from "../messagePage/Send/BookSendMessagePage";
 import { BiMessage } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
 
