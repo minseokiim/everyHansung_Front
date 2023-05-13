@@ -90,7 +90,7 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 600,
+    minWidth: 400,
   },
 });
 

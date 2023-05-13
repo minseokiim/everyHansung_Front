@@ -42,13 +42,12 @@ const BookShowPage = () => {
           <div className="d-flex">
             <div className="flex-grow-1">
               <h5>
-                <FaChalkboardTeacher /> &nbsp;
-                {post.lectureName}
+                <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
+                &nbsp;/&nbsp;
+                {post.publisher}
               </h5>
-              &nbsp; &nbsp;
-              <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
-              &nbsp;/&nbsp;
-              {post.publisher}
+              <FaChalkboardTeacher /> &nbsp;
+              {post.lectureName}
             </div>
 
             {post.studentId === studentId && (
@@ -86,6 +85,33 @@ const BookShowPage = () => {
           <hr />
           <strong>
             <BsCardChecklist />
+            &nbsp; 책 사진
+          </strong>
+          <br />:
+          {post.imageFile && (
+            <div className="mt-3">
+              <img
+                src={`data:image/png;base64,${post.imageFile}`}
+                alt="preview"
+                style={{ width: "300px", height: "auto" }}
+              />
+            </div>
+          )}
+          <br />
+          <strong>
+            <BsCardChecklist />
+            &nbsp; 정가
+          </strong>
+          <br />: {post.originalPrice}원
+          <br /> <br />
+          <strong>
+            <BsCardChecklist />
+            &nbsp; 판매가
+          </strong>
+          <br />: {post.sellPrice}원
+          <br /> <br />
+          <strong>
+            <BsCardChecklist />
             &nbsp; 책을 구매한 학기
           </strong>
           <br />: {post.semester}
@@ -108,21 +134,6 @@ const BookShowPage = () => {
           </strong>
           <br />: {post.broken}
           <br /> <br />
-          <strong>
-            <BsCardChecklist />
-            &nbsp; 책 사진
-          </strong>
-          <br />:
-          {post.imageFile && (
-            <div className="mt-3">
-              <img
-                src={`data:image/png;base64,${post.imageFile}`}
-                alt="preview"
-                style={{ width: "300px", height: "auto" }}
-              />
-            </div>
-          )}
-          <br />
           <strong>
             <BsCardChecklist />
             &nbsp; 총평
