@@ -25,57 +25,87 @@ const ShowRoomPage = () => {
     getMessages();
   }, [id, refresh]);
 
+  const formatDate = (date) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    return new Intl.DateTimeFormat("ko-KR", options).format(new Date(date));
+  };
+
   return (
     <div className="p-4">
       <strong>주고 받은 쪽지</strong>
       <hr />
-      {messages.map((message, index) => (
-        <React.Fragment key={message.id}>
-          {studentId !== message.sender && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-              }}
-            >
-              <BsFillPersonFill />
-              <span>: {message.content}</span>
-              {/* 
-              시간 보이는 부분 수정->timeDifference로!
-              <span className="grey">{message.sendTime}</span> */}
-              <BiMessage
-                className="cursor-pointer icon"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setOpenModalMessageId(message.id);
+      <div className="p-2">
+        {messages.map((message) => (
+          <div key={message.id}>
+            {studentId !== message.sender && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
                 }}
-              />
-              <ReplyMessagePage
-                isOpen={openModalMessageId === message.id}
-                onRequestClose={() => setOpenModalMessageId(null)}
-                messageSender={message.sender}
-                setRefresh={setRefresh}
-              />
-            </div>
-          )}
-
-          {studentId === message.sender && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <span> {message.content} :</span>
-              <BsFillPersonFill />
-            </div>
-          )}
-
-          <br />
-        </React.Fragment>
-      ))}
+                className="p-1"
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <BsFillPersonFill />
+                  <span>: {message.content} </span>&nbsp;
+                  <BiMessage
+                    className="cursor-pointer icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setOpenModalMessageId(message.id);
+                    }}
+                  />
+                  <ReplyMessagePage
+                    isOpen={openModalMessageId === message.id}
+                    onRequestClose={() => setOpenModalMessageId(null)}
+                    messageSender={message.sender}
+                    setRefresh={setRefresh}
+                  />
+                </div>
+                <div className="grey">{formatDate(message.sendTime)}</div>
+              </div>
+            )}
+            {studentId === message.sender && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+                className="p-1"
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                  }}
+                >
+                  <span> {message.content} :</span>
+                  <BsFillPersonFill />
+                </div>
+                <div className="grey">{formatDate(message.sendTime)}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <hr />
+      <div className="grey">
+        쪽지 이용 시 개인정보 및 금융정보 보호에 유의해주시기 바랍니다.
+      </div>
     </div>
   );
 };

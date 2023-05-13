@@ -47,11 +47,12 @@ const ReceivedMessageListPage = () => {
       return `${seconds}초 전`;
     }
   };
-
   const deleteMessage = async (id) => {
     try {
       await apiClient.delete(`http://localhost:8080/message/room/${id}`);
       alert("쪽지가 삭제되었습니다.");
+
+      setMessages(messages.filter((message) => message.room.id !== id));
     } catch (error) {
       alert("쪽지 삭제에 실패했습니다.");
     }

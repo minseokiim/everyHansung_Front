@@ -16,23 +16,9 @@ const BookListPage = () => {
   const [postsPerPage] = useState(5); //페이지네이션
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
-
-  // const [books, setBooks] = useState([]);
-
-  // const handleReservation = (index) => {
-  //   const updatedBooks = books.map((book, i) => {
-  //     if (i === index) {
-  //       return {
-  //         ...book,
-  //         reservation: true,
-  //       };
-  //     } else {
-  //       return book;
-  //     }
-  //   });
-
-  //   setBooks(updatedBooks);
-  // };
+  //const [saleState, setSaleState] = useState("");
+  //const [imageFile, setImageFile] = useState("");
+  const saleStates = ["판매중", "예약중", "판매완료"];
 
   useEffect(() => {
     if (studentId) {
@@ -87,11 +73,14 @@ const BookListPage = () => {
     setFilteredPosts(filtered);
   };
 
-  const getPosts = () => {
-    axios.get("http://localhost:8080/book/all").then((res) => {
-      const sortedPosts = res.data.sort((a, b) => b.id - a.id);
-      setPosts(sortedPosts);
-    });
+  const getPosts = async () => {
+    const res = await axios.get("http://localhost:8080/book/all");
+    const sortedPosts = res.data.sort((a, b) => b.id - a.id);
+    setPosts(sortedPosts);
+    filterPosts(sortedPosts);
+    //console.log(res.data);
+    //setSaleState(res.data.saleState);
+    //setImageFile(res.data.imageFile); //이미지 테스트
   };
 
   useEffect(() => {
@@ -101,6 +90,32 @@ const BookListPage = () => {
   useEffect(() => {
     filterPosts();
   }, [posts]);
+
+  const createSaleStateUpdater = (id, currentSaleState) => async () => {
+    const currentIndex = saleStates.indexOf(currentSaleState);
+    const nextIndex = (currentIndex + 1) % saleStates.length;
+    const nextState = saleStates[nextIndex];
+
+    try {
+      await apiClient.patch(
+        `http://localhost:8080/book/${id}?saleState=${nextState}`
+      );
+      setPosts(
+        posts.map((post) => {
+          if (post.id === id) {
+            return {
+              ...post,
+              saleState: nextState,
+            };
+          } else {
+            return post;
+          }
+        })
+      );
+    } catch (error) {
+      alert("판매 상태 업데이트에 실패했습니다.");
+    }
+  };
 
   return (
     <div className="p-3">
@@ -136,6 +151,11 @@ const BookListPage = () => {
           ? currentPosts
               .sort((a, b) => b.id - a.id) //최신순
               .map((post) => {
+                const updateSaleState = createSaleStateUpdater(
+                  post.id,
+                  post.saleState
+                );
+
                 return (
                   <div
                     key={post.id}
@@ -150,14 +170,27 @@ const BookListPage = () => {
                   >
                     <div>
                       <BsBook /> &nbsp;
-                      {post.bookName}&nbsp;/ {post.author}&nbsp;/
-                      {post.publisher}&nbsp;/{post.sellPrice}
+                      {post.bookName}
+                      {post.studentId === studentId && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            updateSaleState();
+                          }}
+                          className="red-button float-right"
+                        >
+                          {post.saleState}
+                        </button>
+                      )}
                       <div>
-                        {/* {post.studentId === studentId && (
-            <button onClick={() => handleReservation(index)}>
-              {post.reservation ? "Reserved" : "Reserve"}
-            </button>
-          )} */}
+                        {/* 미리보기 해결 남음 */}
+                        {post.imageFile && (
+                          <img
+                            src={`data:image/png;base64,${post.imageFile}`}
+                            alt="preview"
+                            style={{ width: "100px", height: "auto" }}
+                          />
+                        )}
                       </div>
                       <hr />
                       <FaChalkboardTeacher /> &nbsp;

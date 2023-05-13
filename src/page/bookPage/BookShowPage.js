@@ -85,6 +85,21 @@ const BookShowPage = () => {
           <hr />
           <strong>
             <BsCardChecklist />
+            &nbsp; 책 사진
+          </strong>
+          <br />:
+          {post.imageFile && (
+            <div className="mt-3">
+              <img
+                src={`data:image/png;base64,${post.imageFile}`}
+                alt="preview"
+                style={{ width: "300px", height: "auto" }}
+              />
+            </div>
+          )}
+          <br />
+          <strong>
+            <BsCardChecklist />
             &nbsp; 정가
           </strong>
           <br />: {post.originalPrice}원
@@ -119,21 +134,6 @@ const BookShowPage = () => {
           </strong>
           <br />: {post.broken}
           <br /> <br />
-          <strong>
-            <BsCardChecklist />
-            &nbsp; 책 사진
-          </strong>
-          <br />:
-          {post.imageFile && (
-            <div className="mt-3">
-              <img
-                src={`data:image/png;base64,${post.imageFile}`}
-                alt="preview"
-                style={{ width: "300px", height: "auto" }}
-              />
-            </div>
-          )}
-          <br />
           <strong>
             <BsCardChecklist />
             &nbsp; 총평
