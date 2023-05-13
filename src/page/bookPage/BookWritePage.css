@@ -17,3 +17,18 @@
 .post-time {
   font-size: 13px;
 }
+.float-right {
+  float: right;
+}
+
+.red-button {
+  margin: 2px;
+  background-color: hwb(0 29% 27%);
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 3px;
+}
+
+.red-button:hover {
+  background-color: hwb(227 65% 17%);
+}

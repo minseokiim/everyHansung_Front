@@ -20,6 +20,8 @@ const BookWritePage = () => {
   const [imageFile, setImageFile] = useState("");
   const [previewImage, setPreviewImage] = useState("");
   const [reservation, setReservation] = useState(false);
+  const [originalPrice, setOriginalPrice] = useState("");
+  const [sellPrice, setSellPrice] = useState("");
 
   const move = useNavigate();
 
@@ -39,6 +41,12 @@ const BookWritePage = () => {
       return;
     } else if (publisher.trim().length === 0) {
       alert("출판사를 입력하세요");
+      return;
+    } else if (originalPrice.trim().length === 0) {
+      alert("정가를 입력하세요");
+      return;
+    } else if (sellPrice.trim().length === 0) {
+      alert("팔 가격을 입력하세요");
       return;
     }
 
@@ -61,10 +69,14 @@ const BookWritePage = () => {
       imageFile: base64Image,
       studentId: studentId,
       reservation,
+      originalPrice,
+      sellPrice,
     };
 
     apiClient.post("http://localhost:8080/book", data).then(() => {
       alert("작성되었습니다!");
+
+      console.log(data);
       move("/bookstore");
     });
   };
@@ -95,6 +107,7 @@ const BookWritePage = () => {
         </label>
         <hr />
         <div className="mb-3">
+          <strong>*책 제목</strong>
           <input
             className="form-control"
             value={bookName}
@@ -105,27 +118,52 @@ const BookWritePage = () => {
           ></input>
         </div>
         <div className="mb-3">
+          <strong>*저자</strong>
           <input
             className="form-control"
             value={author}
             onChange={(e) => {
               setAuthor(e.target.value);
             }}
-            placeholder="책 저자를 입력해주세요."
+            placeholder="저자를 입력해주세요."
           ></input>
         </div>
         <div className="mb-3">
+          <strong>*출판사</strong>
           <input
             className="form-control"
             value={publisher}
             onChange={(e) => {
               setPublisher(e.target.value);
             }}
-            placeholder="책 출판사를 입력해주세요."
+            placeholder="출판사를 입력해주세요."
+          ></input>
+        </div>
+        <div className="mb-3">
+          <strong>*책 정가</strong>
+          <input
+            className="form-control"
+            value={originalPrice}
+            onChange={(e) => {
+              setOriginalPrice(e.target.value);
+            }}
+            placeholder="책 정가를 입력해주세요."
+          ></input>
+        </div>
+        <div className="mb-3">
+          <strong>*책 판매가</strong>
+          <input
+            className="form-control"
+            value={sellPrice}
+            onChange={(e) => {
+              setSellPrice(e.target.value);
+            }}
+            placeholder="책 판매가를 입력해주세요."
           ></input>
         </div>
 
         <div className="mb-3">
+          <strong>*책을 사용한 강의명</strong>
           <input
             className="form-control"
             value={lectureName}
