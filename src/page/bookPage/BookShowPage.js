@@ -42,13 +42,12 @@ const BookShowPage = () => {
           <div className="d-flex">
             <div className="flex-grow-1">
               <h5>
-                <FaChalkboardTeacher /> &nbsp;
-                {post.lectureName}
+                <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
+                &nbsp;/&nbsp;
+                {post.publisher}
               </h5>
-              &nbsp; &nbsp;
-              <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
-              &nbsp;/&nbsp;
-              {post.publisher}
+              <FaChalkboardTeacher /> &nbsp;
+              {post.lectureName}
             </div>
 
             {post.studentId === studentId && (
@@ -84,6 +83,18 @@ const BookShowPage = () => {
             )}
           </div>
           <hr />
+          <strong>
+            <BsCardChecklist />
+            &nbsp; 정가
+          </strong>
+          <br />: {post.originalPrice}원
+          <br /> <br />
+          <strong>
+            <BsCardChecklist />
+            &nbsp; 판매가
+          </strong>
+          <br />: {post.sellPrice}원
+          <br /> <br />
           <strong>
             <BsCardChecklist />
             &nbsp; 책을 구매한 학기
