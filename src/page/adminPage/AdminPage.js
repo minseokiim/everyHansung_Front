@@ -36,7 +36,6 @@ const AdminPage = () => {
     axios.get("http://localhost:8080/auth/all").then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
-      console.log(res.data);
     });
   };
 

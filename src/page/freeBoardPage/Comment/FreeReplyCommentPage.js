@@ -5,7 +5,7 @@ import "./FreeCommentPage.css";
 
 const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
-  const [anonymous, setIsAnonymous] = useState(false);
+  const [anonymous, setIsAnonymous] = useState(true);
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = () => {
