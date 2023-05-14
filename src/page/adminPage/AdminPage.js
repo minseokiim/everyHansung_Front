@@ -79,7 +79,7 @@ const AdminPage = () => {
         <>
           <div>
             <div className="d-flex justify-content-between">
-              <strong className="p-3">인증 필요한 가입자</strong>
+              <strong className="p-3">인증 필요한 회원</strong>
             </div>
           </div>
           <hr />
@@ -95,34 +95,39 @@ const AdminPage = () => {
             />
           </form>
           <br />
-          {currentPosts.length > 0
-            ? currentPosts
-                .sort((a, b) => b.id - a.id)
-                .map((post) => {
-                  return (
-                    <>
-                      <div
-                        key={post.id}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <div>
-                          {post.studentId} | {post.username} | {post.email}
-                        </div>
-                        <button
-                          className="red-button"
-                          onClick={() => handleCertification(post.studentId)}
-                        >
-                          {post.certification ? "인증 완료" : "인증 전"}
-                        </button>
+          {currentPosts.length > 0 ? (
+            currentPosts
+              .sort((a, b) => b.id - a.id)
+              .map((post) => {
+                return (
+                  <>
+                    <div
+                      key={post.id}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div>
+                        {post.studentId} | {post.username} | {post.email}
                       </div>
-                      <hr />
-                    </>
-                  );
-                })
-            : "회원이 없습니다"}
+                      <button
+                        className="red-button"
+                        onClick={() => handleCertification(post.studentId)}
+                      >
+                        {post.certification ? "인증 완료" : "인증 확인"}
+                      </button>
+                    </div>
+                    <hr />
+                  </>
+                );
+              })
+          ) : (
+            <>
+              모두 인증 완료 되었습니다.
+              <br />
+            </>
+          )}
           <br />
           <div className="pagination">
             <div className="pagination-container">
@@ -144,7 +149,7 @@ const AdminPage = () => {
         </>
       ) : (
         <div>
-          <h1>권한이 없습니다.</h1>
+          <h1>접근 권한이 없습니다.</h1>
         </div>
       )}
     </div>
