@@ -56,12 +56,29 @@ import BookListPage from "./page/bookPage/BookListPage";
 import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
+import AdminPage from "./page/adminPage/AdminPage";
+
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* //nav 보여주고 싶은 페이지 */}
+
         <Route element={<NavBar />}>
+          <Route
+            path="/admin"
+            element={
+              <div>
+                <Card>
+                  <AdminPage />
+                  <br />
+                  <br />
+                </Card>
+                <Footer />
+              </div>
+            }
+          />
+
           <Route
             path="/timetable/post"
             element={
