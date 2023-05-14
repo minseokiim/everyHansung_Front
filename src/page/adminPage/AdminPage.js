@@ -112,7 +112,11 @@ const AdminPage = () => {
                       </div>
                       <button
                         className="red-button"
-                        onClick={() => handleCertification(post.studentId)}
+                        onClick={() => {
+                          if (window.confirm("인증 처리 하시겠습니까?")) {
+                            handleCertification(post.studentId);
+                          }
+                        }}
                       >
                         {post.certification ? "인증 완료" : "인증 확인"}
                       </button>
@@ -147,9 +151,7 @@ const AdminPage = () => {
           </div>
         </>
       ) : (
-        <div>
-          <h1>접근 권한이 없습니다.</h1>
-        </div>
+        <div>접근 권한이 없습니다.</div>
       )}
     </div>
   );

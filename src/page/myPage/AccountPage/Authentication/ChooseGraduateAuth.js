@@ -10,40 +10,50 @@ import { BsFillTrashFill } from "react-icons/bs";
 const ChooseGraduateAuth = () => {
   const studentId = localStorage.getItem("studentId");
   const move = useNavigate();
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
 
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
-      setPreview(URL.createObjectURL(e.target.files[0]));
-    }
-  };
+  const [imageFile, setImageFile] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
 
   const removeImage = () => {
-    setFile(null);
-    setPreview(null);
+    setImageFile("");
+    setPreviewImage("");
   };
 
-  const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("file", file);
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
-    try {
-      const response = await apiClient.post(
-        `http://localhost:8080/member/${studentId}/uploadStudentCard`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      move("/auth/check");
-      console.log(response.data);
-    } catch (error) {
-      console.error("파일 업로드 중 에러발생", error);
+  const onImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+      setPreviewImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      setImageFile("");
+      setPreviewImage("");
     }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let base64Image = null;
+    if (imageFile) {
+      base64Image = await toBase64(imageFile);
+    }
+
+    const data = {
+      imageFile: base64Image,
+    };
+
+    apiClient
+      .post(`http://localhost:8080/member/${studentId}/uploadStudentCard`, data)
+      .then(() => {
+        move("/auth/check");
+      });
   };
 
   return (
@@ -55,29 +65,49 @@ const ChooseGraduateAuth = () => {
           학교에서 공식적으로 발급한 졸업 증명서를 제출 하여 인증
         </div>
         <hr />
-        <input
-          type="file"
-          accept="file/*"
-          onChange={handleImageChange}
-          id="file-input"
-        />
-        <label htmlFor="file-input">
-          <AiOutlinePaperClip className="icon" />
-        </label>
-
-        {preview && (
-          <div className="mt-3">
-            <img
-              src={preview}
-              alt="preview"
-              style={{ width: "300px", height: "auto" }}
+        <div className="mb-3">
+          <label htmlFor="imageFile" className="d-inline-block">
+            <AiOutlinePaperClip
+              className="icon"
+              style={{ cursor: "pointer" }}
+              size={24}
             />
-            <br /> <br />
-            <BsFillTrashFill onClick={removeImage} className="icon ml-3" />
-          </div>
-        )}
-        <hr />
-        <button type="button" onClick={handleSubmit} className=" button ">
+          </label>
+          <input
+            type="file"
+            id="imageFile"
+            onChange={onImageChange}
+            accept="image/*"
+            style={{ display: "none" }}
+          />
+          {imageFile && (
+            <BsFillTrashFill
+              onClick={removeImage}
+              style={{ cursor: "pointer", marginLeft: "10px" }}
+              size={20}
+              className="icon"
+            />
+          )}
+
+          {imageFile && !previewImage && (
+            <div className="mt-3">
+              <img
+                src={`data:image/png;base64,${imageFile}`}
+                style={{ width: "200px", height: "auto" }}
+              />
+            </div>
+          )}
+          {imageFile && previewImage && (
+            <div>
+              <img
+                src={previewImage}
+                style={{ width: "200px", height: "auto" }}
+              />
+            </div>
+          )}
+          <span className="grey">사진은 한장만 선택 가능합니다.</span>
+        </div>
+        <button className="button" type="submit" onClick={onSubmit}>
           제출
         </button>
       </div>
