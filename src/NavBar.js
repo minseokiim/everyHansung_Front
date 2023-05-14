@@ -54,8 +54,8 @@ const NavBar = () => {
               <HiOutlineBookOpen />
               책방
             </Nav.Link>
-            <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/timetable">시간표</Nav.Link>
+            <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/require">졸업요건</Nav.Link>
           </Nav>
 

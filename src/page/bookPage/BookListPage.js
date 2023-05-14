@@ -169,8 +169,20 @@ const BookListPage = () => {
                     }}
                   >
                     <div>
+                      <div>
+                        {post.imageFile && (
+                          <img
+                            src={`data:image/png;base64,${post.imageFile}`}
+                            alt="preview"
+                            style={{ width: "80px", height: "auto" }}
+                          />
+                        )}
+                      </div>
+                      <hr />
                       <BsBook /> &nbsp;
-                      {post.bookName}
+                      {post.bookName}&nbsp;|&nbsp;
+                      <FaChalkboardTeacher /> &nbsp;
+                      {post.lectureName}
                       {post.studentId === studentId && (
                         <button
                           onClick={(e) => {
@@ -182,19 +194,6 @@ const BookListPage = () => {
                           {post.saleState}
                         </button>
                       )}
-                      <div>
-                        {/* 미리보기 해결 남음 */}
-                        {post.imageFile && (
-                          <img
-                            src={`data:image/png;base64,${post.imageFile}`}
-                            alt="preview"
-                            style={{ width: "100px", height: "auto" }}
-                          />
-                        )}
-                      </div>
-                      <hr />
-                      <FaChalkboardTeacher /> &nbsp;
-                      {post.lectureName}
                     </div>
                   </div>
                 );

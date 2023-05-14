@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import apiClient from "../../../apiClient";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../MessagePage.css";
 import ReplyMessagePage from "../Send/ReplyMessagePage";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
+import { TbMessagesOff } from "react-icons/tb";
 
 const ReceivedMessageListPage = () => {
   const move = useNavigate();
@@ -64,72 +64,81 @@ const ReceivedMessageListPage = () => {
         <strong>쪽지함</strong>
         &nbsp;&nbsp;
         <hr />
-        {messages.length > 0
-          ? messages.map((message) => {
-              return (
-                <div key={message.id}>
+        {messages.length > 0 ? (
+          messages.map((message) => {
+            return (
+              <div key={message.id}>
+                <div
+                  className="card-body cursor-pointer"
+                  onClick={() => {
+                    move(`/message/${message.room.id}`);
+                  }}
+                >
                   <div
-                    className="card-body cursor-pointer"
-                    onClick={() => {
-                      move(`/message/${message.room.id}`);
+                    style={{
+                      display: "flex",
+                      marginBottom: "0",
                     }}
                   >
-                    <div
+                    {message.content}
+
+                    <span
                       style={{
                         display: "flex",
-                        marginBottom: "0",
+                        alignItems: "center",
+                        marginLeft: "auto",
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
                       }}
                     >
-                      {message.content}
-
-                      <span
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          marginLeft: "auto",
-                        }}
+                      <BiMessage
+                        className="cursor-pointer icon"
                         onClick={(e) => {
                           e.stopPropagation();
+                          setOpenModalMessageId(message.id);
                         }}
-                      >
-                        <BiMessage
-                          className="cursor-pointer icon"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setOpenModalMessageId(message.id);
-                          }}
-                        />
-                        &nbsp;
-                        <ReplyMessagePage
-                          isOpen={openModalMessageId === message.id}
-                          onRequestClose={() => setOpenModalMessageId(null)}
-                          messageSender={message.sender}
-                          setRefresh={setRefresh}
-                        />
-                        <BsFillTrashFill
-                          className="icon"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (
-                              window.confirm(
-                                "쪽지 내용을 모두 삭제하시겠습니까?"
-                              )
-                            ) {
-                              deleteMessage(message.room.id);
-                            }
-                          }}
-                        />
-                      </span>
-                    </div>
-                    <span className="grey">
-                      <BiTimeFive /> {timeDifference(message.sendTime)}&nbsp;
+                      />
                       &nbsp;
+                      <ReplyMessagePage
+                        isOpen={openModalMessageId === message.id}
+                        onRequestClose={() => setOpenModalMessageId(null)}
+                        messageSender={message.sender}
+                        setRefresh={setRefresh}
+                      />
+                      <BsFillTrashFill
+                        className="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (
+                            window.confirm("쪽지 내용을 모두 삭제하시겠습니까?")
+                          ) {
+                            deleteMessage(message.room.id);
+                          }
+                        }}
+                      />
                     </span>
                   </div>
+                  <span className="grey">
+                    <BiTimeFive /> {timeDifference(message.sendTime)}&nbsp;
+                    &nbsp;
+                  </span>
                 </div>
-              );
-            })
-          : "쪽지가 없습니다"}
+              </div>
+            );
+          })
+        ) : (
+          <>
+            <h4>
+              <TbMessagesOff />
+            </h4>
+            <div>받은 쪽지가 없습니다.</div>
+
+            <div className="grey pt-1">
+              쪽지는 자유게시판, 비밀게시판, 책방을 통해 보낼 수 있어요!
+            </div>
+          </>
+        )}
       </div>
     </>
   );

@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(true);
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = () => {
