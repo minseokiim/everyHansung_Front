@@ -41,23 +41,39 @@ const ChooseGraduateAuth = () => {
     e.preventDefault();
 
     let base64Image = null;
-    if (imageFile) {
-      base64Image = await toBase64(imageFile);
+
+    if (!imageFile) {
+      alert("사진 첨부 후 다시 눌러주세요");
+      return;
     }
 
-    const data = {
-      imageFile: base64Image,
-    };
+    try {
+      if (imageFile) {
+        base64Image = await toBase64(imageFile);
+      }
 
-    apiClient
-      .post(`http://localhost:8080/member/${studentId}/uploadStudentCard`, data)
-      .then(() => {
-        move("/auth/check");
-      });
+      const data = {
+        imageFile: base64Image,
+      };
+
+      await apiClient
+        .post(
+          `http://localhost:8080/member/${studentId}/uploadStudentCard`,
+          data
+        )
+        .then(() => {
+          move("/auth/check");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
-    <div className="p-3">
+    <form className="p-3">
       <TbCertificate />
       <strong className="p-1">졸업 증명서</strong>
       <div className="cursor-pointer">
@@ -111,7 +127,7 @@ const ChooseGraduateAuth = () => {
           제출
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

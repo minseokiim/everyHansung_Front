@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const AdminPage = () => {
+  const move = useNavigate();
+
   const [posts, setPosts] = useState([]);
   //멤버 이름 검색
   const [searchText, setSearchText] = useState("");
@@ -59,18 +62,18 @@ const AdminPage = () => {
     setFilteredPosts(filtered);
   };
 
-  const handleCertification = async (studentId) => {
-    try {
-      await axios.patch(
-        `http://localhost:8080/auth/${studentId}/certification`,
-        { certification: true }
-      );
-      alert("인증 처리 되었습니다");
-      getPosts();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleCertification = async (studentId) => {
+  //   try {
+  //     await axios.patch(
+  //       `http://localhost:8080/auth/${studentId}/certification`,
+  //       { certification: true }
+  //     );
+  //     alert("인증 처리 되었습니다");
+  //     getPosts();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div className="p-3">
@@ -99,18 +102,21 @@ const AdminPage = () => {
               .sort((a, b) => b.id - a.id)
               .map((post) => {
                 return (
-                  <>
+                  <div key={post.id}>
                     <div
-                      key={post.id}
+                      className="cursor-pointer"
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                      }}
+                      onClick={() => {
+                        move(`/admin/${post.studentId}`);
                       }}
                     >
                       <div>
                         {post.studentId} | {post.username} | {post.email}
                       </div>
-                      <button
+                      {/* <button
                         className="red-button"
                         onClick={() => {
                           if (window.confirm("인증 처리 하시겠습니까?")) {
@@ -119,10 +125,10 @@ const AdminPage = () => {
                         }}
                       >
                         {post.certification ? "인증 완료" : "인증 확인"}
-                      </button>
+                      </button> */}
                     </div>
                     <hr />
-                  </>
+                  </div>
                 );
               })
           ) : (

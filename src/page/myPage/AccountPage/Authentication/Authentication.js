@@ -15,6 +15,12 @@ const Authentication = () => {
     apiClient.get(`http://localhost:8080/member/${studentId}`).then((res) => {
       setIsCertification(res.data.certification);
       setIsFile(res.data.file);
+
+      if (res.data.certification) {
+        move("/auth/success");
+      } else if (res.data.file) {
+        move("/auth/check");
+      }
     });
   };
 
@@ -22,11 +28,7 @@ const Authentication = () => {
     getAuth();
   }, []);
 
-  return isCertification ? (
-    move("/auth/success")
-  ) : isFile ? (
-    move("/auth/check")
-  ) : (
+  return (
     <div className="p-3">
       <AiFillSafetyCertificate />
       <strong className="p-1">인증하기</strong>
