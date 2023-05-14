@@ -46,15 +46,20 @@ const LoginPage = () => {
         password,
       })
       .then((response) => {
-        localStorage.setItem("rememberMe", true);
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
         localStorage.setItem("studentId", studentId);
         if (rememberMe) {
+          localStorage.setItem("rememberMe", true);
         } else {
           localStorage.removeItem("rememberMe");
         }
-        move("/");
+
+        if(studentId === "admin" && password === "admin") {
+          move("/admin")
+        } else {
+          move("/");
+        }       
       })
       .catch((error) => {
         if (error.response) {
