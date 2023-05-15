@@ -10,7 +10,6 @@ import apiClient from "../../../apiClient";
 import FreeSendMessagePage from "../../messagePage/Send/FreeSendMessagePage";
 import "../Comment/FreeCommentPage.css";
 import axios from "axios";
-
 import { BsFillSendFill } from "react-icons/bs";
 
 const FreeShowPage = () => {
