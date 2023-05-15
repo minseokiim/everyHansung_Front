@@ -15,7 +15,7 @@ const ShowRoomPage = () => {
   const [openModalMessageId, setOpenModalMessageId] = useState(null);
 
   const getMessages = () => {
-    apiClient.get(`http://localhost:8080/message/room/${id}`).then((res) => {
+    apiClient.get(`http://localhost:8080/message/room/${id}/${studentId}`).then((res) => {
       setMessages(res.data);
       console.log(res.data);
     });
