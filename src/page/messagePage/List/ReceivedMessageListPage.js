@@ -82,11 +82,12 @@ const ReceivedMessageListPage = () => {
                     }}
                   >
                     {message.content}&nbsp;
-                    {/* receiver가 나일때는 알람 아이콘이 뜨는 기능 */}
-                    <HiBellAlert
-                      className="m-1"
-                      style={{ color: "hsl(46, 82%, 67%)" }}
-                    />
+                    {!message.readCheck && message.receiver === studentId && (
+                      <HiBellAlert
+                        className="m-1"
+                        style={{ color: "hsl(46, 82%, 67%)" }}
+                      />
+                    )}
                     <span
                       style={{
                         display: "flex",

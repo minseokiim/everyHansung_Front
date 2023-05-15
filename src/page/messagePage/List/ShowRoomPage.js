@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ReplyMessagePage from "../Send/ReplyMessagePage";
 import { BsFillSendFill, BsFillPersonFill } from "react-icons/bs";
 import React from "react";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const ShowRoomPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -35,9 +36,29 @@ const ShowRoomPage = () => {
     return new Intl.DateTimeFormat("ko-KR", options).format(new Date(date));
   };
 
+  // const deleteMessage = async (id) => {
+  //   try {
+  //     await apiClient.delete(`http://localhost:8080/message/room/${id}`);
+  //     alert("쪽지가 삭제되었습니다.");
+  //   } catch (error) {
+  //     alert("쪽지 삭제에 실패했습니다.");
+  //   }
+  // };
+
   return (
     <div className="p-4">
-      <strong>주고 받은 쪽지</strong>
+      <span
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginLeft: "auto",
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <strong>주고 받은 쪽지</strong>
+      </span>
       <hr />
       <div className="p-2">
         {messages.map((message) => (
@@ -57,6 +78,17 @@ const ShowRoomPage = () => {
                     alignItems: "center",
                   }}
                 >
+                  {/* <BsFillTrashFill
+                    className="icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (
+                        window.confirm("쪽지 내용을 모두 삭제하시겠습니까?")
+                      ) {
+                        deleteMessage(message.room.id);
+                      }
+                    }}
+                  /> */}
                   <BsFillPersonFill />
                   <span>: {message.content} </span>&nbsp;&nbsp;
                   <BsFillSendFill
