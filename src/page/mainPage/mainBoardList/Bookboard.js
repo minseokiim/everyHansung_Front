@@ -59,10 +59,9 @@ const Bookboard = () => {
   }, [posts]);
 
   return (
-    <div className="p-3">
-      <div>
-        <div className="d-flex justify-content-between"></div>
-      </div>
+    <div>
+      <div className="d-flex justify-content-between"></div>
+
       <div>
         {currentPosts.length > 0 ? (
           currentPosts
@@ -94,7 +93,19 @@ const Bookboard = () => {
             })
         ) : (
           <>
-            - 책방 &nbsp; <span className="grey"> 거래중인 책이 없습니다</span>
+            <div
+              className="card-body cursor-pointer"
+              onClick={() => {
+                if (name) {
+                  move("/bookstore");
+                } else {
+                  alert("로그인 해야 게시물 확인 가능합니다");
+                }
+              }}
+            >
+              책방 &nbsp;
+              <span className="grey">거래중인 책이 없습니다</span>
+            </div>
           </>
         )}
       </div>

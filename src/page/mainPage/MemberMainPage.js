@@ -184,8 +184,9 @@ const MemberMainPage = () => {
       <br />
       <div className="info">(상상부기를 누르면 해당 페이지로 이동합니다.)</div>
       <hr />
-      <div className="p-4 mini-card">
-        <strong className="m-3">최근 게시물</strong> <hr />
+      <div className="p-4">
+        <strong className="m-1">최근 게시물</strong>
+        <br /> <br />
         <Freeboard />
         <Secretboard />
         <Lectureboard />
