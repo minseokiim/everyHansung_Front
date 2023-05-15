@@ -77,9 +77,7 @@ const Lectureboard = () => {
   }, []);
 
   return (
-    <div className="p-3">
-      <div></div>
-
+    <div>
       <div>
         {currentPosts.length > 0 ? (
           currentPosts
@@ -88,7 +86,7 @@ const Lectureboard = () => {
               return (
                 <div
                   key={post.id}
-                  className=" cursor-pointer"
+                  className="card-body cursor-pointer"
                   onClick={() => {
                     if (name) {
                       move(`/lectureboard/${post.id}`);
@@ -98,7 +96,7 @@ const Lectureboard = () => {
                   }}
                 >
                   <span>
-                    - 강의평 &nbsp;
+                    강의평 &nbsp;
                     <span className="grey">
                       <FaChalkboardTeacher />
                       &nbsp; {post.lectureName}, {post.professor} 교수님 &nbsp;
@@ -112,7 +110,19 @@ const Lectureboard = () => {
             })
         ) : (
           <>
-            - 강의평 &nbsp; <span className="grey">강의평이 없습니다</span>
+            <div
+              className="card-body cursor-pointer"
+              onClick={() => {
+                if (name) {
+                  move("/lectureboard");
+                } else {
+                  alert("로그인 해야 게시물 확인 가능합니다");
+                }
+              }}
+            >
+              강의평 &nbsp;
+              <span className="grey">강의평이 없습니다</span>
+            </div>
           </>
         )}
       </div>
