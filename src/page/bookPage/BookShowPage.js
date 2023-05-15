@@ -4,8 +4,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { BsCardChecklist, BsBook } from "react-icons/bs";
 import apiClient from "../../apiClient";
 import BookSendMessagePage from "../messagePage/Send/BookSendMessagePage";
-import { BiMessage } from "react-icons/bi";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsFillSendFill } from "react-icons/bs";
 
 const BookShowPage = () => {
   const { id } = useParams();
@@ -68,8 +67,8 @@ const BookShowPage = () => {
             {post.studentId !== studentId && (
               <>
                 <div>
-                  <BiMessage
-                    className="cursor-pointer"
+                  <BsFillSendFill
+                    className="cursor-pointer icon"
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}

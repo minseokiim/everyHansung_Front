@@ -4,8 +4,12 @@ import SecretCommentListPage from "../Comment/SecretCommentListPage";
 import SecretBoardHeart from "../Heart/SecretBoardHeart";
 import "./SecretWritePage.css";
 import { AiFillEdit } from "react-icons/ai";
-import { BiTimeFive, BiMessage } from "react-icons/bi";
-import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
+import { BiTimeFive } from "react-icons/bi";
+import {
+  BsFillPersonFill,
+  BsFillTrashFill,
+  BsFillSendFill,
+} from "react-icons/bs";
 import apiClient from "../../../apiClient";
 import SecretSendMessagePage from "../../messagePage/Send/SecretSendMessagePage";
 import "../Comment/SecretCommentPage.css";
@@ -97,8 +101,8 @@ const SecretShowPage = () => {
             {post.nickname !== nickname && (
               <>
                 <div>
-                  <BiMessage
-                    className="cursor-pointer"
+                  <BsFillSendFill
+                    className="cursor-pointer icon"
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}

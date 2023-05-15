@@ -2,8 +2,7 @@ import apiClient from "../../../apiClient";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReplyMessagePage from "../Send/ReplyMessagePage";
-import { BiTimeFive, BiMessage } from "react-icons/bi";
-import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillSendFill, BsFillPersonFill } from "react-icons/bs";
 import React from "react";
 
 const ShowRoomPage = () => {
@@ -59,9 +58,10 @@ const ShowRoomPage = () => {
                   }}
                 >
                   <BsFillPersonFill />
-                  <span>: {message.content} </span>&nbsp;
-                  <BiMessage
-                    className="cursor-pointer icon"
+                  <span>: {message.content} </span>&nbsp;&nbsp;
+                  <BsFillSendFill
+                    className="cursor-pointer"
+                    style={{ color: "hsl(227, 49%, 31%)" }}
                     onClick={(e) => {
                       e.stopPropagation();
                       setOpenModalMessageId(message.id);

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import apiClient from "../../../apiClient";
 
 const Bookboard = () => {
@@ -62,47 +61,42 @@ const Bookboard = () => {
   return (
     <div className="p-3">
       <div>
-        <div className="d-flex justify-content-between">
-          <strong className="p-1">책방</strong>
-        </div>
+        <div className="d-flex justify-content-between"></div>
       </div>
       <div>
-        {currentPosts.length > 0
-          ? currentPosts
-              .sort((a, b) => b.id - a.id) //최신순
-              .map((post) => {
-                return (
-                  <div
-                    key={post.id}
-                    className=" card-body cursor-pointer"
-                    onClick={() => {
-                      if (name) {
-                        move(`/bookstore/${post.id}`);
-                      } else {
-                        alert("로그인 해야 게시물 확인 가능합니다");
-                      }
-                    }}
-                  >
-                    <div>
-                      <div>
-                        {post.imageFile && (
-                          <img
-                            src={`data:image/png;base64,${post.imageFile}`}
-                            alt="preview"
-                            style={{ width: "80px", height: "auto" }}
-                          />
-                        )}
-                      </div>
-                      <hr />
+        {currentPosts.length > 0 ? (
+          currentPosts
+            .sort((a, b) => b.id - a.id) //최신순
+            .map((post) => {
+              return (
+                <div
+                  key={post.id}
+                  className=" cursor-pointer"
+                  onClick={() => {
+                    if (name) {
+                      move(`/bookstore/${post.id}`);
+                    } else {
+                      alert("로그인 해야 게시물 확인 가능합니다");
+                    }
+                  }}
+                >
+                  <div>
+                    - 책방 &nbsp;
+                    <span className="grey">
                       <BsBook /> &nbsp;
                       {post.bookName}&nbsp;&nbsp;
                       <FaChalkboardTeacher /> &nbsp;
                       {post.lectureName}
-                    </div>
+                    </span>
                   </div>
-                );
-              })
-          : "게시물이 없습니다."}
+                </div>
+              );
+            })
+        ) : (
+          <>
+            - 책방 &nbsp; <span className="grey"> 거래중인 책이 없습니다</span>
+          </>
+        )}
       </div>
     </div>
   );
