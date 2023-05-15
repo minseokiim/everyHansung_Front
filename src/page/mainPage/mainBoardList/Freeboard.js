@@ -49,7 +49,7 @@ const Freeboard = () => {
   }, [posts.length]);
 
   return (
-    <div className="p-3">
+    <div>
       {currentPosts.length > 0 ? (
         currentPosts
           .filter((post) => post.title !== 0)
@@ -58,7 +58,7 @@ const Freeboard = () => {
             return (
               <div
                 key={post.id}
-                className="cursor-pointer"
+                className="card-body cursor-pointer"
                 onClick={() => {
                   if (name) {
                     move(`/freeboard/${post.id}`);
@@ -68,19 +68,29 @@ const Freeboard = () => {
                 }}
               >
                 <div>
-                  <div>
-                    - 자유게시판 &nbsp;
-                    <span className="grey">
-                      {post.title} {post.fileDir ? <AiOutlinePicture /> : ""}
-                    </span>
-                  </div>
+                  자유게시판 &nbsp;
+                  <span className="grey">
+                    {post.title} {post.fileDir ? <AiOutlinePicture /> : ""}
+                  </span>
                 </div>
               </div>
             );
           })
       ) : (
         <>
-          - 자유게시판 &nbsp; <span className="grey">게시물이 없습니다</span>
+          <div
+            className="card-body cursor-pointer"
+            onClick={() => {
+              if (name) {
+                move("/freeboard");
+              } else {
+                alert("로그인 해야 게시물 확인 가능합니다");
+              }
+            }}
+          >
+            자유게시판 &nbsp;
+            <span className="grey">게시글이 없습니다</span>
+          </div>
         </>
       )}
     </div>
