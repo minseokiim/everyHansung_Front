@@ -10,7 +10,7 @@ const AdminPage = () => {
   const move = useNavigate();
 
   const [posts, setPosts] = useState([]);
-  
+
   //멤버 이름 검색
   const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -47,7 +47,6 @@ const AdminPage = () => {
     setModalShow(true);
   };
 
-
   const getPosts = () => {
     axios.get("http://localhost:8080/auth/all").then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
@@ -82,7 +81,7 @@ const AdminPage = () => {
       console.error(error);
     }
   };
-  
+
   const handleCertification = async (studentId) => {
     try {
       await apiClient.patch(
@@ -111,10 +110,18 @@ const AdminPage = () => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>학번</th>
-                  <th>이름</th>
-                  <th>이메일</th>
-                  <th>학생증</th>
+                  <th>
+                    <strong>학번</strong>
+                  </th>
+                  <th>
+                    <strong>이름</strong>
+                  </th>
+                  <th>
+                    <strong>이메일</strong>
+                  </th>
+                  <th>
+                    <strong>첨부 자료</strong>
+                  </th>
                   <th></th>
                 </tr>
               </thead>
@@ -126,13 +133,20 @@ const AdminPage = () => {
                       <td>{post.studentId}</td>
                       <td>{post.username}</td>
                       <td>{post.email}</td>
-                      <td>{post.imageFile && 
-                      (<img
-                      src={`data:image/png;base64,${post.imageFile}`}
-                      alt="preview"
-                      style={{ width: "50px", height: "50px" }}
-                      onClick={() => handleShow(`data:image/png;base64,${post.imageFile}`)}
-                      />)}</td>
+                      <td>
+                        {post.imageFile && (
+                          <img
+                            src={`data:image/png;base64,${post.imageFile}`}
+                            alt="preview"
+                            style={{ width: "50px", height: "auto" }}
+                            onClick={() =>
+                              handleShow(
+                                `data:image/png;base64,${post.imageFile}`
+                              )
+                            }
+                          />
+                        )}
+                      </td>
                       <td>
                         <button
                           className="red-button"
@@ -168,10 +182,14 @@ const AdminPage = () => {
 
           <Modal show={modalShow} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>학생증</Modal.Title>
+              <Modal.Title>첨부 자료</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <img src={selectedImage} alt="Selected" style={{ width: "100%" }} />
+              <img
+                src={selectedImage}
+                alt="Selected"
+                style={{ width: "100%" }}
+              />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>

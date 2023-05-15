@@ -181,43 +181,6 @@ const SingUpPage = () => {
     }
   };
 
-  // //인증코드 주석해놨을때 쓰는 onSubmit
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (
-  //     checkIdDisplay === "block" &&
-  //     checkPasswordDisplay === "block" &&
-  //     checkConfirmpasswdDisplay === "block" &&
-  //     checkEmailDisplay === "block" &&
-  //     checknameDisplay === "block" &&
-  //     checkNicknameDisplay === "block"
-  //   ) {
-  //     axios
-  //       .post("http://localhost:8080/auth/register", {
-  //         studentId,
-  //         email,
-  //         password,
-  //         username,
-  //         nickname,
-  //       })
-  //       .then(() => {
-  //         alert(username + "님, 회원가입을 축하합니다.");
-  //         move("/login");
-  //       })
-  //       .catch((error) => {
-  //         if (error.response.status === 401) {
-  //           setClearIdDisplay("block");
-  //           setCheckIdDisplay("none");
-  //           alert("이미 가입된 학번입니다.");
-  //         } else if (error.response.status === 402) {
-  //           setClearNicknameDisplay("block");
-  //           setCheckNicknameDisplay("none");
-  //           alert("이미 사용중인 닉네임입니다.");
-  //         }
-  //       });
-  //   }
-  // };
-
   return (
     <div id="register-container">
       <h2>에브리한성 회원가입</h2>
@@ -396,7 +359,6 @@ const SingUpPage = () => {
           </button>
         )}
       </div>
-
       <br />
 
       <p className="find">
