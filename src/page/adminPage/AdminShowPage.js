@@ -1,10 +1,17 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { RiAdminLine } from "react-icons/ri";
 
 const AdminShowPage = () => {
   const { studentId } = useParams();
   const [post, setPost] = useState([]);
+  const move = useNavigate();
+
+  //관리자 체크
+  const nowId = localStorage.getItem("studentId");
+  const isAdmin = nowId === "admin12";
 
   const getPost = (studentId) => {
     axios.get(`http://localhost:8080/auth/${studentId}`).then((res) => {
@@ -17,7 +24,6 @@ const AdminShowPage = () => {
     getPost(studentId);
   }, []);
 
-  //인증 거절 버튼
   const rejectCertification = async (studentId) => {
     try {
       await axios.patch(
@@ -25,12 +31,12 @@ const AdminShowPage = () => {
         { imageFile: false }
       );
       alert("인증 요청 삭제 되었습니다");
+      move("/admin");
     } catch (error) {
       console.error(error);
     }
   };
 
-  //인증 수락 버튼
   const handleCertification = async (studentId) => {
     try {
       await axios.patch(
@@ -38,6 +44,7 @@ const AdminShowPage = () => {
         { certification: true }
       );
       alert("인증 처리 되었습니다");
+      move("/admin");
     } catch (error) {
       console.error(error);
     }
@@ -45,45 +52,56 @@ const AdminShowPage = () => {
 
   return (
     <div className="p-4">
-      <h5>
-        <strong>
-          {post.username} | {post.studentId}
-        </strong>
-        <hr />
-      </h5>
+      {isAdmin ? (
+        <>
+          <h5>
+            <strong>
+              {post.username} | {post.studentId}
+            </strong>
+            <hr />
+          </h5>
 
-      {/* 사진 보여주기 */}
-      <br />
-      {post.imageFile && (
-        <div className="mt-3">
-          <img
-            src={`data:image/png;base64,${post.imageFile}`}
-            alt="preview"
-            style={{ width: "400px", height: "auto" }}
-          />
+          <br />
+          {post.imageFile && (
+            <div className="mt-3">
+              <img
+                src={`data:image/png;base64,${post.imageFile}`}
+                alt="preview"
+                style={{ width: "400px", height: "auto" }}
+              />
+            </div>
+          )}
+          <button
+            className="red-button"
+            onClick={() => {
+              if (window.confirm("인증 거절 하시겠습니까?")) {
+                rejectCertification(post.studentId);
+              }
+            }}
+          >
+            인증 거절
+          </button>
+
+          <button
+            className="button"
+            onClick={() => {
+              if (window.confirm("인증 처리 하시겠습니까?")) {
+                handleCertification(post.studentId);
+              }
+            }}
+          >
+            인증 확인
+          </button>
+        </>
+      ) : (
+        <div className="p-3">
+          <h4>
+            <RiAdminLine />
+          </h4>
+          <div>접근 권한이 없습니다.</div>
+          <div className="grey pt-1">관리자만 접근 가능한 페이지 입니다.</div>
         </div>
       )}
-      <button
-        className="red-button"
-        onClick={() => {
-          if (window.confirm("인증 거절 하시겠습니까?")) {
-            rejectCertification(post.studentId);
-          }
-        }}
-      >
-        인증 거절
-      </button>
-
-      <button
-        className="button"
-        onClick={() => {
-          if (window.confirm("인증 처리 하시겠습니까?")) {
-            handleCertification(post.studentId);
-          }
-        }}
-      >
-        인증 확인
-      </button>
     </div>
   );
 };

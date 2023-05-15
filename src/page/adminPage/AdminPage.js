@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { RiAdminLine } from "react-icons/ri";
 
 const AdminPage = () => {
   const move = useNavigate();
@@ -11,7 +12,7 @@ const AdminPage = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
 
-  //작성 버튼 활성화
+  //관리자 체크
   const studentId = localStorage.getItem("studentId");
   const isAdmin = studentId === "admin12";
 
@@ -62,19 +63,6 @@ const AdminPage = () => {
     setFilteredPosts(filtered);
   };
 
-  // const handleCertification = async (studentId) => {
-  //   try {
-  //     await axios.patch(
-  //       `http://localhost:8080/auth/${studentId}/certification`,
-  //       { certification: true }
-  //     );
-  //     alert("인증 처리 되었습니다");
-  //     getPosts();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   return (
     <div className="p-3">
       {isAdmin ? (
@@ -109,23 +97,18 @@ const AdminPage = () => {
                         display: "flex",
                         justifyContent: "space-between",
                       }}
-                      onClick={() => {
-                        move(`/admin/${post.studentId}`);
-                      }}
                     >
                       <div>
                         {post.studentId} | {post.username} | {post.email}
                       </div>
-                      {/* <button
-                        className="red-button"
+                      <button
+                        className="button"
                         onClick={() => {
-                          if (window.confirm("인증 처리 하시겠습니까?")) {
-                            handleCertification(post.studentId);
-                          }
+                          move(`/admin/${post.studentId}`);
                         }}
                       >
-                        {post.certification ? "인증 완료" : "인증 확인"}
-                      </button> */}
+                        사진 보기
+                      </button>
                     </div>
                     <hr />
                   </div>
@@ -157,7 +140,13 @@ const AdminPage = () => {
           </div>
         </>
       ) : (
-        <div>접근 권한이 없습니다.</div>
+        <div className="p-3">
+          <h4>
+            <RiAdminLine />
+          </h4>
+          <div>접근 권한이 없습니다.</div>
+          <div className="grey pt-1">관리자만 접근 가능한 페이지 입니다.</div>
+        </div>
       )}
     </div>
   );
