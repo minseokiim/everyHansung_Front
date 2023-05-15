@@ -46,9 +46,7 @@ const Secretboard = () => {
   }, [posts.length]);
 
   return (
-    <div className="p-3">
-      <div></div>
-
+    <div>
       {currentPosts.length > 0 ? (
         currentPosts
           .filter((post) => post.title !== 0)
@@ -67,7 +65,7 @@ const Secretboard = () => {
                 }}
               >
                 <div>
-                  - 비밀게시판 &nbsp;
+                  비밀게시판 &nbsp;
                   <span className="grey">
                     {post.title} {post.fileDir ? <AiOutlinePicture /> : ""}
                   </span>
@@ -77,7 +75,19 @@ const Secretboard = () => {
           })
       ) : (
         <>
-          - 비밀게시판 &nbsp; <span className="grey">게시물이 없습니다</span>
+          <div
+            className="card-body cursor-pointer"
+            onClick={() => {
+              if (name) {
+                move("/secretboard");
+              } else {
+                alert("로그인 해야 게시물 확인 가능합니다");
+              }
+            }}
+          >
+            비밀게시판 &nbsp;
+            <span className="grey">게시글이 없습니다</span>
+          </div>
         </>
       )}
     </div>
