@@ -78,17 +78,6 @@ const ShowRoomPage = () => {
                     alignItems: "center",
                   }}
                 >
-                  {/* <BsFillTrashFill
-                    className="icon"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (
-                        window.confirm("쪽지 내용을 모두 삭제하시겠습니까?")
-                      ) {
-                        deleteMessage(message.room.id);
-                      }
-                    }}
-                  /> */}
                   <BsFillPersonFill />
                   <span>: {message.content} </span>&nbsp;&nbsp;
                   <BsFillSendFill
