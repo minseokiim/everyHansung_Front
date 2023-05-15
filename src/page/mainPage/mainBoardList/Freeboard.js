@@ -55,7 +55,6 @@ const Freeboard = () => {
           <strong className="p-1">자유게시판</strong>
         </div>
       </div>
-      <hr />
 
       {currentPosts.length > 0
         ? currentPosts

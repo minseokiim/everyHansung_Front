@@ -83,7 +83,6 @@ const Lectureboard = () => {
         <div className="d-flex justify-content-between">
           <strong className="p-1">강의평</strong>
         </div>
-        <hr />
       </div>
 
       <div>
