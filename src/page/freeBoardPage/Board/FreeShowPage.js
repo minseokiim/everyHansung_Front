@@ -11,6 +11,8 @@ import FreeSendMessagePage from "../../messagePage/Send/FreeSendMessagePage";
 import "../Comment/FreeCommentPage.css";
 import axios from "axios";
 
+import { BsFillSendFill } from "react-icons/bs";
+
 const FreeShowPage = () => {
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
@@ -99,8 +101,8 @@ const FreeShowPage = () => {
             {post.nickname !== nickname && (
               <>
                 <div>
-                  <BiMessage
-                    className="cursor-pointer"
+                  <BsFillSendFill
+                    className="cursor-pointer icon"
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}

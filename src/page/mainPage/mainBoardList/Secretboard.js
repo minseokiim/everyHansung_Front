@@ -47,46 +47,39 @@ const Secretboard = () => {
 
   return (
     <div className="p-3">
-      <div>
-        <div className="d-flex justify-content-between">
-          <strong className="p-1">비밀게시판</strong>
-        </div>
-      </div>
+      <div></div>
 
-      {currentPosts.length > 0
-        ? currentPosts
-            .filter((post) => post.title !== 0)
-            .sort((a, b) => b.id - a.id)
-            .map((post) => {
-              return (
-                <div
-                  key={post.id}
-                  className=" card-body cursor-pointer"
-                  onClick={() => {
-                    if (name) {
-                      move(`/secretboard/${post.id}`);
-                    } else {
-                      alert("로그인 해야 게시물 확인 가능합니다");
-                    }
-                  }}
-                >
-                  <div>
-                    {post.title}
-                    <span className="p-1">
-                      {post.fileDir ? <AiOutlinePicture /> : ""}
-                    </span>
-                    <br />
-                    <div className="grey">
-                      {post.content.slice(0, 80)}
-                      {post.content.length > 80 ? "..." : ""}
-                      <br />
-                      <div className="grey "></div>
-                    </div>
-                  </div>
+      {currentPosts.length > 0 ? (
+        currentPosts
+          .filter((post) => post.title !== 0)
+          .sort((a, b) => b.id - a.id)
+          .map((post) => {
+            return (
+              <div
+                key={post.id}
+                className=" card-body cursor-pointer"
+                onClick={() => {
+                  if (name) {
+                    move(`/secretboard/${post.id}`);
+                  } else {
+                    alert("로그인 해야 게시물 확인 가능합니다");
+                  }
+                }}
+              >
+                <div>
+                  - 비밀게시판 &nbsp;
+                  <span className="grey">
+                    {post.title} {post.fileDir ? <AiOutlinePicture /> : ""}
+                  </span>
                 </div>
-              );
-            })
-        : "게시물이 없습니다"}
+              </div>
+            );
+          })
+      ) : (
+        <>
+          - 비밀게시판 &nbsp; <span className="grey">게시물이 없습니다</span>
+        </>
+      )}
     </div>
   );
 };
