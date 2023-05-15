@@ -12,15 +12,17 @@ const ReceivedMessageListPage = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
   const [messages, setMessages] = useState([]);
-  // const [openModalMessageId, setOpenModalMessageId] = useState(null);
-  const [refresh, setRefresh] = useState(false);
 
   const getMessages = () => {
     apiClient
       .get(`http://localhost:8080/message/${studentId}/all`)
       .then((res) => {
-        setMessages(res.data);
-        console.log(res.data);
+        //백엔드에서 id=0인 값을 보내줘서 필터링 추가함
+        const validMessages = res.data.filter(
+          (message) => message && message.content
+        );
+        setMessages(validMessages);
+        console.log(validMessages);
       });
   };
 
@@ -48,6 +50,7 @@ const ReceivedMessageListPage = () => {
       return `${seconds}초 전`;
     }
   };
+
   const deleteMessage = async (id) => {
     try {
       await apiClient.delete(`http://localhost:8080/message/room/${id}`);
