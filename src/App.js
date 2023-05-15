@@ -56,7 +56,6 @@ import BookListPage from "./page/bookPage/BookListPage";
 import BookWritePage from "./page/bookPage/BookWritePage";
 import BookShowPage from "./page/bookPage/BookShowPage";
 
-import AdminShowPage from "./page/adminPage/AdminShowPage";
 import AdminPage from "./page/adminPage/AdminPage";
 
 const App = () => {
@@ -72,20 +71,6 @@ const App = () => {
               <div>
                 <Card>
                   <AdminPage />
-                  <br />
-                  <br />
-                </Card>
-                <Footer />
-              </div>
-            }
-          />
-
-          <Route
-            path="/admin/:studentId"
-            element={
-              <div>
-                <Card>
-                  <AdminShowPage />
                   <br />
                   <br />
                 </Card>
