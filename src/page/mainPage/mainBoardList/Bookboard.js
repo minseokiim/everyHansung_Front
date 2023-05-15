@@ -15,9 +15,6 @@ const Bookboard = () => {
   const [postsPerPage] = useState(5); //페이지네이션
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
-  //const [saleState, setSaleState] = useState("");
-  //const [imageFile, setImageFile] = useState("");
-  const saleStates = ["판매중", "예약중", "판매완료"];
 
   useEffect(() => {
     if (studentId) {
@@ -33,17 +30,9 @@ const Bookboard = () => {
     }
   }, [studentId]);
 
-  const totalPages = () => {
-    return Math.ceil(filteredPosts.length / postsPerPage);
-  };
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const onChangeSearch = (e) => {
-    setSearch(e.target.value);
-  };
 
   const filterPosts = () => {
     const filtered = posts.filter(
@@ -76,7 +65,6 @@ const Bookboard = () => {
         <div className="d-flex justify-content-between">
           <strong className="p-1">책방</strong>
         </div>
-        <hr />
       </div>
       <div>
         {currentPosts.length > 0

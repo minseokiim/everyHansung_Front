@@ -16,10 +16,6 @@ const Secretboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(1);
 
-  const totalPages = () => {
-    return Math.ceil(posts.length / postsPerPage);
-  };
-
   useEffect(() => {
     if (studentId) {
       apiClient
@@ -56,7 +52,6 @@ const Secretboard = () => {
           <strong className="p-1">비밀게시판</strong>
         </div>
       </div>
-      <hr />
 
       {currentPosts.length > 0
         ? currentPosts

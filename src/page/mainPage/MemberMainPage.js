@@ -183,20 +183,14 @@ const MemberMainPage = () => {
       </div>
       <br />
       <div className="info">(상상부기를 누르면 해당 페이지로 이동합니다.)</div>
-      <br /> <hr />
+      <hr />
       <div className="mini-card">
         <Freeboard />
-      </div>
-      <br />
-      <div className="mini-card">
+        <hr />
         <Secretboard />
-      </div>
-      <br />
-      <div className="mini-card">
+        <hr />
         <Lectureboard />
-      </div>
-      <br />
-      <div className="mini-card">
+        <hr />
         <Bookboard />
       </div>
     </div>
