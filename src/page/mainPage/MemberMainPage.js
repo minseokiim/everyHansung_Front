@@ -1,15 +1,13 @@
 import React from "react";
 import "./MainPage.css";
-import { Link } from "react-router-dom";
-import Card from "../../Card";
 import { useNavigate } from "react-router-dom";
-import LectureListPage from "../lectureBoardPage/LectureListPage";
-import FreeListPage from "../freeBoardPage/Board/FreeListPage";
-import SecretListPage from "../secretBoardPage/Board/SecretListPage";
-import BookListPage from "../bookPage/BookListPage";
+import Secretboard from "./mainBoardList/Secretboard";
+import Freeboard from "./mainBoardList/Freeboard";
+import Lectureboard from "./mainBoardList/Lectureboard";
+import apiClient from "../../apiClient";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import apiClient from "../../apiClient";
+import Bookboard from "./mainBoardList/Bookboard";
 
 const MemberMainPage = () => {
   const move = useNavigate();
@@ -187,19 +185,19 @@ const MemberMainPage = () => {
       <div className="info">(상상부기를 누르면 해당 페이지로 이동합니다.)</div>
       <br /> <hr />
       <div className="mini-card">
-        <FreeListPage />
+        <Freeboard />
       </div>
       <br />
       <div className="mini-card">
-        <SecretListPage />
+        <Secretboard />
       </div>
       <br />
       <div className="mini-card">
-        <LectureListPage />
+        <Lectureboard />
       </div>
       <br />
       <div className="mini-card">
-        <BookListPage />
+        <Bookboard />
       </div>
     </div>
   );

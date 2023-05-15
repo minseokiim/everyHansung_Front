@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import apiClient from "../../../apiClient";
 import { useNavigate } from "react-router-dom";
 import "../MessagePage.css";
-import ReplyMessagePage from "../Send/ReplyMessagePage";
 import { BiTimeFive, BiMessage } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
 import { TbMessagesOff } from "react-icons/tb";
+import { HiBellAlert } from "react-icons/hi2";
+// import ReplyMessagePage from "../Send/ReplyMessagePage";
 
 const ReceivedMessageListPage = () => {
   const move = useNavigate();
   const studentId = localStorage.getItem("studentId");
   const [messages, setMessages] = useState([]);
-  const [openModalMessageId, setOpenModalMessageId] = useState(null);
+  // const [openModalMessageId, setOpenModalMessageId] = useState(null);
   const [refresh, setRefresh] = useState(false);
 
   const getMessages = () => {
@@ -80,8 +81,12 @@ const ReceivedMessageListPage = () => {
                       marginBottom: "0",
                     }}
                   >
-                    {message.content}
-
+                    {message.content}&nbsp;
+                    {/* receiver가 나일때는 알람 아이콘이 뜨는 기능 */}
+                    <HiBellAlert
+                      className="m-1"
+                      style={{ color: "hsl(46, 82%, 67%)" }}
+                    />
                     <span
                       style={{
                         display: "flex",
@@ -92,20 +97,6 @@ const ReceivedMessageListPage = () => {
                         e.stopPropagation();
                       }}
                     >
-                      <BiMessage
-                        className="cursor-pointer icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setOpenModalMessageId(message.id);
-                        }}
-                      />
-                      &nbsp;
-                      <ReplyMessagePage
-                        isOpen={openModalMessageId === message.id}
-                        onRequestClose={() => setOpenModalMessageId(null)}
-                        messageSender={message.sender}
-                        setRefresh={setRefresh}
-                      />
                       <BsFillTrashFill
                         className="icon"
                         onClick={(e) => {
