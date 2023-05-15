@@ -1,4 +1,3 @@
-import React from "react";
 import "./MainPage.css";
 import { useNavigate } from "react-router-dom";
 import Secretboard from "./mainBoardList/Secretboard";

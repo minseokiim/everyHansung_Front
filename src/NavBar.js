@@ -9,14 +9,14 @@ import { GiTurtle } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 import { TfiEmail } from "react-icons/tfi";
-import { BsFillHouseFill } from "react-icons/bs";
-import { FaRegComments } from "react-icons/fa";
+
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { ImNewspaper } from "react-icons/im";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
+  const isAdmin = studentId === "admin";
 
   useEffect(() => {
     if (studentId) {
@@ -57,6 +57,7 @@ const NavBar = () => {
             <Nav.Link href="/timetable">시간표</Nav.Link>
             <Nav.Link href="/chatbot">챗부기</Nav.Link>
             <Nav.Link href="/require">졸업요건</Nav.Link>
+            {isAdmin && <Nav.Link href="/admin">관리자 인증</Nav.Link>}
           </Nav>
 
           <Nav className="ms-auto">
