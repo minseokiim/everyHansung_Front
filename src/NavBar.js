@@ -43,6 +43,11 @@ const NavBar = () => {
           <Nav className="p-3 mx-auto">
             <Nav.Link /> <Nav.Link /> <Nav.Link />
             <Nav.Link />
+            {isAdmin && (
+              <>
+                <Nav.Link /> <Nav.Link />
+              </>
+            )}
             <NavDropdown title="게시판" id="basic-nav-dropdown">
               <NavDropdown.Item href="/freeboard">자유 게시판</NavDropdown.Item>
               <NavDropdown.Item href="/secretboard">
@@ -54,10 +59,18 @@ const NavBar = () => {
               <HiOutlineBookOpen />
               책방
             </Nav.Link>
-            <Nav.Link href="/timetable">시간표</Nav.Link>
-            <Nav.Link href="/chatbot">챗부기</Nav.Link>
-            <Nav.Link href="/require">졸업요건</Nav.Link>
-            {isAdmin && <Nav.Link href="/admin">관리자 인증</Nav.Link>}
+            {!isAdmin && (
+              <>
+                <Nav.Link href="/timetable">시간표</Nav.Link>
+                <Nav.Link href="/chatbot">챗부기</Nav.Link>
+                <Nav.Link href="/require">졸업요건</Nav.Link>
+              </>
+            )}
+            {isAdmin && (
+              <>
+                <Nav.Link href="/admin">관리자 인증</Nav.Link>
+              </>
+            )}
           </Nav>
 
           <Nav className="ms-auto">
