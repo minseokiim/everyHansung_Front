@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { RiAdminLine } from "react-icons/ri";
 import { Modal, Button } from "react-bootstrap";
 import apiClient from "../../apiClient";
+import "./Admin.css";
 
 const AdminPage = () => {
   const move = useNavigate();
@@ -96,18 +97,14 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-4 m-2">
       {isAdmin ? (
         <>
-          <div>
-            <div className="d-flex justify-content-between">
-              <strong className="p-3">인증 필요한 회원</strong>
-            </div>
-          </div>
+          <strong className="p-3">인증 필요한 회원</strong>
           <hr />
           <br />
           {currentPosts.length > 0 ? (
-            <table className="table">
+            <table className="admin-table">
               <thead>
                 <tr>
                   <th>
@@ -133,7 +130,7 @@ const AdminPage = () => {
                       <td>{post.studentId}</td>
                       <td>{post.username}</td>
                       <td>{post.email}</td>
-                      <td>
+                      <td className="cursor-pointer">
                         {post.imageFile && (
                           <img
                             src={`data:image/png;base64,${post.imageFile}`}
