@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReplyMessagePage from "../Send/ReplyMessagePage";
 import { BsFillSendFill, BsFillPersonFill } from "react-icons/bs";
-import React from "react";
-import { BsFillTrashFill } from "react-icons/bs";
 
 const ShowRoomPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -15,10 +13,11 @@ const ShowRoomPage = () => {
   const [openModalMessageId, setOpenModalMessageId] = useState(null);
 
   const getMessages = () => {
-    apiClient.get(`http://localhost:8080/message/room/${id}/${studentId}`).then((res) => {
-      setMessages(res.data);
-      console.log(res.data);
-    });
+    apiClient
+      .get(`http://localhost:8080/message/room/${id}/${studentId}`)
+      .then((res) => {
+        setMessages(res.data);
+      });
   };
 
   useEffect(() => {
@@ -35,15 +34,6 @@ const ShowRoomPage = () => {
     };
     return new Intl.DateTimeFormat("ko-KR", options).format(new Date(date));
   };
-
-  // const deleteMessage = async (id) => {
-  //   try {
-  //     await apiClient.delete(`http://localhost:8080/message/room/${id}`);
-  //     alert("쪽지가 삭제되었습니다.");
-  //   } catch (error) {
-  //     alert("쪽지 삭제에 실패했습니다.");
-  //   }
-  // };
 
   return (
     <div className="p-4">
@@ -78,22 +68,27 @@ const ShowRoomPage = () => {
                     alignItems: "center",
                   }}
                 >
-                  <BsFillPersonFill />
-                  <span>: {message.content} </span>&nbsp;&nbsp;
-                  <BsFillSendFill
-                    className="cursor-pointer"
-                    style={{ color: "hsl(227, 49%, 31%)" }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setOpenModalMessageId(message.id);
-                    }}
-                  />
-                  <ReplyMessagePage
-                    isOpen={openModalMessageId === message.id}
-                    onRequestClose={() => setOpenModalMessageId(null)}
-                    messageSender={message.sender}
-                    setRefresh={setRefresh}
-                  />
+                  <BsFillPersonFill />:
+                  <span className="P-1"> {message.content} </span>
+                  &nbsp;&nbsp;
+                  {message.sender !== "admin" && (
+                    <>
+                      <BsFillSendFill
+                        className="cursor-pointer"
+                        style={{ color: "hsl(227, 49%, 31%)" }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenModalMessageId(message.id);
+                        }}
+                      />
+                      <ReplyMessagePage
+                        isOpen={openModalMessageId === message.id}
+                        onRequestClose={() => setOpenModalMessageId(null)}
+                        messageSender={message.sender}
+                        setRefresh={setRefresh}
+                      />
+                    </>
+                  )}
                 </div>
                 <div className="grey">{formatDate(message.sendTime)}</div>
               </div>
@@ -114,7 +109,7 @@ const ShowRoomPage = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span> {message.content} :</span>
+                  <span className="p-1"> {message.content} :</span>
                   <BsFillPersonFill />
                 </div>
                 <div className="grey">{formatDate(message.sendTime)}</div>
