@@ -1,72 +1,11 @@
 {
-  "secretposts": [
-    {
-      "studentId": "1891014",
-      "title": "ㅈㅔ목입니당",
-      "content": "본문입니당",
-      "createdAt": 1681591004689,
-      "isAnonymous": false,
-      "id": 1
-    }
-  ],
+  "secretposts": [],
   "freeboard": [],
-  "lectures": [
-    {
-      "lectureName": "웹프레임워크 1",
-      "professor": "박승현",
-      "content": "작년에 들었어용",
-      "selectedStar": 5,
-      "semester": "2022-2학기",
-      "homework": "보통",
-      "score": "보통",
-      "test": "1회",
-      "team": "많음",
-      "id": 1
-    }
-  ],
+  "lectures": [],
   "freecomments": [],
-  "secretcomments": [
-    {
-      "commentContent": "as",
-      "commentCreatedAt": 1681645110525,
-      "commentIsAnonymous": false,
-      "secretpostId": "5",
-      "id": 1
-    }
-  ],
-  "login": [
-    {
-      "studentId": "1891014",
-      "passwd": "8",
-      "id": 9
-    }
-  ],
+  "secretcomments": [],
+  "login": [],
   "members": [],
-  "bookstore": [
-    {
-      "lectureName": "선형대수",
-      "author": "이광연,설한국",
-      "publisher": "한빛아카데미",
-      "content": "개정판입니다",
-      "semester": "2021-2학기",
-      "bookName": "기초 선형대수학",
-      "state": "보통",
-      "writing": "필기 많음",
-      "id": 1
-    }
-  ],
-  "heart": [
-    {
-      "isFilled": false,
-      "studentId": "1891014",
-      "secretpostId": "5",
-      "id": 1
-    },
-    {
-      "isFilled": false,
-      "studentId": "1891014",
-      "secretpostId": "5",
-      "id": 2
-    }
-  ]
+  "bookstore": [],
+  "heart": []
 }

@@ -17,12 +17,10 @@ const ReceivedMessageListPage = () => {
     apiClient
       .get(`http://localhost:8080/message/${studentId}/all`)
       .then((res) => {
-        //백엔드에서 id=0인 값을 보내줘서 필터링 추가함
         const validMessages = res.data.filter(
           (message) => message && message.content
         );
         setMessages(validMessages);
-        console.log(validMessages);
       });
   };
 

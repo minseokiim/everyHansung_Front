@@ -44,7 +44,7 @@ const LectureShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/lectureboard/${id}`);
+      await apiClient.delete(`http://localhost:8080/lecture/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/lectureboard");
     } catch (error) {
