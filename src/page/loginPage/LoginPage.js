@@ -55,11 +55,11 @@ const LoginPage = () => {
           localStorage.removeItem("rememberMe");
         }
 
-        if(studentId === "admin" && password === "admin") {
-          move("/admin")
+        if (studentId === "admin") {
+          move("/admin");
         } else {
           move("/");
-        }       
+        }
       })
       .catch((error) => {
         if (error.response) {

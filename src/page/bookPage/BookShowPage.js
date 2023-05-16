@@ -13,6 +13,7 @@ const BookShowPage = () => {
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
   //const receiver=post.id;
   const studentId = localStorage.getItem("studentId");
+  const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
     apiClient.get(`http://localhost:8080/book/${id}`).then((res) => {
@@ -49,7 +50,7 @@ const BookShowPage = () => {
               {post.lectureName}
             </div>
 
-            {post.studentId === studentId && (
+            {(isAdmin || studentId === post.studentId) && (
               <div>
                 <span className="p-2">
                   <BsFillTrashFill
@@ -64,22 +65,23 @@ const BookShowPage = () => {
               </div>
             )}
 
-            {post.studentId !== studentId && (
-              <>
-                <div>
-                  <BsFillSendFill
-                    className="cursor-pointer icon"
-                    onClick={() => {
-                      setIsMessageModalOpen(true);
-                    }}
-                  />
-                  <BookSendMessagePage
-                    isOpen={isMessageModalOpen}
-                    onRequestClose={() => setIsMessageModalOpen(false)}
-                  />
-                </div>
-              </>
-            )}
+            {post.studentId !==
+              studentId(
+                <>
+                  <div>
+                    <BsFillSendFill
+                      className="cursor-pointer icon"
+                      onClick={() => {
+                        setIsMessageModalOpen(true);
+                      }}
+                    />
+                    <BookSendMessagePage
+                      isOpen={isMessageModalOpen}
+                      onRequestClose={() => setIsMessageModalOpen(false)}
+                    />
+                  </div>
+                </>
+              )}
           </div>
           <hr />
           <strong>

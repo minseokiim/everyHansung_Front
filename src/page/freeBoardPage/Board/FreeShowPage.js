@@ -19,6 +19,7 @@ const FreeShowPage = () => {
   const move = useNavigate();
   const [nickname, setNickname] = useState("");
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+  const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
@@ -53,9 +54,7 @@ const FreeShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(
-        `http://localhost:8080/freeboard/${studentId}/${id}`
-      );
+      await apiClient.delete(`http://localhost:8080/freeboard/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/freeboard");
     } catch (error) {
@@ -71,7 +70,7 @@ const FreeShowPage = () => {
             <h4 className="flex-grow-1">
               <strong>{post.title}</strong>
             </h4>
-            {post.nickname === nickname && (
+            {(isAdmin || nickname === post.nickname) && (
               <>
                 <div>
                   <AiFillEdit

@@ -5,6 +5,7 @@ import Star from "./Star";
 import { BsCardChecklist } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import apiClient from "../../apiClient";
+import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
 
 const LectureShowPage = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const LectureShowPage = () => {
   const createArray = (length) => [...Array(length)];
   const studentId = localStorage.getItem("studentId");
   const [nickname, setNickname] = useState("");
+  const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
     axios.get(`http://localhost:8080/lecture/${id}`).then((res) => {
@@ -40,6 +42,16 @@ const LectureShowPage = () => {
     }
   }, [studentId]);
 
+  const deletePost = async (id) => {
+    try {
+      await apiClient.delete(`http://localhost:8080/lectureboard/${id}`);
+      alert("게시물이 삭제되었습니다.");
+      move("/lectureboard");
+    } catch (error) {
+      alert("게시물 삭제에 실패했습니다.");
+    }
+  };
+
   return (
     <div className="p-4">
       {nickname && (
@@ -49,18 +61,34 @@ const LectureShowPage = () => {
               <FaChalkboardTeacher />
               &nbsp;{post.lectureName} &nbsp;, &nbsp;{post.professor} 교수님
             </h4>
+            {isAdmin && (
+              <div>
+                <span className="p-2">
+                  <BsFillTrashFill
+                    className="cursor-pointer icon"
+                    onClick={() => {
+                      if (window.confirm("게시물을 삭제하시겠습니까?")) {
+                        deletePost(id);
+                      }
+                    }}
+                  />
+                </span>
+              </div>
+            )}
 
-            <div>
-              <button
-                className="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  move("/lectureboard");
-                }}
-              >
-                뒤로 가기
-              </button>
-            </div>
+            {!isAdmin && (
+              <div>
+                <button
+                  className="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    move("/lectureboard");
+                  }}
+                >
+                  뒤로 가기
+                </button>
+              </div>
+            )}
           </div>
 
           <hr />

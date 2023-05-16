@@ -3,8 +3,7 @@ import "./FreeCommentPage.css";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import FreeCommentWritePage from "./FreeCommentWritePage";
-import { FaRegCommentDots, FaCommentMedical } from "react-icons/fa";
-import { BiMessage } from "react-icons/bi";
+import { FaRegCommentDots } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import FreeReplyCommentPage from "./FreeReplyCommentPage";
 import { GrFormNext } from "react-icons/gr";
@@ -16,6 +15,7 @@ const FreeCommentListPage = () => {
   const { id } = useParams();
   const [showReplyForm, setShowReplyForm] = useState(null);
   const studentId = localStorage.getItem("studentId");
+  const isAdmin = studentId === "admin";
 
   const getComments = () => {
     apiClient
@@ -67,7 +67,9 @@ const FreeCommentListPage = () => {
   const deleteReply = (e, parentId, replyId) => {
     e.stopPropagation();
     apiClient
-      .delete(`http://localhost:8080/freeboard/comment/${id}/${replyId}/replies`)
+      .delete(
+        `http://localhost:8080/freeboard/comment/${id}/${replyId}/replies`
+      )
       .then(() => {
         refetchReplies(parentId);
       });
@@ -105,7 +107,7 @@ const FreeCommentListPage = () => {
                           onClick={() => toggleReplyForm(comment.id)}
                         />
 
-                        {studentId === comment.studentId && (
+                        {(isAdmin || studentId === comment.studentId) && (
                           <>
                             <span className="p-2">
                               <BsFillTrashFill
@@ -143,7 +145,8 @@ const FreeCommentListPage = () => {
                                   </div>
                                 </div>
 
-                                {studentId === reply.studentId && (
+                                {(isAdmin ||
+                                  studentId === comment.studentId) && (
                                   <div>
                                     <span className="p-2">
                                       <BsFillTrashFill
