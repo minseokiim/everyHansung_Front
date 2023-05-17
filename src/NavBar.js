@@ -9,14 +9,41 @@ import { GiTurtle } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 import { TfiEmail } from "react-icons/tfi";
-
+import { HiBellAlert } from "react-icons/hi2";
 import { HiOutlineBookOpen } from "react-icons/hi";
-import { ImNewspaper } from "react-icons/im";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
   const isAdmin = studentId === "admin";
+  const [messages, setMessages] = useState([]);
+
+  const getMessages = () => {
+    apiClient
+      .get(`http://localhost:8080/message/${studentId}/all`)
+      .then((res) => {
+        const validMessages = res.data.filter(
+          (message) => message && message.content
+        );
+        setMessages(validMessages);
+      });
+  };
+
+  useEffect(() => {
+    getMessages();
+  }, [studentId]);
+
+  const unreadMessage = messages.find(
+    (message) => !message.readCheck && message.receiver === studentId
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getMessages();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [unreadMessage, getMessages]);
 
   useEffect(() => {
     if (studentId) {
@@ -66,11 +93,7 @@ const NavBar = () => {
                 <Nav.Link href="/require">졸업요건</Nav.Link>
               </>
             )}
-            {isAdmin && (
-              <>
-                <Nav.Link href="/admin">관리자 인증</Nav.Link>
-              </>
-            )}
+            {isAdmin && <Nav.Link href="/admin">관리자 인증</Nav.Link>}
           </Nav>
 
           <Nav className="ms-auto">
@@ -79,6 +102,12 @@ const NavBar = () => {
                 <div className="white">
                   <Nav.Link href="/message">
                     <TfiEmail />
+                    {unreadMessage && (
+                      <HiBellAlert
+                        style={{ color: "hsl(46, 82%, 67%)" }}
+                        size={13}
+                      />
+                    )}
                   </Nav.Link>
                 </div>
                 <div className="white">
