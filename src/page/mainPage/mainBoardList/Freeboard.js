@@ -70,7 +70,10 @@ const Freeboard = () => {
                 <div>
                   자유게시판 &nbsp;
                   <span className="grey">
-                    {post.title} {post.fileDir ? <AiOutlinePicture /> : ""}
+                    {post.title.length > 10
+                      ? `${post.title.substring(0, 10)}...`
+                      : post.title}
+                    {post.fileDir ? <AiOutlinePicture /> : ""}
                   </span>
                 </div>
               </div>

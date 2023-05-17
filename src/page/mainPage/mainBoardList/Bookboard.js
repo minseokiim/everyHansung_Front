@@ -81,7 +81,10 @@ const Bookboard = () => {
                     책방 &nbsp;
                     <span className="grey">
                       <BsBook /> &nbsp;
-                      {post.bookName}&nbsp;&nbsp;
+                      {post.bookName.length > 10
+                        ? `${post.bookName.substring(0, 10)}...`
+                        : post.bookName}
+                      &nbsp;&nbsp;
                       <FaChalkboardTeacher /> &nbsp;
                       {post.lectureName}
                     </span>

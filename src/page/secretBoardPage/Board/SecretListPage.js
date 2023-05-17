@@ -155,7 +155,9 @@ const SecretListPage = () => {
                   }}
                 >
                   <div>
-                    {post.title}
+                    {post.title.length > 10
+                      ? `${post.title.substring(0, 10)}...`
+                      : post.title}
                     <span className="p-1">
                       {post.fileDir ? <AiOutlinePicture /> : ""}
                     </span>
