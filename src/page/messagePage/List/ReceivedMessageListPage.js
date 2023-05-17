@@ -70,8 +70,8 @@ const ReceivedMessageListPage = () => {
                       marginBottom: "0",
                     }}
                   >
-                    {message.content.length > 50
-                      ? `${message.content.substring(0, 50)}...`
+                    {message.content.length > 30
+                      ? `${message.content.substring(0, 30)}...`
                       : message.content}
                     &nbsp;
                     <span
@@ -105,7 +105,7 @@ const ReceivedMessageListPage = () => {
             <h4>
               <TbMessagesOff />
             </h4>
-            <div>받은 쪽지가 없습니다.</div>
+            <div>주고 받은 쪽지가 없습니다.</div>
 
             <div className="grey pt-1">
               쪽지는 자유게시판, 비밀게시판, 책방을 통해 보낼 수 있어요!

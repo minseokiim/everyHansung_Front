@@ -1,0 +1,38 @@
+.messageContainer {
+  display: flex;
+}
+
+.receivedMessage {
+  align-items: flex-start;
+}
+
+.sentMessage {
+  align-items: flex-end;
+}
+
+.message-left {
+  max-width: 55%;
+  overflow-wrap: break-word;
+  background-color: hsl(0, 100%, 97%);
+  border-radius: 6px;
+  padding: 2px;
+  width: auto;
+}
+
+.message-right {
+  max-width: 55%;
+  overflow-wrap: break-word;
+  background-color: rgb(237, 241, 255);
+  border-radius: 6px;
+  padding: 2px;
+  width: auto;
+}
+
+.message-right-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message-left-box {
+  display: flex;
+}
