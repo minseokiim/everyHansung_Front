@@ -13,24 +13,27 @@
 .message-left {
   max-width: 55%;
   overflow-wrap: break-word;
-  background-color: hwb(0 93% 7%);
+  background-color: rgb(240, 240, 240);
   border-radius: 6px;
   padding: 2px;
+  font-size: 14px;
   width: auto;
 }
 
 .message-right {
   max-width: 55%;
   overflow-wrap: break-word;
-  background-color: #eef2ff;
+  background-color: rgb(240, 240, 240);
   border-radius: 6px;
-  padding: 2px;
+  padding: 5px;
+  font-size: 14px;
   width: auto;
 }
 
 .message-right-box {
   display: flex;
   justify-content: flex-end;
+  padding: 5px;
 }
 
 .message-left-box {
