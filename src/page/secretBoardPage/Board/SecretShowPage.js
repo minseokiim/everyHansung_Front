@@ -69,7 +69,7 @@ const SecretShowPage = () => {
         <>
           <div className="d-flex">
             <h4 className="flex-grow-1">
-              <strong>{post.title}</strong>
+              <strong>{post.title}&nbsp;</strong>
             </h4>
             {(isAdmin || nickname === post.nickname) && (
               <>
@@ -101,8 +101,7 @@ const SecretShowPage = () => {
               <>
                 <div>
                   <BsFillSendFill
-                    className="cursor-pointer icon"
-                    style={{ color: "hsl(227, 49%, 31%)" }}
+                    className="cursor-pointer message-icon"
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}
@@ -115,7 +114,7 @@ const SecretShowPage = () => {
               </>
             )}
           </div>
-          <div className=" mt-1">
+          <div className="mt-1">
             {post.createdAt === post.updatedAt && (
               <div className="text-muted post-time ">
                 <BiTimeFive /> 작성 : {printDate(post.createdAt)}
@@ -133,7 +132,6 @@ const SecretShowPage = () => {
           <hr />
           <div className="big-grey p-2">
             {post.content}
-            {/* 사진 보여주기 */}
             <br />
             {post.imageFile && (
               <div className="mt-3">

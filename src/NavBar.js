@@ -37,12 +37,16 @@ const NavBar = () => {
     (message) => !message.readCheck && message.receiver === studentId
   );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getMessages();
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     getMessages();
+  //   }, 1000);
 
-    return () => clearInterval(interval);
+  //   return () => clearInterval(interval);
+  // }, [unreadMessage, getMessages]);
+
+  useEffect(() => {
+    getMessages();
   }, [unreadMessage, getMessages]);
 
   useEffect(() => {

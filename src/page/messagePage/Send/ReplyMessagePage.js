@@ -65,7 +65,7 @@ const ReplyMessagePage = ({
         style={customStyles}
       >
         <VscChromeClose
-          className="message-button icon"
+          className="message-button message-icon"
           onClick={onRequestClose}
         />
         <form className="p-4">

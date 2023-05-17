@@ -79,8 +79,7 @@ const ShowRoomPage = () => {
               return (
                 <React.Fragment key={message.id}>
                   <BsFillSendFill
-                    className="cursor-pointer"
-                    style={{ color: "hsl(227, 49%, 31%)" }}
+                    className="cursor-pointer message-icon"
                     onClick={(e) => {
                       e.stopPropagation();
                       setOpenModalMessageId(message.id);
@@ -122,7 +121,8 @@ const ShowRoomPage = () => {
                   <div className="message-left p-2">{message.content} </div>
                   &nbsp;
                 </div>
-                <div className="message-left-box grey">
+                <div className="message-left-box grey pt-2">
+                  {/* &nbsp; &nbsp; &nbsp; &nbsp; */}
                   {formatDate(message.sendTime)}
                 </div>
               </div>

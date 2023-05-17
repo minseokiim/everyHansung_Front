@@ -13,7 +13,7 @@
 .message-left {
   max-width: 55%;
   overflow-wrap: break-word;
-  background-color: rgb(240, 240, 240);
+  background-color: hsl(240, 100%, 98%);
   border-radius: 6px;
   padding: 2px;
   font-size: 14px;
@@ -43,4 +43,12 @@
 .list-box {
   width: 100%;
   overflow: hidden;
+}
+
+.message-icon {
+  color: #251f7f;
+}
+
+.message-icon:hover {
+  color: #a7b2f1;
 }
