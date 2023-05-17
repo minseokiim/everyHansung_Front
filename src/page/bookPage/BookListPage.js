@@ -13,7 +13,7 @@ const BookListPage = () => {
   const [search, setSearch] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5); //페이지네이션
+  const [postsPerPage] = useState(5);
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
   const saleStates = ["판매중", "예약중", "판매완료"];
@@ -135,7 +135,7 @@ const BookListPage = () => {
         <form onSubmit={onSearch}>
           <input
             type="text"
-            placeholder="검색하고 싶은 수업명/교수님 성함/ 책 이름 입력하고 ENTER"
+            placeholder="검색어를 입력하고 Enter"
             className="form-control"
             value={search}
             onChange={onChangeSearch}
@@ -144,7 +144,7 @@ const BookListPage = () => {
         <br />
         {currentPosts.length > 0
           ? currentPosts
-              .sort((a, b) => b.id - a.id) //최신순
+              .sort((a, b) => b.id - a.id)
               .map((post) => {
                 const updateSaleState = createSaleStateUpdater(
                   post.id,

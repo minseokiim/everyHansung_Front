@@ -6,10 +6,10 @@ import { RiAdminLine } from "react-icons/ri";
 import { Modal, Button } from "react-bootstrap";
 import apiClient from "../../apiClient";
 import "./Admin.css";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const AdminPage = () => {
   const move = useNavigate();
-
   const [posts, setPosts] = useState([]);
 
   //멤버 이름 검색
@@ -97,7 +97,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="p-4 m-2">
+    <div className="p-4">
       {isAdmin ? (
         <>
           <strong className="p-3">인증 필요한 회원</strong>
@@ -171,10 +171,11 @@ const AdminPage = () => {
               </tbody>
             </table>
           ) : (
-            <>
-              모두 인증 완료 되었습니다.
+            <div className="p-2">
+              <AiFillCheckCircle />
+              &nbsp; 모두 인증 완료 되었습니다.
               <br />
-            </>
+            </div>
           )}
 
           <Modal show={modalShow} onHide={handleClose}>

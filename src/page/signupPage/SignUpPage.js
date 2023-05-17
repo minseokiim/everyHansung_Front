@@ -360,7 +360,6 @@ const SingUpPage = () => {
         )}
       </div>
       <br />
-
       <p className="find">
         <a href="/login">로그인하기</a>
       </p>

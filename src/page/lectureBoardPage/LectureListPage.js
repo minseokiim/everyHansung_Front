@@ -99,7 +99,7 @@ const LectureListPage = () => {
       <div>
         <input
           type="text"
-          placeholder="검색하고 싶은 수업명/교수님 성함 입력하고 ENTER"
+          placeholder="검색어를 입력하고 Enter"
           className="form-control"
           value={searchText}
           onChange={(e) => {
@@ -122,7 +122,7 @@ const LectureListPage = () => {
                       if (name) {
                         move(`/lectureboard/${post.id}`);
                       } else {
-                        alert("로그인 해야 게시물 확인 가능합니다");
+                        alert("로그인 해야 게시물 확인 가능합니다.");
                       }
                     }}
                   >

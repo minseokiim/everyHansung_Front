@@ -5,7 +5,6 @@ import Freeboard from "./mainBoardList/Freeboard";
 import Lectureboard from "./mainBoardList/Lectureboard";
 import apiClient from "../../apiClient";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Bookboard from "./mainBoardList/Bookboard";
 
 const MemberMainPage = () => {

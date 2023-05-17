@@ -128,7 +128,7 @@ const FreeListPage = () => {
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="검색어 입력하고 ENTER!"
+          placeholder="검색어를 입력하고 Enter"
           className="form-control"
           value={searchText}
           onChange={(e) => {
@@ -150,7 +150,7 @@ const FreeListPage = () => {
                     if (name) {
                       move(`/freeboard/${post.id}`);
                     } else {
-                      alert("로그인 해야 게시물 확인 가능합니다");
+                      alert("로그인 해야 게시물 확인 가능합니다.");
                     }
                   }}
                 >
@@ -192,7 +192,7 @@ const FreeListPage = () => {
                 </div>
               );
             })
-        : "게시물이 없습니다"}
+        : "게시물이 없습니다."}
       <br />
       <div className="pagination">
         <div className="pagination-container">

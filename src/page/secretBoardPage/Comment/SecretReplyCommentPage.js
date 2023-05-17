@@ -45,7 +45,7 @@ const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
           <input
             className="comment-input"
             type="text"
-            placeholder="대댓글을 입력하세요"
+            placeholder="대댓글을 입력하세요."
             value={content}
             onChange={(e) => {
               setContent(e.target.value);

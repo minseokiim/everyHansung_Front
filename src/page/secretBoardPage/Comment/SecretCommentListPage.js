@@ -194,7 +194,7 @@ const SecretCommentListPage = () => {
               })
           ) : (
             <div className="no-comment">
-              해당 게시물에는 댓글이 없습니다
+              해당 게시물에는 댓글이 없습니다.
               <br /> <br />
             </div>
           )}

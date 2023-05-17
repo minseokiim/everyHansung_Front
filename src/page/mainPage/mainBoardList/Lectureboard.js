@@ -91,7 +91,7 @@ const Lectureboard = () => {
                     if (name) {
                       move(`/lectureboard/${post.id}`);
                     } else {
-                      alert("로그인 해야 게시물 확인 가능합니다");
+                      alert("로그인 해야 게시물 확인 가능합니다.");
                     }
                   }}
                 >
@@ -116,12 +116,12 @@ const Lectureboard = () => {
                 if (name) {
                   move("/lectureboard");
                 } else {
-                  alert("로그인 해야 게시물 확인 가능합니다");
+                  alert("로그인 해야 게시물 확인 가능합니다.");
                 }
               }}
             >
               강의평 &nbsp;
-              <span className="grey">강의평이 없습니다</span>
+              <span className="grey">강의평이 없습니다.</span>
             </div>
           </>
         )}
