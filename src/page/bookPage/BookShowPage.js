@@ -98,10 +98,15 @@ const BookShowPage = () => {
             {post.studentId !== studentId && (
               <>
                 <div>
-                  <span className="important">
-                    <strong>{post.saleState}</strong>
-                  </span>
-                  &nbsp;
+                  {!isAdmin && (
+                    <>
+                      <span className="important">
+                        <strong>{post.saleState}</strong>
+                      </span>
+                      &nbsp;
+                    </>
+                  )}
+
                   <BsFillSendFill
                     className="cursor-pointer message-icon"
                     onClick={() => {

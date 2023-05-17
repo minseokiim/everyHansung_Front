@@ -173,7 +173,7 @@ const AdminPage = () => {
           ) : (
             <div className="p-2">
               <AiFillCheckCircle />
-              &nbsp; 모두 인증 완료 되었습니다.
+              &nbsp; 제출된 모든 요청이 처리되었습니다.
               <br />
             </div>
           )}
