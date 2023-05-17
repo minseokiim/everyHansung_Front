@@ -11,7 +11,7 @@ const Bookboard = () => {
   const [search, setSearch] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5); //페이지네이션
+  const [postsPerPage] = useState(5);
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
 
@@ -63,7 +63,7 @@ const Bookboard = () => {
       <div>
         {currentPosts.length > 0 ? (
           currentPosts
-            .sort((a, b) => b.id - a.id) //최신순
+            .sort((a, b) => b.id - a.id)
             .map((post) => {
               return (
                 <div
@@ -73,7 +73,7 @@ const Bookboard = () => {
                     if (name) {
                       move(`/bookstore/${post.id}`);
                     } else {
-                      alert("로그인 해야 게시물 확인 가능합니다");
+                      alert("로그인 해야 게시물 확인 가능합니다.");
                     }
                   }}
                 >
@@ -100,12 +100,12 @@ const Bookboard = () => {
                 if (name) {
                   move("/bookstore");
                 } else {
-                  alert("로그인 해야 게시물 확인 가능합니다");
+                  alert("로그인 해야 게시물 확인 가능합니다.");
                 }
               }}
             >
               책방 &nbsp;
-              <span className="grey">거래중인 책이 없습니다</span>
+              <span className="grey">거래중인 책이 없습니다.</span>
             </div>
           </>
         )}

@@ -63,7 +63,7 @@ const Freeboard = () => {
                   if (name) {
                     move(`/freeboard/${post.id}`);
                   } else {
-                    alert("로그인 해야 게시물 확인 가능합니다");
+                    alert("로그인 해야 게시물 확인 가능합니다.");
                   }
                 }}
               >
@@ -87,7 +87,7 @@ const Freeboard = () => {
               if (name) {
                 move("/freeboard");
               } else {
-                alert("로그인 해야 게시물 확인 가능합니다");
+                alert("로그인 해야 게시물 확인 가능합니다.");
               }
             }}
           >

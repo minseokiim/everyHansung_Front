@@ -1,9 +1,8 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import "./SecretCommentPage.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import apiClient from "../../../apiClient";
-import { BiMessage } from "react-icons/bi";
 
 const SecretCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");

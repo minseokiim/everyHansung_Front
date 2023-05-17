@@ -143,7 +143,6 @@ const ShowTimeTable = () => {
       />
       <div className="calendar-container">
         <DayPilotCalendar {...config} events={events} />
-        {/*  theme="calendar_green" */}
       </div>
     </div>
   );

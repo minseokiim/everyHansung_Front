@@ -12,7 +12,6 @@ const Secretboard = () => {
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
 
-  //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(1);
 
@@ -60,7 +59,7 @@ const Secretboard = () => {
                   if (name) {
                     move(`/secretboard/${post.id}`);
                   } else {
-                    alert("로그인 해야 게시물 확인 가능합니다");
+                    alert("로그인 해야 게시물 확인 가능합니다.");
                   }
                 }}
               >
@@ -84,12 +83,12 @@ const Secretboard = () => {
               if (name) {
                 move("/secretboard");
               } else {
-                alert("로그인 해야 게시물 확인 가능합니다");
+                alert("로그인 해야 게시물 확인 가능합니다.");
               }
             }}
           >
             비밀게시판 &nbsp;
-            <span className="grey">게시글이 없습니다</span>
+            <span className="grey">게시글이 없습니다.</span>
           </div>
         </>
       )}

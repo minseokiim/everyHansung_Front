@@ -37,11 +37,6 @@ const TimeTableList = ({ timeTableData, deleteTimeTableItem, formatTime }) => {
             <td>{formatTime(item.startTime)}</td>
             <td>{formatTime(item.endTime)}</td>
             <td>
-              {/* <AiFillEdit
-                className="icon cursor-pointer"
-                // onClick={() => editTimeTableItem(item.id)}
-                // 수정하려면 show를 만들어서 editing값 넘겨야됨 ->show를 굳이?
-              /> */}
               <BsFillTrashFill
                 className="icon cursor-pointer"
                 onClick={() => {
