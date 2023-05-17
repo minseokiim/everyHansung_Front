@@ -37,16 +37,13 @@ const NavBar = () => {
     (message) => !message.readCheck && message.receiver === studentId
   );
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     getMessages();
-  //   }, 1000);
-
-  //   return () => clearInterval(interval);
-  // }, [unreadMessage, getMessages]);
-
+  // 1초마다 불러와야해서 서버 부하 생김, api 생성하는 방식으로 수정 필요
   useEffect(() => {
-    getMessages();
+    const interval = setInterval(() => {
+      getMessages();
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [unreadMessage, getMessages]);
 
   useEffect(() => {

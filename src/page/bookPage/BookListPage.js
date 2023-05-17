@@ -190,9 +190,9 @@ const BookListPage = () => {
                         </button>
                       )}
                       {post.studentId !== studentId && (
-                        <button className="red-button float-right">
+                        <div className="important float-right">
                           {post.saleState}
-                        </button>
+                        </div>
                       )}
                     </div>
                   </div>
