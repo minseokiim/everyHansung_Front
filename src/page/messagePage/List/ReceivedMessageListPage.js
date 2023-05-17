@@ -70,9 +70,11 @@ const ReceivedMessageListPage = () => {
                       marginBottom: "0",
                     }}
                   >
-                    {message.content.length > 30
-                      ? `${message.content.substring(0, 30)}...`
-                      : message.content}
+                    <div className="list-box">
+                      {message.content.length > 30
+                        ? `${message.content.substring(0, 30)}...`
+                        : message.content}
+                    </div>
                     &nbsp;
                     <span
                       style={{

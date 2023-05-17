@@ -155,14 +155,18 @@ const FreeListPage = () => {
                   }}
                 >
                   <div>
-                    {post.title}
+                    {post.title.length > 10
+                      ? `${post.title.substring(0, 10)}...`
+                      : post.title}
                     <span className="p-1">
                       {post.fileDir ? <AiOutlinePicture /> : ""}
                     </span>
                     <br />
                     <div className="grey">
-                      {post.content.slice(0, 80)}
-                      {post.content.length > 80 ? "..." : ""}
+                      {post.content.length > 30
+                        ? `${post.content.substring(0, 30)}...`
+                        : post.content}
+
                       <br />
                       <div className="grey ">
                         <BiTimeFive />

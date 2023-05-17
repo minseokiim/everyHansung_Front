@@ -13,7 +13,7 @@
 .message-left {
   max-width: 55%;
   overflow-wrap: break-word;
-  background-color: hsl(0, 100%, 97%);
+  background-color: hwb(0 93% 7%);
   border-radius: 6px;
   padding: 2px;
   width: auto;
@@ -22,7 +22,7 @@
 .message-right {
   max-width: 55%;
   overflow-wrap: break-word;
-  background-color: rgb(237, 241, 255);
+  background-color: #eef2ff;
   border-radius: 6px;
   padding: 2px;
   width: auto;
@@ -35,4 +35,9 @@
 
 .message-left-box {
   display: flex;
+}
+
+.list-box {
+  width: 100%;
+  overflow: hidden;
 }
