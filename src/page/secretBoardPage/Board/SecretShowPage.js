@@ -102,6 +102,7 @@ const SecretShowPage = () => {
                 <div>
                   <BsFillSendFill
                     className="cursor-pointer icon"
+                    style={{ color: "hsl(227, 49%, 31%)" }}
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}

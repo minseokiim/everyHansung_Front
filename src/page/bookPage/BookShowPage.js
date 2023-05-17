@@ -11,9 +11,9 @@ const BookShowPage = () => {
   const [post, setPost] = useState([]);
   const move = useNavigate();
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
-  //const receiver=post.id;
   const studentId = localStorage.getItem("studentId");
   const isAdmin = studentId === "admin";
+  const saleStates = ["판매중", "예약중", "판매완료"];
 
   const getPost = (id) => {
     apiClient.get(`http://localhost:8080/book/${id}`).then((res) => {
@@ -31,6 +31,32 @@ const BookShowPage = () => {
     }
   };
 
+  const createSaleStateUpdater = (id, currentSaleState) => async () => {
+    const currentIndex = saleStates.indexOf(currentSaleState);
+    const nextIndex = (currentIndex + 1) % saleStates.length;
+    const nextState = saleStates[nextIndex];
+
+    try {
+      await apiClient.patch(
+        `http://localhost:8080/book/${id}?saleState=${nextState}`
+      );
+      setPost(
+        post.map((post) => {
+          if (post.id === id) {
+            return {
+              ...post,
+              saleState: nextState,
+            };
+          } else {
+            return post;
+          }
+        })
+      );
+    } catch (error) {
+      alert("판매 상태 업데이트에 실패했습니다.");
+    }
+  };
+
   useEffect(() => {
     getPost(id);
   }, []);
@@ -42,8 +68,8 @@ const BookShowPage = () => {
           <div className="d-flex">
             <div className="flex-grow-1">
               <h5>
-                <strong>{post.bookName}</strong>&nbsp;/&nbsp;{post.author}
-                &nbsp;/&nbsp;
+                <strong>{post.bookName}</strong>&nbsp;|&nbsp;{post.author}
+                &nbsp;|&nbsp;
                 {post.publisher}
               </h5>
               <FaChalkboardTeacher /> &nbsp;
@@ -53,6 +79,10 @@ const BookShowPage = () => {
             {(isAdmin || studentId === post.studentId) && (
               <div>
                 <span className="p-2">
+                  <span className="important">
+                    <strong>{post.saleState}</strong>
+                  </span>
+                  &nbsp;
                   <BsFillTrashFill
                     className="cursor-pointer icon"
                     onClick={() => {
@@ -65,23 +95,27 @@ const BookShowPage = () => {
               </div>
             )}
 
-            {post.studentId !==
-              studentId(
-                <>
-                  <div>
-                    <BsFillSendFill
-                      className="cursor-pointer icon"
-                      onClick={() => {
-                        setIsMessageModalOpen(true);
-                      }}
-                    />
-                    <BookSendMessagePage
-                      isOpen={isMessageModalOpen}
-                      onRequestClose={() => setIsMessageModalOpen(false)}
-                    />
-                  </div>
-                </>
-              )}
+            {post.studentId !== studentId && (
+              <>
+                <div>
+                  <span className="important">
+                    <strong>{post.saleState}</strong>
+                  </span>
+                  &nbsp;
+                  <BsFillSendFill
+                    className="cursor-pointer icon"
+                    style={{ color: "hsl(227, 49%, 31%)" }}
+                    onClick={() => {
+                      setIsMessageModalOpen(true);
+                    }}
+                  />
+                  <BookSendMessagePage
+                    isOpen={isMessageModalOpen}
+                    onRequestClose={() => setIsMessageModalOpen(false)}
+                  />
+                </div>
+              </>
+            )}
           </div>
           <hr />
           <strong>

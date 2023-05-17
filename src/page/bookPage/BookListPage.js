@@ -16,8 +16,6 @@ const BookListPage = () => {
   const [postsPerPage] = useState(5); //페이지네이션
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
-  //const [saleState, setSaleState] = useState("");
-  //const [imageFile, setImageFile] = useState("");
   const saleStates = ["판매중", "예약중", "판매완료"];
 
   useEffect(() => {
@@ -78,9 +76,6 @@ const BookListPage = () => {
     const sortedPosts = res.data.sort((a, b) => b.id - a.id);
     setPosts(sortedPosts);
     filterPosts(sortedPosts);
-    //console.log(res.data);
-    //setSaleState(res.data.saleState);
-    //setImageFile(res.data.imageFile); //이미지 테스트
   };
 
   useEffect(() => {
@@ -191,6 +186,11 @@ const BookListPage = () => {
                           }}
                           className="red-button float-right"
                         >
+                          {post.saleState}
+                        </button>
+                      )}
+                      {post.studentId !== studentId && (
+                        <button className="red-button float-right">
                           {post.saleState}
                         </button>
                       )}

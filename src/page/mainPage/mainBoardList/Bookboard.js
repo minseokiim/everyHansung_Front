@@ -60,8 +60,6 @@ const Bookboard = () => {
 
   return (
     <div>
-      <div className="d-flex justify-content-between"></div>
-
       <div>
         {currentPosts.length > 0 ? (
           currentPosts
@@ -70,7 +68,7 @@ const Bookboard = () => {
               return (
                 <div
                   key={post.id}
-                  className=" cursor-pointer"
+                  className="card-body cursor-pointer"
                   onClick={() => {
                     if (name) {
                       move(`/bookstore/${post.id}`);
@@ -80,7 +78,7 @@ const Bookboard = () => {
                   }}
                 >
                   <div>
-                    - 책방 &nbsp;
+                    책방 &nbsp;
                     <span className="grey">
                       <BsBook /> &nbsp;
                       {post.bookName}&nbsp;&nbsp;

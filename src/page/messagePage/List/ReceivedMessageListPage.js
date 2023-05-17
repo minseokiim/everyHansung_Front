@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import apiClient from "../../../apiClient";
 import { useNavigate } from "react-router-dom";
 import "../MessagePage.css";
-import { BiTimeFive, BiMessage } from "react-icons/bi";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BiTimeFive } from "react-icons/bi";
 import { TbMessagesOff } from "react-icons/tb";
 import { HiBellAlert } from "react-icons/hi2";
-// import ReplyMessagePage from "../Send/ReplyMessagePage";
 
 const ReceivedMessageListPage = () => {
   const move = useNavigate();
@@ -20,7 +18,8 @@ const ReceivedMessageListPage = () => {
         const validMessages = res.data.filter(
           (message) => message && message.content
         );
-        setMessages(validMessages);
+        const sortedMessages = validMessages.sort((a, b) => b.id - a.id);
+        setMessages(sortedMessages);
       });
   };
 
@@ -49,17 +48,6 @@ const ReceivedMessageListPage = () => {
     }
   };
 
-  const deleteMessage = async (id) => {
-    try {
-      await apiClient.delete(`http://localhost:8080/message/room/${id}`);
-      alert("쪽지가 삭제되었습니다.");
-
-      setMessages(messages.filter((message) => message.room.id !== id));
-    } catch (error) {
-      alert("쪽지 삭제에 실패했습니다.");
-    }
-  };
-
   return (
     <>
       <div className="p-4">
@@ -83,12 +71,6 @@ const ReceivedMessageListPage = () => {
                     }}
                   >
                     {message.content}&nbsp;
-                    {!message.readCheck && message.receiver === studentId && (
-                      <HiBellAlert
-                        className="m-1"
-                        style={{ color: "hsl(46, 82%, 67%)" }}
-                      />
-                    )}
                     <span
                       style={{
                         display: "flex",
@@ -99,17 +81,12 @@ const ReceivedMessageListPage = () => {
                         e.stopPropagation();
                       }}
                     >
-                      <BsFillTrashFill
-                        className="icon"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (
-                            window.confirm("쪽지 내용을 모두 삭제하시겠습니까?")
-                          ) {
-                            deleteMessage(message.room.id);
-                          }
-                        }}
-                      />
+                      {!message.readCheck && message.receiver === studentId && (
+                        <HiBellAlert
+                          className="m-1"
+                          style={{ color: "#c62917" }}
+                        />
+                      )}
                     </span>
                   </div>
                   <span className="grey">
