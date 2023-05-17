@@ -70,7 +70,10 @@ const ReceivedMessageListPage = () => {
                       marginBottom: "0",
                     }}
                   >
-                    {message.content}&nbsp;
+                    {message.content.length > 50
+                      ? `${message.content.substring(0, 50)}...`
+                      : message.content}
+                    &nbsp;
                     <span
                       style={{
                         display: "flex",
