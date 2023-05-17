@@ -1,3 +1,4 @@
+import "./Message.css";
 import apiClient from "../../../apiClient";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -67,10 +68,10 @@ const ShowRoomPage = () => {
             alignItems: "center",
           }}
         >
-          {messages.map((message, index) => {
+          {messages.map((message) => {
             if (
               studentId !== message.sender &&
-              message.sender !== "admin" &&
+              // message.sender !== "admin" &&
               message.id ===
                 messages.filter((msg) => studentId !== msg.sender).slice(-1)[0]
                   .id
@@ -96,9 +97,7 @@ const ShowRoomPage = () => {
                     className="icon"
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (
-                        window.confirm("쪽지 내용을 모두 삭제하시겠습니까?")
-                      ) {
+                      if (window.confirm("쪽지방을 나가시겠습니까?")) {
                         deleteMessage(message.room.id);
                       }
                     }}
@@ -111,51 +110,36 @@ const ShowRoomPage = () => {
         </div>
       </div>
       <hr />
-      <div className="p-2">
+      <div className="pl-2">
         {messages.map((message) => (
           <div key={message.id}>
             {studentId !== message.sender && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                }}
-                className="p-1"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <BsFillPersonFill />:
-                  <span className="P-1"> {message.content} </span>
-                  &nbsp;&nbsp;
+              <div className="p-1">
+                <div className="message-left-box">
+                  <span>
+                    <BsFillPersonFill /> &nbsp;
+                  </span>
+                  <div className="message-left">{message.content} </div>
+                  &nbsp;
                 </div>
-                <div className="grey">{formatDate(message.sendTime)}</div>
+                <div className="message-left-box grey">
+                  {formatDate(message.sendTime)}
+                </div>
               </div>
             )}
+
             {studentId === message.sender && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                }}
-                className="p-1"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                  }}
-                >
-                  <span className="p-1"> {message.content} :</span>
-                  <BsFillPersonFill />
+              <div className="p-1">
+                <div className="message-right-box">
+                  <div className="message-right">{message.content} </div>
+                  &nbsp;
+                  <span>
+                    <BsFillPersonFill />
+                  </span>
                 </div>
-                <div className="grey">{formatDate(message.sendTime)}</div>
+                <div className="message-right-box grey">
+                  {formatDate(message.sendTime)}
+                </div>
               </div>
             )}
           </div>
@@ -163,7 +147,7 @@ const ShowRoomPage = () => {
       </div>
       <hr />
       <div className="grey">
-        쪽지 이용 시 개인정보 및 금융정보 보호에 유의해주시기 바랍니다.
+        * 쪽지 이용 시 개인정보 및 금융정보 보호에 유의해주시기 바랍니다.
       </div>
     </div>
   );
