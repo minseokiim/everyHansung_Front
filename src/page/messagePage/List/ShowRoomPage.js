@@ -115,11 +115,11 @@ const ShowRoomPage = () => {
           <div key={message.id}>
             {studentId !== message.sender && (
               <div className="p-1">
-                <div className="message-left-box">
+                <div className="message-left-box ">
                   <span>
                     <BsFillPersonFill /> &nbsp;
                   </span>
-                  <div className="message-left">{message.content} </div>
+                  <div className="message-left p-2">{message.content} </div>
                   &nbsp;
                 </div>
                 <div className="message-left-box grey">
@@ -129,9 +129,9 @@ const ShowRoomPage = () => {
             )}
 
             {studentId === message.sender && (
-              <div className="p-1">
+              <div>
                 <div className="message-right-box">
-                  <div className="message-right">{message.content} </div>
+                  <div className="message-right p-2">{message.content} </div>
                   &nbsp;
                   <span>
                     <BsFillPersonFill />
