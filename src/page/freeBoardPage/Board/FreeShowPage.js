@@ -100,8 +100,7 @@ const FreeShowPage = () => {
               <>
                 <div>
                   <BsFillSendFill
-                    className="cursor-pointer icon"
-                    style={{ color: "hsl(227, 49%, 31%)" }}
+                    className="cursor-pointer message-icon"
                     onClick={() => {
                       setIsMessageModalOpen(true);
                     }}

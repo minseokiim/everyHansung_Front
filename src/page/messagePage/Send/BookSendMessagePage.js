@@ -30,8 +30,8 @@ const BookSendMessagePage = ({ isOpen, onRequestClose }) => {
 
   const getPostId = async (id) => {
     const res = await axios.get(`http://localhost:8080/book/${id}`);
-    //console.log("작성자 정보 " + res.data.studentId);
-    return res.data.studentId; // 값을 반환하도록 변경
+
+    return res.data.studentId;
   };
 
   const onSubmit = async (e) => {
@@ -67,7 +67,7 @@ const BookSendMessagePage = ({ isOpen, onRequestClose }) => {
         style={customStyles}
       >
         <VscChromeClose
-          className="message-button icon"
+          className="message-button message-icon"
           onClick={onRequestClose}
         />
         <form className="p-4">
