@@ -48,6 +48,49 @@ const ShowRoomPage = () => {
         }}
       >
         <strong>주고 받은 쪽지</strong>
+        {messages.map((message, index) => (
+          <div key={message.id}>
+            {studentId !== message.sender && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {message.sender !== "admin" &&
+                  message.id ===
+                    messages
+                      .filter((msg) => studentId !== msg.sender)
+                      .slice(-1)[0].id && (
+                    <BsFillSendFill
+                      className="cursor-pointer"
+                      style={{ color: "hsl(227, 49%, 31%)" }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenModalMessageId(message.id);
+                      }}
+                    />
+                  )}
+                <ReplyMessagePage
+                  isOpen={openModalMessageId === message.id}
+                  onRequestClose={() => setOpenModalMessageId(null)}
+                  messageSender={message.sender}
+                  setRefresh={setRefresh}
+                />
+              </div>
+            )}
+            {studentId === message.sender && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+                className="p-1"
+              ></div>
+            )}
+          </div>
+        ))}
       </span>
       <hr />
       <div className="p-2">
@@ -71,24 +114,6 @@ const ShowRoomPage = () => {
                   <BsFillPersonFill />:
                   <span className="P-1"> {message.content} </span>
                   &nbsp;&nbsp;
-                  {message.sender !== "admin" && (
-                    <>
-                      <BsFillSendFill
-                        className="cursor-pointer"
-                        style={{ color: "hsl(227, 49%, 31%)" }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setOpenModalMessageId(message.id);
-                        }}
-                      />
-                      <ReplyMessagePage
-                        isOpen={openModalMessageId === message.id}
-                        onRequestClose={() => setOpenModalMessageId(null)}
-                        messageSender={message.sender}
-                        setRefresh={setRefresh}
-                      />
-                    </>
-                  )}
                 </div>
                 <div className="grey">{formatDate(message.sendTime)}</div>
               </div>
