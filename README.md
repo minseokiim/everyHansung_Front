@@ -27,7 +27,7 @@
 ## 🔎 프로젝트 소개
 
 <br/>
-![Alt text](../../%ED%95%99%EA%B5%90/%EC%BA%A1%EC%8A%A4%ED%86%A4%20front/%ED%8C%90%EB%84%AC,%20%ED%8C%9C%ED%94%8C%EB%A0%9B/%EA%B5%AC%ED%98%84%ED%99%94%EB%A9%B4/1%EB%B2%88.png)<br/>
+<img width="1266" alt="1번" src="https://github.com/minseokiim/Capstone_Front/assets/55376275/05af34ac-0a57-4bba-8ffa-9bd9c3d254bd">
 한성대학교 커뮤니티 서비스<br/>
 학교 생활 정보, 익명 커뮤니티 기능, 챗봇, 시간표 등의 기능을 제공합니다.
 <br/>
@@ -72,11 +72,6 @@
 ## 🎞 프로젝트 데모 영상
 
 <br/>
-
-<details>
-    <summary>회원가입</summary>
-      <h5 align="center">화면</h5>
-</details>
 
 <br/>
 <br/>
