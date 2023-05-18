@@ -30,3 +30,15 @@
   border-bottom: 1px solid #ddd;
   color: #666;
 }
+
+.admin-red-button {
+  margin: 2px;
+  background-color: hwb(0 29% 27%);
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 3px;
+}
+
+.admin-red-button:hover {
+  background-color: rgb(219, 155, 149);
+}

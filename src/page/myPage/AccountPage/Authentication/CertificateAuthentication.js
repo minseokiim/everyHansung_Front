@@ -121,7 +121,14 @@ const CertificateAuthentication = () => {
               />
             </div>
           )}
-          <span className="grey">사진은 한장만 선택 가능합니다.</span>
+          <span className="grey">
+            사진은 한장만 제출해주세요. <br /> <br />
+            <hr />
+            * 학교 인증에 실패할 경우, 쪽지함에 관련 메세지가 표시됩니다. <br />
+            메세지를 받으신 경우엔 확인하고 다시 제출해주세요.
+            <br />
+            기타 문의사항은 capstone23@gmail.com으로 보내주세요.
+          </span>
         </div>
         <button className="button" type="submit" onClick={onSubmit}>
           제출
