@@ -146,7 +146,7 @@ const AdminPage = () => {
                       </td>
                       <td>
                         <button
-                          className="red-button"
+                          className="admin-red-button"
                           onClick={() => {
                             if (window.confirm("인증 거절 하시겠습니까?")) {
                               rejectCertification(post.studentId);
@@ -180,7 +180,7 @@ const AdminPage = () => {
 
           <Modal show={modalShow} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>첨부 자료</Modal.Title>
+              <Modal.Title>인증 자료</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <img

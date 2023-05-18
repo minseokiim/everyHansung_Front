@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import apiClient from "./apiClient";
 import { TfiEmail } from "react-icons/tfi";
 import { HiBellAlert } from "react-icons/hi2";
-import { HiOutlineBookOpen } from "react-icons/hi";
+import { RiAdminLine } from "react-icons/ri";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
@@ -37,7 +37,6 @@ const NavBar = () => {
     (message) => !message.readCheck && message.receiver === studentId
   );
 
-  // 1초마다 불러와야해서 서버 부하 생김, api 생성하는 방식으로 수정 필요
   useEffect(() => {
     const interval = setInterval(() => {
       getMessages();
@@ -83,10 +82,7 @@ const NavBar = () => {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/lectureboard">강의평</Nav.Link>
-            <Nav.Link href="/bookstore">
-              <HiOutlineBookOpen />
-              책방
-            </Nav.Link>
+            <Nav.Link href="/bookstore">책방</Nav.Link>
             {!isAdmin && (
               <>
                 <Nav.Link href="/timetable">시간표</Nav.Link>
@@ -94,7 +90,14 @@ const NavBar = () => {
                 <Nav.Link href="/require">졸업요건</Nav.Link>
               </>
             )}
-            {isAdmin && <Nav.Link href="/admin">관리자 인증</Nav.Link>}
+            {isAdmin && (
+              <>
+                <Nav.Link href="/admin">
+                  <RiAdminLine />
+                  관리자 인증
+                </Nav.Link>
+              </>
+            )}
           </Nav>
 
           <Nav className="ms-auto">
