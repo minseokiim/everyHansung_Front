@@ -16,7 +16,6 @@ const BookListPage = () => {
   const [postsPerPage] = useState(5);
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
-  const saleStates = ["판매중", "예약중", "판매완료"];
 
   useEffect(() => {
     if (studentId) {
@@ -86,32 +85,6 @@ const BookListPage = () => {
     filterPosts();
   }, [posts]);
 
-  const createSaleStateUpdater = (id, currentSaleState) => async () => {
-    const currentIndex = saleStates.indexOf(currentSaleState);
-    const nextIndex = (currentIndex + 1) % saleStates.length;
-    const nextState = saleStates[nextIndex];
-
-    try {
-      await apiClient.patch(
-        `http://localhost:8080/book/${id}?saleState=${nextState}`
-      );
-      setPosts(
-        posts.map((post) => {
-          if (post.id === id) {
-            return {
-              ...post,
-              saleState: nextState,
-            };
-          } else {
-            return post;
-          }
-        })
-      );
-    } catch (error) {
-      alert("판매 상태 업데이트에 실패했습니다.");
-    }
-  };
-
   return (
     <div className="p-3">
       <div>
@@ -176,7 +149,7 @@ const BookListPage = () => {
                       {post.studentId === studentId && (
                         <span className="important float-right">
                           <strong>{post.saleState}</strong>
-                      </span>
+                        </span>
                       )}
                       {post.studentId !== studentId && (
                         <strong className="important float-right">

@@ -40,18 +40,10 @@ const BookShowPage = () => {
       await apiClient.patch(
         `http://localhost:8080/book/${id}?saleState=${nextState}`
       );
-      setPost(
-        post.map((post) => {
-          if (post.id === id) {
-            return {
-              ...post,
-              saleState: nextState,
-            };
-          } else {
-            return post;
-          }
-        })
-      );
+      setPost({
+        ...post,
+        saleState: nextState,
+      });
     } catch (error) {
       alert("판매 상태 업데이트에 실패했습니다.");
     }
@@ -69,14 +61,52 @@ const BookShowPage = () => {
         <>
           <div className="d-flex">
             <div className="flex-grow-1">
-              <h5>
-                <strong>{post.bookName}</strong>&nbsp;|&nbsp;{post.author}
-                &nbsp;|&nbsp;
-                {post.publisher}
-              </h5>
+              <span>
+                <h5>
+                  <strong>{post.bookName}</strong>&nbsp;|&nbsp;{post.author}
+                  &nbsp;|&nbsp;
+                  {post.publisher}&nbsp;
+                  {studentId === post.studentId && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        updateSaleState();
+                      }}
+                      className="red-button"
+                    >
+                      {post.saleState}
+                    </button>
+                  )}
+                  {studentId !== post.studentId && (
+                    <>
+                      <span className="sale-important">
+                        <strong>{post.saleState}</strong>
+                      </span>
+                      &nbsp;
+                    </>
+                  )}
+                </h5>
+              </span>
               <FaChalkboardTeacher /> &nbsp;
               {post.lectureName}
             </div>
+
+            {(isAdmin || post.studentId !== studentId) && (
+              <>
+                <div>
+                  <BsFillSendFill
+                    className="cursor-pointer message-icon"
+                    onClick={() => {
+                      setIsMessageModalOpen(true);
+                    }}
+                  />
+                  <BookSendMessagePage
+                    isOpen={isMessageModalOpen}
+                    onRequestClose={() => setIsMessageModalOpen(false)}
+                  />
+                </div>
+              </>
+            )}
 
             {(isAdmin || studentId === post.studentId) && (
               <div>
@@ -90,43 +120,8 @@ const BookShowPage = () => {
                     }}
                   />
                   &nbsp;
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      updateSaleState();
-                    }}
-                    className="red-button float-right"
-                  >
-                    {post.saleState}
-                  </button>
                 </span>
               </div>
-            )}
-
-            {post.studentId !== studentId && (
-              <>
-                <div>
-                  {!isAdmin && (
-                    <>
-                      <span className="important">
-                        <strong>{post.saleState}</strong>
-                      </span>
-                      &nbsp;
-                    </>
-                  )}
-
-                  <BsFillSendFill
-                    className="cursor-pointer message-icon"
-                    onClick={() => {
-                      setIsMessageModalOpen(true);
-                    }}
-                  />
-                  <BookSendMessagePage
-                    isOpen={isMessageModalOpen}
-                    onRequestClose={() => setIsMessageModalOpen(false)}
-                  />
-                </div>
-              </>
             )}
           </div>
           <hr />
