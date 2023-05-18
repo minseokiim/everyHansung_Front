@@ -82,8 +82,9 @@ const ShowTimeTable = () => {
       { groupBy: "Hour", format: "h tt" },
     ],
     businessBeginsHour: 9,
-    businessEndsHour: 23,
+    businessEndsHour: 22,
     days: moment.weekdays().slice(1, 6), //월요일부터 금요일까지
+    scrollTo: "09:00"
   };
 
   const colors = ["#82c1dc", "#eda5a5", "#9dbc72", "#fffac8", "#949494"];
