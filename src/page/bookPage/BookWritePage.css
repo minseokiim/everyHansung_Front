@@ -27,8 +27,14 @@
   color: #ffffff;
   border-width: 0px;
   border-radius: 3px;
+  font-size: 18px;
 }
 
 .red-button:hover {
   background-color: rgb(219, 155, 149);
+}
+
+.sale-important {
+  font-size: 17px;
+  color: hsl(0, 83%, 60%);
 }
