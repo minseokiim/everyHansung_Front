@@ -61,6 +61,8 @@ const BookShowPage = () => {
     getPost(id);
   }, []);
 
+  const updateSaleState = createSaleStateUpdater(post.id, post.saleState);
+
   return (
     <div className="p-4">
       {studentId && (
@@ -79,10 +81,6 @@ const BookShowPage = () => {
             {(isAdmin || studentId === post.studentId) && (
               <div>
                 <span className="p-2">
-                  <span className="important">
-                    <strong>{post.saleState}</strong>
-                  </span>
-                  &nbsp;
                   <BsFillTrashFill
                     className="cursor-pointer icon"
                     onClick={() => {
@@ -91,6 +89,16 @@ const BookShowPage = () => {
                       }
                     }}
                   />
+                  &nbsp;
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      updateSaleState();
+                    }}
+                    className="red-button float-right"
+                  >
+                    {post.saleState}
+                  </button>
                 </span>
               </div>
             )}
@@ -188,4 +196,5 @@ const BookShowPage = () => {
     </div>
   );
 };
+
 export default BookShowPage;
