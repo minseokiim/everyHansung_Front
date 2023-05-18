@@ -27,9 +27,11 @@
 ## 🔎 프로젝트 소개
 
 <br/>
-<img width="1266" alt="1번" src="https://github.com/minseokiim/Capstone_Front/assets/55376275/05af34ac-0a57-4bba-8ffa-9bd9c3d254bd">
-한성대학교 커뮤니티 서비스<br/>
-학교 생활 정보, 익명 커뮤니티 기능, 챗봇, 시간표 등의 기능을 제공합니다.
+<img width="500" alt="스크린샷 2023-05-18 204628" src="https://github.com/minseokiim/Capstone_Front/assets/55376275/5af75905-2c86-44b5-8e1a-b4791bfd5fe1">
+
+한성대학교 학생들을 위한 커뮤니티 서비스<br/>
+- 학교 생활 정보, 익명 커뮤니티, 챗봇, 시간표 관리, 쪽지, 책방 등의 기능을 제공 <br/>
+- 챗봇에 자주 묻는 질문, 간단한 정보들에 대한 답을 학습시켜 편하게 이용 가능
 <br/>
 <br/>
 
@@ -71,9 +73,7 @@
 
 ## 🎞 프로젝트 데모 영상
 
-<br/>
-
-<br/>
+<br/
 <br/>
 
 ## 🙈 팀원 소개
