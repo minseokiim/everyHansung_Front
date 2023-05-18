@@ -146,11 +146,6 @@ const BookListPage = () => {
           ? currentPosts
               .sort((a, b) => b.id - a.id)
               .map((post) => {
-                const updateSaleState = createSaleStateUpdater(
-                  post.id,
-                  post.saleState
-                );
-
                 return (
                   <div
                     key={post.id}
@@ -179,15 +174,9 @@ const BookListPage = () => {
                       <FaChalkboardTeacher /> &nbsp;
                       {post.lectureName}
                       {post.studentId === studentId && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            updateSaleState();
-                          }}
-                          className="red-button float-right"
-                        >
-                          {post.saleState}
-                        </button>
+                        <span className="important float-right">
+                          <strong>{post.saleState}</strong>
+                      </span>
                       )}
                       {post.studentId !== studentId && (
                         <strong className="important float-right">
@@ -221,4 +210,5 @@ const BookListPage = () => {
     </div>
   );
 };
+
 export default BookListPage;
