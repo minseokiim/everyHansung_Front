@@ -13,6 +13,7 @@ import {
 import apiClient from "../../../apiClient";
 import SecretSendMessagePage from "../../messagePage/Send/SecretSendMessagePage";
 import "../Comment/SecretCommentPage.css";
+import config from "../../../config";
 
 const SecretShowPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const SecretShowPage = () => {
   const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
-    apiClient.get(`http://localhost:8080/secretboard/${id}`).then((res) => {
+    apiClient.get(`${config.API_BASE_URL}/secretboard/${id}`).then((res) => {
       setPost(res.data);
     });
   };
@@ -32,7 +33,7 @@ const SecretShowPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setNickname(member.nickname);
@@ -55,7 +56,7 @@ const SecretShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/secretboard/${id}`);
+      await apiClient.delete(`${config.API_BASE_URL}/secretboard/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/secretboard");
     } catch (error) {

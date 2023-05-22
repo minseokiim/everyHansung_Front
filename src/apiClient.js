@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "./config";
 const apiClient = axios.create();
 
 apiClient.interceptors.request.use(
@@ -31,7 +32,7 @@ apiClient.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem("refreshToken");
         const response = await axios.post(
-          "http://localhost:8080/auth/refresh",
+          `${config.API_BASE_URL}/auth/refresh`,
           {},
           {
             params: {

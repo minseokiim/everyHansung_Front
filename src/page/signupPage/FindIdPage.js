@@ -3,6 +3,7 @@ import axios from "axios";
 import "./SignUpPage.css";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const FindIdPage = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +38,7 @@ const FindIdPage = () => {
     }
 
     try {
-      const response = await axios.get("http://localhost:8080/auth/email", {
+      const response = await axios.get(`${config.API_BASE_URL}/auth/email`, {
         params: { email },
       });
       const studentId = response.data;

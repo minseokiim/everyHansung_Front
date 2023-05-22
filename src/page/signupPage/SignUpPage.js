@@ -5,6 +5,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import axios from "axios";
 import emailjs from "emailjs-com";
+import config from "../../config";
 
 const SingUpPage = () => {
   const [verificationCode, setVerificationCode] = useState("");
@@ -150,7 +151,7 @@ const SingUpPage = () => {
           checkNicknameDisplay === "block"
         ) {
           axios
-            .post("http://localhost:8080/auth/register", {
+            .post(`${config.API_BASE_URL}/auth/register`, {
               studentId,
               email,
               password,

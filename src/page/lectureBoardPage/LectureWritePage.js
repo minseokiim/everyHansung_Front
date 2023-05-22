@@ -3,6 +3,7 @@ import "./LectureWritePage.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Star from "./Star";
+import config from "../../config";
 
 const LectureWritePage = () => {
   const [content, setContent] = useState("");
@@ -31,7 +32,7 @@ const LectureWritePage = () => {
       return;
     } else {
       axios
-        .post("http://localhost:8080/lecture/register", {
+        .post(`${config.API_BASE_URL}/lecture/register`, {
           lectureName,
           professor,
           selectedStars,

@@ -6,6 +6,7 @@ import { BsCardChecklist } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import apiClient from "../../apiClient";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
+import config from "../../config";
 
 const LectureShowPage = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const LectureShowPage = () => {
   const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/lecture/${id}`).then((res) => {
+    axios.get(`${config.API_BASE_URL}/lecture/${id}`).then((res) => {
       setPost(res.data);
     });
   };
@@ -29,7 +30,7 @@ const LectureShowPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setNickname(member.nickname);
@@ -44,7 +45,7 @@ const LectureShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/lecture/${id}`);
+      await apiClient.delete(`${config.API_BASE_URL}/lecture/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/lectureboard");
     } catch (error) {

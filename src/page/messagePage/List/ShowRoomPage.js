@@ -9,6 +9,7 @@ import {
   BsFillPersonFill,
   BsFillTrashFill,
 } from "react-icons/bs";
+import config from "../../../config";
 
 const ShowRoomPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -20,7 +21,7 @@ const ShowRoomPage = () => {
 
   const getMessages = () => {
     apiClient
-      .get(`http://localhost:8080/message/room/${id}/${studentId}`)
+      .get(`${config.API_BASE_URL}/message/room/${id}/${studentId}`)
       .then((res) => {
         setMessages(res.data);
       });
@@ -43,7 +44,7 @@ const ShowRoomPage = () => {
 
   const deleteMessage = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/message/room/${id}`);
+      await apiClient.delete(`${config.API_BASE_URL}/message/room/${id}`);
       alert("쪽지가 삭제되었습니다.");
 
       setMessages(messages.filter((message) => message.room.id !== id));

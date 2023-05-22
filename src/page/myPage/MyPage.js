@@ -5,6 +5,7 @@ import AboutPage from "./AboutPage/AboutPage";
 import { useNavigate } from "react-router-dom";
 import OtherPage from "./OtherPage/OtherPage";
 import apiClient from "../../apiClient";
+import config from "../../config";
 
 const MyPage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -17,7 +18,7 @@ const MyPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);

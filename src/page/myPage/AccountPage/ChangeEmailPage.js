@@ -4,11 +4,12 @@ import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
-import apiClient from '../../../apiClient';
+import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const ChangeEmailPage = () => {
   const [email, setEmail] = useState("");
-  const [password,  setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const studentId = localStorage.getItem("studentId");
 
   const [checkEmailDisplay, setCheckEmailDisplay] = useState("none");
@@ -52,9 +53,9 @@ const ChangeEmailPage = () => {
 
     if (checkEmailDisplay === "block" && checkEmailDisplay == "block") {
       apiClient
-        .patch(`http://localhost:8080/member/${studentId}/email`, {
+        .patch(`${config.API_BASE_URL}/member/${studentId}/email`, {
           password,
-          email
+          email,
         })
         .then(() => {
           alert("이메일 변경하였습니다.");
@@ -64,7 +65,7 @@ const ChangeEmailPage = () => {
           if (error.response.status === 402) {
             setClearPasswdDisplay("block");
             setCheckPasswdDisplay("none");
-            alert('비밀번호를 다시 확인해주세요.');
+            alert("비밀번호를 다시 확인해주세요.");
           }
         });
     }

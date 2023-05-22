@@ -5,6 +5,7 @@ import "../MessagePage.css";
 import { BiTimeFive } from "react-icons/bi";
 import { TbMessagesOff } from "react-icons/tb";
 import { HiBellAlert } from "react-icons/hi2";
+import config from "../../../config";
 
 const ReceivedMessageListPage = () => {
   const move = useNavigate();
@@ -13,7 +14,7 @@ const ReceivedMessageListPage = () => {
 
   const getMessages = () => {
     apiClient
-      .get(`http://localhost:8080/message/${studentId}/all`)
+      .get(`${config.API_BASE_URL}/message/${studentId}/all`)
       .then((res) => {
         const validMessages = res.data.filter(
           (message) => message && message.content

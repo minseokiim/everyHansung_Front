@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import "./SecretCommentPage.css";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import config from "../../../config";
 import apiClient from "../../../apiClient";
 
 const SecretCommentWritePage = ({ parentId, refetchComments }) => {
@@ -17,7 +17,7 @@ const SecretCommentWritePage = ({ parentId, refetchComments }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/secretboard/comment/${id}`, {
+        .post(`${config.API_BASE_URL}/secretboard/comment/${id}`, {
           studentId,
           content,
           isAnonymous,

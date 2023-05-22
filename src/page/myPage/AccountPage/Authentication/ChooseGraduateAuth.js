@@ -6,6 +6,7 @@ import apiClient from "../../../../apiClient";
 import { TbCertificate } from "react-icons/tb";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import config from "../../../../config";
 
 const ChooseGraduateAuth = () => {
   const studentId = localStorage.getItem("studentId");
@@ -58,7 +59,7 @@ const ChooseGraduateAuth = () => {
 
       await apiClient
         .post(
-          `http://localhost:8080/member/${studentId}/uploadStudentCard`,
+          `${config.API_BASE_URL}/member/${studentId}/uploadStudentCard`,
           data
         )
         .then(() => {

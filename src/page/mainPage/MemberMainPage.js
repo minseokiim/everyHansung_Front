@@ -6,6 +6,7 @@ import Lectureboard from "./mainBoardList/Lectureboard";
 import apiClient from "../../apiClient";
 import { useState, useEffect } from "react";
 import Bookboard from "./mainBoardList/Bookboard";
+import config from "../../config";
 
 const MemberMainPage = () => {
   const move = useNavigate();
@@ -15,7 +16,7 @@ const MemberMainPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);

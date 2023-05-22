@@ -8,6 +8,7 @@ import { AiOutlineComment } from "react-icons/ai";
 import FreeReplyCommentPage from "./FreeReplyCommentPage";
 import { GrFormNext } from "react-icons/gr";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
+import config from "../../../config";
 
 const FreeCommentListPage = () => {
   const [comment, setComment] = useState([]);
@@ -19,7 +20,7 @@ const FreeCommentListPage = () => {
 
   const getComments = () => {
     apiClient
-      .get(`http://localhost:8080/freeboard/comment/${id}`)
+      .get(`${config.API_BASE_URL}/freeboard/comment/${id}`)
       .then((res) => {
         setComment(res.data);
         res.data.forEach((comment) => {
@@ -34,7 +35,7 @@ const FreeCommentListPage = () => {
 
   const getReplies = (parentId) => {
     apiClient
-      .get(`http://localhost:8080/freeboard/comment/${parentId}/replies`)
+      .get(`${config.API_BASE_URL}/freeboard/comment/${parentId}/replies`)
       .then((res) => {
         setReplies((prevReplies) => ({
           ...prevReplies,
@@ -58,7 +59,7 @@ const FreeCommentListPage = () => {
   const deleteComment = (e, id, commentId) => {
     e.stopPropagation();
     apiClient
-      .delete(`http://localhost:8080/freeboard/comment/${id}/${commentId}`)
+      .delete(`${config.API_BASE_URL}/freeboard/comment/${id}/${commentId}`)
       .then(() => {
         getComments();
       });
@@ -68,7 +69,7 @@ const FreeCommentListPage = () => {
     e.stopPropagation();
     apiClient
       .delete(
-        `http://localhost:8080/freeboard/comment/${id}/${replyId}/replies`
+        `${config.API_BASE_URL}/freeboard/comment/${id}/${replyId}/replies`
       )
       .then(() => {
         refetchReplies(parentId);

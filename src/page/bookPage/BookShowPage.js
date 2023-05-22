@@ -5,6 +5,7 @@ import { BsCardChecklist, BsBook } from "react-icons/bs";
 import apiClient from "../../apiClient";
 import BookSendMessagePage from "../messagePage/Send/BookSendMessagePage";
 import { BsFillTrashFill, BsFillSendFill } from "react-icons/bs";
+import config from "../../config";
 
 const BookShowPage = () => {
   const { id } = useParams();
@@ -16,14 +17,14 @@ const BookShowPage = () => {
   const saleStates = ["판매중", "예약중", "판매완료"];
 
   const getPost = (id) => {
-    apiClient.get(`http://localhost:8080/book/${id}`).then((res) => {
+    apiClient.get(`${config.API_BASE_URL}/book/${id}`).then((res) => {
       setPost(res.data);
     });
   };
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/book/${id}`);
+      await apiClient.delete(`${config.API_BASE_URL}/book/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/bookstore");
     } catch (error) {
@@ -38,7 +39,7 @@ const BookShowPage = () => {
 
     try {
       await apiClient.patch(
-        `http://localhost:8080/book/${id}?saleState=${nextState}`
+        `${config.API_BASE_URL}/book/${id}?saleState=${nextState}`
       );
       setPost({
         ...post,

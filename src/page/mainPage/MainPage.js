@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../apiClient";
 import { useState, useEffect } from "react";
+import config from "../../config";
 
 const MainPage = () => {
   const move = useNavigate();
@@ -13,8 +14,9 @@ const MainPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
+          console.log(res.data);
           const member = res.data;
           setName(member.username);
         })

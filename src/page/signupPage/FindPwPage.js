@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./SignUpPage.css";
 import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const FindPwPage = () => {
   const [studentId, setStudentId] = useState("");
@@ -17,7 +18,7 @@ const FindPwPage = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8080/auth/${studentId}`
+        `${config.API_BASE_URL}/auth/${studentId}`
       );
       if (response && response.data !== null) {
         navigate("/forgot/password/userid", {
