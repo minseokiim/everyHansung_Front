@@ -6,7 +6,7 @@ import apiClient from "../../../apiClient";
 
 const SecretCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(true);
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
 
