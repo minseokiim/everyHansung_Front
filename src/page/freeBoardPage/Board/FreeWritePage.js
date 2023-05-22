@@ -5,6 +5,7 @@ import propTypes from "prop-types";
 import apiClient from "../../../apiClient";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import config from "../../../config";
 
 const FreeWritePage = ({ editing }) => {
   const [title, setTitle] = useState("");
@@ -23,7 +24,7 @@ const FreeWritePage = ({ editing }) => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setNickname(member.nickname);
@@ -38,7 +39,7 @@ const FreeWritePage = ({ editing }) => {
 
   useEffect(() => {
     if (editing) {
-      apiClient.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
+      apiClient.get(`${config.API_BASE_URL}/freeboard/${id}`).then((res) => {
         setTitle(res.data.title);
         setContent(res.data.content);
         setAnonymous(res.data.anonymous);
@@ -76,12 +77,12 @@ const FreeWritePage = ({ editing }) => {
 
     if (editing) {
       apiClient
-        .patch(`http://localhost:8080/freeboard/${studentId}/${id}`, data)
+        .patch(`${config.API_BASE_URL}/freeboard/${studentId}/${id}`, data)
         .then(() => {
           move(`/freeboard/${id}`);
         });
     } else {
-      apiClient.post("http://localhost:8080/freeboard", data).then(() => {
+      apiClient.post(`${config.API_BASE_URL}/freeboard`, data).then(() => {
         move("/freeboard");
       });
     }

@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import apiClient from "../../apiClient";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import config from "../../config";
 
 const validationSchema = Yup.object().shape({
   subject: Yup.string().required("과목명을 입력해주세요."),
@@ -29,7 +30,7 @@ const TimeTable = () => {
       };
 
       const response = await apiClient.post(
-        "http://localhost:8080/time",
+        `${config.API_BASE_URL}/time`,
         timestampValues
       );
 

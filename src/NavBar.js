@@ -11,6 +11,7 @@ import apiClient from "./apiClient";
 import { TfiEmail } from "react-icons/tfi";
 import { HiBellAlert } from "react-icons/hi2";
 import { RiAdminLine } from "react-icons/ri";
+import config from "./config";
 
 const NavBar = () => {
   const studentId = localStorage.getItem("studentId");
@@ -20,7 +21,7 @@ const NavBar = () => {
 
   const getMessages = () => {
     apiClient
-      .get(`http://localhost:8080/message/${studentId}/all`)
+      .get(`${config.API_BASE_URL}/message/${studentId}/all`)
       .then((res) => {
         const validMessages = res.data.filter(
           (message) => message && message.content
@@ -48,7 +49,7 @@ const NavBar = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);

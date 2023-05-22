@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./FreeCommentPage.css";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
-import { BiMessage } from "react-icons/bi";
+import config from "../../../config";
 
 const FreeCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
@@ -17,7 +17,7 @@ const FreeCommentWritePage = ({ parentId, refetchComments }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/freeboard/comment/${id}`, {
+        .post(`${config.API_BASE_URL}/freeboard/comment/${id}`, {
           studentId,
           content,
           anonymous,

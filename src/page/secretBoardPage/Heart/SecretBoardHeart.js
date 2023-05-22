@@ -2,6 +2,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const SecretBoardHeart = () => {
   const [isFilled, setIsFilled] = useState(false);
@@ -12,7 +13,7 @@ const SecretBoardHeart = () => {
 
   useEffect(() => {
     apiClient
-      .get(`http://localhost:8080/secret/heart/${studentId}/${id}`)
+      .get(`${config.API_BASE_URL}/secret/heart/${studentId}/${id}`)
       .then((response) => {
         setCountLike(response.data.countLike);
         setIsFilled(response.data.isFilled);
@@ -25,7 +26,7 @@ const SecretBoardHeart = () => {
   const clickHeart = () => {
     if (isFilled) {
       apiClient
-        .delete(`http://localhost:8080/secret/heart/${studentId}/${id}`, {
+        .delete(`${config.API_BASE_URL}/secret/heart/${studentId}/${id}`, {
           params: {
             studentId: studentId,
             secretboardId: id,
@@ -40,7 +41,7 @@ const SecretBoardHeart = () => {
         });
     } else {
       apiClient
-        .post(`http://localhost:8080/secret/heart/${studentId}/${id}`, null, {
+        .post(`${config.API_BASE_URL}/secret/heart/${studentId}/${id}`, null, {
           params: {
             studentId: studentId,
             secretboardId: id,

@@ -8,6 +8,7 @@ import apiClient from "../../../apiClient";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BiTimeFive } from "react-icons/bi";
 import { AiOutlinePicture } from "react-icons/ai";
+import config from "../../../config";
 
 const FreeListPage = () => {
   const move = useNavigate();
@@ -43,7 +44,7 @@ const FreeListPage = () => {
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/freeboard/all").then((res) => {
+    axios.get(`${config.API_BASE_URL}/freeboard/all`).then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
     });
@@ -60,7 +61,7 @@ const FreeListPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);

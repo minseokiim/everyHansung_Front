@@ -5,6 +5,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const ChangeNickPage = () => {
   const [nickname, setNickname] = useState("none");
@@ -30,7 +31,7 @@ const ChangeNickPage = () => {
 
     if (checkNicknameDisplay === "block") {
       apiClient
-        .patch(`http://localhost:8080/member/${studentId}/nickname`, {
+        .patch(`${config.API_BASE_URL}/member/${studentId}/nickname`, {
           nickname,
         })
         .then(() => {

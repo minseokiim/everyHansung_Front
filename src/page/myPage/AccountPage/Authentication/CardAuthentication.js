@@ -6,6 +6,7 @@ import apiClient from "../../../../apiClient";
 import { AiFillIdcard } from "react-icons/ai";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import config from "../../../../config";
 
 const CardAuthentication = () => {
   const studentId = localStorage.getItem("studentId");
@@ -58,7 +59,7 @@ const CardAuthentication = () => {
 
       await apiClient
         .post(
-          `http://localhost:8080/member/${studentId}/uploadStudentCard`,
+          `${config.API_BASE_URL}/member/${studentId}/uploadStudentCard`,
           data
         )
         .then(() => {

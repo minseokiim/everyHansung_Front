@@ -7,6 +7,7 @@ import { Modal, Button } from "react-bootstrap";
 import apiClient from "../../apiClient";
 import "./Admin.css";
 import { AiFillCheckCircle } from "react-icons/ai";
+import config from "../../config";
 
 const AdminPage = () => {
   const move = useNavigate();
@@ -49,7 +50,7 @@ const AdminPage = () => {
   };
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/auth/all").then((res) => {
+    axios.get("${config.api_base_url}/auth/all").then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
     });
@@ -73,7 +74,7 @@ const AdminPage = () => {
   const rejectCertification = async (studentId) => {
     try {
       await apiClient.patch(
-        `http://localhost:8080/auth/${studentId}/certification/fail`,
+        `${config.API_BASE_URL}/auth/${studentId}/certification/fail`,
         { imageFile: false }
       );
       alert("인증 요청 삭제 되었습니다");
@@ -86,7 +87,7 @@ const AdminPage = () => {
   const handleCertification = async (studentId) => {
     try {
       await apiClient.patch(
-        `http://localhost:8080/auth/${studentId}/certification/success`,
+        `${config.api_base_url}/auth/${studentId}/certification/success`,
         { certification: true }
       );
       alert("인증 처리 되었습니다");

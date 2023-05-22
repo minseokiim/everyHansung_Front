@@ -5,6 +5,7 @@ import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import TimeTableList from "./TimeTableList";
 import moment from "moment";
 import "./TimeTableList.css";
+import config from "../../config";
 
 const ShowTimeTable = () => {
   const [timeTableData, setTimeTableData] = useState([]);
@@ -15,7 +16,7 @@ const ShowTimeTable = () => {
     const fetchTimeTableData = async () => {
       try {
         const response = await apiClient.get(
-          `http://localhost:8080/time/${studentId}`
+          `${config.API_BASE_URL}/time/${studentId}`
         );
         if (response.status === 200) {
           setTimeTableData(response.data);
@@ -47,7 +48,7 @@ const ShowTimeTable = () => {
   const deleteTimeTableItem = async (id) => {
     try {
       const response = await apiClient.delete(
-        `http://localhost:8080/time/${id}`
+        `${config.API_BASE_URL}/time/${id}`
       );
 
       if (response.status === 200) {
@@ -84,7 +85,7 @@ const ShowTimeTable = () => {
     businessBeginsHour: 9,
     businessEndsHour: 22,
     days: moment.weekdays().slice(1, 6), //월요일부터 금요일까지
-    scrollTo: "09:00"
+    scrollTo: "09:00",
   };
 
   const colors = ["#82c1dc", "#eda5a5", "#9dbc72", "#fffac8", "#949494"];

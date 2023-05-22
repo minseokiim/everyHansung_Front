@@ -11,6 +11,7 @@ import FreeSendMessagePage from "../../messagePage/Send/FreeSendMessagePage";
 import "../Comment/FreeCommentPage.css";
 import axios from "axios";
 import { BsFillSendFill } from "react-icons/bs";
+import config from "../../../config";
 
 const FreeShowPage = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const FreeShowPage = () => {
   const isAdmin = studentId === "admin";
 
   const getPost = (id) => {
-    axios.get(`http://localhost:8080/freeboard/${id}`).then((res) => {
+    axios.get(`${config.API_BASE_URL}/freeboard/${id}`).then((res) => {
       setPost(res.data);
       //console.log(res.data);
     });
@@ -31,7 +32,7 @@ const FreeShowPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setNickname(member.nickname);
@@ -54,7 +55,7 @@ const FreeShowPage = () => {
 
   const deletePost = async (id) => {
     try {
-      await apiClient.delete(`http://localhost:8080/freeboard/${id}`);
+      await apiClient.delete(`${config.API_BASE_URL}/freeboard/${id}`);
       alert("게시물이 삭제되었습니다.");
       move("/freeboard");
     } catch (error) {

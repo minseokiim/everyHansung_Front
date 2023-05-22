@@ -2,6 +2,7 @@ import "./SecretCommentPage.css";
 import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { useState } from "react";
+import config from "../../../config";
 
 const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
@@ -15,12 +16,15 @@ const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/secretboard/comment/${parentId}/replies`, {
-          studentId,
-          content,
-          isAnonymous,
-          boardId,
-        })
+        .post(
+          `${config.API_BASE_URL}/secretboard/comment/${parentId}/replies`,
+          {
+            studentId,
+            content,
+            isAnonymous,
+            boardId,
+          }
+        )
         .then(() => {
           refetchReplies();
         });

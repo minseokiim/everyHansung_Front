@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import apiClient from "../../../apiClient";
 import { useState } from "react";
 import "./FreeCommentPage.css";
+import config from "../../../config";
 
 const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
@@ -15,7 +16,7 @@ const FreeReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
     } else {
       setContent("");
       apiClient
-        .post(`http://localhost:8080/freeboard/comment/${parentId}/replies`, {
+        .post(`${config.API_BASE_URL}/freeboard/comment/${parentId}/replies`, {
           studentId,
           content,
           anonymous,

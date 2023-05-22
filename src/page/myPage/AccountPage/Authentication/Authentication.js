@@ -4,6 +4,7 @@ import { FaUserGraduate, FaSchool } from "react-icons/fa";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import apiClient from "../../../../apiClient";
 import { useState, useEffect } from "react";
+import config from "../../../../config";
 
 const Authentication = () => {
   const move = useNavigate();
@@ -12,7 +13,7 @@ const Authentication = () => {
   const [isFile, setIsFile] = useState(false);
 
   const getAuth = () => {
-    apiClient.get(`http://localhost:8080/member/${studentId}`).then((res) => {
+    apiClient.get(`${config.API_BASE_URL}/member/${studentId}`).then((res) => {
       setIsCertification(res.data.certification);
       setIsFile(res.data.file);
 

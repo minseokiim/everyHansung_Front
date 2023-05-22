@@ -4,6 +4,7 @@ import "./BookWritePage.css";
 import apiClient from "../../apiClient";
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import config from "../../config";
 
 const BookWritePage = () => {
   const studentId = localStorage.getItem("studentId");
@@ -73,7 +74,7 @@ const BookWritePage = () => {
       sellPrice,
     };
 
-    apiClient.post("http://localhost:8080/book", data).then(() => {
+    apiClient.post(`${config.API_BASE_URL}/book`, data).then(() => {
       alert("작성되었습니다!");
 
       console.log(data);

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css";
+import config from "../../config";
 
 const LoginPage = () => {
   const move = useNavigate();
@@ -19,7 +20,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (rememberMe && studentId && password) {
       axios
-        .post("https://localhost:8080/auth/login", {
+        .post(`https://localhost:8080/auth/login`, {
           studentId,
           password,
         })
@@ -41,7 +42,7 @@ const LoginPage = () => {
     }
 
     axios
-      .post("http://localhost:8080/auth/login", {
+      .post(`${config.API_BASE_URL}/auth/login`, {
         studentId,
         password,
       })

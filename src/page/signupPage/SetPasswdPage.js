@@ -4,6 +4,7 @@ import "./SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import { useNavigate, useLocation } from "react-router-dom";
+import config from "../../config";
 
 const SetPasswdPage = () => {
   const [password, setPasswd] = useState("");
@@ -11,18 +12,21 @@ const SetPasswdPage = () => {
   const [checkPasswdDisplay, setCheckPasswdDisplay] = useState("none");
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
-  const [checkConfirmPasswordDisplay, setCheckConfirmPasswordDisplay] =
-    useState("none");
-  const [clearConfirmPasswordDisplay, setClearConfirmPasswordDisplay] =
-    useState("none");
+  const [
+    checkConfirmPasswordDisplay,
+    setCheckConfirmPasswordDisplay,
+  ] = useState("none");
+  const [
+    clearConfirmPasswordDisplay,
+    setClearConfirmPasswordDisplay,
+  ] = useState("none");
 
   const move = useNavigate();
   const location = useLocation();
   const studentId = location.state.studentId;
 
   const passwordCheck = (e) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
       setPasswd(e.target.value);
@@ -52,7 +56,7 @@ const SetPasswdPage = () => {
       checkConfirmPasswordDisplay === "block"
     ) {
       axios
-        .patch(`http://localhost:8080/auth/${studentId}/password`, {
+        .patch(`${config.API_BASE_URL}/auth/${studentId}/password`, {
           password,
         })
         .then((response) => {

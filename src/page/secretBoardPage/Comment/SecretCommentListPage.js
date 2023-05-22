@@ -9,6 +9,7 @@ import { AiOutlineComment } from "react-icons/ai";
 import SecretReplyCommentPage from "./SecretReplyCommentPage";
 import { GrFormNext } from "react-icons/gr";
 import { BsFillPersonFill, BsFillTrashFill } from "react-icons/bs";
+import config from "../../../config";
 
 const SecretCommentListPage = () => {
   const [comment, setComment] = useState([]);
@@ -20,7 +21,7 @@ const SecretCommentListPage = () => {
 
   const getComments = () => {
     apiClient
-      .get(`http://localhost:8080/secretboard/comment/${id}`)
+      .get(`${config.API_BASE_URL}/secretboard/comment/${id}`)
       .then((res) => {
         setComment(res.data);
         res.data.forEach((comment) => {
@@ -35,7 +36,7 @@ const SecretCommentListPage = () => {
 
   const getReplies = (parentId) => {
     apiClient
-      .get(`http://localhost:8080/secretboard/comment/${parentId}/replies`)
+      .get(`${config.API_BASE_URL}/secretboard/comment/${parentId}/replies`)
       .then((res) => {
         setReplies((prevReplies) => ({
           ...prevReplies,
@@ -59,7 +60,7 @@ const SecretCommentListPage = () => {
   const deleteComment = (e, id, commentId) => {
     e.stopPropagation();
     apiClient
-      .delete(`http://localhost:8080/secretboard/comment/${id}/${commentId}`)
+      .delete(`${config.API_BASE_URL}/secretboard/comment/${id}/${commentId}`)
       .then(() => {
         getComments();
       });
@@ -69,7 +70,7 @@ const SecretCommentListPage = () => {
     e.stopPropagation();
     apiClient
       .delete(
-        `http://localhost:8080/secretboard/comment/${parentId}/${replyId}`
+        `${config.API_BASE_URL}/secretboard/comment/${parentId}/${replyId}`
       )
       .then(() => {
         refetchReplies(parentId);
