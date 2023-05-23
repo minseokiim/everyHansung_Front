@@ -50,7 +50,7 @@ const AdminPage = () => {
   };
 
   const getPosts = () => {
-    axios.get("${config.api_base_url}/auth/all").then((res) => {
+    axios.get(`${config.API_BASE_URL}/auth/all`).then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
     });
@@ -87,7 +87,7 @@ const AdminPage = () => {
   const handleCertification = async (studentId) => {
     try {
       await apiClient.patch(
-        `${config.api_base_url}/auth/${studentId}/certification/success`,
+        `$${config.API_BASE_URL}/auth/${studentId}/certification/success`,
         { certification: true }
       );
       alert("인증 처리 되었습니다");
