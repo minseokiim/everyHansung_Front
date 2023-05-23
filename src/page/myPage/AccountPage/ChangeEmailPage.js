@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import "../../signupPage/SignUpPage.css";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
