@@ -20,7 +20,7 @@ const BookListPage = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`${config.api_base_url}/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
@@ -71,7 +71,7 @@ const BookListPage = () => {
   };
 
   const getPosts = async () => {
-    const res = await axios.get("${config.api_base_url}/book/all");
+    const res = await axios.get(`${config.API_BASE_URL}/book/all`);
     const sortedPosts = res.data.sort((a, b) => b.id - a.id);
     setPosts(sortedPosts);
     filterPosts(sortedPosts);
