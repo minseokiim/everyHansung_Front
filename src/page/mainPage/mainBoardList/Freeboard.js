@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
 import { AiOutlinePicture } from "react-icons/ai";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const Freeboard = () => {
   const move = useNavigate();
@@ -22,7 +23,7 @@ const Freeboard = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
@@ -38,7 +39,7 @@ const Freeboard = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/freeboard/all").then((res) => {
+    axios.get(`${config.API_BASE_URL}/freeboard/all`).then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
     });

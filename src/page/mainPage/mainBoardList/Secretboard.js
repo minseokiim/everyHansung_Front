@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import "../../secretBoardPage/Board/SecretListPage.css";
 import { AiOutlinePicture } from "react-icons/ai";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const Secretboard = () => {
   const move = useNavigate();
@@ -18,7 +19,7 @@ const Secretboard = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
@@ -34,7 +35,7 @@ const Secretboard = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/secretboard/all").then((res) => {
+    axios.get(`${config.API_BASE_URL}/secretboard/all`).then((res) => {
       const sortedPosts = res.data.sort((a, b) => b.id - a.id);
       setPosts(sortedPosts);
     });

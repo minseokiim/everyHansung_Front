@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const DeleteAccountPage = () => {
   const move = useNavigate();
@@ -15,8 +16,7 @@ const DeleteAccountPage = () => {
   const [clearPasswdDisplay, setClearPasswdDisplay] = useState("none");
 
   const passwordCheck = (e) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
 
     if (regex.test(e.target.value)) {
       setPassword(e.target.value);
@@ -30,10 +30,10 @@ const DeleteAccountPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-  
+
     if (checkPasswdDisplay === "block") {
       apiClient
-        .delete(`http://localhost:8080/member/${studentId}`, {
+        .delete(`${config.API_BASE_URL}/member/${studentId}`, {
           params: { password },
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
         })

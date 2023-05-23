@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const Bookboard = () => {
   const move = useNavigate();
@@ -18,7 +19,7 @@ const Bookboard = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
@@ -44,7 +45,7 @@ const Bookboard = () => {
   };
 
   const getPosts = async () => {
-    const res = await axios.get("http://localhost:8080/book/all");
+    const res = await axios.get(`${config.API_BASE_URL}/book/all`);
     const sortedPosts = res.data.sort((a, b) => b.id - a.id);
     setPosts(sortedPosts);
     filterPosts(sortedPosts);

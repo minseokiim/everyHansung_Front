@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Star from "./Star";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import apiClient from "../../../apiClient";
+import config from "../../../config";
 
 const Lectureboard = () => {
   const move = useNavigate();
@@ -19,7 +20,7 @@ const Lectureboard = () => {
   useEffect(() => {
     if (studentId) {
       apiClient
-        .get(`http://localhost:8080/member/${studentId}`)
+        .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
           const member = res.data;
           setName(member.username);
@@ -57,7 +58,7 @@ const Lectureboard = () => {
   };
 
   const getPosts = () => {
-    axios.get("http://localhost:8080/lecture/all").then((res) => {
+    axios.get(`${config.API_BASE_URL}/lecture/all`).then((res) => {
       setPosts(res.data);
       setFilteredPosts(res.data);
     });

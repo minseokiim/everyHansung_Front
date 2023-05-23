@@ -6,6 +6,7 @@ import apiClient from "../../../apiClient";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { VscChromeClose } from "react-icons/vsc";
+import config from "../../../config";
 
 const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
   const [content, setContent] = useState("");
@@ -29,7 +30,7 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
   };
 
   const getPostId = async (id) => {
-    const res = await axios.get(`http://localhost:8080/secretboard/${id}`);
+    const res = await axios.get(`${config.API_BASE_URL}/secretboard/${id}`);
 
     return res.data.studentId;
   };
@@ -43,7 +44,7 @@ const SecretSendMessagePage = ({ isOpen, onRequestClose }) => {
       return;
     } else {
       apiClient
-        .post("http://localhost:8080/message", {
+        .post(`${config.API_BASE_URL}/message`, {
           receiver: postId,
           sender: studentId,
           content,

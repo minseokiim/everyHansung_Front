@@ -20,7 +20,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (rememberMe && studentId && password) {
       axios
-        .post(`https://localhost:8080/auth/login`, {
+        .post(`${config.API_BASE_URL}/auth/login`, {
           studentId,
           password,
         })

@@ -19,32 +19,32 @@ const NavBar = () => {
   const isAdmin = studentId === "admin";
   const [messages, setMessages] = useState([]);
 
-  const getMessages = () => {
-    apiClient
-      .get(`${config.API_BASE_URL}/message/${studentId}/all`)
-      .then((res) => {
-        const validMessages = res.data.filter(
-          (message) => message && message.content
-        );
-        setMessages(validMessages);
-      });
-  };
+  // const getMessages = () => {
+  //   apiClient
+  //     .get(`${config.API_BASE_URL}/message/${studentId}/all`)
+  //     .then((res) => {
+  //       const validMessages = res.data.filter(
+  //         (message) => message && message.content
+  //       );
+  //       setMessages(validMessages);
+  //     });
+  // };
 
-  useEffect(() => {
-    getMessages();
-  }, [studentId]);
+  // useEffect(() => {
+  //   getMessages();
+  // }, [studentId]);
 
-  const unreadMessage = messages.find(
-    (message) => !message.readCheck && message.receiver === studentId
-  );
+  // const unreadMessage = messages.find(
+  //   (message) => !message.readCheck && message.receiver === studentId
+  // );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getMessages();
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     getMessages();
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, [unreadMessage, getMessages]);
+  //   return () => clearInterval(interval);
+  // }, [unreadMessage, getMessages]);
 
   useEffect(() => {
     if (studentId) {
@@ -107,12 +107,12 @@ const NavBar = () => {
                 <div className="white">
                   <Nav.Link href="/message">
                     <TfiEmail />
-                    {unreadMessage && (
+                    {/* {unreadMessage && (
                       <HiBellAlert
                         style={{ color: "hsl(46, 82%, 67%)" }}
                         size={13}
                       />
-                    )}
+                    )} */}
                   </Nav.Link>
                 </div>
                 <div className="white">

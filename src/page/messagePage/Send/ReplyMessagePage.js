@@ -5,6 +5,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import apiClient from "../../../apiClient";
 import { useParams } from "react-router-dom";
 import { VscChromeClose } from "react-icons/vsc";
+import config from "../../../config";
 
 const ReplyMessagePage = ({
   isOpen,
@@ -40,7 +41,7 @@ const ReplyMessagePage = ({
       return;
     } else {
       apiClient
-        .post("http://localhost:8080/message", {
+        .post(`${config.API_BASE_URL}/message`, {
           receiver: messageSender,
           sender: studentId,
           content,
