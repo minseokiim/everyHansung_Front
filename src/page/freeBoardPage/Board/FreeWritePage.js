@@ -76,6 +76,10 @@ const FreeWritePage = ({ editing }) => {
     };
 
     if (editing) {
+      if (imageFile === "") {
+        data.imageFile = null;
+      }
+
       apiClient
         .patch(`${config.API_BASE_URL}/freeboard/${studentId}/${id}`, data)
         .then(() => {

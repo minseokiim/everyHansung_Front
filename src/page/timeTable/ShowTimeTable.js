@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import TimeTableList from "./TimeTableList";
 import moment from "moment";
-import configApi from "../../config";
+import configApi from "../../config"; //여기서 config변수 이미 사용중이라서 여기서만 configApi로 가져옴
 import "./TimeTableList.css";
 
 const ShowTimeTable = () => {
