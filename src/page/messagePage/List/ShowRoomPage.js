@@ -93,15 +93,17 @@ const ShowRoomPage = () => {
                     setRefresh={setRefresh}
                   />
                   &nbsp;
-                  <BsFillTrashFill
-                    className="icon"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (window.confirm("쪽지방을 나가시겠습니까?")) {
-                        deleteMessage(message.room.id);
-                      }
-                    }}
-                  />
+                  {message.sender !== "admin" && (
+                    <BsFillTrashFill
+                      className="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (window.confirm("쪽지방을 나가시겠습니까?")) {
+                          deleteMessage(message.room.id);
+                        }
+                      }}
+                    />
+                  )}
                 </React.Fragment>
               );
             }

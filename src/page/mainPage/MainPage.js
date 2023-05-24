@@ -16,7 +16,7 @@ const MainPage = () => {
       apiClient
         .get(`${config.API_BASE_URL}/member/${studentId}`)
         .then((res) => {
-          console.log(res.data);
+          //console.log(res.data);
           const member = res.data;
           setName(member.username);
         })

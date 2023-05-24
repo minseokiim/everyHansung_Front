@@ -87,7 +87,7 @@ const AdminPage = () => {
   const handleCertification = async (studentId) => {
     try {
       await apiClient.patch(
-        `$${config.API_BASE_URL}/auth/${studentId}/certification/success`,
+        `${config.API_BASE_URL}/auth/${studentId}/certification/success`,
         { certification: true }
       );
       alert("인증 처리 되었습니다");
