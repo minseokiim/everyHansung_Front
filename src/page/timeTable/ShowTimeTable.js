@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import TimeTableList from "./TimeTableList";
 import moment from "moment";
+import configApi from "../../config";
 import "./TimeTableList.css";
-import config from "../../config";
 
 const ShowTimeTable = () => {
   const [timeTableData, setTimeTableData] = useState([]);
@@ -16,7 +16,7 @@ const ShowTimeTable = () => {
     const fetchTimeTableData = async () => {
       try {
         const response = await apiClient.get(
-          `${config.API_BASE_URL}/time/${studentId}`
+          `${configApi.API_BASE_URL}/time/${studentId}`
         );
         if (response.status === 200) {
           setTimeTableData(response.data);
@@ -48,7 +48,7 @@ const ShowTimeTable = () => {
   const deleteTimeTableItem = async (id) => {
     try {
       const response = await apiClient.delete(
-        `${config.API_BASE_URL}/time/${id}`
+        `${configApi.API_BASE_URL}/time/${id}`
       );
 
       if (response.status === 200) {

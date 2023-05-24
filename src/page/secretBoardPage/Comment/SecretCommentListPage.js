@@ -109,29 +109,27 @@ const SecretCommentListPage = () => {
                           onClick={() => toggleReplyForm(comment.id)}
                         />
 
-                        {studentId === comment.studentId ||
-                          (isAdmin && (
-                            <>
-                              <span className="p-2">
-                                <BsFillTrashFill
-                                  className="cursor-pointer icon grey"
-                                  onClick={(e) => {
-                                    {
-                                      if (
-                                        window.confirm(
-                                          "댓글을 삭제하시겠습니까?"
-                                        )
-                                      ) {
-                                        deleteComment(e, id, comment.id);
-                                      }
+                        {(isAdmin || studentId === comment.studentId) && (
+                          <>
+                            <span className="p-2">
+                              <BsFillTrashFill
+                                className="cursor-pointer icon grey"
+                                onClick={(e) => {
+                                  {
+                                    if (
+                                      window.confirm("댓글을 삭제하시겠습니까?")
+                                    ) {
+                                      deleteComment(e, id, comment.id);
                                     }
-                                  }}
-                                />
-                              </span>
-                            </>
-                          ))}
+                                  }
+                                }}
+                              />
+                            </span>
+                          </>
+                        )}
                       </div>
                     </div>
+
                     <div className="reply-comment">
                       <div className="reply-box">
                         {replies[comment.id] &&
@@ -141,10 +139,7 @@ const SecretCommentListPage = () => {
                                 <div className="comment-box flex-grow-1 p-1">
                                   <div className="reply-box">
                                     &nbsp;&nbsp; <GrFormNext />
-                                    {reply.isAnonymous
-                                      ? "익명"
-                                      : reply.nickname}
-                                    :
+                                    {reply.anonymous ? "익명" : reply.nickname}:
                                     <span className="p-1">{reply.content}</span>
                                     <div className="comment-time ">
                                       &nbsp;&nbsp;&nbsp;&nbsp;
@@ -153,36 +148,37 @@ const SecretCommentListPage = () => {
                                   </div>
                                 </div>
 
-                                {studentId === reply.studentId ||
-                                  (isAdmin && (
-                                    <div>
-                                      <span className="p-2">
-                                        <BsFillTrashFill
-                                          className="cursor-pointer icon grey"
-                                          onClick={(e) => {
-                                            {
-                                              if (
-                                                window.confirm(
-                                                  "댓글을 삭제하시겠습니까?"
-                                                )
-                                              ) {
-                                                deleteReply(
-                                                  e,
-                                                  comment.id,
-                                                  reply.id
-                                                );
-                                              }
+                                {(isAdmin ||
+                                  studentId === comment.studentId) && (
+                                  <div>
+                                    <span className="p-2">
+                                      <BsFillTrashFill
+                                        className="cursor-pointer icon grey"
+                                        onClick={(e) => {
+                                          {
+                                            if (
+                                              window.confirm(
+                                                "댓글을 삭제하시겠습니까?"
+                                              )
+                                            ) {
+                                              deleteReply(
+                                                e,
+                                                comment.id,
+                                                reply.id
+                                              );
                                             }
-                                          }}
-                                        />
-                                      </span>
-                                    </div>
-                                  ))}
+                                          }
+                                        }}
+                                      />
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           ))}
                       </div>
                     </div>
+
                     {showReplyForm === comment.id && (
                       <SecretReplyCommentPage
                         parentId={comment.id}
