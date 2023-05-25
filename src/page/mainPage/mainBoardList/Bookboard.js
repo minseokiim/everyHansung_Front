@@ -12,7 +12,7 @@ const Bookboard = () => {
   const [search, setSearch] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(1);
   const studentId = localStorage.getItem("studentId");
   const [name, setName] = useState("");
 
