@@ -32,7 +32,7 @@ const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   };
 
   const onChangeIsAnonymous = (e) => {
-    setIsAnonymous(e.target.checked);
+    setAnonymous(e.target.checked);
   };
 
   return (
