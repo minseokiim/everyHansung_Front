@@ -277,7 +277,7 @@ const LectureWritePage = () => {
           돌아가기
         </button>
         <button className="lec-button mb-3" type="submit" onClick={onSubmit}>
-          평가하기
+          작성하기
         </button>
       </div>
     </form>

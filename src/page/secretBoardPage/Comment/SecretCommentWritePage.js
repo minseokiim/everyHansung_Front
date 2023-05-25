@@ -6,7 +6,7 @@ import apiClient from "../../../apiClient";
 
 const SecretCommentWritePage = ({ parentId, refetchComments }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(true);
+  const [anonymous, setAnonymous] = useState(true);
   const { id } = useParams();
   const studentId = localStorage.getItem("studentId");
 
@@ -20,7 +20,7 @@ const SecretCommentWritePage = ({ parentId, refetchComments }) => {
         .post(`${config.API_BASE_URL}/secretboard/comment/${id}`, {
           studentId,
           content,
-          isAnonymous,
+          anonymous,
         })
         .then(() => {
           refetchComments();
@@ -36,7 +36,7 @@ const SecretCommentWritePage = ({ parentId, refetchComments }) => {
     <div className="comment-wrapper">
       <input
         type="checkbox"
-        checked={isAnonymous}
+        checked={anonymous}
         onChange={onChangeIsAnonymous}
         className="comment-checkbox"
       />

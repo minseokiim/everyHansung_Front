@@ -6,7 +6,7 @@ import config from "../../../config";
 
 const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
   const [content, setContent] = useState("");
-  const [isAnonymous, setIsAnonymous] = useState(true);
+  const [anonymous, setAnonymous] = useState(true);
   const studentId = localStorage.getItem("studentId");
 
   const onSubmit = () => {
@@ -21,7 +21,7 @@ const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
           {
             studentId,
             content,
-            isAnonymous,
+            anonymous,
             boardId,
           }
         )
@@ -40,7 +40,7 @@ const SecretReplyCommentPage = ({ parentId, refetchReplies, boardId }) => {
       <div className="comment-wrapper p-2">
         <input
           type="checkbox"
-          checked={isAnonymous}
+          checked={anonymous}
           onChange={onChangeIsAnonymous}
           className="comment-checkbox"
         />

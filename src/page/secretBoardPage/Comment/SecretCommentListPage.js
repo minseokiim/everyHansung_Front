@@ -97,7 +97,7 @@ const SecretCommentListPage = () => {
                     <div className="d-flex">
                       <div className="comment-box flex-grow-1 p-1">
                         <BsFillPersonFill />
-                        {comment.isAnonymous ? "익명" : comment.nickname}:
+                        {comment.anonymous ? "익명" : comment.nickname}:
                         <span className="p-1">{comment.content}</span>
                         <div className="comment-time ">
                           {printDate(comment.createdAt)}
