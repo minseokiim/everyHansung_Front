@@ -69,12 +69,14 @@
 <div>
 <img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=aws&logoColor=white">
 </div>
+<br/>
 
 ✔️ 상태 관리
 
 <div>
 <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white">
 </div>
+<br/>
 
 ✔️ 협업 도구
 
