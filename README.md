@@ -12,7 +12,6 @@
 - [프로젝트 소개 내용](#-프로젝트-소개)
 - [프로젝트 기술 스택](#-프로젝트-기술-스택)
 - [프로젝트 아키텍처](#-프로젝트-아키텍처)
-- [프로젝트 데모 영상](#-프로젝트-데모-영상)
 - [팀원 소개](#-팀원-소개)
 
 <br/>
@@ -55,7 +54,7 @@
 ✔️ 백엔드
 
 <div>
-<img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=JAVA&logoColor=white"> 
+<img src="https://img.shields.io/badge/Java-007396.svg?&style=for-the-badge&logo=Java&logoColor=white"> 
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
 <img src="https://img.shields.io/badge/hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white">
@@ -93,17 +92,6 @@
 <br />
 <br/>
 
-## 🎞 프로젝트 데모 영상
-
-<br/>
-
-<details>
-    <summary>회원가입</summary>
-      <h5 align="center">화면</h5>
-</details>
-
-<br/>
-<br/>
 
 ## 🙈 팀원 소개
 
